@@ -63,6 +63,7 @@ find_package(catkin REQUIRED COMPONENTS
 add_service_files(
   FILES
   RandomRoom.srv
+  GoTo.srv
 )
 
 ## Generate actions in the 'action' folder
@@ -142,6 +143,9 @@ include_directories(
 
 add_executable(cluedo_random_room src/cluedo_random_room.cpp)
 target_link_libraries(cluedo_random_room ${catkin_LIBRARIES} )
+
+add_executable(cluedo_movement_controller src/cluedo_movement_controller.cpp)
+target_link_libraries(cluedo_movement_controller ${catkin_LIBRARIES} )
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the

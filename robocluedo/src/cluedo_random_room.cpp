@@ -8,7 +8,7 @@
 
 #define PATH_PARAMETER_SERVER "cluedo_path_rooms_file"
 #define SERVICE_RANDOM_ROOM "/random_room"
-#define OUTLOG std::cout << "[cluedo_random_room.cpp] "
+#define OUTLOG std::cout << "[cluedo_random_room] "
 #define LOGSQUARE( str ) "[" << str << "] "
 
 
@@ -104,6 +104,7 @@ int main( int argc, char* argv[] )
 	OUTLOG << "Advertising service " << LOGSQUARE( SERVICE_RANDOM_ROOM ) << "... OK" << std::endl;
 	
 	// spin and wait
+	OUTLOG << "ready!" << std::endl;
 	ros::spin();
 	
 	return 0;

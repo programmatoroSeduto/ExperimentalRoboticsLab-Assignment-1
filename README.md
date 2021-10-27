@@ -6,6 +6,6 @@
 
 ## Services
 
-- node cluedo_random_room : /random_toom (empty | string)
+- node cluedo_random_room : /random_room (empty | string)
 
 
