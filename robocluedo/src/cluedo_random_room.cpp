@@ -6,7 +6,7 @@
 #include <random>
 #include <fstream>
 
-#define PATH_PARAMETER_SERVER "cluedo_path_rooms_file"
+#define PATH_PARAMETER_SERVER_WHERE "cluedo_path_where"
 #define SERVICE_RANDOM_ROOM "/random_room"
 #define OUTLOG std::cout << "[cluedo_random_room] "
 #define LOGSQUARE( str ) "[" << str << "] "
@@ -78,13 +78,13 @@ int main( int argc, char* argv[] )
 	ros::NodeHandle nh;
 	
 	// init the list of rooms
-	if( !ros::param::has( PATH_PARAMETER_SERVER ) )
+	if( !ros::param::has( PATH_PARAMETER_SERVER_WHERE ) )
 	{
 		// ERRORE il param non esiste nel server
 		return 0;
 	}
 	std::string path;
-	ros::param::get( PATH_PARAMETER_SERVER, path );
+	ros::param::get( PATH_PARAMETER_SERVER_WHERE, path );
 	if( !ImportNamesOfRooms( path ) )
 	{
 		// ERRORE il path non esiste

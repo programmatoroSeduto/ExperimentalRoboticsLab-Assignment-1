@@ -53,6 +53,10 @@ find_package(catkin REQUIRED COMPONENTS
 #   Message1.msg
 #   Message2.msg
 # )
+add_message_files(
+  FILES
+  Hint.msg
+)
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -62,6 +66,7 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 add_service_files(
   FILES
+  CheckSolution.srv
   RandomRoom.srv
   GoTo.srv
 )
@@ -146,6 +151,9 @@ target_link_libraries(cluedo_random_room ${catkin_LIBRARIES} )
 
 add_executable(cluedo_movement_controller src/cluedo_movement_controller.cpp)
 target_link_libraries(cluedo_movement_controller ${catkin_LIBRARIES} )
+
+add_executable(cluedo_oracle src/cluedo_oracle.cpp)
+target_link_libraries(cluedo_oracle ${catkin_LIBRARIES} )
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
