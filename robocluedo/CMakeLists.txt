@@ -12,6 +12,7 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   message_generation
+  armor_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -154,6 +155,9 @@ target_link_libraries(cluedo_movement_controller ${catkin_LIBRARIES} )
 
 add_executable(cluedo_oracle src/cluedo_oracle.cpp)
 target_link_libraries(cluedo_oracle ${catkin_LIBRARIES} )
+
+add_executable(test_armor src/test_armor.cpp)
+target_link_libraries(test_armor ${catkin_LIBRARIES} )
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
