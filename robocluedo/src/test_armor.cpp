@@ -2,6 +2,7 @@
 //catkin_make && clear && roslaunch robocluedo test_armor_ops.launch
 
 #include "ros/ros.h"
+#include "armor_tools/armor_tools.h"
 
 #include "armor_msgs/ArmorDirective.h"
 #include "armor_msgs/ArmorDirectiveList.h"
