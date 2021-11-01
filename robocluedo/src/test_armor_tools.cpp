@@ -3,6 +3,7 @@
 
 #include "ros/ros.h"
 #include "armor_tools/armor_tools.h"
+#include "armor_tools/armor_cluedo.h"
 
 #include "armor_msgs/ArmorDirective.h"
 #include "armor_msgs/ArmorDirectiveList.h"
@@ -98,6 +99,11 @@ bool fileExist( std::string path )
  * 	"QUERY", "CLASS", "IND", "HP3", "false"
  * 	HYPOTHESIS
  * 
+ * Ritorna i valori associati ad una certa proprietà 
+ * 	"QUERY", "OBJECTPROP", "IND", "where", "HP3"
+ * 	<http://www.emarolab.it/cluedo-ontology#Study>
+ * 	corrisponde a: (HP3, Study):where
+ * 
  */	
 void armorTestSession( ArmorTools& armor )
 {
@@ -166,6 +172,86 @@ void armorTestSession( ArmorTools& armor )
 }
 
 
+
+void armorTestSession2( std::string ontology_file_path )
+{
+	ArmorCluedo armor;
+	armor.Init( ontology_file_path );
+	
+	armor.SendCommand( "DISJOINT", "CLASS", "", "PERSON", "WEAPON" );
+	armor.SendCommand( "DISJOINT", "CLASS", "", "WEAPON", "PLACE" );
+	armor.SendCommand( "DISJOINT", "CLASS", "", "PERSON", "PLACE" );
+	armor.UpdateOntology( );
+	
+	/*
+	armor.SendCommand( "ADD", "IND", "CLASS", "Jim", "PERSON" );
+	armor.SendCommand( "ADD", "OBJECTPROP", "IND", "who", "HP3", "Jim" );
+	armor.SendCommand( "ADD", "IND", "CLASS", "Gun", "WEAPON" );
+	armor.SendCommand( "ADD", "OBJECTPROP", "IND", "what", "HP3", "Gun" );
+	armor.SendCommand( "ADD", "IND", "CLASS", "Stadium", "PLACE" );
+	armor.SendCommand( "ADD", "OBJECTPROP", "IND", "where", "HP3", "Stadium" );
+	armor.UpdateOntology( );
+	armor.SendCommand( "QUERY", "IND", "CLASS", "COMPLETED" );
+	ROS_INFO_STREAM( OUTLABEL << "(1) completed hypotheses:" );
+	armor.PrintLastRes( );
+	armor.SendCommand( "QUERY", "IND", "CLASS", "INCONSISTENT" );
+	ROS_INFO_STREAM( OUTLABEL << "(1) inconsistent hypotheses:" );
+	armor.PrintLastRes( ); 
+	*/
+	
+	armor.AddIndiv( "Jim", "PERSON" );
+	armor.AddIndiv( "Gun", "WEAPON" );
+	armor.SetObjectProperty( "who", "HP3", "Jim" );
+	armor.SetObjectProperty( "what", "HP3", "Gun" );
+	armor.UpdateOntology( );
+	armor.SendCommand( "QUERY", "IND", "CLASS", "COMPLETED" );
+	ROS_INFO_STREAM( OUTLABEL << "(0) completed hypotheses:" );
+	armor.PrintLastRes( );
+	armor.SendCommand( "QUERY", "IND", "CLASS", "INCONSISTENT" );
+	ROS_INFO_STREAM( OUTLABEL << "(0) inconsistent hypotheses:" );
+	armor.PrintLastRes( ); 
+	armor.SetObjectProperty( "where", "HP3", "Stadium" );
+	armor.AddIndiv( "Stadium", "PLACE" );
+	armor.UpdateOntology( );
+	armor.SendCommand( "QUERY", "IND", "CLASS", "COMPLETED" );
+	ROS_INFO_STREAM( OUTLABEL << "(1) completed hypotheses:" );
+	armor.PrintLastRes( );
+	armor.SendCommand( "QUERY", "IND", "CLASS", "INCONSISTENT" );
+	ROS_INFO_STREAM( OUTLABEL << "(1) inconsistent hypotheses:" );
+	armor.PrintLastRes( ); 
+	
+	/*
+	armor.SendCommand( "ADD", "IND", "CLASS", "Lounge", "PLACE" );
+	armor.SendCommand( "DISJOINT", "IND", "", "Lounge", "Stadium" );
+	armor.SendCommand( "ADD", "IND", "CLASS", "Study", "PLACE" );
+	armor.SendCommand( "DISJOINT", "IND", "", "Lounge", "Study" );
+	armor.SendCommand( "DISJOINT", "IND", "", "Stadium", "Study" );
+	armor.SendCommand( "ADD", "OBJECTPROP", "IND", "where", "HP3", "Study" );
+	armor.UpdateOntology( );
+	ROS_INFO_STREAM( OUTLABEL << "(2) completed hypotheses:" );
+	armor.SendCommand( "QUERY", "IND", "CLASS", "COMPLETED" );
+	armor.PrintLastRes( );
+	ROS_INFO_STREAM( OUTLABEL << "(2) inconsistent hypotheses:" );
+	armor.SendCommand( "QUERY", "IND", "CLASS", "INCONSISTENT" );
+	armor.PrintLastRes( );
+	*/
+	
+	armor.AddIndiv( "Lounge", "PLACE" );
+	armor.AddIndiv( "Study", "PLACE" );
+	armor.SetObjectProperty( "where", "HP3", "Study" );
+	armor.UpdateOntology( );
+	armor.SendCommand( "QUERY", "IND", "CLASS", "COMPLETED" );
+	ROS_INFO_STREAM( OUTLABEL << "(2) completed hypotheses:" );
+	armor.PrintLastRes( );
+	armor.SendCommand( "QUERY", "IND", "CLASS", "INCONSISTENT" );
+	ROS_INFO_STREAM( OUTLABEL << "(2) inconsistent hypotheses:" );
+	armor.PrintLastRes( ); 
+	armor.GetValuedOfIndiv( "where", "HP3" );
+	ROS_INFO_STREAM( OUTLABEL << "proprietà where dell'ipotesi HP3:" );
+	armor.PrintLastRes( ); 
+}
+
+
 // test section
 int main( int argc, char* argv[] )
 {
@@ -187,6 +273,7 @@ int main( int argc, char* argv[] )
 	}
 	ROS_INFO_STREAM( OUTLABEL << "Ontology found! " << LOGSQUARE( ontology_file_path ) );
 	
+	/*
 	ArmorTools tools( true );
 	tools.ConnectAndLoad( ontology_file_path );
 	if( ( tools.GetLastErrorCode( ) != 0 ) || !tools.TestInterface( ) )
@@ -195,8 +282,10 @@ int main( int argc, char* argv[] )
 		return 0;
 	}
 	// ROS_INFO_STREAM( OUTLABEL << "last error code is " << tools.GetLastRes( ).exit_code );
+	*/
 	
-	armorTestSession( tools );
+	// armorTestSession( tools );
+	armorTestSession2( ontology_file_path );
 	
 	ROS_INFO_STREAM( OUTLABEL << "THAT'S ALL FOLKS!" );
 	return 0;

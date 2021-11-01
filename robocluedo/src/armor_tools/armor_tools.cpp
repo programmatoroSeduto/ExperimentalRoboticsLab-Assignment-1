@@ -261,77 +261,6 @@ bool ArmorTools::SaveOntology( std::string path )
 }
 
 
-
-// aggiungi un individual ad una classe
-bool ArmorTools::AddIndiviualToClass( std::string individual, std::string classname )
-{
-	ARMOR_CHECK_INTERFACE( false );
-	
-	auto srvdata = GetRequest( "ADD", "IND", "CLASS", individual, classname );
-	if( !CallArmor( srvdata ) ) 
-		return false;
-	srvdata = GetRequest( "DISJOINT", "IND", "CLASS", classname );
-	if( !CallArmor( srvdata ) ) 
-		return false;
-	
-	return srvdata.response.armor_response.success;
-}
-
-
-
-// controlla se un individual esiste
-//    (se l'elemento non esiste, la risposta dal server è success=false)
-bool ArmorTools::Exists( std::string individual )
-{
-	ARMOR_CHECK_INTERFACE( false );
-	
-	// try to call the service
-	auto srvdata = GetRequest( "QUERY", "IND", "", individual );
-	if( !CallArmor( srvdata ) ) 
-		return false;
-	
-	return ( 
-		ARMOR_RES( srvdata ).success 
-		&& ARMOR_RES( srvdata ).queried_objects.size() > 0 );
-}
-
-
-
-// controlla a che classi appartiene un certo individual
-std::vector<std::string> ArmorTools::ClassOf( std::string individual )
-{
-	ARMOR_CHECK_INTERFACE( std::vector<std::string>( ) );
-	
-	// ...
-	
-	return std::vector<std::string>( );
-}
-
-
-
-// ritorna tutti gli individuals appartenenti ad una certa classe
-std::vector<std::string> ArmorTools::GetIndivFromClass( std::string classname )
-{
-	ARMOR_CHECK_INTERFACE( std::vector<std::string>( ) );
-	
-	// ...
-	
-	return std::vector<std::string>( );
-}
-
-
-
-// aggiungi una proprietà binaria
-bool ArmorTools::AddObjectProperty( std::string property, std::string Aelem, std::string Belem )
-{
-	ARMOR_CHECK_INTERFACE( false );
-	
-	// ...
-	
-	return true;
-}
-
-
 	
 // operazione di reason
 bool ArmorTools::UpdateOntology( )
@@ -349,42 +278,6 @@ bool ArmorTools::UpdateOntology( )
 	
 // operazione di lettura delle operazioni dal buffer
 bool ArmorTools::ApplyCommands( )
-{
-	ARMOR_CHECK_INTERFACE( false );
-	
-	// ...
-	
-	return true;
-}
-
-
-	
-// controlla se un'ipotesi è consistente o da scartare
-bool ArmorTools::IsHypothesisConsistent( std::string hypTag )
-{
-	ARMOR_CHECK_INTERFACE( false );
-	
-	// ...
-	
-	return true;
-}
-
-
-	
-// trova tutte le ipotesi consistenti
-std::vector<std::string> ArmorTools::GetConsistentHypotheses( )
-{
-	ARMOR_CHECK_INTERFACE( std::vector<std::string>( ) );
-	
-	// ...
-	
-	return std::vector<std::string>( );
-}
-
-
-	
-// controlla se una certa proprietà è verificata per un certo individual
-bool ArmorTools::ValueOfProperty( std::string property, std::string Aelem )
 {
 	ARMOR_CHECK_INTERFACE( false );
 	
@@ -514,9 +407,9 @@ bool ArmorTools::SendCommand(
 
 
 // reference all'ultimo messaggio inviato
-const armor_msgs::ArmorDirectiveRes& ArmorTools::GetLastRes( )
+armor_msgs::ArmorDirectiveRes& ArmorTools::GetLastRes( )
 {
-	const armor_msgs::ArmorDirectiveRes& res = this->LastRes;
+	armor_msgs::ArmorDirectiveRes& res = this->LastRes;
 	return res;
 }
 
@@ -550,14 +443,4 @@ void ArmorTools::PrintLastRes( )
 bool ArmorTools::FileExist( std::string path )
 {
 	return (std::ifstream(path)).good();
-}
-
-
-
-// rimuovi le parti inutili dai valori di ritorno da aRMOR
-std::string ArmorTools::FilterQueryValue( std::string data )
-{
-	// ...
-	
-	return "";
 }

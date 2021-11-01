@@ -20,6 +20,7 @@
 #define ARMOR_SERVICE_SINGLE_REQUEST "/armor_interface_srv"
 #define ARMOR_SERVICE_MULTIPLE_REQUESTS "/armor_interface_serialized_srv"
 #define ARMOR_DEFAULT_TIMEOUT 5.00
+#define ARMOR_DEFAULT_DEBUGMODE true
 
 #define ARMOR_CLASS_LABEL "[armor_tools]"
 #define ARMOR_INFO( msg ) if( this->DebugMode ) ROS_INFO_STREAM( ARMOR_CLASS_LABEL << " " << msg )
@@ -52,17 +53,22 @@ public:
 		bool dbmode = false
 	);
 	
+	// costruttore con dbmode
 	ArmorTools( bool dbmode );
 	
 	// distruttore
 	~ArmorTools();
 	
-	// set e get per client_name
+	// set del client_name
 	void SetClient( std::string client );
+	
+	// get de client name
 	std::string GetClient(  );
 	
-	// set e get per reference_name
+	// set per reference_name
 	void SetReference( std::string reference );
+	
+	// get per reference_name
 	std::string GetReference( );
 	
 	// metodo veloce per scrivere una richiesta
@@ -107,35 +113,11 @@ public:
 	// salva (SAVE) la ontology su file
 	bool SaveOntology( std::string path );
 	
-	// aggiungi un individual ad una classe
-	bool AddIndiviualToClass( std::string individual, std::string classname );
-	
-	// controlla se un individual esiste
-	bool Exists( std::string individual );
-	
-	// controlla a che classi appartiene un certo individual
-	std::vector<std::string> ClassOf( std::string individual );
-	
-	// ritorna tutti gli individuals appartenenti ad una certa classe
-	std::vector<std::string> GetIndivFromClass( std::string classname );
-	
-	// aggiungi una proprietà binaria
-	bool AddObjectProperty( std::string property, std::string Aelem, std::string Belem );
-	
 	// operazione di reason
 	bool UpdateOntology( );
 	
 	// operazione di lettura delle operazioni dal buffer
 	bool ApplyCommands( );
-	
-	// controlla se un'ipotesi è consistente o da scartare
-	bool IsHypothesisConsistent( std::string hypTag );
-	
-	// trova tutte le ipotesi consistenti
-	std::vector<std::string> GetConsistentHypotheses( );
-	
-	// controlla se una certa proprietà è verificata per un certo individual
-	bool ValueOfProperty( std::string property, std::string Aelem );
 	
 	// metodi di stampa dei pacchetti: request
 	void PrintRequest( armor_msgs::ArmorDirective& d );
@@ -146,9 +128,13 @@ public:
 	// debug mode
 	void SwitchDebugMode( );
 	
-	// riguardo l'ultimo errore
+	// ultimo codice d'errore
 	int GetLastErrorCode( );
+	
+	// ultima descrizione dell'errore
 	std::string GetLastErrorDescription( );
+	
+	// bool dall'ultima operazione
 	bool Success( );
 	
 	// check sul caricamento della ontology
@@ -169,11 +155,16 @@ public:
 		std::string arg5 = ""
 	);
 	
-	// reference all'ultimo messaggio inviato
-	const armor_msgs::ArmorDirectiveRes& GetLastRes( );
+	// reference all'ultima risposta
+	armor_msgs::ArmorDirectiveRes& GetLastRes( );
 	
 	// stampa l'ultimo pacchetto ricevuto da aRMOR
 	void PrintLastRes( );
+	
+protected:
+
+	// debug mode? (print all the messages to the screen?)
+	bool DebugMode = false;
 	
 private:
 	// aRMOR service
@@ -192,25 +183,11 @@ private:
 	//    l'ultimo comando load ha avuto successo?
 	bool IsLoadedInterface = false;
 	
-	// debug mode? (print all the messages to the screen?)
-	bool DebugMode = false;
-	
 	// last response from the server
 	armor_msgs::ArmorDirectiveRes LastRes;
 	
 	// controlla se il dato file esiste
 	bool FileExist( std::string path );
-	
-	// rimuovi le parti inutili dai valori di ritorno da aRMOR
-	//    da una stringa del tipo "<uri#value>" ad una del tipo "value"
-	//    se la stringa non inizia col simbolo '<', funzione identità
-	std::string FilterQueryValue( std::string data );
-	
-	// elenco delle classi
-	std::vector<std::string> classes;
-	
-	// elenco degli individuals
-	std::vector<std::string> individuals;
 };
 
 

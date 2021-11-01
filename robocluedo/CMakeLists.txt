@@ -137,6 +137,7 @@ include_directories(
 #   src/${PROJECT_NAME}/robocluedo.cpp
 # )
 add_library( armor_tools src/armor_tools/armor_tools.cpp )
+add_library( armor_cluedo src/armor_tools/armor_cluedo.cpp )
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -158,13 +159,13 @@ add_executable(cluedo_oracle src/cluedo_oracle.cpp)
 target_link_libraries(cluedo_oracle ${catkin_LIBRARIES} )
 
 add_executable(cluedo_armor_interface src/cluedo_armor_interface.cpp)
-target_link_libraries(cluedo_armor_interface ${catkin_LIBRARIES} armor_tools)
+target_link_libraries(cluedo_armor_interface ${catkin_LIBRARIES} armor_tools armor_cluedo)
 
 add_executable(test_armor src/test_armor.cpp)
-target_link_libraries(test_armor ${catkin_LIBRARIES} armor_tools)
+target_link_libraries(test_armor ${catkin_LIBRARIES} armor_tools armor_cluedo)
 
 add_executable(test_armor_tools src/test_armor_tools.cpp)
-target_link_libraries(test_armor_tools ${catkin_LIBRARIES} armor_tools)
+target_link_libraries(test_armor_tools ${catkin_LIBRARIES} armor_tools armor_cluedo)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -203,7 +204,7 @@ target_link_libraries(test_armor_tools ${catkin_LIBRARIES} armor_tools)
 
 ## Mark libraries for installation
 ## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_libraries.html
-install(TARGETS armor_tools
+install(TARGETS armor_tools armor_cluedo
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
