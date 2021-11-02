@@ -87,11 +87,11 @@ std::vector<std::string> ArmorCluedo::GetIndivOfClass( std::string classname )
 
 
 // check if an individual exists
-bool ExistsIndiv( std::string indivname )
+bool ArmorCluedo::ExistsIndiv( std::string indivname )
 {
 	return ( this->SendCommand( "QUERY", "CLASS", "IND", indivname, "true" ) && 
 				this->GetLastRes( ).success && 
-				this->GetLastRes( ).queried.objects.size( ) > 0 );
+				this->GetLastRes( ).queried_objects.size( ) > 0 );
 }
 
 
@@ -147,7 +147,7 @@ std::vector<std::string> ArmorCluedo::FindInconsistentHypotheses( )
 
 
 // remove one hyothesis
-bool ArmorCluedo::RemoveHypothesis( std::string hypTag );
+bool ArmorCluedo::RemoveHypothesis( std::string hypTag )
 {
 	// check if it exists
 	if( !ExistsIndiv( hypTag ) ) return false;
@@ -155,7 +155,7 @@ bool ArmorCluedo::RemoveHypothesis( std::string hypTag );
 	// delete the individual from all the classes
 	std::vector<std::string> classnames = this->GetClassOfIndiv( hypTag );
 	for( std::string cname : classnames )
-		if( !this->sendCommand( "REMOVE", "IND", "CLASS", hypTag, cname ) )
+		if( !this->SendCommand( "REMOVE", "IND", "CLASS", hypTag, cname ) )
 			return false;
 	
 	return true;

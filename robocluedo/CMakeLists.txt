@@ -128,6 +128,8 @@ include_directories(
 #   src/${PROJECT_NAME}/robocluedo.cpp
 # )
 add_library( armor_tools src/armor_tools/armor_tools.cpp )
+target_link_libraries(armor_tools ${catkin_LIBRARIES} )
+
 add_library( armor_cluedo src/armor_tools/armor_cluedo.cpp )
 target_link_libraries(armor_cluedo ${catkin_LIBRARIES} armor_tools )
 
@@ -183,10 +185,10 @@ target_link_libraries(test_armor_tools ${catkin_LIBRARIES} armor_tools armor_clu
 
 ## Mark executable scripts (Python etc.) for installation
 ## in contrast to setup.py, you can choose the destination
-# catkin_install_python(PROGRAMS
-#   scripts/my_python_script
-#   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-# )
+catkin_install_python(PROGRAMS
+  scripts/robot.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
 
 ## Mark executables for installation
 ## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_executables.html

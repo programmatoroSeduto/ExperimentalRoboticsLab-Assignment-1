@@ -21,7 +21,7 @@ ros::Publisher* pub_hint_signal;
 bool GoToCallback( robocluedo_msgs::GoTo::Request& where, robocluedo_msgs::GoTo::Response& success )
 {
 	// "go to" the given position
-	// ...
+	(ros::Duration(1)).sleep();
 	ROS_INFO( "%s position reached -> %s", OUTLABEL, where.where.c_str() );
 	
 	// signal the event to the oracle

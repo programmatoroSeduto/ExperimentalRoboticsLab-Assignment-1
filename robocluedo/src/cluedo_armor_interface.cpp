@@ -35,6 +35,14 @@ ArmorCluedo* armor;
 
 
 
+// check if a given file exists
+bool fileExist( std::string path )
+{
+    return (std::ifstream(path)).good();
+}
+
+
+
 // perform difference between the first array and the intersection between the two arrays
 std::vector<std::string> PerformDifferenceBetween( std::vector<std::string> list1, std::vector<std::string> list2 )
 {
@@ -66,12 +74,12 @@ bool ServiceAddHint( robocluedo_msgs::AddHint::Request& hint, robocluedo_msgs::A
 {
 	// check for the existence of the given hypothesis ID (in case, create it)
 	std::string hypname = "";
-	hypname += SS("HP") + SSS( hint.HintID );
+	hypname += SS("HP") + SSS( hint.hypID );
 	if( !armor->ExistsIndiv( hypname ) )
 		armor->AddIndiv( hypname, "HYPOTHESIS", false );
 	
 	// add the predicate
-	armor->SetObjectProperty( hint.HintType, hypname, hint.HintContent );
+	armor->SetObjectProperty( hint.property, hypname, hint.Belem );
 	
 	// perform the update
 	armor->UpdateOntology( );
@@ -89,14 +97,30 @@ bool ServiceFindConsistentHypotheses( robocluedo_msgs::FindConsistentHypotheses:
 	// perform the update before starting
 	armor->UpdateOntology( );
 	
-	// get all the consistent hypotheses (only deeper class)
-	std::vector<std::string> consistent_hyp = armor->FindCompleteHypotheses( );
+	std::vector<std::string> list_to_return;
+	{
+		// get all the consistent hypotheses
+		std::vector<std::string> consistent_hyp = armor->FindCompleteHypotheses( );
+		
+		// get the inconsistent hypotheses
+		std::vector<std::string> inconsistent_hyp = armor->FindInconsistentHypotheses( );
+		
+		// remove the intersection between the two arrays
+		list_to_return = PerformDifferenceBetween( consistent_hyp, inconsistent_hyp );
+	}
 	
-	// get the inconsistent hypotheses
-	std::vector<std::string> inconsistent_hyp = armor->FindInconsistentHypotheses( );
-	
-	// remove the intersection between the two arrays
-	hyplist.hyp = PerformDifferenceBetween( consistent_hyp, inconsistent_hyp );
+	// expand the list
+	hyplist.hyp = std::vector<robocluedo_msgs::Hypothesis>( );
+	robocluedo_msgs::Hypothesis h;
+	for( std::string hptag : list_to_return )
+	{
+		h.tag = hptag;
+		h.who = armor->GetValuedOfIndiv( "who", hptag )[0];
+		h.where = armor->GetValuedOfIndiv( "where", hptag )[0];
+		h.what = armor->GetValuedOfIndiv( "what", hptag )[0];
+		
+		hyplist.hyp.push_back( h );
+	}
 	
 	return true;
 }
@@ -108,6 +132,8 @@ bool DiscardHypothesis( robocluedo_msgs::DiscardHypothesis::Request& tag, robocl
 {
 	// remove the hypothesis from the database
 	success.success = armor->RemoveHypothesis( tag.hypothesisTag );
+	
+	return true;
 }
 
 
@@ -151,17 +177,17 @@ int main( int argc, char* argv[] )
 	
 	// servizio per registrare un hint dall'oracolo
 	OUTLOG( "opening server " << LOGSQUARE( SERVICE_INTERFACE_ADD_HINT ) << " ..." );
-	ros::ServiceServer srv_add_hint = rosHandler.advertiseService( SERVICE_INTERFACE_ADD_HINT , ServiceAddHint );
+	ros::ServiceServer srv_add_hint = nh.advertiseService( SERVICE_INTERFACE_ADD_HINT , ServiceAddHint );
 	OUTLOG( "OK!" );
 	
 	// servizio per ottenere tutte le ipotesi consistenti
 	OUTLOG( "opening server " << LOGSQUARE( SERVICE_INTERFACE_FIND_CONSISTENT_HYP ) << " ..." );
-	ros::ServiceServer srv_find_cons_hyp = rosHandler.advertiseService( SERVICE_INTERFACE_FIND_CONSISTENT_HYP, ServiceFindConsistentHypotheses );
+	ros::ServiceServer srv_find_cons_hyp = nh.advertiseService( SERVICE_INTERFACE_FIND_CONSISTENT_HYP, ServiceFindConsistentHypotheses );
 	OUTLOG( "OK!" );
 	
 	// servizio per scartare ipotesi
 	OUTLOG( "opening server " << LOGSQUARE( SERVICE_INTERFACE_WRONG_HYPOTHESIS ) << " ..." );
-	ros::ServiceServer srv_find_cons_hyp = rosHandler.advertiseService( SERVICE_INTERFACE_WRONG_HYPOTHESIS, ServiceFindConsistentHypotheses );
+	ros::ServiceServer srv_wrong_hyp = nh.advertiseService( SERVICE_INTERFACE_WRONG_HYPOTHESIS, ServiceFindConsistentHypotheses );
 	OUTLOG( "OK!" );
 	
 	// spin

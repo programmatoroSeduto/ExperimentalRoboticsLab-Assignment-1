@@ -138,13 +138,13 @@ bool checkSolutionCallback( robocluedo_msgs::CheckSolution::Request& hyp, robocl
 	if( (hyp.Who != solution_who.HintContent) || (hyp.Where != solution_where.HintContent) || (hyp.What != solution_what.HintContent) )
 	{
 		ROS_INFO_STREAM( OUTLABEL << "solution wrong. " );
-		misterySolved.MisterySolved = false;
+		misterySolved.MysterySolved = false;
 		return false;
 	}
 	else
 	{
 		ROS_INFO_STREAM( OUTLABEL << "SUCCESS! Found the solution. " );
-		misterySolved.MisterySolved = true;
+		misterySolved.MysterySolved = true;
 		return true;
 	}
 }
