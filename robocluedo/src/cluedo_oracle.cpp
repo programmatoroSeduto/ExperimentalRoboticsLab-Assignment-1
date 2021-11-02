@@ -1,13 +1,14 @@
 
 #include "ros/ros.h"
 #include "std_msgs/Empty.h"
-#include "robocluedo/Hint.h"
-#include "robocluedo/CheckSolution.h"
+#include "robocluedo_msgs/Hint.h"
+#include "robocluedo_msgs/CheckSolution.h"
 
 #include <vector>
 #include <string>
 #include <random>
 #include <fstream>
+#include <algorithm>
 
 #define PUBLISHER_HINT "/hint"
 #define SUBSCRIBER_HINT_SIGNAL "/hint_signal"
@@ -16,11 +17,14 @@
 #define PATH_PARAMETER_SERVER_WHERE "cluedo_path_where"
 #define PATH_PARAMETER_SERVER_WHO "cluedo_path_who"
 #define PATH_PARAMETER_SERVER_WHAT "cluedo_path_what"
+#define MAX_NUM_HINTS 25
+#define MAX_SIZE_HINT 4
 
 #define OUTLABEL "[cluedo_oracle] "
 #define OUTLOG std::cout << OUTLABEL << " "
 #define OUTERR OUTLOG << "ERROR: "
 #define LOGSQUARE( str ) "[" << str << "] "
+
 
 
 // the entire set of hints
@@ -29,19 +33,23 @@ std::vector<std::string> hints_where;
 std::vector<std::string> hints_what;
 
 // who killed Dr Black
-std::string solution_who;
+robocluedo_msgs::Hint solution_who;
 
 // where Dr Black was killed
-std::string solution_where;
+robocluedo_msgs::Hint solution_where;
 
 // what's the murder weapon
-std::string solution_what;
+robocluedo_msgs::Hint solution_what;
 
 // the algorithm for generating random numbers
 std::mt19937 rng;
 
 // the channel for the hints
 ros::Publisher* hint_channel;
+
+// the set of hypotheses
+std::vector<robocluedo_msgs::Hint> mysterylist;
+
 
 
 // generate random numbers from 0 to capmax included
@@ -52,6 +60,7 @@ int randomIndex( int capmax )
 	std::uniform_int_distribution<std::mt19937::result_type> randgen( 0, capmax );
 	return randgen( rng );
 }
+
 
 
 // read entities from the files
@@ -85,32 +94,16 @@ bool importDataFrom( std::string path, std::vector<std::string>& list )
 }
 
 
+
 // choose randomly a hint, and delete it from the list
 std::string chooseHintFrom( std::vector<std::string>& list )
 {
 	int ridx = randomIndex( list.size()-1 );
 	std::string choice = list[ ridx ];
-	ROS_INFO_STREAM( OUTLABEL << "evaluated hint id " << LOGSQUARE( ridx ) << " value " << LOGSQUARE( choice ) );
 	
 	return choice;
 }
 
-
-// delete a hint
-bool deleteHintFrom( std::string hintToRemove, std::vector<std::string>& list )
-{
-	if( list.size() < 1 ) return false;
-	
-	for( auto it = list.begin(); it != list.end(); ++it )
-		if( *it == hintToRemove )
-		{
-			ROS_INFO_STREAM( OUTLABEL << "hint deleted: " << LOGSQUARE( *it ) );
-			list.erase( it );
-			return true;
-		}
-	
-	return false;
-}
 
 
 // callback: hint signal
@@ -122,64 +115,27 @@ void hintCallback( const std_msgs::EmptyConstPtr& emptySignal )
 		ROS_INFO_STREAM( OUTLABEL << "hint requeste refused. " );
 		return;
 	}
-	
-	// prepare the choices
-	std::vector<std::string> v;
-	std::vector<std::string> vType;
-	if( hints_who.size() > 0 ) 
+	else if( mysterylist.empty( ) )
 	{
-		v.push_back( chooseHintFrom( hints_who ) );
-		vType.push_back( "WHO" );
-	}
-	if( hints_where.size() > 0 ) 
-	{
-		v.push_back( chooseHintFrom( hints_where ) );
-		vType.push_back( "WHERE" );
-	}
-	if( hints_what.size() > 0 ) 
-	{
-		v.push_back( chooseHintFrom( hints_what ) );
-		vType.push_back( "WHAT" );
-	}
-	
-	// make the final choice
-	robocluedo::Hint h;
-	if( v.size() == 0 ) 
-	{
-		ROS_INFO_STREAM( OUTLABEL << "no hint to send. " );
+		ROS_INFO_STREAM( OUTLABEL << "MysteryLIst is empty. " );
 		return;
 	}
-	else if( v.size() == 1 ) 
-	{
-		h.HintType = vType[0];
-		h.HintContent = v[0];
-	}
-	else
-	{
-		int finalChoice = randomIndex( v.size()-1 );
-		h.HintType = vType[ finalChoice ];
-		h.HintContent = v[ finalChoice ];
-	}
-	ROS_INFO_STREAM( OUTLABEL << "sending hint type " << LOGSQUARE( h.HintType ) << "value " << LOGSQUARE( h.HintContent ) );
 	
-	// publish the hint
+	// get the last message
+	robocluedo_msgs::Hint h = *(mysterylist.end() - 1);
+	mysterylist.pop_back( );
+	
+	// prepare the message and publish it
 	hint_channel->publish( h );
-	
-	// delete the hint
-	if( h.HintType == "WHO" )
-		deleteHintFrom( h.HintContent, hints_who );
-	if( h.HintType == "WHERE" )
-		deleteHintFrom( h.HintContent, hints_where );
-	if( h.HintType == "WHAT" )
-		deleteHintFrom( h.HintContent, hints_what );
 }
 
 
+
 // check if the solution from the robot is correct
-bool checkSolutionCallback( robocluedo::CheckSolution::Request& hyp, robocluedo::CheckSolution::Response& misterySolved )
+bool checkSolutionCallback( robocluedo_msgs::CheckSolution::Request& hyp, robocluedo_msgs::CheckSolution::Response& misterySolved )
 {
 	ROS_INFO_STREAM( OUTLABEL << "evaluating the solution WHERE" << LOGSQUARE( hyp.Where ) << " WHO " << LOGSQUARE( hyp.Who ) << " WHAT " << LOGSQUARE( hyp.What ) );
-	if( (hyp.Who != solution_who) || (hyp.Where != solution_where) || (hyp.What != solution_what) )
+	if( (hyp.Who != solution_who.HintContent) || (hyp.Where != solution_where.HintContent) || (hyp.What != solution_what.HintContent) )
 	{
 		ROS_INFO_STREAM( OUTLABEL << "solution wrong. " );
 		misterySolved.MisterySolved = false;
@@ -192,6 +148,83 @@ bool checkSolutionCallback( robocluedo::CheckSolution::Request& hyp, robocluedo:
 		return true;
 	}
 }
+
+
+
+// generate the solution of the case
+void generateMystery( std::vector<std::string> list_who, std::vector<std::string> list_where, std::vector<std::string> list_what )
+{
+	// shuffle the arrays before starting
+	std::random_shuffle( list_who.begin(), list_who.end() );
+	std::random_shuffle( list_where.begin(), list_where.end() );
+	std::random_shuffle( list_what.begin(), list_what.end() );
+	
+	// generate the solution without the ID
+	solution_where.HintType = "where";
+	solution_where.HintContent = chooseHintFrom( list_where );
+	
+	solution_who.HintType = "who";
+	solution_who.HintContent = chooseHintFrom( list_who );
+	
+	solution_what.HintType = "what";
+	solution_what.HintContent = chooseHintFrom( list_what );
+	
+	// generate the ID of the solution
+	int solutionID = randomIndex( MAX_NUM_HINTS-1 );
+	solution_who.HintID = solutionID;
+	solution_where.HintID = solutionID;
+	solution_what.HintID = solutionID;
+	
+	/*
+	 * for MAX_NUM_HINTS times:
+	 * 	generate a number from 3 to MAX_SIZE_HINT
+	 * 	for the number choosen before:
+	 *    choose one of the lists (number from 0 to 2)
+	 *    take the element from the selected list
+	 *    type and value
+	 *    and put it into the mystery list in the right cell
+	 * 
+	 * if the ID belongs to the solution, insert it instead of another new random hint
+	 */
+	for( int i=0; i<MAX_NUM_HINTS; ++i )
+	{
+		if( i == solutionID )
+		{
+			mysterylist.push_back( solution_what );
+			mysterylist.push_back( solution_where );
+			mysterylist.push_back( solution_who );
+		}
+		else
+		{
+			for( int j=0; j<MAX_SIZE_HINT; ++j )
+			{
+				robocluedo_msgs::Hint h;
+				h.HintID = i;
+				switch( randomIndex( 2 ) )
+				{
+				case 0:
+					h.HintType = "who";
+					h.HintContent = chooseHintFrom( list_who );
+				break;
+				case 1:
+					h.HintType = "where";
+					h.HintContent = chooseHintFrom( list_where );
+				break;
+				case 2:
+					h.HintType = "what";
+					h.HintContent = chooseHintFrom( list_what );
+				break;
+				}
+				
+				mysterylist.push_back( h );
+			}
+		}
+	}
+	
+	// final shuffle
+	std::random_shuffle( mysterylist.begin(), mysterylist.end() );
+}
+
 
 
 // main of the oracle
@@ -250,9 +283,7 @@ int main( int argc, char* argv[] )
 	rng = std::mt19937(dev());
 	
 	// generate the solution of the case
-	solution_who = chooseHintFrom( hints_who );
-	solution_where = chooseHintFrom( hints_where );
-	solution_what = chooseHintFrom( hints_what );
+	generateMystery( hints_who, hints_where, hints_what );
 	
 	// subscriber: hint_signal
 	OUTLOG << "subscribing to the topic " << LOGSQUARE( SUBSCRIBER_HINT_SIGNAL ) << "..." << std::endl;
@@ -261,7 +292,7 @@ int main( int argc, char* argv[] )
 	
 	// publisher: hint
 	OUTLOG << "Creating publisher " << LOGSQUARE( PUBLISHER_HINT ) << "..." << std::endl;
-	ros::Publisher pub_hint = nh.advertise<robocluedo::Hint>( PUBLISHER_HINT, 1000 );
+	ros::Publisher pub_hint = nh.advertise<robocluedo_msgs::Hint>( PUBLISHER_HINT, 1000 );
 	hint_channel = &pub_hint;
 	OUTLOG << "Creating publisher " << LOGSQUARE( PUBLISHER_HINT ) << "... OK" << std::endl;
 	

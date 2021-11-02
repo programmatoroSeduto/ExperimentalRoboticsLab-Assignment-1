@@ -1,6 +1,6 @@
 
 #include "ros/ros.h"
-#include "robocluedo/GoTo.h"
+#include "robocluedo_msgs/GoTo.h"
 #include "std_msgs/Empty.h"
 #include <iostream>
 #include <string>
@@ -18,7 +18,7 @@ ros::Publisher* pub_hint_signal;
 
 
 // stub mplementation of the movement service
-bool GoToCallback( robocluedo::GoTo::Request& where, robocluedo::GoTo::Response& success )
+bool GoToCallback( robocluedo_msgs::GoTo::Request& where, robocluedo_msgs::GoTo::Response& success )
 {
 	// "go to" the given position
 	// ...

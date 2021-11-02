@@ -1,0 +1,7 @@
+## file 'DiscardHypothesis.srv'
+
+string hypothesisTag
+
+---
+
+bool success

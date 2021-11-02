@@ -281,9 +281,11 @@ bool ArmorTools::ApplyCommands( )
 {
 	ARMOR_CHECK_INTERFACE( false );
 	
-	// ...
+	auto srvdata = GetRequest( "APPLY" );
+	if( !CallArmor( srvdata ) ) 
+		return false;
 	
-	return true;
+	return ARMOR_RES( srvdata ).success;
 }
 
 

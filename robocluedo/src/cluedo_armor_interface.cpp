@@ -1,13 +1,172 @@
 
 #include "ros/ros.h"
 #include "armor_tools/armor_tools.h"
+#include "armor_tools/armor_cluedo.h"
 
+#include "armor_msgs/ArmorDirective.h"
+#include "armor_msgs/ArmorDirectiveList.h"
+#include "armor_msgs/ArmorDirectiveReq.h"
+#include "armor_msgs/ArmorDirectiveRes.h"
+#include "armor_msgs/QueryItem.h"
+#include "robocluedo_msgs/AddHint.h"
+#include "robocluedo_msgs/Hypothesis.h"
+#include "robocluedo_msgs/FindConsistentHypotheses.h"
+#include "robocluedo_msgs/DiscardHypothesis.h"
+
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
+
+#define SERVICE_INTERFACE_ADD_HINT "/cluedo_armor/add_hint"
+#define SERVICE_INTERFACE_FIND_CONSISTENT_HYP "/cluedo_armor/find_consistent_h"
+#define SERVICE_INTERFACE_WRONG_HYPOTHESIS "/cluedo_armor/wrong_hypothesis"
+
+#define ONTOLOGY_PARAM "cluedo_path_owlfile"
+#define OUTLABEL "[cluedo_armor_interface]"
+#define OUTLOG( msg ) ROS_INFO_STREAM( OUTLABEL << " " << msg );
+#define LOGSQUARE( str ) "[" << str << "] "
+#define SS( this_string ) std::string( this_string )
+#define SSS( this_thing ) std::to_string( this_thing )
+
+
+// connection to aRMOR
+ArmorCluedo* armor;
+
+
+
+// perform difference between the first array and the intersection between the two arrays
+std::vector<std::string> PerformDifferenceBetween( std::vector<std::string> list1, std::vector<std::string> list2 )
+{
+	std::vector<std::string> to_return;
+	
+	for( auto it1 = list1.begin(); it1 != list1.end(); ++it1 )
+	{
+		bool found = false;
+		for( auto it2 = list2.begin(); it2 != list2.end(); ++it2 )
+		{
+			if( *it2 == *it1 ) 
+			{
+				found = true;
+				break;
+			}
+		}
+		
+		if( !found )
+			to_return.push_back( *it1 );
+	}
+	
+	return to_return;
+}
+
+
+
+// service SERVICE_INTERFACE_ADD_HINT
+bool ServiceAddHint( robocluedo_msgs::AddHint::Request& hint, robocluedo_msgs::AddHint::Response& success )
+{
+	// check for the existence of the given hypothesis ID (in case, create it)
+	std::string hypname = "";
+	hypname += SS("HP") + SSS( hint.HintID );
+	if( !armor->ExistsIndiv( hypname ) )
+		armor->AddIndiv( hypname, "HYPOTHESIS", false );
+	
+	// add the predicate
+	armor->SetObjectProperty( hint.HintType, hypname, hint.HintContent );
+	
+	// perform the update
+	armor->UpdateOntology( );
+	
+	// set success
+	success.success = true;
+	return true;
+}
+
+
+
+// service SERVICE_INTERFACE_FIND_CONSISTENT_HYP
+bool ServiceFindConsistentHypotheses( robocluedo_msgs::FindConsistentHypotheses::Request& empty, robocluedo_msgs::FindConsistentHypotheses::Response& hyplist )
+{
+	// perform the update before starting
+	armor->UpdateOntology( );
+	
+	// get all the consistent hypotheses (only deeper class)
+	std::vector<std::string> consistent_hyp = armor->FindCompleteHypotheses( );
+	
+	// get the inconsistent hypotheses
+	std::vector<std::string> inconsistent_hyp = armor->FindInconsistentHypotheses( );
+	
+	// remove the intersection between the two arrays
+	hyplist.hyp = PerformDifferenceBetween( consistent_hyp, inconsistent_hyp );
+	
+	return true;
+}
+
+
+
+// discard a hypothesis
+bool DiscardHypothesis( robocluedo_msgs::DiscardHypothesis::Request& tag, robocluedo_msgs::DiscardHypothesis::Response& success )
+{
+	// remove the hypothesis from the database
+	success.success = armor->RemoveHypothesis( tag.hypothesisTag );
+}
+
+
+
+/*
+ * OPERAZIONI IMPLEMENTATE SU SERVIZIO:
+ * 	registrare un hint e updte immediato
+ * 	recuperare tutti i valori delle ipotesi consistenti
+ *  elimina un'ipotesi dal sistema (scartata per via di una risposta negativa dall'oracolo)
+ */
 int main( int argc, char* argv[] )
 {
 	ros::init( argc, argv, "cluedo_armor_interface" );
 	ros::NodeHandle nh;
 	
-	ArmorTools tools;
+	// percorso della oltology da parameter server
+	std::string ontology_file_path;
+	if( !ros::param::has( ONTOLOGY_PARAM ) )
+	{
+		OUTLOG( "ERROR: parameter '" << ONTOLOGY_PARAM << "' not defined." );
+		return 0;
+	}
+	ros::param::get( ONTOLOGY_PARAM, ontology_file_path );
+	if( !fileExist( ontology_file_path ) )
+	{
+		OUTLOG( "ERROR: the file '" << ONTOLOGY_PARAM << "' doesn't exist." );
+		return 0;
+	}
+	OUTLOG( "Ontology found! " << LOGSQUARE( ontology_file_path ) );
+	
+	// connessione ad aRMOR
+	OUTLOG( "loading armor ..." );
+	ArmorCluedo armorcluedo;
+	if( !armorcluedo.Init( ontology_file_path ) || !armorcluedo.TestInterface( ) )
+	{
+		OUTLOG( "ERROR: unable to load aRMOR!" );
+		return 0;
+	}
+	armor = &armorcluedo;
+	OUTLOG( "OK!" );
+	
+	// servizio per registrare un hint dall'oracolo
+	OUTLOG( "opening server " << LOGSQUARE( SERVICE_INTERFACE_ADD_HINT ) << " ..." );
+	ros::ServiceServer srv_add_hint = rosHandler.advertiseService( SERVICE_INTERFACE_ADD_HINT , ServiceAddHint );
+	OUTLOG( "OK!" );
+	
+	// servizio per ottenere tutte le ipotesi consistenti
+	OUTLOG( "opening server " << LOGSQUARE( SERVICE_INTERFACE_FIND_CONSISTENT_HYP ) << " ..." );
+	ros::ServiceServer srv_find_cons_hyp = rosHandler.advertiseService( SERVICE_INTERFACE_FIND_CONSISTENT_HYP, ServiceFindConsistentHypotheses );
+	OUTLOG( "OK!" );
+	
+	// servizio per scartare ipotesi
+	OUTLOG( "opening server " << LOGSQUARE( SERVICE_INTERFACE_WRONG_HYPOTHESIS ) << " ..." );
+	ros::ServiceServer srv_find_cons_hyp = rosHandler.advertiseService( SERVICE_INTERFACE_WRONG_HYPOTHESIS, ServiceFindConsistentHypotheses );
+	OUTLOG( "OK!" );
+	
+	// spin
+	OUTLOG( "ready!" );
+	ros::spin( );
 	
 	return 0;
 }

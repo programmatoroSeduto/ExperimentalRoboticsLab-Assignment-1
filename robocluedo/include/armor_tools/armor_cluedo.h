@@ -25,16 +25,16 @@ public:
 	//    methods for adding individuals to the ontology
 	
 	// add an individual
-	bool AddIndiv( std::string indivname, std::string classname );
-	
-	// disjoint all the individuals
-	void DisjointAllIndiv( std::string from );
+	bool AddIndiv( std::string indivname, std::string classname, bool makeDisjoint = true );
 	
 	// check the class of an individual
 	std::vector<std::string> GetClassOfIndiv( std::string indivname, bool deep );
 	
 	// find the individuals belonging to a class
 	std::vector<std::string> GetIndivOfClass( std::string classname );
+	
+	// check if an individual exists
+	bool ExistsIndiv( std::string indivname );
 	
 	
 	// ======== properties
@@ -56,6 +56,12 @@ public:
 	// find all the inconsistent hypotheses
 	std::vector<std::string> FindInconsistentHypotheses( );
 	
+	// remove one hyothesis
+	bool RemoveHypothesis( std::string hypTag );
+	
+	// check if an hypothesis satisfies a property
+	// bool HypothesisSatisfiedProperty( std::string hypTag, std::string prop, std::string value );
+	
 	
 	// ======== utilities
 	//    general-purpose methods
@@ -70,11 +76,20 @@ private:
 	// all the entities added
 	std::vector<std::string> individuals;
 	
+	// the last queried hypothesis
+	std::string LastHypothesis = "";
+	std::string LastHyp_where = "";
+	std::string LastHyp_who = "";
+	std::string LastHyp_what = "";
+	
 	// check if a string exists in one array
 	bool ExistsItem( std::string item, const std::vector<std::string>& container );
 	
 	// track individual
 	bool TrackIndiv( std::string indivname );
+	
+	// disjoint all the individuals
+	void DisjointAllIndiv( std::string from );
 };
 
 #endif

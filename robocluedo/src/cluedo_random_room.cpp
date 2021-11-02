@@ -1,6 +1,6 @@
 
 #include "ros/ros.h"
-#include "robocluedo/RandomRoom.h"
+#include "robocluedo_msgs/RandomRoom.h"
 #include <vector>
 #include <string>
 #include <random>
@@ -64,7 +64,7 @@ std::string Choose( )
 
 
 // the service
-bool ChooseRoomRandom( robocluedo::RandomRoom::Request& empty, robocluedo::RandomRoom::Response& room )
+bool ChooseRoomRandom( robocluedo_msgs::RandomRoom::Request& empty, robocluedo_msgs::RandomRoom::Response& room )
 {
 	room.room = Choose( );
 	return true;

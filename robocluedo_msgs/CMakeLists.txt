@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(robocluedo)
+project(robocluedo_msgs)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -12,8 +12,6 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   message_generation
-  armor_msgs
-  robocluedo_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -50,18 +48,22 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
-#   Message1.msg
-#   Message2.msg
-# )
+add_message_files(
+  FILES
+  Hint.msg
+  Hypothesis.msg
+)
 
 ## Generate services in the 'srv' folder
-# add_service_files(
-#   FILES
-#   Service1.srv
-#   Service2.srv
-# )
+add_service_files(
+  FILES
+  CheckSolution.srv
+  RandomRoom.srv
+  GoTo.srv
+  AddHint.srv
+  FindConsistentHypotheses.srv
+  DiscardHypothesis.srv
+)
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -71,10 +73,10 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs
-# )
+generate_messages(
+  DEPENDENCIES
+  std_msgs
+)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -106,9 +108,9 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
- INCLUDE_DIRS include
- LIBRARIES armor_tools
- CATKIN_DEPENDS roscpp rospy std_msgs armor_msgs
+#  INCLUDE_DIRS include
+#  LIBRARIES robocluedo_msgs
+#  CATKIN_DEPENDS armor_msgs roscpp rospy std_msgs
 #  DEPENDS system_lib
 )
 
@@ -119,17 +121,14 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-  include
+# include
   ${catkin_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/robocluedo.cpp
+#   src/${PROJECT_NAME}/robocluedo_msgs.cpp
 # )
-add_library( armor_tools src/armor_tools/armor_tools.cpp )
-add_library( armor_cluedo src/armor_tools/armor_cluedo.cpp )
-target_link_libraries(armor_cluedo ${catkin_LIBRARIES} armor_tools )
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -139,25 +138,7 @@ target_link_libraries(armor_cluedo ${catkin_LIBRARIES} armor_tools )
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/robocluedo_node.cpp)
-
-add_executable(cluedo_random_room src/cluedo_random_room.cpp)
-target_link_libraries(cluedo_random_room ${catkin_LIBRARIES} )
-
-add_executable(cluedo_movement_controller src/cluedo_movement_controller.cpp)
-target_link_libraries(cluedo_movement_controller ${catkin_LIBRARIES} )
-
-add_executable(cluedo_oracle src/cluedo_oracle.cpp)
-target_link_libraries(cluedo_oracle ${catkin_LIBRARIES} )
-
-add_executable(cluedo_armor_interface src/cluedo_armor_interface.cpp)
-target_link_libraries(cluedo_armor_interface ${catkin_LIBRARIES} armor_tools armor_cluedo)
-
-add_executable(test_armor src/test_armor.cpp)
-target_link_libraries(test_armor ${catkin_LIBRARIES} armor_tools armor_cluedo)
-
-add_executable(test_armor_tools src/test_armor_tools.cpp)
-target_link_libraries(test_armor_tools ${catkin_LIBRARIES} armor_tools armor_cluedo)
+# add_executable(${PROJECT_NAME}_node src/robocluedo_msgs_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -167,7 +148,7 @@ target_link_libraries(test_armor_tools ${catkin_LIBRARIES} armor_tools armor_clu
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-# add_dependencies(cluedo_armor_interface ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
 # target_link_libraries(${PROJECT_NAME}_node
@@ -196,18 +177,18 @@ target_link_libraries(test_armor_tools ${catkin_LIBRARIES} armor_tools armor_clu
 
 ## Mark libraries for installation
 ## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_libraries.html
-install(TARGETS armor_tools armor_cluedo
-  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-  RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
-)
+# install(TARGETS ${PROJECT_NAME}
+#   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+#   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+#   RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
+# )
 
 ## Mark cpp header files for installation
-install(DIRECTORY include/${PROJECT_NAME}/
-  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
-  FILES_MATCHING PATTERN "*.h"
-  PATTERN ".svn" EXCLUDE
-)
+# install(DIRECTORY include/${PROJECT_NAME}/
+#   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+#   FILES_MATCHING PATTERN "*.h"
+#   PATTERN ".svn" EXCLUDE
+# )
 
 ## Mark other files for installation (e.g. launch and bag files, etc.)
 # install(FILES
@@ -221,7 +202,7 @@ install(DIRECTORY include/${PROJECT_NAME}/
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_robocluedo.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_robocluedo_msgs.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()

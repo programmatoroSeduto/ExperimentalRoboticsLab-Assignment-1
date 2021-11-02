@@ -1,0 +1,10 @@
+## file ''AddHint.srv
+
+int32 hypID
+string property
+string Aelem
+string Belem
+
+---
+
+bool success
