@@ -188,6 +188,7 @@ target_link_libraries(test_armor_tools ${catkin_LIBRARIES} armor_tools armor_clu
 catkin_install_python(PROGRAMS
   scripts/robocluedo_main.py
   scripts/test_cluedo_random_room.py
+  scripts/test_cluedo_armor_interface.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 

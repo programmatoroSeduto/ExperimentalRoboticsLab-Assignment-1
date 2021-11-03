@@ -16,6 +16,14 @@ ArmorTools::ArmorTools(
 	ReferenceName( reference ),
 	DebugMode( dbmode )
 {
+	// stub init of the last request
+	LastReq.client_name = client;
+	LastReq.reference_name = reference;
+	LastReq.command = "";
+	LastReq.primary_command_spec = "";
+	LastReq.secondary_command_spec = "";
+	// LastReq.args = std::vector<std::string>( 5, "" );
+	
 	// stub init of the last response
 	LastRes.success = true;
 	LastRes.timeout = false;
@@ -34,6 +42,14 @@ ArmorTools::ArmorTools( bool dbmode ):
 	ReferenceName( ARMOR_DEFAULT_REFERENCE ),
 	DebugMode( dbmode )
 {
+	// stub init of the last request
+	LastReq.client_name = ClientName;
+	LastReq.reference_name = ReferenceName;
+	LastReq.command = "";
+	LastReq.primary_command_spec = "";
+	LastReq.secondary_command_spec = "";
+	// LastReq.args = std::vector<std::string>( 5, "" );
+	
 	// stub init of the last response
 	LastRes.success = true;
 	LastRes.timeout = false;
@@ -129,6 +145,10 @@ bool ArmorTools::CallArmor( armor_msgs::ArmorDirective& data )
 		return false;
 	}
 	
+	// save the received request
+	this->LastReq = data.request.armor_request;
+	// ARMOR_INFO( "request saved." );
+	
 	// try to call it
 	if( !this->ArmorSrv.call( data ) )
 	{
@@ -138,6 +158,7 @@ bool ArmorTools::CallArmor( armor_msgs::ArmorDirective& data )
 	
 	// save the last received response
 	this->LastRes = data.response.armor_response;
+	// ARMOR_INFO( "response saved." );
 	
 	return true;
 }
@@ -394,13 +415,15 @@ bool ArmorTools::SendCommand(
 		std::string arg2,
 		std::string arg3,
 		std::string arg4,
-		std::string arg5
+		std::string arg5, 
+		bool printRequest
 	)
 {
 	ARMOR_CHECK_INTERFACE( false );
 	
 	// build the message to send
 	auto srvdata = GetRequest( command, first_spec, second_spec, arg1, arg2, arg3, arg4, arg5 );
+	if( printRequest ) this->PrintRequest( srvdata );
 	
 	// and send it
 	return CallArmor( srvdata );
@@ -417,12 +440,33 @@ armor_msgs::ArmorDirectiveRes& ArmorTools::GetLastRes( )
 
 
 
+// ritorna un riferimento all'ultima richiesta aRMOR
+armor_msgs::ArmorDirectiveReq& ArmorTools::GetLastReq( )
+{
+	armor_msgs::ArmorDirectiveReq& req = this->LastReq;
+	return req;
+}
+
+
+
+
 // stampa l'ultimo pacchetto ricevuto da aRMOR
 void ArmorTools::PrintLastRes( )
 {
 	armor_msgs::ArmorDirective armordata;
 	armordata.response.armor_response = this->LastRes;
 	PrintResponse( armordata );
+}
+
+
+
+
+// stampa l'ultima richiesta
+void ArmorTools::PrintLastReq( )
+{
+	armor_msgs::ArmorDirective armordata;
+	armordata.request.armor_request = this->LastReq;
+	PrintRequest( armordata );
 }
 
 

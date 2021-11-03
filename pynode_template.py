@@ -31,7 +31,7 @@ def on_shut_msg( ):
 
 if __name__ == "__main__":
 	rospy.init_node( test_name )
-	rospy.on_shutdown( 
+	rospy.on_shutdown( on_shut_msg )
 	
 	# services, clients, publshers, subscribers
 	

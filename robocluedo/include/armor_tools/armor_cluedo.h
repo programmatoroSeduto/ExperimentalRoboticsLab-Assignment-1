@@ -76,11 +76,8 @@ private:
 	// all the entities added
 	std::vector<std::string> individuals;
 	
-	// the last queried hypothesis
-	std::string LastHypothesis = "";
-	std::string LastHyp_where = "";
-	std::string LastHyp_who = "";
-	std::string LastHyp_what = "";
+	// removed hypotheses
+	std::vector<std::string> DiscardHypotheses;
 	
 	// check if a string exists in one array
 	bool ExistsItem( std::string item, const std::vector<std::string>& container );
@@ -90,6 +87,10 @@ private:
 	
 	// disjoint all the individuals
 	void DisjointAllIndiv( std::string from );
+	
+	// search for a specific iterator on a vector
+	//   it return vector::end() if the element is not contained
+	std::vector<std::string>::iterator GetPositionOf( std::string tag, std::vector<std::string>& list );
 };
 
 #endif

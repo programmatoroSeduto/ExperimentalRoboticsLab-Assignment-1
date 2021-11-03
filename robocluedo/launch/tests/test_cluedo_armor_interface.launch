@@ -1,0 +1,9 @@
+<launch>
+	
+	<include file="$(find robocluedo)/config/parameters.launch"></include>
+	
+	<node pkg="armor" type="execute" name="armor_service" args="it.emarolab.armor.ARMORMainService" required="true"/>
+	<node pkg="robocluedo" name="cluedo_armor_interface" type="cluedo_armor_interface" output="screen" required="true"></node>
+	<node pkg="robocluedo" name="test_cluedo_armor_interface" type="test_cluedo_armor_interface.py" output="screen" required="true"></node>
+	
+</launch>

@@ -31,6 +31,26 @@ bool fileExist( std::string path )
 }
 
 
+
+void printList( std::vector<std::string> list, std::string intro = "" )
+{
+	if( intro != "" )
+		ROS_INFO_STREAM( OUTLABEL << intro );
+	
+	if( list.size() == 0 )
+	{
+		ROS_INFO_STREAM( OUTLABEL << "size==0" );
+		return;
+	}
+	
+	int idx = 1;
+	for( auto it = list.begin(); it != list.end( ); ++it )
+	{
+		ROS_INFO_STREAM( OUTLABEL << "\t" << "numero " << idx++ << " -> " << *it  );
+	}
+}
+
+
 /*
 	directives.push_back( armorGetRequest( ARMOR_CLIENT_NAME, ARMOR_REFERENCE_NAME, "ADD", "IND", "CLASS", armorGetArgs( "Jim", "PERSON" ) ) );
 	directives.push_back( armorGetRequest( ARMOR_CLIENT_NAME, ARMOR_REFERENCE_NAME, "ADD", "OBJECTPROP", "IND", armorGetArgs( "who", "HP3", "Jim" ) ) );
@@ -96,7 +116,7 @@ bool fileExist( std::string path )
  * 	<uri#HYPOTHESIS>
  * 
  * classe più profonda di un individual (caso bastardo, probabilmente bug)
- * 	"QUERY", "CLASS", "IND", "HP3", "false"
+ * 	"QUERY", "CLASS", "IND", "HP3", "true"
  * 	HYPOTHESIS
  * 
  * Ritorna i valori associati ad una certa proprietà 
@@ -175,7 +195,7 @@ void armorTestSession( ArmorTools& armor )
 
 void armorTestSession2( std::string ontology_file_path )
 {
-	ArmorCluedo armor;
+	ArmorCluedo armor( true );
 	armor.Init( ontology_file_path );
 	
 	armor.SendCommand( "DISJOINT", "CLASS", "", "PERSON", "WEAPON" );
@@ -183,72 +203,137 @@ void armorTestSession2( std::string ontology_file_path )
 	armor.SendCommand( "DISJOINT", "CLASS", "", "PERSON", "PLACE" );
 	armor.UpdateOntology( );
 	
-	/*
-	armor.SendCommand( "ADD", "IND", "CLASS", "Jim", "PERSON" );
-	armor.SendCommand( "ADD", "OBJECTPROP", "IND", "who", "HP3", "Jim" );
-	armor.SendCommand( "ADD", "IND", "CLASS", "Gun", "WEAPON" );
-	armor.SendCommand( "ADD", "OBJECTPROP", "IND", "what", "HP3", "Gun" );
-	armor.SendCommand( "ADD", "IND", "CLASS", "Stadium", "PLACE" );
-	armor.SendCommand( "ADD", "OBJECTPROP", "IND", "where", "HP3", "Stadium" );
-	armor.UpdateOntology( );
-	armor.SendCommand( "QUERY", "IND", "CLASS", "COMPLETED" );
-	ROS_INFO_STREAM( OUTLABEL << "(1) completed hypotheses:" );
-	armor.PrintLastRes( );
-	armor.SendCommand( "QUERY", "IND", "CLASS", "INCONSISTENT" );
-	ROS_INFO_STREAM( OUTLABEL << "(1) inconsistent hypotheses:" );
-	armor.PrintLastRes( ); 
-	*/
+	ROS_INFO_STREAM( OUTLABEL << "\n\n\n TEST COMANDI DIRETTI ARMOR \n\n\n" );
 	
 	armor.AddIndiv( "Jim", "PERSON" );
 	armor.AddIndiv( "Gun", "WEAPON" );
+	// armor.AddIndiv( "study", "PLACE" );
+	armor.AddIndiv( "HP3", "HYPOTHESIS" );
 	armor.SetObjectProperty( "who", "HP3", "Jim" );
 	armor.SetObjectProperty( "what", "HP3", "Gun" );
+	// armor.SetObjectProperty( "where", "HP3", "study" );
 	armor.UpdateOntology( );
+	
 	armor.SendCommand( "QUERY", "IND", "CLASS", "COMPLETED" );
-	ROS_INFO_STREAM( OUTLABEL << "(0) completed hypotheses:" );
+	ROS_INFO_STREAM( OUTLABEL << "(0) completed hypotheses: (dovrebbe essere vuoto)" );
 	armor.PrintLastRes( );
 	armor.SendCommand( "QUERY", "IND", "CLASS", "INCONSISTENT" );
-	ROS_INFO_STREAM( OUTLABEL << "(0) inconsistent hypotheses:" );
-	armor.PrintLastRes( ); 
-	armor.SetObjectProperty( "where", "HP3", "Stadium" );
-	armor.AddIndiv( "Stadium", "PLACE" );
-	armor.UpdateOntology( );
-	armor.SendCommand( "QUERY", "IND", "CLASS", "COMPLETED" );
-	ROS_INFO_STREAM( OUTLABEL << "(1) completed hypotheses:" );
-	armor.PrintLastRes( );
-	armor.SendCommand( "QUERY", "IND", "CLASS", "INCONSISTENT" );
-	ROS_INFO_STREAM( OUTLABEL << "(1) inconsistent hypotheses:" );
+	ROS_INFO_STREAM( OUTLABEL << "(0) inconsistent hypotheses: (dovrebbe essere vuoto)" );
 	armor.PrintLastRes( ); 
 	
-	/*
-	armor.SendCommand( "ADD", "IND", "CLASS", "Lounge", "PLACE" );
-	armor.SendCommand( "DISJOINT", "IND", "", "Lounge", "Stadium" );
-	armor.SendCommand( "ADD", "IND", "CLASS", "Study", "PLACE" );
-	armor.SendCommand( "DISJOINT", "IND", "", "Lounge", "Study" );
-	armor.SendCommand( "DISJOINT", "IND", "", "Stadium", "Study" );
-	armor.SendCommand( "ADD", "OBJECTPROP", "IND", "where", "HP3", "Study" );
+	
+	armor.AddIndiv( "Stadium", "PLACE" );
+	armor.SetObjectProperty( "where", "HP3", "Stadium" );
 	armor.UpdateOntology( );
-	ROS_INFO_STREAM( OUTLABEL << "(2) completed hypotheses:" );
+	
 	armor.SendCommand( "QUERY", "IND", "CLASS", "COMPLETED" );
+	ROS_INFO_STREAM( OUTLABEL << "(1) completed hypotheses: (dovrebbe comparire un'ipotesi)" );
 	armor.PrintLastRes( );
-	ROS_INFO_STREAM( OUTLABEL << "(2) inconsistent hypotheses:" );
 	armor.SendCommand( "QUERY", "IND", "CLASS", "INCONSISTENT" );
-	armor.PrintLastRes( );
-	*/
+	ROS_INFO_STREAM( OUTLABEL << "(1) inconsistent hypotheses: (la lista dovrebbe essere vuota)" );
+	armor.PrintLastRes( ); 
+	
 	
 	armor.AddIndiv( "Lounge", "PLACE" );
 	armor.AddIndiv( "Study", "PLACE" );
 	armor.SetObjectProperty( "where", "HP3", "Study" );
 	armor.UpdateOntology( );
+	
 	armor.SendCommand( "QUERY", "IND", "CLASS", "COMPLETED" );
-	ROS_INFO_STREAM( OUTLABEL << "(2) completed hypotheses:" );
+	ROS_INFO_STREAM( OUTLABEL << "(2) completed hypotheses: (sempre una sola ipotesi)" );
 	armor.PrintLastRes( );
 	armor.SendCommand( "QUERY", "IND", "CLASS", "INCONSISTENT" );
-	ROS_INFO_STREAM( OUTLABEL << "(2) inconsistent hypotheses:" );
+	ROS_INFO_STREAM( OUTLABEL << "(2) inconsistent hypotheses: (dovrebbe spuntare un'ipotesi inconsistente)" );
 	armor.PrintLastRes( ); 
+	
+	
 	armor.GetValuedOfIndiv( "where", "HP3" );
-	ROS_INFO_STREAM( OUTLABEL << "proprietà where dell'ipotesi HP3:" );
+	ROS_INFO_STREAM( OUTLABEL << "proprieta' where dell'ipotesi HP3:" );
 	armor.PrintLastRes( ); 
+	/*
+	ROS_INFO_STREAM( OUTLABEL << "esiste HP3? -> " << ( armor.ExistsIndiv( "HP3" ) ? "yes" : "no" ) );
+	armor.PrintLastRes( ); 
+	*/
+	ROS_INFO_STREAM( OUTLABEL << "test esistenza di HP3:" );
+	armor.SendCommand( "QUERY", "IND", "", "HP3", "", "", "", "", true );
+	ROS_INFO_STREAM( OUTLABEL << "esiste HP3? (atteso: yes) -> " << ( armor.ExistsIndiv( "HP3" ) ? "yes" : "no" ) );
+	armor.PrintLastRes( ); 
+	
+	
+	
+	ROS_INFO_STREAM( OUTLABEL << "\n\n\n TEST COMPLETO INTERFACCIA \n\n\n" );
+	
+	ROS_INFO_STREAM( OUTLABEL << "\n\n\t======\tTEST GetClassOfIndiv()" );
+	ROS_INFO_STREAM( OUTLABEL << "classe dell'individual " << "Stadium" << "(con la maiuscola, scritto correttamente, no deep search, atteso un solo elemento)" );
+	printList( armor.GetClassOfIndiv( "Stadium", false ) );
+	ROS_INFO_STREAM( "" );
+	ROS_INFO_STREAM( OUTLABEL << "classe dell'individual " << "Stadium" << "(con la maiuscola, scritto correttamente, usando la deep search, atteso un solo elemento)" );
+	printList( armor.GetClassOfIndiv( "Stadium", true ) );
+	ROS_INFO_STREAM( "" );
+	ROS_INFO_STREAM( OUTLABEL << "classe dell'individual " << "stadium" << "(senza la maiuscola, sbagliato, no deep search, atteso 0)" );
+	printList( armor.GetClassOfIndiv( "stadium", false ) );
+	ROS_INFO_STREAM( "" );
+	
+	
+	
+	ROS_INFO_STREAM( OUTLABEL << "\n\n\t======\tTEST ExistsIndiv()" );
+	ROS_INFO_STREAM( OUTLABEL << "esiste '" << "stadium" << "' senza la maiuscola? -> " << ( armor.ExistsIndiv( "stadium" ) ? "yes" : "no" ) );
+	ROS_INFO_STREAM( OUTLABEL << "esiste '" << "Stadium" << "' con la maiuscola? -> " << ( armor.ExistsIndiv( "Stadium" ) ? "yes" : "no" ) );
+	ROS_INFO_STREAM( OUTLABEL << "esiste '" << "HP0" << "' ? -> " << ( armor.ExistsIndiv( "HP0" ) ? "yes" : "no" ) );
+	
+	
+	
+	ROS_INFO_STREAM( OUTLABEL << "\n\n\t======\tTEST GetIndivOfClass()" );
+	ROS_INFO_STREAM( OUTLABEL << "tutti gli individuals della classe HYPOTHESIS" << "(attesa ... un bel po' di roba)" );
+	printList( armor.GetIndivOfClass( "HYPOTHESIS" ) );
+	ROS_INFO_STREAM( "" );
+	ROS_INFO_STREAM( OUTLABEL << "tutti gli individuals della classe PLACE" << "(attesi 3 elementi)" );
+	printList( armor.GetIndivOfClass( "PLACE" ) );
+	ROS_INFO_STREAM( "" );
+	
+	
+	ROS_INFO_STREAM( OUTLABEL << "\n\n\t======\tTEST GetValuedOfIndiv()" );
+	ROS_INFO_STREAM( OUTLABEL << "proprietà where dell'ipotesi HP3" << "(attesi due elementi)" );
+	printList( armor.GetValuedOfIndiv( "where", "HP3" ) );
+	ROS_INFO_STREAM( "" );
+	
+	
+	
+	ROS_INFO_STREAM( OUTLABEL << "\n\n\t======\tTEST RemoveHypothesis()" );
+	ROS_WARN_STREAM( OUTLABEL << "NOTA BENE: il comando REMOVE di aRMOR è buggato, non funziona. Per farlo funzionare occorre trovare un workaround nell'interfaccia" );
+	
+	ROS_INFO_STREAM( OUTLABEL << "aggiungo l'ipotesi HPtoremove (uso qui solo comandi dell'interfaccia, non i diretti di aRMOR)" );
+	armor.AddIndiv( "HPtoremove", "HYPOTHESIS", false );
+	armor.UpdateOntology( );
+	ROS_INFO_STREAM( OUTLABEL << "esiste '" << "HPtoremove" << "' ? -> " << ( armor.ExistsIndiv( "HPtoremove" ) ? "yes" : "no" ) );
+	ROS_INFO_STREAM( OUTLABEL << "classe dell'individual " << "HPtoremove" << "? (atteso un solo elemento)" );
+	printList( armor.GetClassOfIndiv( "HPtoremove", false ) );
+	
+	ROS_INFO_STREAM( OUTLABEL << "rimozione" );
+	// armor.SendCommand( "REMOVE", "IND", "CLASS", "HPtoremove", "HYPOTHESIS" );
+	// armor.PrintLastReq( );
+	// armor.PrintLastRes( );
+	ROS_INFO_STREAM( OUTLABEL << "RemoveHypothesis( ) = " << ( armor.RemoveHypothesis( "HPtoremove" ) ? "yes" : "no" ) );
+	armor.UpdateOntology( );
+	ROS_INFO_STREAM( OUTLABEL << "esiste ancora '" << "HPtoremove" << "' ? -> " << ( armor.ExistsIndiv( "HPtoremove" ) ? "yes" : "no" ) );
+	
+	
+	
+	ROS_INFO_STREAM( OUTLABEL << "\n\n\t======\tTEST FindCompleteHypotheses()" );
+	printList( armor.FindCompleteHypotheses( ), "ricerca delle ipotesi complete (atteso: una sola ipotesi, escludendo quella scartata" );
+	
+	
+	
+	ROS_INFO_STREAM( OUTLABEL << "\n\n\t======\tTEST FindInconsistentHypotheses()" );
+	printList( armor.FindCompleteHypotheses( ), "ricerca delle ipotesi inconsistenti (atteso: solo una, o anche due, includendo quella scartata)" );
+	
+	
+	
+	std::string save_path;
+	ros::param::get( "cluedo_path_owlfile_backup", save_path );
+	armor.SaveOntology( save_path ); 
+	return;
+	
 }
 
 
@@ -272,17 +357,6 @@ int main( int argc, char* argv[] )
 		return 0;
 	}
 	ROS_INFO_STREAM( OUTLABEL << "Ontology found! " << LOGSQUARE( ontology_file_path ) );
-	
-	/*
-	ArmorTools tools( true );
-	tools.ConnectAndLoad( ontology_file_path );
-	if( ( tools.GetLastErrorCode( ) != 0 ) || !tools.TestInterface( ) )
-	{
-		ROS_INFO_STREAM( OUTLABEL << "ERROR in connecting and loading the ontology. " );
-		return 0;
-	}
-	// ROS_INFO_STREAM( OUTLABEL << "last error code is " << tools.GetLastRes( ).exit_code );
-	*/
 	
 	// armorTestSession( tools );
 	armorTestSession2( ontology_file_path );

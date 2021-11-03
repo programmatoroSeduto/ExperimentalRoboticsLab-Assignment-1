@@ -72,6 +72,8 @@ std::vector<std::string> PerformDifferenceBetween( std::vector<std::string> list
 // service SERVICE_INTERFACE_ADD_HINT
 bool ServiceAddHint( robocluedo_msgs::AddHint::Request& hint, robocluedo_msgs::AddHint::Response& success )
 {
+	OUTLOG( "called service " << SERVICE_INTERFACE_ADD_HINT );
+	
 	// check for the existence of the given hypothesis ID (in case, create it)
 	std::string hypname = "";
 	hypname += SS("HP") + SSS( hint.hypID );
@@ -79,6 +81,7 @@ bool ServiceAddHint( robocluedo_msgs::AddHint::Request& hint, robocluedo_msgs::A
 		armor->AddIndiv( hypname, "HYPOTHESIS", false );
 	
 	// add the predicate
+	OUTLOG( "set object property " << "(" << hypname << ", " << hint.Belem << "):" << hint.property );
 	armor->SetObjectProperty( hint.property, hypname, hint.Belem );
 	
 	// perform the update

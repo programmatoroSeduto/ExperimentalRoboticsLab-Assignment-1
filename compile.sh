@@ -10,5 +10,5 @@ catkin_make --only-pkg-with-deps robocluedo_msgs
 catkin_make --only-pkg-with-deps robocluedo
 # catkin_make --only-pkg-with-deps robocluedo_testing
 catkin_make
-roscd robocluedo
+#roscd robocluedo
 cd ./..

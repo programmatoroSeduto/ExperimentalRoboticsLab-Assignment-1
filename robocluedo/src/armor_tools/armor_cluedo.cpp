@@ -89,9 +89,18 @@ std::vector<std::string> ArmorCluedo::GetIndivOfClass( std::string classname )
 // check if an individual exists
 bool ArmorCluedo::ExistsIndiv( std::string indivname )
 {
-	return ( this->SendCommand( "QUERY", "CLASS", "IND", indivname, "true" ) && 
-				this->GetLastRes( ).success && 
-				this->GetLastRes( ).queried_objects.size( ) > 0 );
+	this->SendCommand( "QUERY", "IND", "", indivname );
+	
+	if( this->GetLastRes( ).success )
+	{
+		// exclude discarded hypotheses
+		if( this->GetPositionOf( indivname, DiscardHypotheses ) != DiscardHypotheses.end( ) )
+			return false;
+		else
+			return true;
+	}
+	else 
+		return false;
 }
 
 
@@ -133,7 +142,18 @@ std::vector<std::string> ArmorCluedo::GetValuedOfIndiv( std::string prop, std::s
 // find all the complete hypotheses
 std::vector<std::string> ArmorCluedo::FindCompleteHypotheses( )
 {
-	return GetIndivOfClass( "COMPLETED" );
+	std::vector<std::string> temp = GetIndivOfClass( "COMPLETED" );
+	
+	// WORKAROUND for issue "REMOVE IND CLASS"
+	//    remove the discarded hypotheses
+	for( auto it = DiscardHypotheses.begin() ; it != DiscardHypotheses.end(); ++it )
+	{
+		auto pos = this->GetPositionOf( *it, temp );
+		if( pos != temp.end( ) )
+			temp.erase( pos );
+	}
+	
+	return temp;
 }
 
 
@@ -152,11 +172,25 @@ bool ArmorCluedo::RemoveHypothesis( std::string hypTag )
 	// check if it exists
 	if( !ExistsIndiv( hypTag ) ) return false;
 	
+	/* sarebbe molto bello ... ma purtroppo REMOVE IND CLASS è buggato.
+	
 	// delete the individual from all the classes
 	std::vector<std::string> classnames = this->GetClassOfIndiv( hypTag );
 	for( std::string cname : classnames )
 		if( !this->SendCommand( "REMOVE", "IND", "CLASS", hypTag, cname ) )
 			return false;
+	
+	*/
+	
+	// add the hypothesis to the list of the discarded hypotheses
+	DiscardHypotheses.push_back( hypTag );
+	
+	// untrack the individual
+	auto pos = this->GetPositionOf( hypTag, individuals );
+	if( pos != individuals.end( ) )
+	{
+		individuals.erase( pos );
+	}
 	
 	return true;
 }
@@ -234,4 +268,20 @@ void ArmorCluedo::DisjointAllIndiv( std::string from = "" )
 			if( s != from )
 				this->SendCommand( "DISJOINT", "IND", "", s, from );
 	}
+}
+
+
+
+// search for a specific iterator on a vector
+//   it return vector::end() if the element is not contained
+std::vector<std::string>::iterator ArmorCluedo::GetPositionOf( std::string tag, std::vector<std::string>& list )
+{
+	// ARMOR_INFO( "[ArmorCluedo::GetPositionOf] listsize=" << list.size() );
+	for( auto it = list.begin(); it != list.end( ); ++it )
+	{
+		if( *it == tag )  return it;
+	}
+	
+	// not found
+	return list.end( );
 }

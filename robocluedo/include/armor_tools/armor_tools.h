@@ -152,14 +152,21 @@ public:
 		std::string arg2 = "",
 		std::string arg3 = "",
 		std::string arg4 = "",
-		std::string arg5 = ""
+		std::string arg5 = "",
+		bool printRequest = false
 	);
 	
 	// reference all'ultima risposta
 	armor_msgs::ArmorDirectiveRes& GetLastRes( );
 	
+	// ritorna l'ultima richiesta al server aRMOR
+	armor_msgs::ArmorDirectiveReq& GetLastReq( );
+	
 	// stampa l'ultimo pacchetto ricevuto da aRMOR
 	void PrintLastRes( );
+	
+	// stampa l'ultima richiesta
+	void PrintLastReq( );
 	
 protected:
 
@@ -185,6 +192,9 @@ private:
 	
 	// last response from the server
 	armor_msgs::ArmorDirectiveRes LastRes;
+	
+	// last request sent to the server
+	armor_msgs::ArmorDirectiveReq LastReq;
 	
 	// controlla se il dato file esiste
 	bool FileExist( std::string path );
