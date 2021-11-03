@@ -1,0 +1,20 @@
+<launch>
+	
+	<!-- include all the parameters for running the system -->
+	<include file="$(find robocluedo)/config/parameters.launch"></include>
+	
+	<!-- first of all, load the ontology and the interface -->
+	<node pkg="armor" type="execute" name="armor_service" args="it.emarolab.armor.ARMORMainService" output="screen" required="true"/>
+	<node pkg="robocluedo" type="cluedo_armor_interface" name="cluedo_armor_interface" output="screen" required="true"/>
+	
+	<!-- auxiliary nodes -->
+	<node pkg="robocluedo" type="cluedo_movement_controller" name="cluedo_movement_controller" output="screen" required="true"/>
+	<node pkg="robocluedo" type="cluedo_random_room" name="cluedo_random_room" output="screen" required="true"/>
+	
+	<!-- launch the oracle -->
+	<node pkg="robocluedo" type="cluedo_oracle" name="cluedo_oracle" output="screen" required="true"/>
+	
+	<!-- finally, launch the system -->
+	<node pkg="robocluedo" type="robocluedo_main" name="robocluedo_main" output="screen" required="true"/>
+	
+</launch>

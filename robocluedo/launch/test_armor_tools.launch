@@ -1,3 +1,5 @@
+<!-- this script is meant to test the base interface ArmorTools -->
+
 <launch>
 	
 	<include file="$(find robocluedo)/config/parameters.launch"></include>

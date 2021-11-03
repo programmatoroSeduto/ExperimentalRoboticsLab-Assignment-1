@@ -26,7 +26,7 @@ subscriber_hint = None
 client_name_check_solution = "/check_solution"
 client_check_solution = None
 
-# ARMOR interface clients
+# cluedo_ARMOR interface clients
 client_name_add_hint = "/cluedo_armor/add_hint"
 client_add_hint = None
 client_name_find_consistent_hyp = "/cluedo_armor/find_consistent_h"
@@ -270,14 +270,16 @@ def create_state_machine( ):
 
 
 
+
 # message on shutdown
 def on_shut( ):
 	rospy.loginfo( "closing..." )
 
 
 
+
 if __name__ == "__main__":
-	rospy.init_node( "cluedo_robot" )
+	rospy.init_node( "robocluedo_main" )
 	
 	# movement controller
 	rospy.loginfo( "calling service %s ...", client_name_go_to )
