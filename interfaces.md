@@ -123,9 +123,7 @@ test necessario: usa Python per fare i test in questo caso.
 
 ---
 
-# cluedo_oracle - TEST
-
-testare questo nodo! è stato reimplementato, dunque va testato. 
+# cluedo_oracle
 
 ## Services
 

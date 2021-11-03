@@ -126,6 +126,7 @@ void hintCallback( const std_msgs::EmptyConstPtr& emptySignal )
 	mysterylist.pop_back( );
 	
 	// prepare the message and publish it
+	ROS_INFO_STREAM( OUTLABEL << "publishing hint (" << "ID:" << h.HintID << ", PROP:" << h.HintType << ", VALUE:" << h.HintContent << ")" );
 	hint_channel->publish( h );
 }
 
@@ -139,14 +140,14 @@ bool checkSolutionCallback( robocluedo_msgs::CheckSolution::Request& hyp, robocl
 	{
 		ROS_INFO_STREAM( OUTLABEL << "solution wrong. " );
 		misterySolved.MysterySolved = false;
-		return false;
 	}
 	else
 	{
 		ROS_INFO_STREAM( OUTLABEL << "SUCCESS! Found the solution. " );
 		misterySolved.MysterySolved = true;
-		return true;
 	}
+	
+	return true;
 }
 
 
@@ -154,6 +155,8 @@ bool checkSolutionCallback( robocluedo_msgs::CheckSolution::Request& hyp, robocl
 // generate the solution of the case
 void generateMystery( std::vector<std::string> list_who, std::vector<std::string> list_where, std::vector<std::string> list_what )
 {
+	ROS_INFO_STREAM( OUTLABEL << "case generation started " );
+	
 	// shuffle the arrays before starting
 	std::random_shuffle( list_who.begin(), list_who.end() );
 	std::random_shuffle( list_where.begin(), list_where.end() );
@@ -169,11 +172,15 @@ void generateMystery( std::vector<std::string> list_who, std::vector<std::string
 	solution_what.HintType = "what";
 	solution_what.HintContent = chooseHintFrom( list_what );
 	
+	ROS_INFO_STREAM( OUTLABEL << "the solution is " << "(where:" << solution_where.HintContent << ", who:" << solution_who.HintContent << ", what:" << solution_what.HintContent << ")" );
+	
 	// generate the ID of the solution
 	int solutionID = randomIndex( MAX_NUM_HINTS-1 );
 	solution_who.HintID = solutionID;
 	solution_where.HintID = solutionID;
 	solution_what.HintID = solutionID;
+	
+	ROS_INFO_STREAM( OUTLABEL << "the solution has ID:" << solutionID );
 	
 	/*
 	 * for MAX_NUM_HINTS times:
@@ -220,6 +227,8 @@ void generateMystery( std::vector<std::string> list_who, std::vector<std::string
 			}
 		}
 	}
+	
+	ROS_INFO_STREAM( OUTLABEL << "hints generation finished. Generated: " << mysterylist.size() );
 	
 	// final shuffle
 	std::random_shuffle( mysterylist.begin(), mysterylist.end() );
