@@ -26,7 +26,7 @@
 
 ---
 
-# cluedo_random_room - TEST
+# cluedo_random_room
 
 ## Services
 

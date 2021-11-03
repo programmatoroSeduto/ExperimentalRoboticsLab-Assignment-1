@@ -1,0 +1,8 @@
+<launch>
+	
+	<include file="$(find robocluedo)/config/parameters.launch"></include>
+	
+	<node pkg="robocluedo" name="cluedo_random_room" type="cluedo_random_room" output="screen" required="true"></node>
+	<node pkg="robocluedo" name="test_cluedo_random_room" type="test_cluedo_random_room.py" output="screen" required="true"></node>
+	
+</launch>
