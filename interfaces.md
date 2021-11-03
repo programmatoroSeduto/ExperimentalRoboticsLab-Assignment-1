@@ -49,7 +49,7 @@
 
 ---
 
-# cluedo_armor_interface - TEST
+# cluedo_armor_interface
 
 test necessario: usa Python per fare i test in questo caso. 
 
@@ -113,6 +113,8 @@ test necessario: usa Python per fare i test in questo caso.
     
     bool success
     ```
+
+- `/cluedo_armor/backup` : `std_srvs/Trigger`
     
 
 ## Parameter server

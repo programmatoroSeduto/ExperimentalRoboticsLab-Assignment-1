@@ -47,8 +47,7 @@ bool ArmorCluedo::AddIndiv( std::string indivname, std::string classname, bool m
 		return false;
 	
 	// disjoint this individual from the other
-	if( makeDisjoint )
-		DisjointAllIndiv( indivname );
+	if( makeDisjoint ) DisjointAllIndiv( indivname );
 	
 	return true;
 }

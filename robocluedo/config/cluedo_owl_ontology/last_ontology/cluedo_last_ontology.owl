@@ -88,13 +88,6 @@
     
 
 
-    <!-- http://www.emarolab.it/cluedo-ontology# -->
-
-
-    <owl:Class rdf:about="http://www.emarolab.it/cluedo-ontology#"/>
-    
-
-
     <!-- http://www.emarolab.it/cluedo-ontology#COMPLETED -->
 
 
@@ -225,10 +218,24 @@
     
 
 
-    <!-- http://www.emarolab.it/cluedo-ontology#Gun -->
+    <!-- http://www.emarolab.it/cluedo-ontology#HP1 -->
 
 
-    <owl:Thing rdf:about="http://www.emarolab.it/cluedo-ontology#Gun">
+    <owl:Thing rdf:about="http://www.emarolab.it/cluedo-ontology#HP1">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://www.emarolab.it/cluedo-ontology#COMPLETED"/>
+        <rdf:type rdf:resource="http://www.emarolab.it/cluedo-ontology#HYPOTHESIS"/>
+        <what rdf:resource="http://www.emarolab.it/cluedo-ontology#knife"/>
+        <where rdf:resource="http://www.emarolab.it/cluedo-ontology#study"/>
+        <who rdf:resource="http://www.emarolab.it/cluedo-ontology#mark"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.emarolab.it/cluedo-ontology#knife -->
+
+
+    <owl:Thing rdf:about="http://www.emarolab.it/cluedo-ontology#knife">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <rdf:type rdf:resource="http://www.emarolab.it/cluedo-ontology#HYPOTHESIS"/>
         <rdf:type rdf:resource="http://www.emarolab.it/cluedo-ontology#WEAPON"/>
@@ -236,36 +243,10 @@
     
 
 
-    <!-- http://www.emarolab.it/cluedo-ontology#HP3 -->
+    <!-- http://www.emarolab.it/cluedo-ontology#mark -->
 
 
-    <owl:Thing rdf:about="http://www.emarolab.it/cluedo-ontology#HP3">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-        <rdf:type rdf:resource="http://www.emarolab.it/cluedo-ontology#COMPLETED"/>
-        <rdf:type rdf:resource="http://www.emarolab.it/cluedo-ontology#HYPOTHESIS"/>
-        <rdf:type rdf:resource="http://www.emarolab.it/cluedo-ontology#INCONSISTENT"/>
-        <what rdf:resource="http://www.emarolab.it/cluedo-ontology#Gun"/>
-        <where rdf:resource="http://www.emarolab.it/cluedo-ontology#Stadium"/>
-        <where rdf:resource="http://www.emarolab.it/cluedo-ontology#Study"/>
-        <who rdf:resource="http://www.emarolab.it/cluedo-ontology#Jim"/>
-    </owl:Thing>
-    
-
-
-    <!-- http://www.emarolab.it/cluedo-ontology#HPtoremove -->
-
-
-    <owl:Thing rdf:about="http://www.emarolab.it/cluedo-ontology#HPtoremove">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-        <rdf:type rdf:resource="http://www.emarolab.it/cluedo-ontology#HYPOTHESIS"/>
-    </owl:Thing>
-    
-
-
-    <!-- http://www.emarolab.it/cluedo-ontology#Jim -->
-
-
-    <owl:Thing rdf:about="http://www.emarolab.it/cluedo-ontology#Jim">
+    <owl:Thing rdf:about="http://www.emarolab.it/cluedo-ontology#mark">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <rdf:type rdf:resource="http://www.emarolab.it/cluedo-ontology#HYPOTHESIS"/>
         <rdf:type rdf:resource="http://www.emarolab.it/cluedo-ontology#PERSON"/>
@@ -273,32 +254,10 @@
     
 
 
-    <!-- http://www.emarolab.it/cluedo-ontology#Lounge -->
+    <!-- http://www.emarolab.it/cluedo-ontology#study -->
 
 
-    <owl:Thing rdf:about="http://www.emarolab.it/cluedo-ontology#Lounge">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-        <rdf:type rdf:resource="http://www.emarolab.it/cluedo-ontology#HYPOTHESIS"/>
-        <rdf:type rdf:resource="http://www.emarolab.it/cluedo-ontology#PLACE"/>
-    </owl:Thing>
-    
-
-
-    <!-- http://www.emarolab.it/cluedo-ontology#Stadium -->
-
-
-    <owl:Thing rdf:about="http://www.emarolab.it/cluedo-ontology#Stadium">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-        <rdf:type rdf:resource="http://www.emarolab.it/cluedo-ontology#HYPOTHESIS"/>
-        <rdf:type rdf:resource="http://www.emarolab.it/cluedo-ontology#PLACE"/>
-    </owl:Thing>
-    
-
-
-    <!-- http://www.emarolab.it/cluedo-ontology#Study -->
-
-
-    <owl:Thing rdf:about="http://www.emarolab.it/cluedo-ontology#Study">
+    <owl:Thing rdf:about="http://www.emarolab.it/cluedo-ontology#study">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <rdf:type rdf:resource="http://www.emarolab.it/cluedo-ontology#HYPOTHESIS"/>
         <rdf:type rdf:resource="http://www.emarolab.it/cluedo-ontology#PLACE"/>
@@ -318,30 +277,6 @@
     <rdf:Description>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#"/>
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#PERSON"/>
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#PLACE"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#"/>
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#PERSON"/>
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#WEAPON"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#"/>
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#PLACE"/>
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#WEAPON"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
             <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#PERSON"/>
             <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#PLACE"/>
             <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#WEAPON"/>
@@ -351,120 +286,48 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
         <owl:distinctMembers rdf:parseType="Collection">
             <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#"/>
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#Gun"/>
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#HP3"/>
+            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#HP1"/>
+            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#knife"/>
         </owl:distinctMembers>
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
         <owl:distinctMembers rdf:parseType="Collection">
             <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#"/>
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#Gun"/>
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#Jim"/>
+            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#HP1"/>
+            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#mark"/>
         </owl:distinctMembers>
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
         <owl:distinctMembers rdf:parseType="Collection">
             <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#"/>
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#Gun"/>
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#Lounge"/>
+            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#HP1"/>
+            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#study"/>
         </owl:distinctMembers>
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
         <owl:distinctMembers rdf:parseType="Collection">
             <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#"/>
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#Gun"/>
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#Stadium"/>
+            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#knife"/>
+            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#mark"/>
         </owl:distinctMembers>
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
         <owl:distinctMembers rdf:parseType="Collection">
             <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#"/>
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#Gun"/>
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#Study"/>
+            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#knife"/>
+            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#study"/>
         </owl:distinctMembers>
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
         <owl:distinctMembers rdf:parseType="Collection">
             <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#"/>
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#HP3"/>
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#Jim"/>
-        </owl:distinctMembers>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
-        <owl:distinctMembers rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#"/>
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#HP3"/>
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#Lounge"/>
-        </owl:distinctMembers>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
-        <owl:distinctMembers rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#"/>
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#HP3"/>
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#Stadium"/>
-        </owl:distinctMembers>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
-        <owl:distinctMembers rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#"/>
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#HP3"/>
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#Study"/>
-        </owl:distinctMembers>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
-        <owl:distinctMembers rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#"/>
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#Jim"/>
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#Lounge"/>
-        </owl:distinctMembers>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
-        <owl:distinctMembers rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#"/>
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#Jim"/>
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#Stadium"/>
-        </owl:distinctMembers>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
-        <owl:distinctMembers rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#"/>
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#Jim"/>
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#Study"/>
-        </owl:distinctMembers>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
-        <owl:distinctMembers rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#"/>
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#Lounge"/>
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#Stadium"/>
-        </owl:distinctMembers>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
-        <owl:distinctMembers rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#"/>
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#Lounge"/>
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#Study"/>
-        </owl:distinctMembers>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
-        <owl:distinctMembers rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#"/>
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#Stadium"/>
-            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#Study"/>
+            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#mark"/>
+            <rdf:Description rdf:about="http://www.emarolab.it/cluedo-ontology#study"/>
         </owl:distinctMembers>
     </rdf:Description>
 </rdf:RDF>

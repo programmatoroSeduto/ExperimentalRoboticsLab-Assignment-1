@@ -3,6 +3,7 @@
 #include "armor_tools/armor_tools.h"
 #include "armor_tools/armor_cluedo.h"
 
+#include "std_srvs/Trigger.h"
 #include "armor_msgs/ArmorDirective.h"
 #include "armor_msgs/ArmorDirectiveList.h"
 #include "armor_msgs/ArmorDirectiveReq.h"
@@ -21,8 +22,10 @@
 #define SERVICE_INTERFACE_ADD_HINT "/cluedo_armor/add_hint"
 #define SERVICE_INTERFACE_FIND_CONSISTENT_HYP "/cluedo_armor/find_consistent_h"
 #define SERVICE_INTERFACE_WRONG_HYPOTHESIS "/cluedo_armor/wrong_hypothesis"
+#define SERVICE_INTERFACE_SAVE_ONTOLOGY "/cluedo_armor/backup"
 
 #define ONTOLOGY_PARAM "cluedo_path_owlfile"
+#define PARAM_ONTOLOGY_BACKUP_PATH "cluedo_path_owlfile_backup"
 #define OUTLABEL "[cluedo_armor_interface]"
 #define OUTLOG( msg ) ROS_INFO_STREAM( OUTLABEL << " " << msg );
 #define LOGSQUARE( str ) "[" << str << "] "
@@ -80,6 +83,24 @@ bool ServiceAddHint( robocluedo_msgs::AddHint::Request& hint, robocluedo_msgs::A
 	if( !armor->ExistsIndiv( hypname ) )
 		armor->AddIndiv( hypname, "HYPOTHESIS", false );
 	
+	// if the Belem is not defined, add it
+	if( !armor->ExistsIndiv( hint.Belem ) )
+	{
+		if( hint.property == "where" )
+			armor->AddIndiv( hint.Belem, "PLACE" );
+		else if( hint.property == "who" )
+			armor->AddIndiv( hint.Belem, "PERSON" );
+		else if( hint.property == "what" )
+			armor->AddIndiv( hint.Belem, "WEAPON" );
+		else
+		{
+			OUTLOG( "ERROR: not a valid hint property." );
+			success.success = false;
+			
+			return true;
+		}
+	}
+	
 	// add the predicate
 	OUTLOG( "set object property " << "(" << hypname << ", " << hint.Belem << "):" << hint.property );
 	armor->SetObjectProperty( hint.property, hypname, hint.Belem );
@@ -87,7 +108,6 @@ bool ServiceAddHint( robocluedo_msgs::AddHint::Request& hint, robocluedo_msgs::A
 	// perform the update
 	armor->UpdateOntology( );
 	
-	// set success
 	success.success = true;
 	return true;
 }
@@ -97,6 +117,8 @@ bool ServiceAddHint( robocluedo_msgs::AddHint::Request& hint, robocluedo_msgs::A
 // service SERVICE_INTERFACE_FIND_CONSISTENT_HYP
 bool ServiceFindConsistentHypotheses( robocluedo_msgs::FindConsistentHypotheses::Request& empty, robocluedo_msgs::FindConsistentHypotheses::Response& hyplist )
 {
+	OUTLOG( "called service " << SERVICE_INTERFACE_FIND_CONSISTENT_HYP );
+	
 	// perform the update before starting
 	armor->UpdateOntology( );
 	
@@ -133,8 +155,37 @@ bool ServiceFindConsistentHypotheses( robocluedo_msgs::FindConsistentHypotheses:
 // discard a hypothesis
 bool DiscardHypothesis( robocluedo_msgs::DiscardHypothesis::Request& tag, robocluedo_msgs::DiscardHypothesis::Response& success )
 {
+	OUTLOG( "called service " << SERVICE_INTERFACE_WRONG_HYPOTHESIS );
+	
 	// remove the hypothesis from the database
 	success.success = armor->RemoveHypothesis( tag.hypothesisTag );
+	
+	return true;
+}
+
+
+
+// save the ontology
+bool ServiceBackupOntology( std_srvs::Trigger::Request& emptyrequest, std_srvs::Trigger::Response& success )
+{
+	OUTLOG( "called service " << SERVICE_INTERFACE_SAVE_ONTOLOGY );
+	
+	if( !ros::param::has( PARAM_ONTOLOGY_BACKUP_PATH ) )
+	{
+		success.success = false;
+		success.message = SS( "unable to find the parameter" ) + SS( PARAM_ONTOLOGY_BACKUP_PATH );
+		
+		OUTLOG( "ERROR: " << success.message );
+	}
+	else
+	{
+		std::string save_path;
+		ros::param::get( PARAM_ONTOLOGY_BACKUP_PATH, save_path );
+		armor->SaveOntology( save_path );
+		success.success = true;
+		
+		OUTLOG( "Ontology save here -> " << save_path );
+	}
 	
 	return true;
 }
@@ -190,7 +241,12 @@ int main( int argc, char* argv[] )
 	
 	// servizio per scartare ipotesi
 	OUTLOG( "opening server " << LOGSQUARE( SERVICE_INTERFACE_WRONG_HYPOTHESIS ) << " ..." );
-	ros::ServiceServer srv_wrong_hyp = nh.advertiseService( SERVICE_INTERFACE_WRONG_HYPOTHESIS, ServiceFindConsistentHypotheses );
+	ros::ServiceServer srv_wrong_hyp = nh.advertiseService( SERVICE_INTERFACE_WRONG_HYPOTHESIS, DiscardHypothesis );
+	OUTLOG( "OK!" );
+	
+	// servizio per scaricare la ontology su file
+	OUTLOG( "opening server " << LOGSQUARE( SERVICE_INTERFACE_SAVE_ONTOLOGY ) << " ..." );
+	ros::ServiceServer srv_backup = nh.advertiseService( SERVICE_INTERFACE_SAVE_ONTOLOGY, ServiceBackupOntology );
 	OUTLOG( "OK!" );
 	
 	// spin

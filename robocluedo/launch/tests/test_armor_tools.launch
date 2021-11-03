@@ -5,6 +5,6 @@
 	<include file="$(find robocluedo)/config/parameters.launch"></include>
 	
 	<node pkg="armor" type="execute" name="armor_service" args="it.emarolab.armor.ARMORMainService" required="true"/>
-	<!-- <node pkg="robocluedo" type="test_armor_tools" name="test_armor_tools" output="screen" required="true"></node> --> 
+	<node pkg="robocluedo" type="test_armor_tools" name="test_armor_tools" output="screen" required="true"></node>
 	
 </launch>
