@@ -1,5 +1,1 @@
 bathroom
-kitchen
-living
-study
-lounge

@@ -17,7 +17,7 @@
 #define PATH_PARAMETER_SERVER_WHERE "cluedo_path_where"
 #define PATH_PARAMETER_SERVER_WHO "cluedo_path_who"
 #define PATH_PARAMETER_SERVER_WHAT "cluedo_path_what"
-#define MAX_NUM_HINTS 25
+#define MAX_NUM_HINTS 2
 #define MAX_SIZE_HINT 4
 
 #define OUTLABEL "[cluedo_oracle] "
@@ -153,7 +153,7 @@ bool checkSolutionCallback( robocluedo_msgs::CheckSolution::Request& hyp, robocl
 
 
 // generate the solution of the case
-void generateMystery( std::vector<std::string> list_who, std::vector<std::string> list_where, std::vector<std::string> list_what )
+void generateMystery( std::vector<std::string> list_who, std::vector<std::string> list_where, std::vector<std::string> list_what, int tot_hints )
 {
 	ROS_INFO_STREAM( OUTLABEL << "case generation started " );
 	
@@ -193,13 +193,15 @@ void generateMystery( std::vector<std::string> list_who, std::vector<std::string
 	 * 
 	 * if the ID belongs to the solution, insert it instead of another new random hint
 	 */
-	for( int i=0; i<MAX_NUM_HINTS; ++i )
+	for( int i=0; i<tot_hints; ++i )
 	{
 		if( i == solutionID )
 		{
 			mysterylist.push_back( solution_what );
 			mysterylist.push_back( solution_where );
 			mysterylist.push_back( solution_who );
+			
+			continue;
 		}
 		else
 		{
@@ -207,7 +209,7 @@ void generateMystery( std::vector<std::string> list_who, std::vector<std::string
 			{
 				robocluedo_msgs::Hint h;
 				h.HintID = i;
-				switch( randomIndex( 2 ) )
+				switch( randomIndex( 5 ) )
 				{
 				case 0:
 					h.HintType = "who";
@@ -221,6 +223,9 @@ void generateMystery( std::vector<std::string> list_who, std::vector<std::string
 					h.HintType = "what";
 					h.HintContent = chooseHintFrom( list_what );
 				break;
+				default:
+					continue;
+				break;
 				}
 				
 				mysterylist.push_back( h );
@@ -228,7 +233,7 @@ void generateMystery( std::vector<std::string> list_who, std::vector<std::string
 		}
 	}
 	
-	ROS_INFO_STREAM( OUTLABEL << "hints generation finished. Generated: " << mysterylist.size() );
+	ROS_INFO_STREAM( OUTLABEL << "hints generation finished. Generated: " << mysterylist.size() << " hints" );
 	
 	// final shuffle
 	std::random_shuffle( mysterylist.begin(), mysterylist.end() );
@@ -292,7 +297,16 @@ int main( int argc, char* argv[] )
 	rng = std::mt19937(dev());
 	
 	// generate the solution of the case
-	generateMystery( hints_who, hints_where, hints_what );
+	if( !ros::param::has( "cluedo_max_hypotheses" ) )
+		generateMystery( hints_who, hints_where, hints_what, MAX_NUM_HINTS );
+	else
+	{
+		int tot_hints;
+		ros::param::get( "cluedo_max_hypotheses", tot_hints );
+		ROS_INFO_STREAM( OUTLABEL << "found a max number of hypotheses: " << tot_hints );
+		
+		generateMystery( hints_who, hints_where, hints_what, tot_hints );
+	}
 	
 	// subscriber: hint_signal
 	OUTLOG << "subscribing to the topic " << LOGSQUARE( SUBSCRIBER_HINT_SIGNAL ) << "..." << std::endl;
