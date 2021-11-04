@@ -191,6 +191,7 @@ catkin_install_python(PROGRAMS
   scripts/test_cluedo_random_room.py
   scripts/test_cluedo_armor_interface.py
   scripts/test_cluedo_oracle.py
+  scripts/test_oracle_plus_interface.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
