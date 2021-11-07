@@ -1,0 +1,27 @@
+var class_armor_tools =
+[
+    [ "ArmorTools", "class_armor_tools.html#a6692f463e8866859205d9a133a5f330f", null ],
+    [ "ArmorTools", "class_armor_tools.html#ae138e2b2ad40688ebf01879a11fd3b6d", null ],
+    [ "~ArmorTools", "class_armor_tools.html#a80eb8d13d6f5b61951ae53a764c3bb03", null ],
+    [ "CallArmor", "class_armor_tools.html#aac98d4f9b2ce2cbefba61684d1f505bf", null ],
+    [ "Connect", "class_armor_tools.html#aa83ea5e064db6dc46c9056ddeeaabbc4", null ],
+    [ "ConnectAndLoad", "class_armor_tools.html#ad98c8e33df5d1ef3e4c69051ac0dd7ab", null ],
+    [ "GetLastErrorCode", "class_armor_tools.html#a75474b9c35cbdcfedd382939c1699247", null ],
+    [ "GetLastErrorDescription", "class_armor_tools.html#a43702476c5d0763fc6b1f090b4531c27", null ],
+    [ "GetLastReq", "class_armor_tools.html#a20fa164f2e3e13a48a417c419fd6cde3", null ],
+    [ "GetLastRes", "class_armor_tools.html#a34d27d93c2faec3d3de3ba24d08f436b", null ],
+    [ "GetRequest", "class_armor_tools.html#a76e1517409d261c03ce712a4a5e4a093", null ],
+    [ "LoadedOntology", "class_armor_tools.html#ad7d22e2f0942c96ea2d5f02636610581", null ],
+    [ "LoadOntology", "class_armor_tools.html#ab03c54208a11edf3e3690ba07f0cef5b", null ],
+    [ "PrintLastReq", "class_armor_tools.html#ac7f632ed614b226cbc2b2fa352989643", null ],
+    [ "PrintLastRes", "class_armor_tools.html#ae1764835bfe65fabcb07757b0bb43f83", null ],
+    [ "PrintRequest", "class_armor_tools.html#a451163e1278ec49f4d214b33111d166d", null ],
+    [ "PrintResponse", "class_armor_tools.html#a2ca77741de4c8883b5be0d661f6b1320", null ],
+    [ "SaveOntology", "class_armor_tools.html#ad26e4e69e7edcbde9789ca5301c6b4a5", null ],
+    [ "SendCommand", "class_armor_tools.html#a6033ed90283ec6c78a2bc2b0106d0461", null ],
+    [ "Success", "class_armor_tools.html#a21dae8ed16985d723cc5fefc2e70bcba", null ],
+    [ "SwitchDebugMode", "class_armor_tools.html#a5bd0b3e9898d3bcf3dc82705d52495cb", null ],
+    [ "TestInterface", "class_armor_tools.html#a356ca7809be690be0a70a1ae33a850a8", null ],
+    [ "UpdateOntology", "class_armor_tools.html#a0ddf26f9a388377a36263344b1cbf39f", null ],
+    [ "DebugMode", "class_armor_tools.html#a8d4c23582a9a677ac69c07b08d5da436", null ]
+];

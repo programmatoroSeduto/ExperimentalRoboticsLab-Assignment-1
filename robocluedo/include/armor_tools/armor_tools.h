@@ -17,10 +17,11 @@
 #define ARMOR_DEFAULT_REASONER "PELLET"
 #define ARMOR_DEFAULT_CLIENT "armor_client"
 #define ARMOR_DEFAULT_REFERENCE "cluedo"
-#define ARMOR_SERVICE_SINGLE_REQUEST "/armor_interface_srv"
-#define ARMOR_SERVICE_MULTIPLE_REQUESTS "/armor_interface_serialized_srv"
 #define ARMOR_DEFAULT_TIMEOUT 5.00
 #define ARMOR_DEFAULT_DEBUGMODE true
+
+#define ARMOR_SERVICE_SINGLE_REQUEST "/armor_interface_srv"
+#define ARMOR_SERVICE_MULTIPLE_REQUESTS "/armor_interface_serialized_srv"
 
 #define ARMOR_CLASS_LABEL "[armor_tools]"
 #define ARMOR_INFO( msg ) if( this->DebugMode ) ROS_INFO_STREAM( ARMOR_CLASS_LABEL << " " << msg )
@@ -28,50 +29,73 @@
 #define ARMOR_CHECK_INTERFACE( returnval ) if( !IsLoadedInterface || !ArmorSrv.exists( ) ) { ARMOR_ERR( "bad interface!" ); return returnval; }
 #define ARMOR_RES( msg ) msg.response.armor_response
 #define ARMOR_RES_QUERY( msg ) msg.response.armor_response.queried_objects
-#define LOGSQUARE( str ) "[" << str << "] "
 
 #define SS( this_string ) std::string( this_string )
 #define SSS( this_thing ) std::to_string( this_thing )
 #define BOOL_TO_CSTR( booleanvalue ) ( booleanvalue ? "true" : "false" )
+#define LOGSQUARE( str ) "[" << str << "] "
 
 
-// tools for low level communication with aRMOR
-/*
- * INIZIALIZZAZIONE DELLA CLASSE
- * - costruttore
- *   - eventualmente set di client e reference
- *   - meglio attivare la debug mode per avere i messaggi a schermo
- * - connect
- * */
+
+
+/********************************************//**
+ *  
+ * \brief A base client for aRMOR. 
+ * 
+ * ...more details...
+ * 
+ * 
+ ***********************************************/
 class ArmorTools
 {
 public:
-	// costruttore
+	/********************************************//**
+	 *  
+	 * \brief first class constructor. 
+	 * 
+	 * ... more details
+	 * 
+	 * @param client client
+	 * @param reference reference
+	 * 
+	 ***********************************************/
 	ArmorTools(
 		std::string client = ARMOR_DEFAULT_CLIENT,
 		std::string reference = ARMOR_DEFAULT_REFERENCE,
 		bool dbmode = false
 	);
 	
-	// costruttore con dbmode
+	
+	/********************************************//**
+	 *  
+	 * \brief first class constructor. 
+	 * 
+	 * ... more details
+	 * 
+	 * @param dbmode debug mode?
+	 * 
+	 ***********************************************/
 	ArmorTools( bool dbmode );
 	
-	// distruttore
+	
+	/// class destructor
 	~ArmorTools();
 	
-	// set del client_name
-	void SetClient( std::string client );
 	
-	// get de client name
-	std::string GetClient(  );
-	
-	// set per reference_name
-	void SetReference( std::string reference );
-	
-	// get per reference_name
-	std::string GetReference( );
-	
-	// metodo veloce per scrivere una richiesta
+	/********************************************//**
+	 *  
+	 * \brief quick creation of an aRMOR request
+	 * 
+	 * ... more details
+	 * 
+	 * @param command (mandatory) the main command
+	 * @param first_spec (optional) the first specifier
+	 * @param second_spec (optional) the second specifier
+	 * @param arg (optional) (from 1 to 5) the arguments of the request
+	 * 
+	 * @return the aRMOR service request. 
+	 * 
+	 ***********************************************/
 	armor_msgs::ArmorDirective GetRequest(
 		std::string command,
 		std::string first_spec = "",
@@ -83,10 +107,36 @@ public:
 		std::string arg5 = ""
 	);
 	
-	// esegue la chiamata a server
+	
+	/********************************************//**
+	 *  
+	 * \brief send a command to aRMOR. 
+	 * 
+	 * ... more details
+	 * 
+	 * @param data reference to the request to send
+	 * 
+	 * @returns if the service was called or not
+	 * 
+	 ***********************************************/
 	bool CallArmor( armor_msgs::ArmorDirective& data );
 	
-	// il comando load
+	
+	/********************************************//**
+	 *  
+	 * \brief load the ontology from file. 
+	 * 
+	 * ... more details
+	 * 
+	 * @param path  
+	 * @param uri 
+	 * @param manipulationFlag 
+	 * @param reasoner
+	 * @param bufferend_reasoner
+	 * 
+	 * @returns success or not
+	 * 
+	 ***********************************************/
 	bool LoadOntology( 
 		std::string path, 
 		std::string uri = ARMOR_DEFAULT_URI,
@@ -95,10 +145,36 @@ public:
 		bool buffered_reasoner = true 
 	);
 	
-	// il comando connect
+	
+	/********************************************//**
+	 *  
+	 * \brief open a connection with the aRMOR service. 
+	 * 
+	 * ... more details
+	 * 
+	 * @param timeout 
+	 * 
+	 * @returns success or not0
+	 * 
+	 ***********************************************/
 	bool Connect( float timeout = ARMOR_DEFAULT_TIMEOUT );
 	
-	// apri il server e carica (LOAD) la ontology
+	
+	/********************************************//**
+	 *  
+	 * \brief connect to the server and load the ontology from file. 
+	 * 
+	 * ... more details
+	 * 
+	 * @param path  
+	 * @param uri 
+	 * @param manipulationFlag 
+	 * @param reasoner
+	 * @param bufferend_reasoner
+	 * 
+	 * @returns success or not
+	 * 
+	 ***********************************************/
 	bool ConnectAndLoad( 
 		std::string path, 
 		std::string uri = ARMOR_DEFAULT_URI,
@@ -107,43 +183,143 @@ public:
 		bool buffered_reasoner = true 
 	);
 	
-	// imposta un service esternamente, ma solo se non è stata fatta la connessione
-	bool SetArmorServiceClient( ros::ServiceClient& cl );
 	
-	// salva (SAVE) la ontology su file
+	/********************************************//**
+	 *  
+	 * \brief save the ontology on file
+	 * 
+	 * ...
+	 * 
+	 * @param path where to save the OWL file
+	 * 
+	 * @returns success or not
+	 * 
+	 ***********************************************/
 	bool SaveOntology( std::string path );
 	
-	// operazione di reason
+	
+	/********************************************//**
+	 *  
+	 * \brief send the command REASON
+	 * 
+	 * ...
+	 * 
+	 * @returns success or not
+	 * 
+	 ***********************************************/
 	bool UpdateOntology( );
 	
-	// operazione di lettura delle operazioni dal buffer
-	bool ApplyCommands( );
 	
-	// metodi di stampa dei pacchetti: request
+	/********************************************//**
+	 *  
+	 * \brief print a request to the screen.
+	 * 
+	 * ...
+	 * 
+	 * @param d the aRMOR service
+	 * 
+	 ***********************************************/
 	void PrintRequest( armor_msgs::ArmorDirective& d );
 	
-	// e response
+	
+	/********************************************//**
+	 *  
+	 * \brief print the response to the screen.
+	 * 
+	 * ...
+	 * 
+	 * @param d the aRMOR service
+	 * 
+	 ***********************************************/
 	void PrintResponse( armor_msgs::ArmorDirective& d );
 	
-	// debug mode
+	
+	/********************************************//**
+	 *  
+	 * \brief toggle the debug mode
+	 * 
+	 * ...
+	 * 
+	 ***********************************************/
 	void SwitchDebugMode( );
 	
-	// ultimo codice d'errore
+	
+	/********************************************//**
+	 *  
+	 * \brief err code referred to the last call 
+	 * 
+	 * ...
+	 * 
+	 * @returns the last error code
+	 * 
+	 ***********************************************/
 	int GetLastErrorCode( );
 	
-	// ultima descrizione dell'errore
+	
+	/********************************************//**
+	 *  
+	 * \brief last err description
+	 * 
+	 * ...
+	 * 
+	 * @returns the last error description
+	 * 
+	 ***********************************************/
 	std::string GetLastErrorDescription( );
 	
-	// bool dall'ultima operazione
+	
+	/********************************************//**
+	 *  
+	 * \brief check the 'success' flag referred to
+	 * 			the last aRMOR call
+	 * 
+	 * ...
+	 * 
+	 * @returns success or not
+	 * 
+	 ***********************************************/
 	bool Success( );
 	
-	// check sul caricamento della ontology
+	
+	/********************************************//**
+	 *  
+	 * \brief check if the ontology was loaded or not
+	 * 
+	 * ...
+	 * 
+	 * @returns loaded or not
+	 * 
+	 ***********************************************/
 	bool LoadedOntology( );
 	
-	// testa la validità dell'interfaccia
+	
+	/********************************************//**
+	 *  
+	 * \brief check the status of the interface
+	 * 
+	 * ...
+	 * 
+	 * @returns valid inferface or not
+	 * 
+	 ***********************************************/
 	bool TestInterface( );
 	
-	// chiamata diretta con istruzione
+	
+	/********************************************//**
+	 *  
+	 * \brief fill in a command and send it to aRMOR
+	 * 
+	 * ...
+	 * 
+	 * @param command (mandatory) the main command
+	 * @param first_spec (optional) the first specifier
+	 * @param second_spec (optional) the second specifier
+	 * @param arg (optional) (from 1 to 5) the arguments of the request
+	 * @param printResponse print the request before calling the service
+	 * 
+	 * @returns success or not
+	 * 
+	 ***********************************************/
 	bool SendCommand(
 		std::string command,
 		std::string first_spec = "",
@@ -156,21 +332,53 @@ public:
 		bool printRequest = false
 	);
 	
-	// reference all'ultima risposta
+	
+	/********************************************//**
+	 *  
+	 * \brief get a reference to the last response
+	 * 
+	 * ...
+	 * 
+	 * @returns reference to the last response
+	 * 
+	 ***********************************************/
 	armor_msgs::ArmorDirectiveRes& GetLastRes( );
 	
-	// ritorna l'ultima richiesta al server aRMOR
+	
+	/********************************************//**
+	 *  
+	 * \brief get a reference to the last request
+	 * 
+	 * ...
+	 * 
+	 * @returns last sent request to aRMOR
+	 * 
+	 ***********************************************/
 	armor_msgs::ArmorDirectiveReq& GetLastReq( );
 	
-	// stampa l'ultimo pacchetto ricevuto da aRMOR
+	
+	/********************************************//**
+	 *  
+	 * \brief print the last response
+	 * 
+	 * ...
+	 * 
+	 ***********************************************/
 	void PrintLastRes( );
 	
-	// stampa l'ultima richiesta
+	
+	/********************************************//**
+	 *  
+	 * \brief print the last request
+	 * 
+	 * ...
+	 * 
+	 ***********************************************/
 	void PrintLastReq( );
 	
 protected:
 
-	// debug mode? (print all the messages to the screen?)
+	/// debug mode enabled or not
 	bool DebugMode = false;
 	
 private:

@@ -148,10 +148,12 @@ void armorTestSession( ArmorTools& armor )
 	
 	// NON VALE LA PROPRIETA' TRANSITIVA, PURTROPPO
 	armor.SendCommand( "ADD", "IND", "CLASS", "Lounge", "PLACE" );
-	armor.SendCommand( "DISJOINT", "IND", "", "Lounge", "Stadium" );
+	// armor.SendCommand( "DISJOINT", "IND", "", "Lounge", "Stadium" );
 	armor.SendCommand( "ADD", "IND", "CLASS", "Study", "PLACE" );
-	armor.SendCommand( "DISJOINT", "IND", "", "Lounge", "Study" );
-	armor.SendCommand( "DISJOINT", "IND", "", "Stadium", "Study" );
+	// armor.SendCommand( "DISJOINT", "IND", "", "Lounge", "Study" );
+	// armor.SendCommand( "DISJOINT", "IND", "", "Stadium", "Study" );
+	armor.SendCommand( "DISJOINT", "IND" "CLASS" );
+	armor.PrintLastReq( ); armor.PrintLastRes( );
 	armor.SendCommand( "ADD", "OBJECTPROP", "IND", "where", "HP3", "Study" );
 	armor.UpdateOntology( );
 	ROS_INFO_STREAM( OUTLABEL << "(2) completed hypotheses:" );

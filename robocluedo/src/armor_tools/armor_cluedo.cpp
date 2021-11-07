@@ -1,6 +1,8 @@
 
 #include "armor_tools/armor_cluedo.h"
 
+
+
 // default constructor
 ArmorCluedo::ArmorCluedo( bool debugmode ): ArmorTools( debugmode )
 {
@@ -48,6 +50,9 @@ bool ArmorCluedo::AddIndiv( std::string indivname, std::string classname, bool m
 	
 	// disjoint this individual from the other
 	if( makeDisjoint ) DisjointAllIndiv( indivname );
+	// this->SendCommand( "REASON" );
+	// this->SendCommand( "DISJOINT", "IND", "CLASS" );
+	// this->SendCommand( "REASON" );
 	
 	return true;
 }

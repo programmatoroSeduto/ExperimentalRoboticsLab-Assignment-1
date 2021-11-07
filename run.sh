@@ -1,5 +1,8 @@
+#! /bin/bash
 
 set -e
-./compile.sh
+
+# clear
+# ./compile.sh
 clear
-roslaunch robocluedo test_cluedo_armor_interface.launch
+roslaunch robocluedo run_robocluedo.launch

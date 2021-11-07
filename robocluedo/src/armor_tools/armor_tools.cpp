@@ -3,10 +3,7 @@
 
 
 
-
-// === metodi pubblici
-
-// costruttore
+// constructor with three arguments
 ArmorTools::ArmorTools(
 		std::string client,
 		std::string reference,
@@ -36,7 +33,7 @@ ArmorTools::ArmorTools(
 
 
 
-// altro costruttore, solo flag debugmode
+// constructor with one argument
 ArmorTools::ArmorTools( bool dbmode ):
 	ClientName( ARMOR_DEFAULT_CLIENT ),
 	ReferenceName( ARMOR_DEFAULT_REFERENCE ),
@@ -61,7 +58,8 @@ ArmorTools::ArmorTools( bool dbmode ):
 }
 
 
-// distruttore
+
+// destructor
 ArmorTools::~ArmorTools()
 {
 	// ...
@@ -69,37 +67,7 @@ ArmorTools::~ArmorTools()
 
 
 
-// set e get per client_name
-void ArmorTools::SetClient( std::string client )
-{
-	this->ClientName = client;
-}
-
-
-
-std::string ArmorTools::GetClient(  )
-{
-	return this->ClientName;
-}
-
-
-
-// set e get per reference_name
-void ArmorTools::SetReference( std::string reference )
-{
-	this->ReferenceName = reference;
-}
-
-
-
-std::string ArmorTools::GetReference( )
-{
-	return this->ReferenceName;
-}
-
-
-
-// metodo veloce per scrivere una richiesta
+// fill in the request
 armor_msgs::ArmorDirective ArmorTools::GetRequest(
 		std::string command,
 		std::string first_spec,
@@ -135,7 +103,7 @@ armor_msgs::ArmorDirective ArmorTools::GetRequest(
 
 
 
-// esegue la chiamata a server
+// call aRMOR
 bool ArmorTools::CallArmor( armor_msgs::ArmorDirective& data )
 {
 	// if there is no server, don't call it
@@ -147,7 +115,6 @@ bool ArmorTools::CallArmor( armor_msgs::ArmorDirective& data )
 	
 	// save the received request
 	this->LastReq = data.request.armor_request;
-	// ARMOR_INFO( "request saved." );
 	
 	// try to call it
 	if( !this->ArmorSrv.call( data ) )
@@ -158,14 +125,13 @@ bool ArmorTools::CallArmor( armor_msgs::ArmorDirective& data )
 	
 	// save the last received response
 	this->LastRes = data.response.armor_response;
-	// ARMOR_INFO( "response saved." );
 	
 	return true;
 }
 
 
 
-// il comando load
+// load the ontology from file
 bool ArmorTools::LoadOntology( 
 		std::string path, 
 		std::string uri,
@@ -206,7 +172,7 @@ bool ArmorTools::LoadOntology(
 
 
 
-// il comando connect
+// connection to the service aRMOR
 bool ArmorTools::Connect( float timeout )
 {
 	// check if the service exists
@@ -232,7 +198,7 @@ bool ArmorTools::Connect( float timeout )
 
 
 
-// apri il server e carica (LOAD) la ontology
+// connect and load from file
 bool ArmorTools::ConnectAndLoad( 
 		std::string path, 
 		std::string uri,
@@ -250,25 +216,7 @@ bool ArmorTools::ConnectAndLoad(
 
 
 
-// imposta un service esternamente, ma solo se non è stata fatta la connessione
-bool ArmorTools::SetArmorServiceClient( ros::ServiceClient& cl )
-{
-	// check if the client is correctly set
-	if( !cl.exists() )
-	{
-		ARMOR_ERR( "provided a not valid serviceClient." );
-		return false;
-	}
-	
-	// set the client
-	this->ArmorSrv = cl;
-	
-	return true;
-}
-
-
-
-// salva (SAVE) la ontology su file
+// save the ontology on file
 bool ArmorTools::SaveOntology( std::string path )
 {
 	ARMOR_CHECK_INTERFACE( false );
@@ -282,8 +230,8 @@ bool ArmorTools::SaveOntology( std::string path )
 }
 
 
-	
-// operazione di reason
+
+// update the ontology
 bool ArmorTools::UpdateOntology( )
 {
 	ARMOR_CHECK_INTERFACE( false );
@@ -296,22 +244,8 @@ bool ArmorTools::UpdateOntology( )
 }
 
 
-	
-// operazione di lettura delle operazioni dal buffer
-bool ArmorTools::ApplyCommands( )
-{
-	ARMOR_CHECK_INTERFACE( false );
-	
-	auto srvdata = GetRequest( "APPLY" );
-	if( !CallArmor( srvdata ) ) 
-		return false;
-	
-	return ARMOR_RES( srvdata ).success;
-}
 
-
-	
-// metodi di stampa dei pacchetti
+// print a request to the screen
 void ArmorTools::PrintRequest( armor_msgs::ArmorDirective& d )
 {
 	std::string str = SS("   Print Request: \n");
@@ -334,6 +268,8 @@ void ArmorTools::PrintRequest( armor_msgs::ArmorDirective& d )
 }
 
 
+
+// print a response to the screen
 void ArmorTools::PrintResponse( armor_msgs::ArmorDirective& d )
 {
 	std::string str = SS("   Print Response: \n");
@@ -359,8 +295,8 @@ void ArmorTools::PrintResponse( armor_msgs::ArmorDirective& d )
 }
 
 
-	
-// debug mode
+
+// toggle debug mode
 void ArmorTools::SwitchDebugMode( )
 {
 	this->DebugMode = !this->DebugMode;
@@ -368,6 +304,7 @@ void ArmorTools::SwitchDebugMode( )
 
 
 
+// get the error code referred from the last response
 int ArmorTools::GetLastErrorCode( )
 {
 	return this->LastRes.exit_code;
@@ -375,6 +312,7 @@ int ArmorTools::GetLastErrorCode( )
 
 
 
+// get the error description from the last response
 std::string ArmorTools::GetLastErrorDescription( )
 {
 	return SS( this->LastRes.error_description );
@@ -382,6 +320,7 @@ std::string ArmorTools::GetLastErrorDescription( )
 
 
 
+// last flag 'success'
 bool ArmorTools::Success( )
 {
 	return this->LastRes.success;
@@ -389,7 +328,7 @@ bool ArmorTools::Success( )
 
 
 
-// check sul caricamento della ontology	
+// check if the ontology was loaded
 bool ArmorTools::LoadedOntology( )
 {
 	return IsLoadedInterface;
@@ -397,7 +336,7 @@ bool ArmorTools::LoadedOntology( )
 
 
 
-// testa la validità dell'interfaccia
+// test the interface
 bool ArmorTools::TestInterface( )
 {
 	ARMOR_CHECK_INTERFACE( false );
@@ -406,7 +345,7 @@ bool ArmorTools::TestInterface( )
 
 
 
-// invio diretto di un comando ad aRMOR
+// fill in the command and send it
 bool ArmorTools::SendCommand(
 		std::string command,
 		std::string first_spec,
@@ -431,7 +370,7 @@ bool ArmorTools::SendCommand(
 
 
 
-// reference all'ultimo messaggio inviato
+// get a reference to the last response
 armor_msgs::ArmorDirectiveRes& ArmorTools::GetLastRes( )
 {
 	armor_msgs::ArmorDirectiveRes& res = this->LastRes;
@@ -440,7 +379,7 @@ armor_msgs::ArmorDirectiveRes& ArmorTools::GetLastRes( )
 
 
 
-// ritorna un riferimento all'ultima richiesta aRMOR
+// get a reference to the last request
 armor_msgs::ArmorDirectiveReq& ArmorTools::GetLastReq( )
 {
 	armor_msgs::ArmorDirectiveReq& req = this->LastReq;
@@ -449,8 +388,7 @@ armor_msgs::ArmorDirectiveReq& ArmorTools::GetLastReq( )
 
 
 
-
-// stampa l'ultimo pacchetto ricevuto da aRMOR
+// print to the screen the last response
 void ArmorTools::PrintLastRes( )
 {
 	armor_msgs::ArmorDirective armordata;
@@ -460,8 +398,7 @@ void ArmorTools::PrintLastRes( )
 
 
 
-
-// stampa l'ultima richiesta
+// print to the screen the last request
 void ArmorTools::PrintLastReq( )
 {
 	armor_msgs::ArmorDirective armordata;
@@ -471,21 +408,7 @@ void ArmorTools::PrintLastReq( )
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-// === metodi privati
-
-// controlla se il dato file esiste
+// check if a file exists, given its path
 bool ArmorTools::FileExist( std::string path )
 {
 	return (std::ifstream(path)).good();
