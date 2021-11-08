@@ -1,5 +1,16 @@
 
-//catkin_make && clear && roslaunch robocluedo test_armor_tools.launch
+/********************************************//**
+ *  
+ * @file test_armor_tools.cpp
+ * @brief Testing the interface ArmorCluedo
+ * 
+ * This node performs a deep test on the interface ArmorCluedo. 
+ *  
+ * @see test_armor_tools.launch
+ * 
+ * @todo translate logs from italian to English and reorder
+ * 
+ ***********************************************/
 
 #include "ros/ros.h"
 #include "armor_tools/armor_tools.h"

@@ -13,7 +13,7 @@
  * <ul>
  *     <li>
  * 			<i> \ref SERVICE_RANDOM_ROOM </i> : RandomRoom.srv <br>
- * 			... description <br><br>
+ * 			    request for a random target <br><br>
  * 		</li>
  * </ul>
  * 
@@ -21,13 +21,14 @@
  * <ul>
  * 		<li>
  * 			[GET] <i> \ref PATH_PARAMETER_SERVER_WHERE </i> : string <br>
- * 			... description <br><br>
+ * 			   the path of the file containing the PLACEs <br><br>
  * 		</li>
  * </ul>
  * 
  * <b>Description:</b> <br>
  * <p>
- * ...description
+ * The node implements a service which returns a room, randomly choosen
+ * among the available ones, to reach. 
  * </p>
  * 
  ***********************************************/
@@ -61,8 +62,6 @@ std::mt19937 rng;
 /********************************************//**
  *  
  * \brief import names of the rooms from file
- * 
- * ... more details
  * 
  * @param path the path of the file containing the names
  * 
@@ -102,9 +101,7 @@ bool ImportNamesOfRooms( const std::string& path )
 
 /********************************************//**
  *  
- * \brief get randomly the name of one room
- * 
- * ... more details
+ * \brief get randomly the name of one room from the list \ref rooms .
  * 
  * @returns the room
  * 
@@ -112,10 +109,9 @@ bool ImportNamesOfRooms( const std::string& path )
 std::string Choose( )
 {
 	int generated_random_number = randgen( rng );
-	//OUTLOG << " generated " << LOGSQUARE( generated_random_number );
 	ROS_INFO( "generated: %d", generated_random_number );
+	
 	return rooms[ generated_random_number ];
-	//return "STUB.";
 }
 
 
@@ -124,12 +120,15 @@ std::string Choose( )
  *  
  * \brief implementation of service \ref SERVICE_RANDOM_ROOM
  * 
- * ... more details
+ * It returns a room among the available ones. 
  * 
  * @param empty the empty request
  * @param room the choosen room
  * 
  * @see RandomRoom.srv
+ * 
+ * @todo should the node choose a room which is not also the actual
+ *    position? 
  * 
  ***********************************************/
 bool ChooseRoomRandom( robocluedo_msgs::RandomRoom::Request& empty, robocluedo_msgs::RandomRoom::Response& room )
@@ -144,7 +143,7 @@ bool ChooseRoomRandom( robocluedo_msgs::RandomRoom::Request& empty, robocluedo_m
  *  
  * \brief ROS node main - cluedo_random_room
  * 
- * ... more details
+ * read the input file, expose the service, and spin. 
  * 
  ***********************************************/
 int main( int argc, char* argv[] )

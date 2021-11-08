@@ -1,4 +1,17 @@
 
+/********************************************//**
+ *  
+ * @file test_armor.cpp
+ * @brief A preliminary test on aRMOR service. 
+ * 
+ * Sometimes it is convenient to directly test the interface without
+ * using classes such as ArmorTools or ArmorCluedo. This file contains a
+ * small test session on aRMOR with some minimal functions. 
+ *  
+ * @see test_armor.launch 
+ * 
+ ***********************************************/
+
 #include "ros/ros.h"
 #include "armor_tools/armor_tools.h"
 

@@ -1,4 +1,4 @@
-<!-- this script is meant to test the inherited interface ArmorCluedo : ArmorTools -->
+<!-- this script is meant to make direct tests on aRMOR -->
 
 <launch>
 	
