@@ -1,0 +1,6 @@
+<map id="ArmorTools::UpdateOntology" name="ArmorTools::UpdateOntology">
+<area shape="rect" id="node1" title="send the command REASON" alt="" coords="399,31,608,57"/>
+<area shape="rect" id="node2" href="$cluedo__armor__interface_8cpp.html#a4867095aa20f38de61e518e16253520b" title="implementation of service SERVICE_INTERFACE_ADD_HINT" alt="" coords="168,5,291,32"/>
+<area shape="rect" id="node4" href="$cluedo__armor__interface_8cpp.html#a7ac3004a3cbe78bf0b2c234d11354c43" title="implementation of service SERVICE_INTERFACE_FIND_CONSISTENT_HYP" alt="" coords="108,56,351,83"/>
+<area shape="rect" id="node3" href="$cluedo__armor__interface_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="ROS node main." alt="" coords="5,31,60,57"/>
+</map>

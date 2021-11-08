@@ -1,4 +1,65 @@
 
+/********************************************//**
+ *  
+ * \file cluedo_oracle.cpp
+ * <div><b>ROS Node Name</b> 
+ *      <ul><li>cluedo_oracle</li></ul></div>
+ * \brief the referee of the game
+ * 
+ * \authors Francesco Ganci (S4143910)
+ * \version v1.0
+ * 
+ * <b>Publishers:</b> <br>
+ * <ul>
+ *     <li>
+ * 			<i> \ref PUBLISHER_HINT </i> : Hint.msg <br>
+ * 			... description 
+ * 		</li>
+ * </ul>
+ * 
+ * <b>Subscribers:</b> <br>
+ * <ul>
+ *     <li>
+ * 			<i> \ref SUBSCRIBER_HINT_SIGNAL </i> : <a href="http://docs.ros.org/en/api/std_msgs/html/msg/Empty.html">std_msgs::Empty</a> <br>
+ * 			... description 
+ * 		</li>
+ * </ul>
+ * 
+ * <b>Services:</b> <br>
+ * <ul>
+ *     <li>
+ * 			<i> \ref SERVICE_CHECK_SOLUTION </i> : CheckSolution.srv <br>
+ * 			... description 
+ * 		</li>
+ * </ul>
+ * 
+ * <b>Parameters:</b> <br>
+ * <ul>
+ * 		<li>
+ * 			[GET] <i> \ref PATH_PARAMETER_SERVER_WHERE </i> : string <br>
+ * 			... description 
+ * 		</li>
+ * 		<li>
+ * 			[GET] <i> \ref PATH_PARAMETER_SERVER_WHO </i> : string <br>
+ * 			... description 
+ * 		</li>
+ * 		<li>
+ * 			[GET] <i> \ref PATH_PARAMETER_SERVER_WHAT </i> : string <br>
+ * 			... description 
+ * 		</li>
+ * 		<li>
+ * 			[GET, optional] <i>/cluedo_max_hypotheses</i> : string <br>
+ * 			... description 
+ * 		</li>
+ * </ul>
+ * 
+ * <b>Description:</b> <br>
+ * <p>
+ * ...description
+ * </p>
+ * 
+ ***********************************************/
+ 
 #include "ros/ros.h"
 #include "std_msgs/Empty.h"
 #include "robocluedo_msgs/Hint.h"
@@ -17,42 +78,50 @@
 #define PATH_PARAMETER_SERVER_WHERE "cluedo_path_where"
 #define PATH_PARAMETER_SERVER_WHO "cluedo_path_who"
 #define PATH_PARAMETER_SERVER_WHAT "cluedo_path_what"
+
+/// default maximum number of hint IDs
 #define MAX_NUM_HINTS 2
-#define MAX_SIZE_HINT 4
+
+/// <i>maximum number of</i> hints inside each ID
+#define MAX_SIZE_HINT 10
 
 #define OUTLABEL "[cluedo_oracle] "
-#define OUTLOG std::cout << OUTLABEL << " "
-#define OUTERR OUTLOG << "ERROR: "
+#define OUTLOG( msg ) ROS_INFO_STREAM( OUTLABEL << msg )
+#define OUTERR( msg ) OUTLOG( "ERROR: " << msg )
 #define LOGSQUARE( str ) "[" << str << "] "
 
 
 
-// the entire set of hints
+/// vector of hints - who
 std::vector<std::string> hints_who;
+
+/// vector of hints - where
 std::vector<std::string> hints_where;
+
+/// vector of hints - what
 std::vector<std::string> hints_what;
 
-// who killed Dr Black
+/// SOLUTION - who killed Dr Black
 robocluedo_msgs::Hint solution_who;
 
-// where Dr Black was killed
+/// SOLUTION - where Dr Black was killed
 robocluedo_msgs::Hint solution_where;
 
-// what's the murder weapon
+/// SOLUTION - what's the murder weapon
 robocluedo_msgs::Hint solution_what;
 
-// the algorithm for generating random numbers
+/// \private the algorithm for generating random numbers
 std::mt19937 rng;
 
-// the channel for the hints
+/// \private the channel for the hints
 ros::Publisher* hint_channel;
 
-// the set of hypotheses
+///  the set of hypotheses
 std::vector<robocluedo_msgs::Hint> mysterylist;
 
 
 
-// generate random numbers from 0 to capmax included
+/// \private generate random numbers from 0 to capmax included
 int randomIndex( int capmax )
 {
 	if( capmax == 0 ) return 0;
@@ -63,15 +132,26 @@ int randomIndex( int capmax )
 
 
 
-// read entities from the files
+/********************************************//**
+ *  
+ * \brief import entities from file
+ * 
+ * ... more details
+ * 
+ * @param path of the file to read
+ * @param list where to put the entities
+ * 
+ * @returns success or not
+ * 
+ ***********************************************/
 bool importDataFrom( std::string path, std::vector<std::string>& list )
 {
 	// open the file
-	OUTLOG << "reading from fiile " << LOGSQUARE( path ) << std::endl;
+	OUTLOG( "reading from fiile " << LOGSQUARE( path ) );
 	std::ifstream filestream( path );
 	if( !filestream.is_open( ) )
 	{
-		// OUTLOG << "ERROR: no existing file!" << std::endl;
+		OUTERR( "no existing file!" );
 		return false;
 	}
 	
@@ -81,13 +161,13 @@ bool importDataFrom( std::string path, std::vector<std::string>& list )
 	int line = 1;
 	while( getline( filestream, temp ) )
 	{
-		OUTLOG << "line" << LOGSQUARE( line ) << "READ " << LOGSQUARE( temp ) << std::endl;
+		OUTLOG( "line" << LOGSQUARE( line ) << "READ " << LOGSQUARE( temp ) );
 		++line;
 		list.push_back( temp );
 	}
 	
 	// close the file
-	OUTLOG << "closing file ..." << std::endl;
+	OUTLOG( "closing file ..." );
 	filestream.close( );
 	
 	return true;
@@ -95,7 +175,17 @@ bool importDataFrom( std::string path, std::vector<std::string>& list )
 
 
 
-// choose randomly a hint, and delete it from the list
+/********************************************//**
+ *  
+ * \brief choose randomly a hint from a list
+ * 
+ * ... more details
+ * 
+ * @param list (reference) the list from where to take the hint
+ * 
+ * @returns the randomly choosen value from 'list'
+ * 
+ ***********************************************/
 std::string chooseHintFrom( std::vector<std::string>& list )
 {
 	int ridx = randomIndex( list.size()-1 );
@@ -106,7 +196,18 @@ std::string chooseHintFrom( std::vector<std::string>& list )
 
 
 
-// callback: hint signal
+/********************************************//**
+ *  
+ * \brief subscriber to \ref SUBSCRIBER_HINT_SIGNAL and publisher of \ref PUBLISHER_HINT
+ * 
+ * ... more details
+ * 
+ * @param emptySignal empty 'request'
+ * 
+ * @see <a href="http://docs.ros.org/en/api/std_msgs/html/msg/Empty.html">std_msgs::Empty</a> [IN]
+ * @see Hint.msg [OUT]
+ * 
+ ***********************************************/
 void hintCallback( const std_msgs::EmptyConstPtr& emptySignal )
 {
 	// should the oracle to provide the solution?
@@ -132,7 +233,18 @@ void hintCallback( const std_msgs::EmptyConstPtr& emptySignal )
 
 
 
-// check if the solution from the robot is correct
+/********************************************//**
+ *  
+ * \brief implementation of service \ref SERVICE_CHECK_SOLUTION
+ * 
+ * ... more details
+ * 
+ * @param hyp the hypothesis to check
+ * @param mysterySolved if the solution is correct or not
+ * 
+ * @see CheckSolution.srv
+ * 
+ ***********************************************/
 bool checkSolutionCallback( robocluedo_msgs::CheckSolution::Request& hyp, robocluedo_msgs::CheckSolution::Response& misterySolved )
 {
 	ROS_INFO_STREAM( OUTLABEL << "evaluating the solution WHERE" << LOGSQUARE( hyp.Where ) << " WHO " << LOGSQUARE( hyp.Who ) << " WHAT " << LOGSQUARE( hyp.What ) );
@@ -152,7 +264,18 @@ bool checkSolutionCallback( robocluedo_msgs::CheckSolution::Request& hyp, robocl
 
 
 
-// generate the solution of the case
+/********************************************//**
+ *  
+ * \brief generate the solution of the case and the hints
+ * 
+ * ... more details
+ * 
+ * @param list_who the list of the individuals PERSON from file
+ * @param list_where  the list of the individuals PLACE from file
+ * @param list_whatthe list of the individuals WEAPON from file
+ * @param tot_hints the maximum number of hints ID the oracle must generate
+ * 
+ ***********************************************/
 void generateMystery( std::vector<std::string> list_who, std::vector<std::string> list_where, std::vector<std::string> list_what, int tot_hints )
 {
 	ROS_INFO_STREAM( OUTLABEL << "case generation started " );
@@ -182,17 +305,7 @@ void generateMystery( std::vector<std::string> list_who, std::vector<std::string
 	
 	ROS_INFO_STREAM( OUTLABEL << "the solution has ID:" << solutionID );
 	
-	/*
-	 * for MAX_NUM_HINTS times:
-	 * 	generate a number from 3 to MAX_SIZE_HINT
-	 * 	for the number choosen before:
-	 *    choose one of the lists (number from 0 to 2)
-	 *    take the element from the selected list
-	 *    type and value
-	 *    and put it into the mystery list in the right cell
-	 * 
-	 * if the ID belongs to the solution, insert it instead of another new random hint
-	 */
+	// generate the case
 	for( int i=0; i<tot_hints; ++i )
 	{
 		if( i == solutionID )
@@ -241,7 +354,13 @@ void generateMystery( std::vector<std::string> list_who, std::vector<std::string
 
 
 
-// main of the oracle
+/********************************************//**
+ *  
+ * \brief ROS node main - cluedo_oracle
+ * 
+ * ... more details
+ * 
+ ***********************************************/
 int main( int argc, char* argv[] )
 {
 	ros::init( argc, argv, "cluedo_oracle" );
@@ -253,19 +372,19 @@ int main( int argc, char* argv[] )
 	std::string path_what = "";
 	if( !ros::param::has( PATH_PARAMETER_SERVER_WHO ) )
 	{
-		OUTERR << "unable to find the parameter " << LOGSQUARE( PATH_PARAMETER_SERVER_WHO ) << std::endl;
+		OUTERR( "unable to find the parameter " << LOGSQUARE( PATH_PARAMETER_SERVER_WHO ) );
 		return 0;
 	}
 	else ros::param::get( PATH_PARAMETER_SERVER_WHO, path_who );
 	if( !ros::param::has( PATH_PARAMETER_SERVER_WHERE ) )
 	{
-		OUTERR << "unable to find the parameter " << LOGSQUARE( PATH_PARAMETER_SERVER_WHERE ) << std::endl;
+		OUTERR( "unable to find the parameter " << LOGSQUARE( PATH_PARAMETER_SERVER_WHERE ) );
 		return 0;
 	}
 	else ros::param::get( PATH_PARAMETER_SERVER_WHERE, path_where );
 	if( !ros::param::has( PATH_PARAMETER_SERVER_WHAT ) )
 	{
-		OUTERR << "unable to find the parameter " << LOGSQUARE( PATH_PARAMETER_SERVER_WHAT ) << std::endl;
+		OUTERR( "unable to find the parameter " << LOGSQUARE( PATH_PARAMETER_SERVER_WHAT ) );
 		return 0;
 	}
 	else ros::param::get( PATH_PARAMETER_SERVER_WHAT, path_what );
@@ -274,21 +393,21 @@ int main( int argc, char* argv[] )
 	hints_who = std::vector<std::string>();
 	if( !importDataFrom( path_who, hints_who ) )
 	{
-		OUTERR << "unable to locate the data file " << LOGSQUARE( path_who ) << std::endl;
+		OUTERR( "unable to locate the data file " << LOGSQUARE( path_who ) );
 		return 0;
 	}
 	// from where
 	hints_where = std::vector<std::string>();
 	if( !importDataFrom( path_where, hints_where ) )
 	{
-		OUTERR << "unable to locate the data file " << LOGSQUARE( path_where ) << std::endl;
+		OUTERR( "unable to locate the data file " << LOGSQUARE( path_where ) );
 		return 0;
 	}
 	// and from what
 	hints_what = std::vector<std::string>();
 	if( !importDataFrom( path_what, hints_what ) )
 	{
-		OUTERR << "unable to locate the data file " << LOGSQUARE( path_what ) << std::endl;
+		OUTERR( "unable to locate the data file " << LOGSQUARE( path_what ) );
 		return 0;
 	}
 	
@@ -309,23 +428,23 @@ int main( int argc, char* argv[] )
 	}
 	
 	// subscriber: hint_signal
-	OUTLOG << "subscribing to the topic " << LOGSQUARE( SUBSCRIBER_HINT_SIGNAL ) << "..." << std::endl;
+	OUTLOG( "subscribing to the topic " << LOGSQUARE( SUBSCRIBER_HINT_SIGNAL ) << "..." );
 	ros::Subscriber sub_hint_signal = nh.subscribe( SUBSCRIBER_HINT_SIGNAL, 1000, hintCallback );
-	OUTLOG << "subscribing to the topic " << LOGSQUARE( SUBSCRIBER_HINT_SIGNAL ) << "... OK" << std::endl;
+	OUTLOG( "subscribing to the topic " << LOGSQUARE( SUBSCRIBER_HINT_SIGNAL ) << "... OK" );
 	
 	// publisher: hint
-	OUTLOG << "Creating publisher " << LOGSQUARE( PUBLISHER_HINT ) << "..." << std::endl;
+	OUTLOG( "Creating publisher " << LOGSQUARE( PUBLISHER_HINT ) << "..." );
 	ros::Publisher pub_hint = nh.advertise<robocluedo_msgs::Hint>( PUBLISHER_HINT, 1000 );
 	hint_channel = &pub_hint;
-	OUTLOG << "Creating publisher " << LOGSQUARE( PUBLISHER_HINT ) << "... OK" << std::endl;
+	OUTLOG( "Creating publisher " << LOGSQUARE( PUBLISHER_HINT ) << "... OK" );
 	
 	// service: check_solution
-	OUTLOG << "Advertising service " << LOGSQUARE( SERVICE_CHECK_SOLUTION  ) << "..." << std::endl;
+	OUTLOG( "Advertising service " << LOGSQUARE( SERVICE_CHECK_SOLUTION  ) << "..." );
 	ros::ServiceServer srv = nh.advertiseService( SERVICE_CHECK_SOLUTION, checkSolutionCallback );
-	OUTLOG << "Advertising service " << LOGSQUARE( SERVICE_CHECK_SOLUTION ) << "... OK" << std::endl;
+	OUTLOG( "Advertising service " << LOGSQUARE( SERVICE_CHECK_SOLUTION ) << "... OK" );
 	
 	//spin
-	OUTLOG << "ready!" << std::endl;
+	OUTLOG( "ready!" );
 	ros::spin( );
 	
 	return 0;

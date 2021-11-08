@@ -1,6 +1,4 @@
 
-//catkin_make && clear && roslaunch robocluedo test_armor_ops.launch
-
 #include "ros/ros.h"
 #include "armor_tools/armor_tools.h"
 
@@ -36,7 +34,6 @@ bool fileExist( std::string path )
     return (std::ifstream(path)).good();
 }
 
-
 // get args to fill in the armor message
 std::vector<std::string> armorGetArgs(
 	std::string arg1,
@@ -55,7 +52,6 @@ std::vector<std::string> armorGetArgs(
 	
 	return to_return;
 }
-
 
 // armor call
 armor_msgs::ArmorDirective armorGetRequest( 
@@ -83,7 +79,6 @@ armor_msgs::ArmorDirective armorGetRequest(
 	return adsrv;
 }
 
-
 // print the armor request
 void armorPrintRequest( armor_msgs::ArmorDirective& d )
 {
@@ -105,7 +100,6 @@ void armorPrintRequest( armor_msgs::ArmorDirective& d )
 	
 	ROS_INFO_STREAM( str );
 }
-
 
 // print the whole armor response
 void armorPrintResponse( armor_msgs::ArmorDirective& d )
@@ -131,7 +125,6 @@ void armorPrintResponse( armor_msgs::ArmorDirective& d )
 	
 	ROS_INFO_STREAM( str );
 }
-
 
 // call to aRMOR service
 bool armorCallService( ros::ServiceClient& armorClient, armor_msgs::ArmorDirective& armorsrvdata )
@@ -206,7 +199,6 @@ void armorTestSession( ros::ServiceClient& cl, std::string path )
 		armorPrintResponse( *adsrv );
 	}
 }
-
 
 // test section
 int main( int argc, char* argv[] )

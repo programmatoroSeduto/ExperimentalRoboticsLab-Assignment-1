@@ -1,0 +1,12 @@
+<map id="main" name="main">
+<area shape="rect" id="node1" title="ROS node main." alt="" coords="5,81,60,108"/>
+<area shape="rect" id="node2" href="$cluedo__armor__interface_8cpp.html#a425e0b3a1e6c60b7ed0330df24c67e66" title="check if a given file exists" alt="" coords="139,31,213,57"/>
+<area shape="rect" id="node3" href="$class_armor_cluedo.html#a66ce2d9f5c665ab14761233b32ab1ec6" title="initizalize the interface" alt="" coords="108,81,244,108"/>
+<area shape="rect" id="node10" href="$class_armor_tools.html#a356ca7809be690be0a70a1ae33a850a8" title="check the status of the interface" alt="" coords="307,132,494,159"/>
+<area shape="rect" id="node4" href="$class_armor_tools.html#ad98c8e33df5d1ef3e4c69051ac0dd7ab" title="connect to the server and load the ontology from file." alt="" coords="295,31,507,57"/>
+<area shape="rect" id="node9" href="$class_armor_tools.html#a75474b9c35cbdcfedd382939c1699247" title="err code referred to the last call" alt="" coords="292,81,509,108"/>
+<area shape="rect" id="node5" href="$class_armor_tools.html#aa83ea5e064db6dc46c9056ddeeaabbc4" title="open a connection with the aRMOR service." alt="" coords="576,5,732,32"/>
+<area shape="rect" id="node6" href="$class_armor_tools.html#ab03c54208a11edf3e3690ba07f0cef5b" title="load the ontology from file." alt="" coords="557,56,751,83"/>
+<area shape="rect" id="node7" href="$class_armor_tools.html#aac98d4f9b2ce2cbefba61684d1f505bf" title="send a command to aRMOR." alt="" coords="804,31,972,57"/>
+<area shape="rect" id="node8" href="$class_armor_tools.html#a76e1517409d261c03ce712a4a5e4a093" title="quick creation of an aRMOR request" alt="" coords="799,81,977,108"/>
+</map>

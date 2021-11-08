@@ -1,4 +1,39 @@
 
+/********************************************//**
+ *  
+ * \file cluedo_movement_controller.cpp
+ * <div><b>ROS Node Name</b> 
+ *      <ul><li>cluedo_movement_controller</li></ul></div>
+ * \brief stub ROS node, movement controller
+ * 
+ * \authors Francesco Ganci (S4143910)
+ * \version v1.0
+ * 
+ * <b>Publishers:</b> <br>
+ * <ul>
+ *     <li>
+ * 			<i> \ref PUBLISHER_HINT_SIGNAL</i> : <a href="http://docs.ros.org/en/api/std_msgs/html/msg/Empty.html">std_msgs::Empty</a> <br>
+ * 			... description 
+ * 		</li>
+ * </ul>
+ * 
+ * <b>Services:</b> <br>
+ * <ul>
+ *     <li>
+ * 			<i> \ref SERVICE_GO_TO</i> : GoTo.srv <br>
+ * 			... description 
+ * 		</li>
+ * </ul>
+ * 
+ * <b>Description:</b> <br>
+ * <p>
+ * ...description
+ * </p>
+ * 
+ * @todo this is a <i>STUB implementation</i>. It should be replaced this with a real movement controller. 
+ * 
+ ***********************************************/
+
 #include "ros/ros.h"
 #include "robocluedo_msgs/GoTo.h"
 #include "std_msgs/Empty.h"
@@ -13,11 +48,25 @@
 #define LOGSQUARE( str ) "[" << str << "] "
 
 
-// publisher to hint_signal
+
+/// \private publisher to hint_signal
 ros::Publisher* pub_hint_signal;
 
 
-// stub mplementation of the movement service
+
+/********************************************//**
+ *  
+ * \brief implementation of service \ref SERVICE_INTERFACE_FIND_CONSISTENT_HYP
+ * 
+ * ... more details <br>
+ * stub mplementation of the movement service
+ * 
+ * @param where the room to reach
+ * @param success success flag
+ * 
+ * @see GoTo.srv
+ * 
+ ***********************************************/
 bool GoToCallback( robocluedo_msgs::GoTo::Request& where, robocluedo_msgs::GoTo::Response& success )
 {
 	// "go to" the given position
@@ -35,6 +84,14 @@ bool GoToCallback( robocluedo_msgs::GoTo::Request& where, robocluedo_msgs::GoTo:
 }
 
 
+
+/********************************************//**
+ *  
+ * \brief ROS node main
+ * 
+ * ... more details
+ * 
+ ***********************************************/
 int main( int argc, char* argv[] )
 {
 	ros::init( argc, argv, "cluedo_movement_controller" );

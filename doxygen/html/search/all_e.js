@@ -1,19 +1,17 @@
 var searchData=
 [
-  ['param_5fontology_5fbackup_5fpath_122',['PARAM_ONTOLOGY_BACKUP_PATH',['../cluedo__armor__interface_8cpp.html#a311d6790cb54f184fa8fa02120ebee44',1,'cluedo_armor_interface.cpp']]],
-  ['path_5fparameter_5fserver_5fwhat_123',['PATH_PARAMETER_SERVER_WHAT',['../cluedo__oracle_8cpp.html#af987ed1fc1a31f4f8a75fb928c0e69fa',1,'cluedo_oracle.cpp']]],
-  ['path_5fparameter_5fserver_5fwhere_124',['PATH_PARAMETER_SERVER_WHERE',['../cluedo__oracle_8cpp.html#a5a5c61b838d2950098341254ca9eca1a',1,'PATH_PARAMETER_SERVER_WHERE():&#160;cluedo_oracle.cpp'],['../cluedo__random__room_8cpp.html#a5a5c61b838d2950098341254ca9eca1a',1,'PATH_PARAMETER_SERVER_WHERE():&#160;cluedo_random_room.cpp']]],
-  ['path_5fparameter_5fserver_5fwho_125',['PATH_PARAMETER_SERVER_WHO',['../cluedo__oracle_8cpp.html#aab5f3d69712013e8674ac85f8426e98d',1,'cluedo_oracle.cpp']]],
-  ['perform_5ftests_126',['perform_tests',['../namespacetest__cluedo__armor__interface.html#a7950b58982c19d0ff1541833092c4f0b',1,'test_cluedo_armor_interface.perform_tests()'],['../namespacetest__cluedo__oracle.html#ab92599e09d4a4fc9476fa59fca5bb300',1,'test_cluedo_oracle.perform_tests()'],['../namespacetest__cluedo__random__room.html#a94718b197aeca5614b1617e1a7c8733f',1,'test_cluedo_random_room.perform_tests()'],['../namespacetest__oracle__plus__interface.html#a9dcc3869d0cfe567c076bd822db89512',1,'test_oracle_plus_interface.perform_tests()']]],
-  ['performdifferencebetween_127',['PerformDifferenceBetween',['../cluedo__armor__interface_8cpp.html#a30c8d0c07497876eeb7b5845bab11d19',1,'cluedo_armor_interface.cpp']]],
-  ['printlastreq_128',['PrintLastReq',['../class_armor_tools.html#ac7f632ed614b226cbc2b2fa352989643',1,'ArmorTools']]],
-  ['printlastres_129',['PrintLastRes',['../class_armor_tools.html#ae1764835bfe65fabcb07757b0bb43f83',1,'ArmorTools']]],
-  ['printlist_130',['printList',['../test__armor__tools_8cpp.html#a349df24894d6a8c020f02bf53b723769',1,'test_armor_tools.cpp']]],
-  ['printrequest_131',['PrintRequest',['../class_armor_tools.html#a451163e1278ec49f4d214b33111d166d',1,'ArmorTools']]],
-  ['printresponse_132',['PrintResponse',['../class_armor_tools.html#a2ca77741de4c8883b5be0d661f6b1320',1,'ArmorTools']]],
-  ['pub_5fhint_5fsignal_133',['pub_hint_signal',['../cluedo__movement__controller_8cpp.html#a99eedd9052cee0c42fd2c68f2fab1b30',1,'cluedo_movement_controller.cpp']]],
-  ['publisher_5fhint_134',['PUBLISHER_HINT',['../cluedo__oracle_8cpp.html#afe222ad85bccd34da809164a88478096',1,'cluedo_oracle.cpp']]],
-  ['publisher_5fhint_5fsig_135',['publisher_hint_sig',['../namespacetest__cluedo__oracle.html#ad432ec9663f161c4e56500ef85a647ca',1,'test_cluedo_oracle.publisher_hint_sig()'],['../namespacetest__oracle__plus__interface.html#adab89fdb10357cd5e2e53eff4cce9ed5',1,'test_oracle_plus_interface.publisher_hint_sig()']]],
-  ['publisher_5fhint_5fsignal_136',['PUBLISHER_HINT_SIGNAL',['../cluedo__movement__controller_8cpp.html#a261ba80f7b63e7cf794d38d588ff1112',1,'cluedo_movement_controller.cpp']]],
-  ['publisher_5fname_5fhint_5fsig_137',['publisher_name_hint_sig',['../namespacetest__cluedo__oracle.html#adadaabe064a32960ccd05868977a7a45',1,'test_cluedo_oracle.publisher_name_hint_sig()'],['../namespacetest__oracle__plus__interface.html#ab05387d37d94550b6fc0ffffa9b976e4',1,'test_oracle_plus_interface.publisher_name_hint_sig()']]]
+  ['randomroom_2esrv_116',['RandomRoom.srv',['../_random_room_8srv.html',1,'']]],
+  ['removehypothesis_117',['RemoveHypothesis',['../class_armor_cluedo.html#a4ae659375e7a6d9564973718ece248e2',1,'ArmorCluedo']]],
+  ['robocluedo_5fcharge_118',['robocluedo_charge',['../classrobocluedo__main_1_1robocluedo__charge.html',1,'robocluedo_main']]],
+  ['robocluedo_5flistening_5ffor_5fhints_119',['robocluedo_listening_for_hints',['../classrobocluedo__main_1_1robocluedo__listening__for__hints.html',1,'robocluedo_main']]],
+  ['robocluedo_5fmain_120',['robocluedo_main',['../namespacerobocluedo__main.html',1,'']]],
+  ['robocluedo_5fmain_2epy_121',['robocluedo_main.py',['../robocluedo__main_8py.html',1,'']]],
+  ['robocluedo_5fmoving_122',['robocluedo_moving',['../classrobocluedo__main_1_1robocluedo__moving.html',1,'robocluedo_main']]],
+  ['robocluedo_5frandom_5ftarget_123',['robocluedo_random_target',['../classrobocluedo__main_1_1robocluedo__random__target.html',1,'robocluedo_main']]],
+  ['robocluedo_5freasoning_124',['robocluedo_reasoning',['../classrobocluedo__main_1_1robocluedo__reasoning.html',1,'robocluedo_main']]],
+  ['robocluedo_5fupdate_5fontology_125',['robocluedo_update_ontology',['../classrobocluedo__main_1_1robocluedo__update__ontology.html',1,'robocluedo_main']]],
+  ['robot_5fsm_126',['robot_sm',['../namespacerobocluedo__main.html#ad24c9e75ca39fb050be188174718450f',1,'robocluedo_main']]],
+  ['rooms_127',['rooms',['../cluedo__random__room_8cpp.html#a3e9faf1e599933e7e3653aa772c5bc0f',1,'cluedo_random_room.cpp']]],
+  ['run_5farmor_2elaunch_128',['run_armor.launch',['../run__armor_8launch.html',1,'']]],
+  ['run_5frobocluedo_2elaunch_129',['run_robocluedo.launch',['../run__robocluedo_8launch.html',1,'']]]
 ];

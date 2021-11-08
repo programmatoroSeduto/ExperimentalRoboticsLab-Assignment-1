@@ -1,0 +1,8 @@
+<map id="ArmorCluedo::FilterVector" name="ArmorCluedo::FilterVector">
+<area shape="rect" id="node1" title="filter all the strings inside the array" alt="" coords="541,56,731,83"/>
+<area shape="rect" id="node2" href="$class_armor_cluedo.html#a49216d015f97a9d510406a90e8c1fe30" title="get the class of a given individual" alt="" coords="273,5,493,32"/>
+<area shape="rect" id="node3" href="$class_armor_cluedo.html#afef8229a755f495f008bfe4630a745fa" title="find the individuals belonging to a class" alt="" coords="273,56,493,83"/>
+<area shape="rect" id="node6" href="$class_armor_cluedo.html#a580aef3f0bf9dd1affd06c588e731ff5" title="get the values of a property related to a gven individual" alt="" coords="284,107,483,149"/>
+<area shape="rect" id="node4" href="$class_armor_cluedo.html#aaf1832ed634a017c48e26c48f58c5f68" title="find all the complete hypotheses" alt="" coords="13,15,217,57"/>
+<area shape="rect" id="node5" href="$class_armor_cluedo.html#ab278ac3aaffc4c6aceaf3bfb8d5186af" title="find all the inconsistent hypotheses" alt="" coords="5,81,225,122"/>
+</map>

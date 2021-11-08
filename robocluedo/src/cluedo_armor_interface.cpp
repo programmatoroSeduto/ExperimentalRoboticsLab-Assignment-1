@@ -1,4 +1,60 @@
 
+/********************************************//**
+ *  
+ * \file cluedo_armor_interface.cpp
+ * <div><b>ROS Node Name</b> 
+ *      <ul><li>cluedo_armor_interface</li></ul></div>
+ * \brief Dedicated RCL-aRMOR client
+ * 
+ * \authors Francesco Ganci (S4143910)
+ * \version v1.0
+ * 
+ * <b>Services:</b> <br>
+ * <ul>
+ *     <li>
+ * 			<i>/cluedo_armor/add_hint</i> : AddHint.srv <br>
+ * 			... description 
+ * 		</li>
+ * 		<li>
+ * 			<i>/cluedo_armor/find_consistent_h</i> : FindConsistentHypotheses.srv <br>
+ * 			... description 
+ * 		</li>
+ * 		<li>
+ * 			<i>/cluedo_armor/wrong_hypothesis</i> : DiscardHypothesis.srv <br>
+ * 			... description 
+ * 		</li>
+ * 		<li>
+ * 			<i>/cluedo_armor/backup</i> : <a href="http://docs.ros.org/en/api/std_srvs/html/srv/Trigger.html">std_srvs::Trigger</a> <br>
+ * 			... description 
+ * 		</li>
+ * </ul>
+ * 
+ * <b>Hidden services and topics</b> <br>
+ * <ul>
+ * 		<li>
+ * 			(from ArmorTools : client) <i>/armor_interface_srv</i> <br>
+ * 		</li>
+ * </ul>
+ * 
+ * <b>Parameters:</b> <br>
+ * <ul>
+ * 		<li>
+ * 			[GET] <i> \ref ONTOLOGY_PARAM </i> : string <br>
+ * 			pth of the ontology
+ * 		</li>
+ * 		<li>
+ * 			[GET] <i> \ref PARAM_ONTOLOGY_BACKUP_PATH </i> : string <br>
+ * 			default name for the backup ontology file
+ * 		</li>
+ * </ul>
+ * 
+ * <b>Description:</b> <br>
+ * <p>
+ * descrizione incredibilmente dettagliata e profonda (coming soon)
+ * </p>
+ * 
+ ***********************************************/
+
 #include "ros/ros.h"
 #include "armor_tools/armor_tools.h"
 #include "armor_tools/armor_cluedo.h"
@@ -33,12 +89,13 @@
 #define SSS( this_thing ) std::to_string( this_thing )
 
 
-// connection to aRMOR
+
+/// \private global connection to aRMOR interface
 ArmorCluedo* armor;
 
 
 
-// check if a given file exists
+/// \private check if a given file exists
 bool fileExist( std::string path )
 {
     return (std::ifstream(path)).good();
@@ -46,7 +103,18 @@ bool fileExist( std::string path )
 
 
 
-// perform difference between the first array and the intersection between the two arrays
+/********************************************//**
+ *  
+ * \brief delete all the occurrences of list2 inside list1
+ * 
+ * perform the difference between the first array and the intersection between the two arrays
+ * 
+ * @param list1 the array to be reduced
+ * @param list2 the occurrences to delete from list1
+ * 
+ * @returns a copy of list1 without the elements of list2.
+ * 
+ ***********************************************/
 std::vector<std::string> PerformDifferenceBetween( std::vector<std::string> list1, std::vector<std::string> list2 )
 {
 	std::vector<std::string> to_return;
@@ -72,7 +140,18 @@ std::vector<std::string> PerformDifferenceBetween( std::vector<std::string> list
 
 
 
-// service SERVICE_INTERFACE_ADD_HINT
+/********************************************//**
+ *  
+ * \brief implementation of service \ref SERVICE_INTERFACE_ADD_HINT
+ * 
+ * ... more details
+ * 
+ * @param hint    the hint to add to the ontology
+ * @param success request accomplished or not
+ * 
+ * @see AddHint.srv
+ * 
+ ***********************************************/
 bool ServiceAddHint( robocluedo_msgs::AddHint::Request& hint, robocluedo_msgs::AddHint::Response& success )
 {
 	OUTLOG( "called service " << SERVICE_INTERFACE_ADD_HINT );
@@ -114,7 +193,19 @@ bool ServiceAddHint( robocluedo_msgs::AddHint::Request& hint, robocluedo_msgs::A
 
 
 
-// service SERVICE_INTERFACE_FIND_CONSISTENT_HYP
+/********************************************//**
+ *  
+ * \brief implementation of service \ref SERVICE_INTERFACE_FIND_CONSISTENT_HYP
+ * 
+ * ... more details
+ * 
+ * @param empty empty request
+ * @param hyplist a vector of COMPLETE hypotheses
+ * 
+ * @see FindConsistentHypotheses.srv
+ * @see Hypothesis.msg one element of the output vector from the service
+ * 
+ ***********************************************/
 bool ServiceFindConsistentHypotheses( robocluedo_msgs::FindConsistentHypotheses::Request& empty, robocluedo_msgs::FindConsistentHypotheses::Response& hyplist )
 {
 	OUTLOG( "called service " << SERVICE_INTERFACE_FIND_CONSISTENT_HYP );
@@ -152,7 +243,18 @@ bool ServiceFindConsistentHypotheses( robocluedo_msgs::FindConsistentHypotheses:
 
 
 
-// discard a hypothesis
+/********************************************//**
+ *  
+ * \brief implementation of service \ref SERVICE_INTERFACE_WRONG_HYPOTHESIS
+ * 
+ * ... more details
+ * 
+ * @param tag of the hypothesis to discard
+ * @param success if the request has been accomplished or not
+ * 
+ * @see DiscardHypothesis.srv
+ * 
+ ***********************************************/
 bool DiscardHypothesis( robocluedo_msgs::DiscardHypothesis::Request& tag, robocluedo_msgs::DiscardHypothesis::Response& success )
 {
 	OUTLOG( "called service " << SERVICE_INTERFACE_WRONG_HYPOTHESIS );
@@ -165,7 +267,18 @@ bool DiscardHypothesis( robocluedo_msgs::DiscardHypothesis::Request& tag, robocl
 
 
 
-// save the ontology
+/********************************************//**
+ *  
+ * \brief implementation of service \ref SERVICE_INTERFACE_SAVE_ONTOLOGY
+ * 
+ * ... more details
+ * 
+ * @param emptyrequest empty request
+ * @param success if the request has been accomplished or not
+ * 
+ * @see <a href="http://docs.ros.org/en/api/std_srvs/html/srv/Trigger.html">std_srvs::Trigger</a>
+ * 
+ ***********************************************/
 bool ServiceBackupOntology( std_srvs::Trigger::Request& emptyrequest, std_srvs::Trigger::Response& success )
 {
 	OUTLOG( "called service " << SERVICE_INTERFACE_SAVE_ONTOLOGY );
@@ -192,12 +305,13 @@ bool ServiceBackupOntology( std_srvs::Trigger::Request& emptyrequest, std_srvs::
 
 
 
-/*
- * OPERAZIONI IMPLEMENTATE SU SERVIZIO:
- * 	registrare un hint e updte immediato
- * 	recuperare tutti i valori delle ipotesi consistenti
- *  elimina un'ipotesi dal sistema (scartata per via di una risposta negativa dall'oracolo)
- */
+ /********************************************//**
+ *  
+ * \brief ROS node main
+ * 
+ * ... more details
+ * 
+ ***********************************************/
 int main( int argc, char* argv[] )
 {
 	ros::init( argc, argv, "cluedo_armor_interface" );

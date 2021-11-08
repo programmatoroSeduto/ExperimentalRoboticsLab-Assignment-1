@@ -1,0 +1,10 @@
+<map id="DiscardHypothesis" name="DiscardHypothesis">
+<area shape="rect" id="node1" title="implementation of service SERVICE_INTERFACE_WRONG_HYPOTHESIS" alt="" coords="5,31,149,57"/>
+<area shape="rect" id="node2" href="$class_armor_cluedo.html#a4ae659375e7a6d9564973718ece248e2" title="discard one hypothesis" alt="" coords="197,31,440,57"/>
+<area shape="rect" id="node3" href="$class_armor_cluedo.html#a2086082362b61607798d6f968c263f9e" title="check if an individual exists" alt="" coords="488,31,675,57"/>
+<area shape="rect" id="node4" href="$class_armor_tools.html#a34d27d93c2faec3d3de3ba24d08f436b" title="get a reference to the last response" alt="" coords="735,5,913,32"/>
+<area shape="rect" id="node5" href="$class_armor_tools.html#a6033ed90283ec6c78a2bc2b0106d0461" title="fill in a command and send it to aRMOR" alt="" coords="723,56,925,83"/>
+<area shape="rect" id="node6" href="$class_armor_tools.html#aac98d4f9b2ce2cbefba61684d1f505bf" title="send a command to aRMOR." alt="" coords="983,5,1151,32"/>
+<area shape="rect" id="node7" href="$class_armor_tools.html#a76e1517409d261c03ce712a4a5e4a093" title="quick creation of an aRMOR request" alt="" coords="977,56,1156,83"/>
+<area shape="rect" id="node8" href="$class_armor_tools.html#a451163e1278ec49f4d214b33111d166d" title="print a request to the screen." alt="" coords="973,107,1160,133"/>
+</map>

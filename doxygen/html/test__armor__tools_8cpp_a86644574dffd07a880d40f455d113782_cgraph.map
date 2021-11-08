@@ -1,0 +1,11 @@
+<map id="armorTestSession" name="armorTestSession">
+<area shape="rect" id="node1" title=" " alt="" coords="5,81,143,108"/>
+<area shape="rect" id="node2" href="$class_armor_tools.html#ac7f632ed614b226cbc2b2fa352989643" title="print the last request" alt="" coords="203,5,388,32"/>
+<area shape="rect" id="node4" href="$class_armor_tools.html#ae1764835bfe65fabcb07757b0bb43f83" title="print the last response" alt="" coords="203,157,387,184"/>
+<area shape="rect" id="node6" href="$class_armor_tools.html#a6033ed90283ec6c78a2bc2b0106d0461" title="fill in a command and send it to aRMOR" alt="" coords="194,56,397,83"/>
+<area shape="rect" id="node9" href="$class_armor_tools.html#a0ddf26f9a388377a36263344b1cbf39f" title="send the command REASON" alt="" coords="191,107,400,133"/>
+<area shape="rect" id="node3" href="$class_armor_tools.html#a451163e1278ec49f4d214b33111d166d" title="print a request to the screen." alt="" coords="453,5,639,32"/>
+<area shape="rect" id="node5" href="$class_armor_tools.html#a2ca77741de4c8883b5be0d661f6b1320" title="print the response to the screen." alt="" coords="448,157,644,184"/>
+<area shape="rect" id="node7" href="$class_armor_tools.html#aac98d4f9b2ce2cbefba61684d1f505bf" title="send a command to aRMOR." alt="" coords="462,56,630,83"/>
+<area shape="rect" id="node8" href="$class_armor_tools.html#a76e1517409d261c03ce712a4a5e4a093" title="quick creation of an aRMOR request" alt="" coords="457,107,635,133"/>
+</map>
