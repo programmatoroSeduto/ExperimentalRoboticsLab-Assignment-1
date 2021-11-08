@@ -4,7 +4,7 @@
  * \file cluedo_oracle.cpp
  * <div><b>ROS Node Name</b> 
  *      <ul><li>cluedo_oracle</li></ul></div>
- * \brief the referee of the game
+ * \brief The referee of the game
  * 
  * \authors Francesco Ganci (S4143910)
  * \version v1.0
@@ -13,7 +13,7 @@
  * <ul>
  *     <li>
  * 			<i> \ref PUBLISHER_HINT </i> : Hint.msg <br>
- * 			... description <br><br>
+ * 			    the channel which the hint is issued through <br><br>
  * 		</li>
  * </ul>
  * 
@@ -21,7 +21,7 @@
  * <ul>
  *     <li>
  * 			<i> \ref SUBSCRIBER_HINT_SIGNAL </i> : <a href="http://docs.ros.org/en/api/std_msgs/html/msg/Empty.html">std_msgs::Empty</a> <br>
- * 			descrivi direttamente, tanto il nodo movement_controller va buttato via <br><br>
+ * 			    ask the oracle for a hint <br><br>
  * 		</li>
  * </ul>
  * 
@@ -29,7 +29,7 @@
  * <ul>
  *     <li>
  * 			<i> \ref SERVICE_CHECK_SOLUTION </i> : CheckSolution.srv <br>
- * 			... description <br><br>
+ * 			    check if a complete hypothesis is the solution of the case or not <br><br>
  * 		</li>
  * </ul>
  * 
@@ -37,25 +37,27 @@
  * <ul>
  * 		<li>
  * 			[GET] <i> \ref PATH_PARAMETER_SERVER_WHERE </i> : string <br>
- * 			... description <br><br>
+ * 			   path of the file containing all the PLACEs <br><br>
  * 		</li>
  * 		<li>
  * 			[GET] <i> \ref PATH_PARAMETER_SERVER_WHO </i> : string <br>
- * 			... description <br><br>
+ * 			   path of the file containing all the PERSONs <br><br>
  * 		</li>
  * 		<li>
  * 			[GET] <i> \ref PATH_PARAMETER_SERVER_WHAT </i> : string <br>
- * 			... description <br><br>
+ * 			   path of the file containing all the WEAPONs <br><br>
  * 		</li>
  * 		<li>
  * 			[GET, optional] <i>/cluedo_max_hypotheses</i> : string <br>
- * 			... description <br><br>
+ * 			   the maximum number of hypothesis IDs <br><br>
  * 		</li>
  * </ul>
  * 
  * <b>Description:</b> <br>
  * <p>
- * ...description
+ * This node implements a referee for the game: it prepares the hints and
+ * the mystery, then sends the hints to the robot and checks the 
+ * hypotheses from the robot. <br>
  * </p>
  * 
  ***********************************************/
@@ -116,7 +118,7 @@ std::mt19937 rng;
 /// \private the channel for the hints
 ros::Publisher* hint_channel;
 
-///  the set of hypotheses
+/// shuffled list of hypotheses
 std::vector<robocluedo_msgs::Hint> mysterylist;
 
 
@@ -136,7 +138,8 @@ int randomIndex( int capmax )
  *  
  * \brief import entities from file
  * 
- * ... more details
+ * The function reads a text file line per line, and creates an item for
+ * each line. Extremely simple: there's no parsing inside. 
  * 
  * @param path of the file to read
  * @param list where to put the entities
@@ -179,7 +182,7 @@ bool importDataFrom( std::string path, std::vector<std::string>& list )
  *  
  * \brief choose randomly a hint from a list
  * 
- * ... more details
+ * Same as the python method Random.choose()
  * 
  * @param list (reference) the list from where to take the hint
  * 
@@ -200,7 +203,11 @@ std::string chooseHintFrom( std::vector<std::string>& list )
  *  
  * \brief subscriber to \ref SUBSCRIBER_HINT_SIGNAL and publisher of \ref PUBLISHER_HINT
  * 
- * ... more details
+ * The arrival of a message means that the robot has entered in one room. 
+ * The Oracle can decide if drop the hint or not: if the Oracle refuses
+ * the request, nothing is issued through the topic \ref PUBLISHER_HINT.
+ * Otherwise, it takes from the list of hints \ref mysterylist the last 
+ * one, remove it from the list, and publishes it. 
  * 
  * @param emptySignal empty 'request'
  * 
@@ -237,9 +244,11 @@ void hintCallback( const std_msgs::EmptyConstPtr& emptySignal )
  *  
  * \brief implementation of service \ref SERVICE_CHECK_SOLUTION
  * 
- * ... more details
+ * During the game, the Oracle knows the solution of the case. The robot,
+ * when is ready for the charge, can check if the consistent hypothesis
+ * is the solution of the case using this service. 
  * 
- * @param hyp the hypothesis to check
+ * @param hyp           the hypothesis to check
  * @param mysterySolved if the solution is correct or not
  * 
  * @see CheckSolution.srv
@@ -268,12 +277,31 @@ bool checkSolutionCallback( robocluedo_msgs::CheckSolution::Request& hyp, robocl
  *  
  * \brief generate the solution of the case and the hints
  * 
- * ... more details
+ * This is called once when the system starts. Here is how it works:
+ * <ol>
+ * <li>shuffle of the three arrays from the text files</li>
+ * <li>generation of the solution and its ID from 0 to (tot_hints-1)</li>
+ * <li>
+ * for each index from 0 to tot_hints-1 (the available IDs):
+ * <ol>
+ * <li>if the ID is the one choosen before for the solution, place the elements
+ *      of the solution, then continue</li>
+ * <li>else, for each index from 0 to \ref MAX_SIZE_HINTS -1:</li>
+ * <ol>
+ * <li>generate randomly one hint with the given ID and push inside the array</li>
+ * <li>or don't generate</li>
+ * </ol>
+ * </ol>
+ * </li>
+ * <li>shuffle the final list</li>
+ * </ol>
  * 
  * @param list_who the list of the individuals PERSON from file
  * @param list_where  the list of the individuals PLACE from file
  * @param list_whatthe list of the individuals WEAPON from file
  * @param tot_hints the maximum number of hints ID the oracle must generate
+ * 
+ * @todo could this algorithm be further improved? 
  * 
  ***********************************************/
 void generateMystery( std::vector<std::string> list_who, std::vector<std::string> list_where, std::vector<std::string> list_what, int tot_hints )
@@ -358,7 +386,8 @@ void generateMystery( std::vector<std::string> list_who, std::vector<std::string
  *  
  * \brief ROS node main - cluedo_oracle
  * 
- * ... more details
+ * find the parameters, load data, generate the mystery, setup the channels,
+ * then spin. 
  * 
  ***********************************************/
 int main( int argc, char* argv[] )
