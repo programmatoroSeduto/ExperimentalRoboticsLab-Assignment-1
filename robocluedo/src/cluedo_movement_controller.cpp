@@ -13,7 +13,7 @@
  * <ul>
  *     <li>
  * 			<i> \ref PUBLISHER_HINT_SIGNAL</i> : <a href="http://docs.ros.org/en/api/std_msgs/html/msg/Empty.html">std_msgs::Empty</a> <br>
- * 			... description 
+ * 			... description <br><br>
  * 		</li>
  * </ul>
  * 
@@ -21,7 +21,7 @@
  * <ul>
  *     <li>
  * 			<i> \ref SERVICE_GO_TO</i> : GoTo.srv <br>
- * 			... description 
+ * 			... description <br><br>
  * 		</li>
  * </ul>
  * 

@@ -1,3 +1,16 @@
+
+/********************************************//**
+ *  
+ * \file armor_cluedo.h
+ * \brief additional aRMOR C++ interface
+ * \authors Francesco Ganci (S4143910)
+ * \version v1.0
+ * 
+ * @see ArmorCluedo
+ * @see ArmorTools
+ * 
+ ***********************************************/
+
 #ifndef __H_ARMOR_CLUEDO_H__
 #define __H_ARMOR_CLUEDO_H__
 

@@ -1,6 +1,6 @@
 <map id="/root/ws_experimental_robotics_lab_assignment_1/src/assignment_1/robocluedo/include/armor_tools/armor_cluedo.h" name="/root/ws_experimental_robotics_lab_assignment_1/src/assignment_1/robocluedo/include/armor_tools/armor_cluedo.h">
-<area shape="rect" id="node1" title=" " alt="" coords="1145,5,1405,76"/>
-<area shape="rect" id="node2" href="$armor__tools_8h.html" title=" " alt="" coords="825,124,1020,151"/>
+<area shape="rect" id="node1" title="additional aRMOR C++ interface" alt="" coords="1145,5,1405,76"/>
+<area shape="rect" id="node2" href="$armor__tools_8h.html" title="base interface with aRMOR service" alt="" coords="825,124,1020,151"/>
 <area shape="rect" id="node8" title=" " alt="" coords="1199,206,1279,233"/>
 <area shape="rect" id="node9" title=" " alt="" coords="1303,206,1366,233"/>
 <area shape="rect" id="node11" title=" " alt="" coords="1391,206,1449,233"/>

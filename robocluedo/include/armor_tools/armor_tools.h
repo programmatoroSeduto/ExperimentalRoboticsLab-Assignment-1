@@ -1,3 +1,16 @@
+
+/********************************************//**
+ *  
+ * \file armor_tools.h
+ * \brief base interface with aRMOR service
+ * \authors Francesco Ganci (S4143910)
+ * \version v1.0
+ * 
+ * @see ArmorCluedo
+ * @see ArmorTools
+ * 
+ ***********************************************/
+
 #ifndef __H_ARMOR_TOOLS_H__
 #define __H_ARMOR_TOOLS_H__
 

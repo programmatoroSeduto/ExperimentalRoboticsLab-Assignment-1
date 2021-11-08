@@ -13,7 +13,7 @@
  * <ul>
  *     <li>
  * 			<i> \ref PUBLISHER_HINT </i> : Hint.msg <br>
- * 			... description 
+ * 			... description <br><br>
  * 		</li>
  * </ul>
  * 
@@ -21,7 +21,7 @@
  * <ul>
  *     <li>
  * 			<i> \ref SUBSCRIBER_HINT_SIGNAL </i> : <a href="http://docs.ros.org/en/api/std_msgs/html/msg/Empty.html">std_msgs::Empty</a> <br>
- * 			... description 
+ * 			descrivi direttamente, tanto il nodo movement_controller va buttato via <br><br>
  * 		</li>
  * </ul>
  * 
@@ -29,7 +29,7 @@
  * <ul>
  *     <li>
  * 			<i> \ref SERVICE_CHECK_SOLUTION </i> : CheckSolution.srv <br>
- * 			... description 
+ * 			... description <br><br>
  * 		</li>
  * </ul>
  * 
@@ -37,19 +37,19 @@
  * <ul>
  * 		<li>
  * 			[GET] <i> \ref PATH_PARAMETER_SERVER_WHERE </i> : string <br>
- * 			... description 
+ * 			... description <br><br>
  * 		</li>
  * 		<li>
  * 			[GET] <i> \ref PATH_PARAMETER_SERVER_WHO </i> : string <br>
- * 			... description 
+ * 			... description <br><br>
  * 		</li>
  * 		<li>
  * 			[GET] <i> \ref PATH_PARAMETER_SERVER_WHAT </i> : string <br>
- * 			... description 
+ * 			... description <br><br>
  * 		</li>
  * 		<li>
  * 			[GET, optional] <i>/cluedo_max_hypotheses</i> : string <br>
- * 			... description 
+ * 			... description <br><br>
  * 		</li>
  * </ul>
  * 

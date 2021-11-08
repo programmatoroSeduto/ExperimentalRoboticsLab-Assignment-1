@@ -13,7 +13,7 @@
  * <ul>
  *     <li>
  * 			<i> \ref SERVICE_RANDOM_ROOM </i> : RandomRoom.srv <br>
- * 			... description 
+ * 			... description <br><br>
  * 		</li>
  * </ul>
  * 
@@ -21,7 +21,7 @@
  * <ul>
  * 		<li>
  * 			[GET] <i> \ref PATH_PARAMETER_SERVER_WHERE </i> : string <br>
- * 			... description 
+ * 			... description <br><br>
  * 		</li>
  * </ul>
  * 

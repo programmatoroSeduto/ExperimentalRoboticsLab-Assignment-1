@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['updateontology_246',['UpdateOntology',['../class_armor_tools.html#a0ddf26f9a388377a36263344b1cbf39f',1,'ArmorTools']]]
+  ['_7earmorcluedo_241',['~ArmorCluedo',['../class_armor_cluedo.html#a1a6e15d936d2d6e1279d86e5dbaa9c22',1,'ArmorCluedo']]],
+  ['_7earmortools_242',['~ArmorTools',['../class_armor_tools.html#a80eb8d13d6f5b61951ae53a764c3bb03',1,'ArmorTools']]]
 ];

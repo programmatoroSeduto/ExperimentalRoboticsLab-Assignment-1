@@ -1,19 +1,5 @@
 var searchData=
 [
-  ['charge_250',['charge',['../namespacerobocluedo__main.html#a82ce720e4a4367b5a43594ca601d15d3',1,'robocluedo_main']]],
-  ['charge_5fready_251',['charge_ready',['../namespacerobocluedo__main.html#a13b5ce5e0d04af639dbc276cd61cdfe7',1,'robocluedo_main']]],
-  ['client_5fadd_5fhint_252',['client_add_hint',['../namespacerobocluedo__main.html#a497ecaab5c8a246bcc0c62ad67c38451',1,'robocluedo_main']]],
-  ['client_5fbackup_253',['client_backup',['../namespacerobocluedo__main.html#a8b4ca7ce996ef720df2034ed6825b76a',1,'robocluedo_main']]],
-  ['client_5fcheck_5fsolution_254',['client_check_solution',['../namespacerobocluedo__main.html#ac018aa8fc026c97b219de50722040edd',1,'robocluedo_main']]],
-  ['client_5ffind_5fconsistent_5fhyp_255',['client_find_consistent_hyp',['../namespacerobocluedo__main.html#af76afddc4b1764d131d59cfc682e7cd0',1,'robocluedo_main']]],
-  ['client_5fgo_5fto_256',['client_go_to',['../namespacerobocluedo__main.html#aaad486875074dfe10229298c1bd85298',1,'robocluedo_main']]],
-  ['client_5fname_5fadd_5fhint_257',['client_name_add_hint',['../namespacerobocluedo__main.html#ab94d9c64485fb40f0e0ad2f5fd222b8c',1,'robocluedo_main']]],
-  ['client_5fname_5fbackup_258',['client_name_backup',['../namespacerobocluedo__main.html#a18e8e51edd2080cab29d38e131ece73b',1,'robocluedo_main']]],
-  ['client_5fname_5fcheck_5fsolution_259',['client_name_check_solution',['../namespacerobocluedo__main.html#a35b715635aabab1cb8da5d9067b084ae',1,'robocluedo_main']]],
-  ['client_5fname_5ffind_5fconsistent_5fhyp_260',['client_name_find_consistent_hyp',['../namespacerobocluedo__main.html#a5f7f17075ca8d7183d7f15e5962d5cb6',1,'robocluedo_main']]],
-  ['client_5fname_5fgo_5fto_261',['client_name_go_to',['../namespacerobocluedo__main.html#a2aaf7f0e3d1afbfad3a13012a0bd547c',1,'robocluedo_main']]],
-  ['client_5fname_5frandom_5ftarget_262',['client_name_random_target',['../namespacerobocluedo__main.html#a6911608bb4ad2bb738f26acddc46745d',1,'robocluedo_main']]],
-  ['client_5fname_5fwrong_5fhyp_263',['client_name_wrong_hyp',['../namespacerobocluedo__main.html#ad3d58dc4485de4f2723a8e1e882c7bdd',1,'robocluedo_main']]],
-  ['client_5frandom_5ftarget_264',['client_random_target',['../namespacerobocluedo__main.html#a3f1b98fad8141ead02a94b0c3f2dbd47',1,'robocluedo_main']]],
-  ['client_5fwrong_5fhyp_265',['client_wrong_hyp',['../namespacerobocluedo__main.html#abefeecfcb2595550a474330749ede552',1,'robocluedo_main']]]
+  ['charge_244',['charge',['../namespacerobocluedo__main.html#a82ce720e4a4367b5a43594ca601d15d3',1,'robocluedo_main']]],
+  ['charge_5fready_245',['charge_ready',['../namespacerobocluedo__main.html#a13b5ce5e0d04af639dbc276cd61cdfe7',1,'robocluedo_main']]]
 ];

@@ -1,9 +1,9 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
 <area shape="rect" id="node1" title=" " alt="" coords="5,177,61,203"/>
-<area shape="rect" id="node2" href="$classrobocluedo__main_1_1robocluedo__charge.html" title=" " alt="" coords="109,5,320,47"/>
-<area shape="rect" id="node3" href="$classrobocluedo__main_1_1robocluedo__listening__for__hints.html" title=" " alt="" coords="109,71,320,112"/>
-<area shape="rect" id="node4" href="$classrobocluedo__main_1_1robocluedo__moving.html" title=" " alt="" coords="109,136,320,177"/>
-<area shape="rect" id="node5" href="$classrobocluedo__main_1_1robocluedo__random__target.html" title=" " alt="" coords="109,201,320,243"/>
-<area shape="rect" id="node6" href="$classrobocluedo__main_1_1robocluedo__reasoning.html" title=" " alt="" coords="109,267,320,308"/>
-<area shape="rect" id="node7" href="$classrobocluedo__main_1_1robocluedo__update__ontology.html" title=" " alt="" coords="109,332,320,373"/>
+<area shape="rect" id="node2" href="$classrobocluedo__main_1_1robocluedo__charge.html" title="implementation of the state charge." alt="" coords="109,5,320,47"/>
+<area shape="rect" id="node3" href="$classrobocluedo__main_1_1robocluedo__listening__for__hints.html" title="implementation of the state listening_for_hints." alt="" coords="109,71,320,112"/>
+<area shape="rect" id="node4" href="$classrobocluedo__main_1_1robocluedo__moving.html" title="implementation of the state moving." alt="" coords="109,136,320,177"/>
+<area shape="rect" id="node5" href="$classrobocluedo__main_1_1robocluedo__random__target.html" title="implementation of the starting state random_target." alt="" coords="109,201,320,243"/>
+<area shape="rect" id="node6" href="$classrobocluedo__main_1_1robocluedo__reasoning.html" title="implementation of the state reasoning." alt="" coords="109,267,320,308"/>
+<area shape="rect" id="node7" href="$classrobocluedo__main_1_1robocluedo__update__ontology.html" title="implementation of the state update_ontology." alt="" coords="109,332,320,373"/>
 </map>

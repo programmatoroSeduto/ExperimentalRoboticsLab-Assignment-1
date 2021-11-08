@@ -13,19 +13,19 @@
  * <ul>
  *     <li>
  * 			<i>/cluedo_armor/add_hint</i> : AddHint.srv <br>
- * 			... description 
+ * 			... description <br><br>
  * 		</li>
  * 		<li>
  * 			<i>/cluedo_armor/find_consistent_h</i> : FindConsistentHypotheses.srv <br>
- * 			... description 
+ * 			... description <br><br>
  * 		</li>
  * 		<li>
  * 			<i>/cluedo_armor/wrong_hypothesis</i> : DiscardHypothesis.srv <br>
- * 			... description 
+ * 			... description <br><br>
  * 		</li>
  * 		<li>
  * 			<i>/cluedo_armor/backup</i> : <a href="http://docs.ros.org/en/api/std_srvs/html/srv/Trigger.html">std_srvs::Trigger</a> <br>
- * 			... description 
+ * 			... description <br><br>
  * 		</li>
  * </ul>
  * 
@@ -40,11 +40,11 @@
  * <ul>
  * 		<li>
  * 			[GET] <i> \ref ONTOLOGY_PARAM </i> : string <br>
- * 			pth of the ontology
+ * 			path of the ontology <br><br>
  * 		</li>
  * 		<li>
  * 			[GET] <i> \ref PARAM_ONTOLOGY_BACKUP_PATH </i> : string <br>
- * 			default name for the backup ontology file
+ * 			default name for the backup ontology file <br><br>
  * 		</li>
  * </ul>
  * 
