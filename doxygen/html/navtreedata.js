@@ -24,7 +24,7 @@ var NAVTREE =
 [
   [ "RCL - RoboCLuedo", "index.html", [
     [ "RoboCLuedo", "index.html#autotoc_md0", null ],
-    [ "Todo List", "a00089.html", null ],
+    [ "Todo List", "a00098.html", null ],
     [ "Packages", "namespaces.html", [
       [ "Packages", "namespaces.html", "namespaces_dup" ],
       [ "Package Functions", "namespacemembers.html", [
@@ -59,7 +59,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "a00014.html",
-"namespacemembers_vars.html"
+"functions.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

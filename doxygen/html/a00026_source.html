@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RCL - RoboCLuedo: /root/ws_experimental_robotics_lab_assignment_1/src/assignment_1/robocluedo/config/parameters.launch Source File</title>
+<title>RCL - RoboCLuedo: /root/ws_experimental_robotics_lab_assignment_1/src/assignment_1/robocluedo/docs/examples/example_armor_tools_2.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -85,31 +85,50 @@ $(document).ready(function(){initNavTree('a00026_source.html',''); initResizable
 
 <div class="header">
   <div class="headertitle">
-<div class="title">parameters.launch</div>  </div>
+<div class="title">example_armor_tools_2.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="a00026.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;&lt;launch&gt;</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;    &lt;param name=&quot;cluedo_path_where&quot; type=&quot;string&quot; value=&quot;$(find robocluedo)/config/cluedo_items/cluedo_where.txt&quot; /&gt;</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;    &lt;param name=&quot;cluedo_path_what&quot; type=&quot;string&quot; value=&quot;$(find robocluedo)/config/cluedo_items/cluedo_what.txt&quot; /&gt;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    &lt;param name=&quot;cluedo_path_who&quot; type=&quot;string&quot; value=&quot;$(find robocluedo)/config/cluedo_items/cluedo_who.txt&quot; /&gt;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    &lt;param name=&quot;cluedo_max_hypotheses&quot; type=&quot;int&quot; value=&quot;15&quot; /&gt;</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    &lt;param name=&quot;cluedo_path_owlfile&quot; type=&quot;string&quot; value=&quot;$(find robocluedo)/config/cluedo_owl_ontology/cluedo_ontology.owl&quot; /&gt;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    &lt;param name=&quot;cluedo_path_owlfile_backup&quot; type=&quot;string&quot; value=&quot;$(find robocluedo)/config/cluedo_owl_ontology/last_ontology/cluedo_last_ontology.owl&quot; /&gt;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;&lt;/launch&gt;</div>
+<a href="a00026.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;ros/ros.h&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="a00044.html">armor_tools/armor_tools.h</a>&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;armor_msgs/ArmorDirective.h&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;armor_msgs/ArmorDirectiveReq.h&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;armor_msgs/ArmorDirectiveRes.h&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="a00026.html#a0ddf1224851353fc92bfbff6f499fa97">   23</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="a00026.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>( <span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[] )</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    ros::init( argc, argv, <span class="stringliteral">&quot;example_armor_tools_2&quot;</span> );</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    ros::NodeHandle nh;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="comment">// preparing the client</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="a00107.html">ArmorTools</a> armor( );</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordflow">if</span>( !armor.<a class="code" href="a00107.html#ad98c8e33df5d1ef3e4c69051ac0dd7ab">ConnectAndLoad</a>( <span class="stringliteral">&quot;/root/ontologies/civetta_ontology.owl&quot;</span> ) )</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="comment">// something went wrong...</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    }</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">// call aRMOR</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    armor.<a class="code" href="a00107.html#a6033ed90283ec6c78a2bc2b0106d0461">SendCommand</a>( <span class="stringliteral">&quot;ADD&quot;</span>, <span class="stringliteral">&quot;IND&quot;</span>, <span class="stringliteral">&quot;CLASS&quot;</span>, <span class="stringliteral">&quot;pizza&quot;</span>, <span class="stringliteral">&quot;WEAPON&quot;</span> );</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="comment">// REMEMBER TO UPDATE after the callings!</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    armor.<a class="code" href="a00107.html#a0ddf26f9a388377a36263344b1cbf39f">UpdateOntology</a>( );</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aa00023_html_a174153e3205e75e555f4184cac41b439"><div class="ttname"><a href="a00023.html#a174153e3205e75e555f4184cac41b439">add_executable</a></div><div class="ttdeci">armor_tools add_executable(cluedo_random_room src/cluedo_random_room.cpp) target_link_libraries(cluedo_random_room $</div><div class="ttdef"><b>Definition:</b> <a href="a00023_source.html#l00036">CMakeLists.txt:36</a></div></div>
-<div class="ttc" id="aa00023_html_a091177db58a2c86dcd768de92bbcb740"><div class="ttname"><a href="a00023.html#a091177db58a2c86dcd768de92bbcb740">add_library</a></div><div class="ttdeci">add_library(armor_tools src/armor_tools/armor_tools.cpp) target_link_libraries(armor_tools $</div><div class="ttdef"><b>Definition:</b> <a href="a00023_source.html#l00030">CMakeLists.txt:30</a></div></div>
-<div class="ttc" id="aa00090_html"><div class="ttname"><a href="a00090.html">robocluedo_main</a></div><div class="ttdef"><b>Definition:</b> <a href="a00044_source.html#l00001">robocluedo_main.py:1</a></div></div>
-<div class="ttc" id="aa00023_html_a5eb43f92bf8249e3768e4df1dcada102"><div class="ttname"><a href="a00023.html#a5eb43f92bf8249e3768e4df1dcada102">cmake_minimum_required</a></div><div class="ttdeci">cmake_minimum_required(VERSION 3.0.2) project(robocluedo) find_package(catkin REQUIRED COMPONENTS roscpp rospy std_msgs std_srvs message_generation armor_msgs robocluedo_msgs) catkin_package(INCLUDE_DIRS include LIBRARIES armor_tools CATKIN_DEPENDS roscpp rospy std_msgs armor_msgs) include_directories(include $</div><div class="ttdef"><b>Definition:</b> <a href="a00023_source.html#l00001">CMakeLists.txt:1</a></div></div>
-<div class="ttc" id="aa00023_html_aa19707595997be6d45349c83f4570793"><div class="ttname"><a href="a00023.html#aa19707595997be6d45349c83f4570793">catkin_install_python</a></div><div class="ttdeci">armor_tools armor_cluedo catkin_install_python(PROGRAMS scripts/robocluedo_main.py scripts/test_cluedo_random_room.py scripts/test_cluedo_armor_interface.py scripts/test_cluedo_oracle.py scripts/test_oracle_plus_interface.py DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}) install(TARGETS armor_tools armor_cluedo ARCHIVE DESTINATION $</div><div class="ttdef"><b>Definition:</b> <a href="a00023_source.html#l00058">CMakeLists.txt:58</a></div></div>
-<div class="ttc" id="aa00053_html_a85e8c9731bfed7d2e82df47750b9c19e"><div class="ttname"><a href="a00053.html#a85e8c9731bfed7d2e82df47750b9c19e">DiscardHypothesis</a></div><div class="ttdeci">bool DiscardHypothesis(robocluedo_msgs::DiscardHypothesis::Request &amp;tag, robocluedo_msgs::DiscardHypothesis::Response &amp;success)</div><div class="ttdoc">implementation of service SERVICE_INTERFACE_WRONG_HYPOTHESIS</div><div class="ttdef"><b>Definition:</b> <a href="a00053_source.html#l00258">cluedo_armor_interface.cpp:258</a></div></div>
+<div class="ttc" id="aa00044_html"><div class="ttname"><a href="a00044.html">armor_tools.h</a></div><div class="ttdoc">A minimal C++ client for aRMOR.</div></div>
+<div class="ttc" id="aa00107_html_ad98c8e33df5d1ef3e4c69051ac0dd7ab"><div class="ttname"><a href="a00107.html#ad98c8e33df5d1ef3e4c69051ac0dd7ab">ArmorTools::ConnectAndLoad</a></div><div class="ttdeci">bool ConnectAndLoad(std::string path, std::string uri=ARMOR_DEFAULT_URI, bool manipulationFlag=true, std::string reasoner=ARMOR_DEFAULT_REASONER, bool buffered_reasoner=true)</div><div class="ttdoc">connect to the server and load the ontology from file.</div><div class="ttdef"><b>Definition:</b> <a href="a00059_source.html#l00213">armor_tools.cpp:213</a></div></div>
+<div class="ttc" id="aa00107_html_a6033ed90283ec6c78a2bc2b0106d0461"><div class="ttname"><a href="a00107.html#a6033ed90283ec6c78a2bc2b0106d0461">ArmorTools::SendCommand</a></div><div class="ttdeci">bool SendCommand(std::string command, std::string first_spec=&quot;&quot;, std::string second_spec=&quot;&quot;, std::string arg1=&quot;&quot;, std::string arg2=&quot;&quot;, std::string arg3=&quot;&quot;, std::string arg4=&quot;&quot;, std::string arg5=&quot;&quot;, bool printRequest=false)</div><div class="ttdoc">fill in a command and send it to aRMOR</div><div class="ttdef"><b>Definition:</b> <a href="a00059_source.html#l00360">armor_tools.cpp:360</a></div></div>
+<div class="ttc" id="aa00026_html_a0ddf1224851353fc92bfbff6f499fa97"><div class="ttname"><a href="a00026.html#a0ddf1224851353fc92bfbff6f499fa97">main</a></div><div class="ttdeci">int main(int argc, char *argv[])</div><div class="ttdef"><b>Definition:</b> <a href="a00026_source.html#l00023">example_armor_tools_2.cpp:23</a></div></div>
+<div class="ttc" id="aa00107_html_a0ddf26f9a388377a36263344b1cbf39f"><div class="ttname"><a href="a00107.html#a0ddf26f9a388377a36263344b1cbf39f">ArmorTools::UpdateOntology</a></div><div class="ttdeci">bool UpdateOntology()</div><div class="ttdoc">send the command REASON</div><div class="ttdef"><b>Definition:</b> <a href="a00059_source.html#l00246">armor_tools.cpp:246</a></div></div>
+<div class="ttc" id="aa00107_html"><div class="ttname"><a href="a00107.html">ArmorTools</a></div><div class="ttdoc">A minimal C++ client for aRMOR.</div><div class="ttdef"><b>Definition:</b> <a href="a00044_source.html#l00090">armor_tools.h:90</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_ec26e8507ab2869084237022eb595cc7.html">robocluedo</a></li><li class="navelem"><a class="el" href="dir_40f87a425195e3c0c0f8ad4dec964181.html">config</a></li><li class="navelem"><a class="el" href="a00026.html">parameters.launch</a></li>
-    <li class="footer">Generated on Mon Nov 8 2021 16:03:13 for RCL - RoboCLuedo by
+    <li class="navelem"><a class="el" href="dir_ec26e8507ab2869084237022eb595cc7.html">robocluedo</a></li><li class="navelem"><a class="el" href="dir_de323672ed973e86de5e52a85df0cc0b.html">docs</a></li><li class="navelem"><a class="el" href="dir_c1ce3cba60af0466b6677e615d7174e7.html">examples</a></li><li class="navelem"><a class="el" href="a00026.html">example_armor_tools_2.cpp</a></li>
+    <li class="footer">Generated on Mon Nov 8 2021 18:19:43 for RCL - RoboCLuedo by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

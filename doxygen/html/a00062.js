@@ -1,14 +1,22 @@
 var a00062 =
 [
     [ "LOGSQUARE", "a00062.html#a36b268389a5b36ab752d1e59f1fa63f0", null ],
-    [ "OUTLOG", "a00062.html#a186fe566fd11435e6aa34702dd79cac1", null ],
-    [ "PATH_PARAMETER_SERVER_WHERE", "a00062.html#a5a5c61b838d2950098341254ca9eca1a", null ],
-    [ "SERVICE_RANDOM_ROOM", "a00062.html#aeb68a7701a2e29df2646553ae5f0e49b", null ],
-    [ "Choose", "a00062.html#a5860d956cf9531e4209e63284e3231c4", null ],
-    [ "ChooseRoomRandom", "a00062.html#acb2cbc45ef5cb59e465ab42a1f3c4d51", null ],
-    [ "ImportNamesOfRooms", "a00062.html#a72be2cfb7017d316b3fc9409ee0fd2e1", null ],
+    [ "ONTOLOGY_PARAM", "a00062.html#a1488d09dc82faa87c57e8d9a79bbe1f1", null ],
+    [ "OUTLABEL", "a00062.html#a83c0c69e3e513938dbd4e22b0dda7643", null ],
+    [ "OUTLOG", "a00062.html#a3cebd08e2e9a598e7cd779a51734719e", null ],
+    [ "PARAM_ONTOLOGY_BACKUP_PATH", "a00062.html#a311d6790cb54f184fa8fa02120ebee44", null ],
+    [ "SERVICE_INTERFACE_ADD_HINT", "a00062.html#a9e68b107365153366ec52986156f2595", null ],
+    [ "SERVICE_INTERFACE_FIND_CONSISTENT_HYP", "a00062.html#a43b5b7d093b3ed913fa91b74684ff821", null ],
+    [ "SERVICE_INTERFACE_SAVE_ONTOLOGY", "a00062.html#acc185c28a4bd121102b73f42c59b6939", null ],
+    [ "SERVICE_INTERFACE_WRONG_HYPOTHESIS", "a00062.html#a7abfca1c1aab551b07b78ca76440683a", null ],
+    [ "SS", "a00062.html#af4f289b8ad162b609975620166e3d407", null ],
+    [ "SSS", "a00062.html#a7a571e6f0c662a683b2741f0e4cd4c26", null ],
+    [ "DiscardHypothesis", "a00062.html#a85e8c9731bfed7d2e82df47750b9c19e", null ],
+    [ "fileExist", "a00062.html#a425e0b3a1e6c60b7ed0330df24c67e66", null ],
     [ "main", "a00062.html#a0ddf1224851353fc92bfbff6f499fa97", null ],
-    [ "randgen", "a00062.html#a81aca1dae12d142b85f465f00586b727", null ],
-    [ "rng", "a00062.html#adbe79e918414b2480135e3a7871b44ac", null ],
-    [ "rooms", "a00062.html#a3e9faf1e599933e7e3653aa772c5bc0f", null ]
+    [ "PerformDifferenceBetween", "a00062.html#a30c8d0c07497876eeb7b5845bab11d19", null ],
+    [ "ServiceAddHint", "a00062.html#a4867095aa20f38de61e518e16253520b", null ],
+    [ "ServiceBackupOntology", "a00062.html#a66c612700258bd528a8d54035044b4ec", null ],
+    [ "ServiceFindConsistentHypotheses", "a00062.html#a7ac3004a3cbe78bf0b2c234d11354c43", null ],
+    [ "armor", "a00062.html#ad59148db06b8c04c8aa6113e572c1654", null ]
 ];

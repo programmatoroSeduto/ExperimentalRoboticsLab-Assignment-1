@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RCL - RoboCLuedo: /root/ws_experimental_robotics_lab_assignment_1/src/assignment_1/robocluedo/launch/run_robocluedo.launch Source File</title>
+<title>RCL - RoboCLuedo: /root/ws_experimental_robotics_lab_assignment_1/src/assignment_1/robocluedo/include/armor_tools/armor_cluedo.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -85,36 +85,145 @@ $(document).ready(function(){initNavTree('a00041_source.html',''); initResizable
 
 <div class="header">
   <div class="headertitle">
-<div class="title">run_robocluedo.launch</div>  </div>
+<div class="title">armor_cluedo.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="a00041.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;&lt;launch&gt;</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;    </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;    &lt;!-- include all the parameters for running the system --&gt;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    &lt;include file=&quot;$(find robocluedo)/config/parameters.launch&quot;&gt;&lt;/include&gt;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    &lt;!-- first of all, load the ontology and the interface --&gt;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    &lt;node pkg=&quot;armor&quot; type=&quot;execute&quot; name=&quot;armor_service&quot; args=&quot;it.emarolab.armor.ARMORMainService&quot; required=&quot;true&quot;/&gt;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    &lt;node pkg=&quot;robocluedo&quot; type=&quot;cluedo_armor_interface&quot; name=&quot;cluedo_armor_interface&quot; required=&quot;true&quot;/&gt;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    &lt;!-- auxiliary nodes --&gt;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    &lt;node pkg=&quot;robocluedo&quot; type=&quot;cluedo_movement_controller&quot; name=&quot;cluedo_movement_controller&quot; required=&quot;true&quot;/&gt;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    &lt;node pkg=&quot;robocluedo&quot; type=&quot;cluedo_random_room&quot; name=&quot;cluedo_random_room&quot; required=&quot;true&quot;/&gt;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    &lt;!-- launch the oracle --&gt;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    &lt;node pkg=&quot;robocluedo&quot; type=&quot;cluedo_oracle&quot; name=&quot;cluedo_oracle&quot; output=&quot;screen&quot; required=&quot;true&quot;/&gt;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    &lt;!-- finally, launch the whole system --&gt;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    &lt;node pkg=&quot;robocluedo&quot; type=&quot;robocluedo_main.py&quot; name=&quot;robocluedo_main&quot; output=&quot;screen&quot; required=&quot;true&quot;/&gt;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;&lt;/launch&gt;</div>
+<a href="a00041.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#ifndef __H_ARMOR_CLUEDO_H__</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define __H_ARMOR_CLUEDO_H__</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="a00044.html">armor_tools/armor_tools.h</a>&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="a00103.html">   54</a></span>&#160;<span class="keyword">class </span><a class="code" href="a00103.html">ArmorCluedo</a> : <span class="keyword">public</span> <a class="code" href="a00107.html">ArmorTools</a></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;{</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <a class="code" href="a00103.html#a87fe995ebd26c4618a4b962e47dd3a40">ArmorCluedo</a>( <span class="keywordtype">bool</span> debugmode = <a class="code" href="a00044.html#a15b43f9d816bb354831481b25c069d2e">ARMOR_DEFAULT_DEBUGMODE</a> );</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="a00103.html#a1a6e15d936d2d6e1279d86e5dbaa9c22">~ArmorCluedo</a>( );</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="a00103.html#a66ce2d9f5c665ab14761233b32ab1ec6">Init</a>( std::string ontologyPath );</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="comment">// ======== individuals and classes</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="comment">//    methods for adding individuals to the ontology</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="a00103.html#ad29930fec7803aed87b7244e73b98bff">AddIndiv</a>( std::string indivname, std::string classname, <span class="keywordtype">bool</span> makeDisjoint = <span class="keyword">true</span> );</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    </div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    std::vector&lt;std::string&gt; <a class="code" href="a00103.html#a49216d015f97a9d510406a90e8c1fe30">GetClassOfIndiv</a>( std::string indivname, <span class="keywordtype">bool</span> deep );</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    </div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    </div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    std::vector&lt;std::string&gt; <a class="code" href="a00103.html#afef8229a755f495f008bfe4630a745fa">GetIndivOfClass</a>( std::string classname );</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    </div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="a00103.html#a2086082362b61607798d6f968c263f9e">ExistsIndiv</a>( std::string indivname );</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    </div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    </div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    </div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="comment">// ======== properties</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <span class="comment">//    methods for checking and adding properties between individuals</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    </div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="a00103.html#ad179234fd676874a09c267abb416d2da">SetObjectProperty</a>( std::string prop, std::string Aelem, std::string Belem );</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    </div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    </div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160; </div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    std::vector&lt;std::string&gt; <a class="code" href="a00103.html#a580aef3f0bf9dd1affd06c588e731ff5">GetValuedOfIndiv</a>( std::string prop, std::string indivname );</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    </div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    </div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    </div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    <span class="comment">// ======== hypotheses</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <span class="comment">//    methods for formulating and working with hypotheses</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    </div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160; </div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    std::vector&lt;std::string&gt; <a class="code" href="a00103.html#aaf1832ed634a017c48e26c48f58c5f68">FindCompleteHypotheses</a>( );</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    </div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    </div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160; </div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    std::vector&lt;std::string&gt; <a class="code" href="a00103.html#ab278ac3aaffc4c6aceaf3bfb8d5186af">FindInconsistentHypotheses</a>( );</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    </div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    </div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160; </div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="a00103.html#a4ae659375e7a6d9564973718ece248e2">RemoveHypothesis</a>( std::string hypTag );</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    </div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    </div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    </div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <span class="comment">// ======== utilities</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <span class="comment">//    general-purpose methods</span></div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    </div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160; </div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    std::string <a class="code" href="a00103.html#a6f824ec2cf4759952145f7f1d11e516c">FilterValue</a>( std::string raw );</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    </div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    </div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160; </div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    std::vector&lt;std::string&gt; <a class="code" href="a00103.html#a76a60417cfc01397a6db462904139873">FilterVector</a>( std::vector&lt;std::string&gt;&amp; itemlist );</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    </div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    <span class="comment">// all the entities added</span></div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    std::vector&lt;std::string&gt; individuals;</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    </div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    <span class="comment">// removed hypotheses</span></div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    std::vector&lt;std::string&gt; DiscardHypotheses;</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    </div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <span class="comment">// check if a string exists in one array</span></div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    <span class="keywordtype">bool</span> ExistsItem( std::string item, <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; container );</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    </div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    <span class="comment">// track individual</span></div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    <span class="keywordtype">bool</span> TrackIndiv( std::string indivname );</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    </div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    <span class="comment">// disjoint all the individuals</span></div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <span class="keywordtype">void</span> DisjointAllIndiv( std::string from );</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    </div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    <span class="comment">// search for a specific iterator on a vector</span></div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    <span class="comment">//   it return vector::end() if the element is not contained</span></div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    std::vector&lt;std::string&gt;::iterator GetPositionOf( std::string tag, std::vector&lt;std::string&gt;&amp; list );</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;};</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160; </div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="aa00103_html"><div class="ttname"><a href="a00103.html">ArmorCluedo</a></div><div class="ttdoc">additional utilities for aRMOR</div><div class="ttdef"><b>Definition:</b> <a href="a00041_source.html#l00054">armor_cluedo.h:54</a></div></div>
+<div class="ttc" id="aa00044_html"><div class="ttname"><a href="a00044.html">armor_tools.h</a></div><div class="ttdoc">A minimal C++ client for aRMOR.</div></div>
+<div class="ttc" id="aa00044_html_a15b43f9d816bb354831481b25c069d2e"><div class="ttname"><a href="a00044.html#a15b43f9d816bb354831481b25c069d2e">ARMOR_DEFAULT_DEBUGMODE</a></div><div class="ttdeci">#define ARMOR_DEFAULT_DEBUGMODE</div><div class="ttdef"><b>Definition:</b> <a href="a00044_source.html#l00034">armor_tools.h:34</a></div></div>
+<div class="ttc" id="aa00103_html_a580aef3f0bf9dd1affd06c588e731ff5"><div class="ttname"><a href="a00103.html#a580aef3f0bf9dd1affd06c588e731ff5">ArmorCluedo::GetValuedOfIndiv</a></div><div class="ttdeci">std::vector&lt; std::string &gt; GetValuedOfIndiv(std::string prop, std::string indivname)</div><div class="ttdoc">get the values of a property related to a gven individual</div><div class="ttdef"><b>Definition:</b> <a href="a00056_source.html#l00143">armor_cluedo.cpp:143</a></div></div>
+<div class="ttc" id="aa00103_html_ad179234fd676874a09c267abb416d2da"><div class="ttname"><a href="a00103.html#ad179234fd676874a09c267abb416d2da">ArmorCluedo::SetObjectProperty</a></div><div class="ttdeci">bool SetObjectProperty(std::string prop, std::string Aelem, std::string Belem)</div><div class="ttdoc">set a property true</div><div class="ttdef"><b>Definition:</b> <a href="a00056_source.html#l00124">armor_cluedo.cpp:124</a></div></div>
+<div class="ttc" id="aa00103_html_ad29930fec7803aed87b7244e73b98bff"><div class="ttname"><a href="a00103.html#ad29930fec7803aed87b7244e73b98bff">ArmorCluedo::AddIndiv</a></div><div class="ttdeci">bool AddIndiv(std::string indivname, std::string classname, bool makeDisjoint=true)</div><div class="ttdoc">add an individual to the ontology</div><div class="ttdef"><b>Definition:</b> <a href="a00056_source.html#l00053">armor_cluedo.cpp:53</a></div></div>
+<div class="ttc" id="aa00103_html_aaf1832ed634a017c48e26c48f58c5f68"><div class="ttname"><a href="a00103.html#aaf1832ed634a017c48e26c48f58c5f68">ArmorCluedo::FindCompleteHypotheses</a></div><div class="ttdeci">std::vector&lt; std::string &gt; FindCompleteHypotheses()</div><div class="ttdoc">find all the complete hypotheses</div><div class="ttdef"><b>Definition:</b> <a href="a00056_source.html#l00158">armor_cluedo.cpp:158</a></div></div>
+<div class="ttc" id="aa00103_html_a6f824ec2cf4759952145f7f1d11e516c"><div class="ttname"><a href="a00103.html#a6f824ec2cf4759952145f7f1d11e516c">ArmorCluedo::FilterValue</a></div><div class="ttdeci">std::string FilterValue(std::string raw)</div><div class="ttdoc">rewrite a string like '&lt;uri#value&gt;' into 'value'</div><div class="ttdef"><b>Definition:</b> <a href="a00056_source.html#l00216">armor_cluedo.cpp:216</a></div></div>
+<div class="ttc" id="aa00103_html_a66ce2d9f5c665ab14761233b32ab1ec6"><div class="ttname"><a href="a00103.html#a66ce2d9f5c665ab14761233b32ab1ec6">ArmorCluedo::Init</a></div><div class="ttdeci">bool Init(std::string ontologyPath)</div><div class="ttdoc">initizalize the interface</div><div class="ttdef"><b>Definition:</b> <a href="a00056_source.html#l00034">armor_cluedo.cpp:34</a></div></div>
+<div class="ttc" id="aa00103_html_afef8229a755f495f008bfe4630a745fa"><div class="ttname"><a href="a00103.html#afef8229a755f495f008bfe4630a745fa">ArmorCluedo::GetIndivOfClass</a></div><div class="ttdeci">std::vector&lt; std::string &gt; GetIndivOfClass(std::string classname)</div><div class="ttdoc">find the individuals belonging to a class</div><div class="ttdef"><b>Definition:</b> <a href="a00056_source.html#l00090">armor_cluedo.cpp:90</a></div></div>
+<div class="ttc" id="aa00103_html_a2086082362b61607798d6f968c263f9e"><div class="ttname"><a href="a00103.html#a2086082362b61607798d6f968c263f9e">ArmorCluedo::ExistsIndiv</a></div><div class="ttdeci">bool ExistsIndiv(std::string indivname)</div><div class="ttdoc">check if an individual exists</div><div class="ttdef"><b>Definition:</b> <a href="a00056_source.html#l00105">armor_cluedo.cpp:105</a></div></div>
+<div class="ttc" id="aa00103_html_a87fe995ebd26c4618a4b962e47dd3a40"><div class="ttname"><a href="a00103.html#a87fe995ebd26c4618a4b962e47dd3a40">ArmorCluedo::ArmorCluedo</a></div><div class="ttdeci">ArmorCluedo(bool debugmode=ARMOR_DEFAULT_DEBUGMODE)</div><div class="ttdoc">class constructor of ArmorCluedo</div><div class="ttdef"><b>Definition:</b> <a href="a00056_source.html#l00018">armor_cluedo.cpp:18</a></div></div>
+<div class="ttc" id="aa00103_html_a4ae659375e7a6d9564973718ece248e2"><div class="ttname"><a href="a00103.html#a4ae659375e7a6d9564973718ece248e2">ArmorCluedo::RemoveHypothesis</a></div><div class="ttdeci">bool RemoveHypothesis(std::string hypTag)</div><div class="ttdoc">discard one hypothesis</div><div class="ttdef"><b>Definition:</b> <a href="a00056_source.html#l00185">armor_cluedo.cpp:185</a></div></div>
+<div class="ttc" id="aa00103_html_a49216d015f97a9d510406a90e8c1fe30"><div class="ttname"><a href="a00103.html#a49216d015f97a9d510406a90e8c1fe30">ArmorCluedo::GetClassOfIndiv</a></div><div class="ttdeci">std::vector&lt; std::string &gt; GetClassOfIndiv(std::string indivname, bool deep)</div><div class="ttdoc">get the class of a given individual</div><div class="ttdef"><b>Definition:</b> <a href="a00056_source.html#l00074">armor_cluedo.cpp:74</a></div></div>
+<div class="ttc" id="aa00107_html"><div class="ttname"><a href="a00107.html">ArmorTools</a></div><div class="ttdoc">A minimal C++ client for aRMOR.</div><div class="ttdef"><b>Definition:</b> <a href="a00044_source.html#l00090">armor_tools.h:90</a></div></div>
+<div class="ttc" id="aa00103_html_a76a60417cfc01397a6db462904139873"><div class="ttname"><a href="a00103.html#a76a60417cfc01397a6db462904139873">ArmorCluedo::FilterVector</a></div><div class="ttdeci">std::vector&lt; std::string &gt; FilterVector(std::vector&lt; std::string &gt; &amp;itemlist)</div><div class="ttdoc">filter all the strings inside the array</div><div class="ttdef"><b>Definition:</b> <a href="a00056_source.html#l00228">armor_cluedo.cpp:228</a></div></div>
+<div class="ttc" id="aa00103_html_ab278ac3aaffc4c6aceaf3bfb8d5186af"><div class="ttname"><a href="a00103.html#ab278ac3aaffc4c6aceaf3bfb8d5186af">ArmorCluedo::FindInconsistentHypotheses</a></div><div class="ttdeci">std::vector&lt; std::string &gt; FindInconsistentHypotheses()</div><div class="ttdoc">find all the inconsistent hypotheses</div><div class="ttdef"><b>Definition:</b> <a href="a00056_source.html#l00177">armor_cluedo.cpp:177</a></div></div>
+<div class="ttc" id="aa00103_html_a1a6e15d936d2d6e1279d86e5dbaa9c22"><div class="ttname"><a href="a00103.html#a1a6e15d936d2d6e1279d86e5dbaa9c22">ArmorCluedo::~ArmorCluedo</a></div><div class="ttdeci">~ArmorCluedo()</div><div class="ttdoc">class destructor</div><div class="ttdef"><b>Definition:</b> <a href="a00056_source.html#l00026">armor_cluedo.cpp:26</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_ec26e8507ab2869084237022eb595cc7.html">robocluedo</a></li><li class="navelem"><a class="el" href="dir_cabb2154d4ed6a703a149925c5ad3673.html">launch</a></li><li class="navelem"><a class="el" href="a00041.html">run_robocluedo.launch</a></li>
-    <li class="footer">Generated on Mon Nov 8 2021 16:03:13 for RCL - RoboCLuedo by
+    <li class="navelem"><a class="el" href="dir_ec26e8507ab2869084237022eb595cc7.html">robocluedo</a></li><li class="navelem"><a class="el" href="dir_ec261d9df9f363fa2ac4f7b3d53e2eff.html">include</a></li><li class="navelem"><a class="el" href="dir_fd8dfb9d206235f5e2cbee914cef037a.html">armor_tools</a></li><li class="navelem"><a class="el" href="a00041.html">armor_cluedo.h</a></li>
+    <li class="footer">Generated on Mon Nov 8 2021 18:19:43 for RCL - RoboCLuedo by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

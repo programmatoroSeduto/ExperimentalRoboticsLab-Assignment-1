@@ -84,7 +84,6 @@
  * 		another source. 
  * 
  * @see ArmorCluedo an applciation of this interface
- * @see example_armor_tools_1.cpp
  * @see <a href="https://github.com/EmaroLab/armor/blob/master/README.MD"> the official aRMOR documentation</a>
  * 
  ***********************************************/

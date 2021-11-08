@@ -1,4 +1,4 @@
-<map id="robocluedo_main.robocluedo_random_target" name="robocluedo_main.robocluedo_random_target">
-<area shape="rect" id="node1" title="implementation of the starting state random_target." alt="" coords="5,131,216,237"/>
-<area shape="rect" id="node2" title=" " alt="" coords="83,5,139,83"/>
+<map id="ArmorCluedo" name="ArmorCluedo">
+<area shape="rect" id="node1" title="additional utilities for aRMOR" alt="" coords="5,277,235,545"/>
+<area shape="rect" id="node2" href="$a00107.html" title="A minimal C++ client for aRMOR." alt="" coords="42,5,198,229"/>
 </map>

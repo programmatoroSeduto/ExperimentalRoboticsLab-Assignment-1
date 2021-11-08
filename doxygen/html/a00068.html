@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RCL - RoboCLuedo: /root/ws_experimental_robotics_lab_assignment_1/src/assignment_1/robocluedo_msgs/msg/Hypothesis.msg File Reference</title>
+<title>RCL - RoboCLuedo: /root/ws_experimental_robotics_lab_assignment_1/src/assignment_1/robocluedo/src/cluedo_oracle.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -84,19 +84,801 @@ $(document).ready(function(){initNavTree('a00068.html',''); initResizable(); });
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
-<div class="title">Hypothesis.msg File Reference</div>  </div>
+<div class="title">cluedo_oracle.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
+<p>the referee of the game  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &quot;ros/ros.h&quot;</code><br />
+<code>#include &quot;std_msgs/Empty.h&quot;</code><br />
+<code>#include &quot;robocluedo_msgs/Hint.h&quot;</code><br />
+<code>#include &quot;robocluedo_msgs/CheckSolution.h&quot;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;random&gt;</code><br />
+<code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;algorithm&gt;</code><br />
+</div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for cluedo_oracle.cpp:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="a00069.png" border="0" usemap="#_2root_2ws__experimental__robotics__lab__assignment__1_2src_2assignment__1_2robocluedo_2src_2cluedo__oracle_8cpp" alt=""/></div>
+<map name="_2root_2ws__experimental__robotics__lab__assignment__1_2src_2assignment__1_2robocluedo_2src_2cluedo__oracle_8cpp" id="_2root_2ws__experimental__robotics__lab__assignment__1_2src_2assignment__1_2robocluedo_2src_2cluedo__oracle_8cpp">
+<area shape="rect" title="the referee of the game" alt="" coords="661,5,892,76"/>
+<area shape="rect" title=" " alt="" coords="5,124,84,151"/>
+<area shape="rect" title=" " alt="" coords="108,124,248,151"/>
+<area shape="rect" title=" " alt="" coords="273,124,451,151"/>
+<area shape="rect" title=" " alt="" coords="475,124,721,151"/>
+<area shape="rect" title=" " alt="" coords="745,124,808,151"/>
+<area shape="rect" title=" " alt="" coords="833,124,891,151"/>
+<area shape="rect" title=" " alt="" coords="915,124,987,151"/>
+<area shape="rect" title=" " alt="" coords="1012,124,1085,151"/>
+<area shape="rect" title=" " alt="" coords="1110,124,1195,151"/>
+</map>
+</div>
+</div>
 <p><a href="a00068_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:afe222ad85bccd34da809164a88478096"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00068.html#afe222ad85bccd34da809164a88478096">PUBLISHER_HINT</a>&#160;&#160;&#160;&quot;/hint&quot;</td></tr>
+<tr class="separator:afe222ad85bccd34da809164a88478096"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31677c21edf3940dea4e5b4349447926"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00068.html#a31677c21edf3940dea4e5b4349447926">SUBSCRIBER_HINT_SIGNAL</a>&#160;&#160;&#160;&quot;/hint_signal&quot;</td></tr>
+<tr class="separator:a31677c21edf3940dea4e5b4349447926"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6941eeac3ae4aa79d0e8af29ea3ca9a7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00068.html#a6941eeac3ae4aa79d0e8af29ea3ca9a7">SERVICE_CHECK_SOLUTION</a>&#160;&#160;&#160;&quot;/check_solution&quot;</td></tr>
+<tr class="separator:a6941eeac3ae4aa79d0e8af29ea3ca9a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a5c61b838d2950098341254ca9eca1a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00068.html#a5a5c61b838d2950098341254ca9eca1a">PATH_PARAMETER_SERVER_WHERE</a>&#160;&#160;&#160;&quot;cluedo_path_where&quot;</td></tr>
+<tr class="separator:a5a5c61b838d2950098341254ca9eca1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab5f3d69712013e8674ac85f8426e98d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00068.html#aab5f3d69712013e8674ac85f8426e98d">PATH_PARAMETER_SERVER_WHO</a>&#160;&#160;&#160;&quot;cluedo_path_who&quot;</td></tr>
+<tr class="separator:aab5f3d69712013e8674ac85f8426e98d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af987ed1fc1a31f4f8a75fb928c0e69fa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00068.html#af987ed1fc1a31f4f8a75fb928c0e69fa">PATH_PARAMETER_SERVER_WHAT</a>&#160;&#160;&#160;&quot;cluedo_path_what&quot;</td></tr>
+<tr class="separator:af987ed1fc1a31f4f8a75fb928c0e69fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a511539cb5c20bb13ae564a6748f4737a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00068.html#a511539cb5c20bb13ae564a6748f4737a">MAX_NUM_HINTS</a>&#160;&#160;&#160;2</td></tr>
+<tr class="memdesc:a511539cb5c20bb13ae564a6748f4737a"><td class="mdescLeft">&#160;</td><td class="mdescRight">default maximum number of hint IDs  <a href="a00068.html#a511539cb5c20bb13ae564a6748f4737a">More...</a><br /></td></tr>
+<tr class="separator:a511539cb5c20bb13ae564a6748f4737a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e8fea62d184b59ded0e110e55adc12d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00068.html#a4e8fea62d184b59ded0e110e55adc12d">MAX_SIZE_HINT</a>&#160;&#160;&#160;10</td></tr>
+<tr class="memdesc:a4e8fea62d184b59ded0e110e55adc12d"><td class="mdescLeft">&#160;</td><td class="mdescRight"><em>maximum number of</em> hints inside each ID  <a href="a00068.html#a4e8fea62d184b59ded0e110e55adc12d">More...</a><br /></td></tr>
+<tr class="separator:a4e8fea62d184b59ded0e110e55adc12d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83c0c69e3e513938dbd4e22b0dda7643"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00068.html#a83c0c69e3e513938dbd4e22b0dda7643">OUTLABEL</a>&#160;&#160;&#160;&quot;[cluedo_oracle] &quot;</td></tr>
+<tr class="separator:a83c0c69e3e513938dbd4e22b0dda7643"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cebd08e2e9a598e7cd779a51734719e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00068.html#a3cebd08e2e9a598e7cd779a51734719e">OUTLOG</a>(msg)&#160;&#160;&#160;ROS_INFO_STREAM( <a class="el" href="a00068.html#a83c0c69e3e513938dbd4e22b0dda7643">OUTLABEL</a> &lt;&lt; msg )</td></tr>
+<tr class="separator:a3cebd08e2e9a598e7cd779a51734719e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad89aad5003005d39f868d6cc7b7bff73"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00068.html#ad89aad5003005d39f868d6cc7b7bff73">OUTERR</a>(msg)&#160;&#160;&#160;<a class="el" href="a00071.html#a186fe566fd11435e6aa34702dd79cac1">OUTLOG</a>( &quot;ERROR: &quot; &lt;&lt; msg )</td></tr>
+<tr class="separator:ad89aad5003005d39f868d6cc7b7bff73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36b268389a5b36ab752d1e59f1fa63f0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00068.html#a36b268389a5b36ab752d1e59f1fa63f0">LOGSQUARE</a>(str)&#160;&#160;&#160;&quot;[&quot; &lt;&lt; str &lt;&lt; &quot;] &quot;</td></tr>
+<tr class="separator:a36b268389a5b36ab752d1e59f1fa63f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ac00d79830b6c5ba0a069d5edbda776ed"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00068.html#ac00d79830b6c5ba0a069d5edbda776ed">importDataFrom</a> (std::string path, std::vector&lt; std::string &gt; &amp;list)</td></tr>
+<tr class="memdesc:ac00d79830b6c5ba0a069d5edbda776ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">import entities from file  <a href="a00068.html#ac00d79830b6c5ba0a069d5edbda776ed">More...</a><br /></td></tr>
+<tr class="separator:ac00d79830b6c5ba0a069d5edbda776ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14d01efaaa84e9eef51312faef616666"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00068.html#a14d01efaaa84e9eef51312faef616666">chooseHintFrom</a> (std::vector&lt; std::string &gt; &amp;list)</td></tr>
+<tr class="memdesc:a14d01efaaa84e9eef51312faef616666"><td class="mdescLeft">&#160;</td><td class="mdescRight">choose randomly a hint from a list  <a href="a00068.html#a14d01efaaa84e9eef51312faef616666">More...</a><br /></td></tr>
+<tr class="separator:a14d01efaaa84e9eef51312faef616666"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70dc3d68b54dc9bf449d9cf284affb00"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00068.html#a70dc3d68b54dc9bf449d9cf284affb00">hintCallback</a> (const std_msgs::EmptyConstPtr &amp;emptySignal)</td></tr>
+<tr class="memdesc:a70dc3d68b54dc9bf449d9cf284affb00"><td class="mdescLeft">&#160;</td><td class="mdescRight">subscriber to <a class="el" href="a00068.html#a31677c21edf3940dea4e5b4349447926">SUBSCRIBER_HINT_SIGNAL</a> and publisher of <a class="el" href="a00068.html#afe222ad85bccd34da809164a88478096">PUBLISHER_HINT</a>  <a href="a00068.html#a70dc3d68b54dc9bf449d9cf284affb00">More...</a><br /></td></tr>
+<tr class="separator:a70dc3d68b54dc9bf449d9cf284affb00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bd3f21c49dce5c6a1d6083df40fcfcc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00068.html#a7bd3f21c49dce5c6a1d6083df40fcfcc">checkSolutionCallback</a> (robocluedo_msgs::CheckSolution::Request &amp;hyp, robocluedo_msgs::CheckSolution::Response &amp;misterySolved)</td></tr>
+<tr class="memdesc:a7bd3f21c49dce5c6a1d6083df40fcfcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">implementation of service <a class="el" href="a00068.html#a6941eeac3ae4aa79d0e8af29ea3ca9a7">SERVICE_CHECK_SOLUTION</a>  <a href="a00068.html#a7bd3f21c49dce5c6a1d6083df40fcfcc">More...</a><br /></td></tr>
+<tr class="separator:a7bd3f21c49dce5c6a1d6083df40fcfcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a554ad8b46595d7a5901b180494b25e97"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00068.html#a554ad8b46595d7a5901b180494b25e97">generateMystery</a> (std::vector&lt; std::string &gt; list_who, std::vector&lt; std::string &gt; list_where, std::vector&lt; std::string &gt; list_what, int tot_hints)</td></tr>
+<tr class="memdesc:a554ad8b46595d7a5901b180494b25e97"><td class="mdescLeft">&#160;</td><td class="mdescRight">generate the solution of the case and the hints  <a href="a00068.html#a554ad8b46595d7a5901b180494b25e97">More...</a><br /></td></tr>
+<tr class="separator:a554ad8b46595d7a5901b180494b25e97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00068.html#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
+<tr class="memdesc:a0ddf1224851353fc92bfbff6f499fa97"><td class="mdescLeft">&#160;</td><td class="mdescRight">ROS node main - cluedo_oracle.  <a href="a00068.html#a0ddf1224851353fc92bfbff6f499fa97">More...</a><br /></td></tr>
+<tr class="separator:a0ddf1224851353fc92bfbff6f499fa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a1d087daca7549154b3dcaaf0539dc611"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00068.html#a1d087daca7549154b3dcaaf0539dc611">hints_who</a></td></tr>
+<tr class="memdesc:a1d087daca7549154b3dcaaf0539dc611"><td class="mdescLeft">&#160;</td><td class="mdescRight">vector of hints - who  <a href="a00068.html#a1d087daca7549154b3dcaaf0539dc611">More...</a><br /></td></tr>
+<tr class="separator:a1d087daca7549154b3dcaaf0539dc611"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7fe5cf0b00f3a87115b68d83d2b19aa"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00068.html#ac7fe5cf0b00f3a87115b68d83d2b19aa">hints_where</a></td></tr>
+<tr class="memdesc:ac7fe5cf0b00f3a87115b68d83d2b19aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">vector of hints - where  <a href="a00068.html#ac7fe5cf0b00f3a87115b68d83d2b19aa">More...</a><br /></td></tr>
+<tr class="separator:ac7fe5cf0b00f3a87115b68d83d2b19aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea6dd1ef16c685e59b6ddd0f47118dae"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00068.html#aea6dd1ef16c685e59b6ddd0f47118dae">hints_what</a></td></tr>
+<tr class="memdesc:aea6dd1ef16c685e59b6ddd0f47118dae"><td class="mdescLeft">&#160;</td><td class="mdescRight">vector of hints - what  <a href="a00068.html#aea6dd1ef16c685e59b6ddd0f47118dae">More...</a><br /></td></tr>
+<tr class="separator:aea6dd1ef16c685e59b6ddd0f47118dae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e0b66d7b396e3e8883e5b5483391c55"><td class="memItemLeft" align="right" valign="top">robocluedo_msgs::Hint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00068.html#a8e0b66d7b396e3e8883e5b5483391c55">solution_who</a></td></tr>
+<tr class="memdesc:a8e0b66d7b396e3e8883e5b5483391c55"><td class="mdescLeft">&#160;</td><td class="mdescRight">SOLUTION - who killed Dr Black.  <a href="a00068.html#a8e0b66d7b396e3e8883e5b5483391c55">More...</a><br /></td></tr>
+<tr class="separator:a8e0b66d7b396e3e8883e5b5483391c55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e49ff0f9d7a5d49a101b238e320e345"><td class="memItemLeft" align="right" valign="top">robocluedo_msgs::Hint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00068.html#a4e49ff0f9d7a5d49a101b238e320e345">solution_where</a></td></tr>
+<tr class="memdesc:a4e49ff0f9d7a5d49a101b238e320e345"><td class="mdescLeft">&#160;</td><td class="mdescRight">SOLUTION - where Dr Black was killed.  <a href="a00068.html#a4e49ff0f9d7a5d49a101b238e320e345">More...</a><br /></td></tr>
+<tr class="separator:a4e49ff0f9d7a5d49a101b238e320e345"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d4fe3d27f46712347935f59a452d950"><td class="memItemLeft" align="right" valign="top">robocluedo_msgs::Hint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00068.html#a4d4fe3d27f46712347935f59a452d950">solution_what</a></td></tr>
+<tr class="memdesc:a4d4fe3d27f46712347935f59a452d950"><td class="mdescLeft">&#160;</td><td class="mdescRight">SOLUTION - what's the murder weapon.  <a href="a00068.html#a4d4fe3d27f46712347935f59a452d950">More...</a><br /></td></tr>
+<tr class="separator:a4d4fe3d27f46712347935f59a452d950"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2ff33a71681ba4ae8189b1fdc11b6e8"><td class="memItemLeft" align="right" valign="top">std::vector&lt; robocluedo_msgs::Hint &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00068.html#af2ff33a71681ba4ae8189b1fdc11b6e8">mysterylist</a></td></tr>
+<tr class="memdesc:af2ff33a71681ba4ae8189b1fdc11b6e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">the set of hypotheses  <a href="a00068.html#af2ff33a71681ba4ae8189b1fdc11b6e8">More...</a><br /></td></tr>
+<tr class="separator:af2ff33a71681ba4ae8189b1fdc11b6e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>the referee of the game </p>
+<div><b>ROS Node Name</b> <ul>
+<li>
+cluedo_oracle</li>
+</ul>
+</div> <dl class="section author"><dt>Authors</dt><dd>Francesco Ganci (S4143910) </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>v1.0</dd></dl>
+<p><b>Publishers:</b> <br  />
+ </p><ul>
+<li>
+<em> <a class="el" href="a00068.html#afe222ad85bccd34da809164a88478096">PUBLISHER_HINT</a> </em> : <a class="el" href="a00074.html">Hint.msg</a> <br  />
+ ... description <br  />
+<br  />
+  </li>
+</ul>
+<p><b>Subscribers:</b> <br  />
+ </p><ul>
+<li>
+<em> <a class="el" href="a00068.html#a31677c21edf3940dea4e5b4349447926">SUBSCRIBER_HINT_SIGNAL</a> </em> : <a href="http://docs.ros.org/en/api/std_msgs/html/msg/Empty.html">std_msgs::Empty</a> <br  />
+ descrivi direttamente, tanto il nodo movement_controller va buttato via <br  />
+<br  />
+  </li>
+</ul>
+<p><b>Services:</b> <br  />
+ </p><ul>
+<li>
+<em> <a class="el" href="a00068.html#a6941eeac3ae4aa79d0e8af29ea3ca9a7">SERVICE_CHECK_SOLUTION</a> </em> : <a class="el" href="a00083.html">CheckSolution.srv</a> <br  />
+ ... description <br  />
+<br  />
+  </li>
+</ul>
+<p><b>Parameters:</b> <br  />
+ </p><ul>
+<li>
+[GET] <em> <a class="el" href="a00071.html#a5a5c61b838d2950098341254ca9eca1a">PATH_PARAMETER_SERVER_WHERE</a> </em> : string <br  />
+ ... description <br  />
+<br  />
+  </li>
+<li>
+[GET] <em> <a class="el" href="a00068.html#aab5f3d69712013e8674ac85f8426e98d">PATH_PARAMETER_SERVER_WHO</a> </em> : string <br  />
+ ... description <br  />
+<br  />
+  </li>
+<li>
+[GET] <em> <a class="el" href="a00068.html#af987ed1fc1a31f4f8a75fb928c0e69fa">PATH_PARAMETER_SERVER_WHAT</a> </em> : string <br  />
+ ... description <br  />
+<br  />
+  </li>
+<li>
+[GET, optional] <em>/cluedo_max_hypotheses</em> : string <br  />
+ ... description <br  />
+<br  />
+  </li>
+</ul>
+<p><b>Description:</b> <br  />
+ </p>
+<p>...description </p>
+
+<p class="definition">Definition in file <a class="el" href="a00068_source.html">cluedo_oracle.cpp</a>.</p>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a36b268389a5b36ab752d1e59f1fa63f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36b268389a5b36ab752d1e59f1fa63f0">&#9670;&nbsp;</a></span>LOGSQUARE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LOGSQUARE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">str</td><td>)</td>
+          <td>&#160;&#160;&#160;&quot;[&quot; &lt;&lt; str &lt;&lt; &quot;] &quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="a00068_source.html#l00091">91</a> of file <a class="el" href="a00068_source.html">cluedo_oracle.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a511539cb5c20bb13ae564a6748f4737a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a511539cb5c20bb13ae564a6748f4737a">&#9670;&nbsp;</a></span>MAX_NUM_HINTS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_NUM_HINTS&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>default maximum number of hint IDs </p>
+
+<p class="definition">Definition at line <a class="el" href="a00068_source.html#l00083">83</a> of file <a class="el" href="a00068_source.html">cluedo_oracle.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a4e8fea62d184b59ded0e110e55adc12d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e8fea62d184b59ded0e110e55adc12d">&#9670;&nbsp;</a></span>MAX_SIZE_HINT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_SIZE_HINT&#160;&#160;&#160;10</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><em>maximum number of</em> hints inside each ID </p>
+
+<p class="definition">Definition at line <a class="el" href="a00068_source.html#l00086">86</a> of file <a class="el" href="a00068_source.html">cluedo_oracle.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ad89aad5003005d39f868d6cc7b7bff73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad89aad5003005d39f868d6cc7b7bff73">&#9670;&nbsp;</a></span>OUTERR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define OUTERR</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">msg</td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="a00071.html#a186fe566fd11435e6aa34702dd79cac1">OUTLOG</a>( &quot;ERROR: &quot; &lt;&lt; msg )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="a00068_source.html#l00090">90</a> of file <a class="el" href="a00068_source.html">cluedo_oracle.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a83c0c69e3e513938dbd4e22b0dda7643"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83c0c69e3e513938dbd4e22b0dda7643">&#9670;&nbsp;</a></span>OUTLABEL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define OUTLABEL&#160;&#160;&#160;&quot;[cluedo_oracle] &quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="a00068_source.html#l00088">88</a> of file <a class="el" href="a00068_source.html">cluedo_oracle.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a3cebd08e2e9a598e7cd779a51734719e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3cebd08e2e9a598e7cd779a51734719e">&#9670;&nbsp;</a></span>OUTLOG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define OUTLOG</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">msg</td><td>)</td>
+          <td>&#160;&#160;&#160;ROS_INFO_STREAM( <a class="el" href="a00068.html#a83c0c69e3e513938dbd4e22b0dda7643">OUTLABEL</a> &lt;&lt; msg )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="a00068_source.html#l00089">89</a> of file <a class="el" href="a00068_source.html">cluedo_oracle.cpp</a>.</p>
+
+</div>
+</div>
+<a id="af987ed1fc1a31f4f8a75fb928c0e69fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af987ed1fc1a31f4f8a75fb928c0e69fa">&#9670;&nbsp;</a></span>PATH_PARAMETER_SERVER_WHAT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PATH_PARAMETER_SERVER_WHAT&#160;&#160;&#160;&quot;cluedo_path_what&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="a00068_source.html#l00080">80</a> of file <a class="el" href="a00068_source.html">cluedo_oracle.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a5a5c61b838d2950098341254ca9eca1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a5c61b838d2950098341254ca9eca1a">&#9670;&nbsp;</a></span>PATH_PARAMETER_SERVER_WHERE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PATH_PARAMETER_SERVER_WHERE&#160;&#160;&#160;&quot;cluedo_path_where&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="a00068_source.html#l00078">78</a> of file <a class="el" href="a00068_source.html">cluedo_oracle.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aab5f3d69712013e8674ac85f8426e98d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab5f3d69712013e8674ac85f8426e98d">&#9670;&nbsp;</a></span>PATH_PARAMETER_SERVER_WHO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PATH_PARAMETER_SERVER_WHO&#160;&#160;&#160;&quot;cluedo_path_who&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="a00068_source.html#l00079">79</a> of file <a class="el" href="a00068_source.html">cluedo_oracle.cpp</a>.</p>
+
+</div>
+</div>
+<a id="afe222ad85bccd34da809164a88478096"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe222ad85bccd34da809164a88478096">&#9670;&nbsp;</a></span>PUBLISHER_HINT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PUBLISHER_HINT&#160;&#160;&#160;&quot;/hint&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="a00068_source.html#l00074">74</a> of file <a class="el" href="a00068_source.html">cluedo_oracle.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a6941eeac3ae4aa79d0e8af29ea3ca9a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6941eeac3ae4aa79d0e8af29ea3ca9a7">&#9670;&nbsp;</a></span>SERVICE_CHECK_SOLUTION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SERVICE_CHECK_SOLUTION&#160;&#160;&#160;&quot;/check_solution&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="a00068_source.html#l00076">76</a> of file <a class="el" href="a00068_source.html">cluedo_oracle.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a31677c21edf3940dea4e5b4349447926"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31677c21edf3940dea4e5b4349447926">&#9670;&nbsp;</a></span>SUBSCRIBER_HINT_SIGNAL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SUBSCRIBER_HINT_SIGNAL&#160;&#160;&#160;&quot;/hint_signal&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="a00068_source.html#l00075">75</a> of file <a class="el" href="a00068_source.html">cluedo_oracle.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a7bd3f21c49dce5c6a1d6083df40fcfcc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bd3f21c49dce5c6a1d6083df40fcfcc">&#9670;&nbsp;</a></span>checkSolutionCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool checkSolutionCallback </td>
+          <td>(</td>
+          <td class="paramtype">robocluedo_msgs::CheckSolution::Request &amp;&#160;</td>
+          <td class="paramname"><em>hyp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">robocluedo_msgs::CheckSolution::Response &amp;&#160;</td>
+          <td class="paramname"><em>misterySolved</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>implementation of service <a class="el" href="a00068.html#a6941eeac3ae4aa79d0e8af29ea3ca9a7">SERVICE_CHECK_SOLUTION</a> </p>
+<p>... more details</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hyp</td><td>the hypothesis to check </td></tr>
+    <tr><td class="paramname">mysterySolved</td><td>if the solution is correct or not</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00083.html">CheckSolution.srv</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="a00068_source.html#l00248">248</a> of file <a class="el" href="a00068_source.html">cluedo_oracle.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a14d01efaaa84e9eef51312faef616666"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14d01efaaa84e9eef51312faef616666">&#9670;&nbsp;</a></span>chooseHintFrom()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string chooseHintFrom </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>list</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>choose randomly a hint from a list </p>
+<p>... more details</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">list</td><td>(reference) the list from where to take the hint</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the randomly choosen value from 'list' </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="a00068_source.html#l00189">189</a> of file <a class="el" href="a00068_source.html">cluedo_oracle.cpp</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="a00068_a14d01efaaa84e9eef51312faef616666_icgraph.png" border="0" usemap="#a00068_a14d01efaaa84e9eef51312faef616666_icgraph" alt=""/></div>
+<map name="a00068_a14d01efaaa84e9eef51312faef616666_icgraph" id="a00068_a14d01efaaa84e9eef51312faef616666_icgraph">
+<area shape="rect" title="choose randomly a hint from a list" alt="" coords="187,5,315,32"/>
+<area shape="rect" href="a00068.html#a554ad8b46595d7a5901b180494b25e97" title="generate the solution of the case and the hints" alt="" coords="5,5,139,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a554ad8b46595d7a5901b180494b25e97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a554ad8b46595d7a5901b180494b25e97">&#9670;&nbsp;</a></span>generateMystery()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void generateMystery </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; std::string &gt;&#160;</td>
+          <td class="paramname"><em>list_who</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::string &gt;&#160;</td>
+          <td class="paramname"><em>list_where</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::string &gt;&#160;</td>
+          <td class="paramname"><em>list_what</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>tot_hints</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>generate the solution of the case and the hints </p>
+<p>... more details</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">list_who</td><td>the list of the individuals PERSON from file </td></tr>
+    <tr><td class="paramname">list_where</td><td>the list of the individuals PLACE from file </td></tr>
+    <tr><td class="paramname">list_whatthe</td><td>list of the individuals WEAPON from file </td></tr>
+    <tr><td class="paramname">tot_hints</td><td>the maximum number of hints ID the oracle must generate </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="a00068_source.html#l00279">279</a> of file <a class="el" href="a00068_source.html">cluedo_oracle.cpp</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="a00068_a554ad8b46595d7a5901b180494b25e97_cgraph.png" border="0" usemap="#a00068_a554ad8b46595d7a5901b180494b25e97_cgraph" alt=""/></div>
+<map name="a00068_a554ad8b46595d7a5901b180494b25e97_cgraph" id="a00068_a554ad8b46595d7a5901b180494b25e97_cgraph">
+<area shape="rect" title="generate the solution of the case and the hints" alt="" coords="5,5,139,32"/>
+<area shape="rect" href="a00068.html#a14d01efaaa84e9eef51312faef616666" title="choose randomly a hint from a list" alt="" coords="187,5,315,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a70dc3d68b54dc9bf449d9cf284affb00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70dc3d68b54dc9bf449d9cf284affb00">&#9670;&nbsp;</a></span>hintCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hintCallback </td>
+          <td>(</td>
+          <td class="paramtype">const std_msgs::EmptyConstPtr &amp;&#160;</td>
+          <td class="paramname"><em>emptySignal</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>subscriber to <a class="el" href="a00068.html#a31677c21edf3940dea4e5b4349447926">SUBSCRIBER_HINT_SIGNAL</a> and publisher of <a class="el" href="a00068.html#afe222ad85bccd34da809164a88478096">PUBLISHER_HINT</a> </p>
+<p>... more details</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">emptySignal</td><td>empty 'request'</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a href="http://docs.ros.org/en/api/std_msgs/html/msg/Empty.html">std_msgs::Empty</a> [IN] </dd>
+<dd>
+<a class="el" href="a00074.html">Hint.msg</a> [OUT] </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="a00068_source.html#l00211">211</a> of file <a class="el" href="a00068_source.html">cluedo_oracle.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ac00d79830b6c5ba0a069d5edbda776ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac00d79830b6c5ba0a069d5edbda776ed">&#9670;&nbsp;</a></span>importDataFrom()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool importDataFrom </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>list</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>import entities from file </p>
+<p>... more details</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>of the file to read </td></tr>
+    <tr><td class="paramname">list</td><td>where to put the entities</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>success or not </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="a00068_source.html#l00147">147</a> of file <a class="el" href="a00068_source.html">cluedo_oracle.cpp</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="a00068_ac00d79830b6c5ba0a069d5edbda776ed_icgraph.png" border="0" usemap="#a00068_ac00d79830b6c5ba0a069d5edbda776ed_icgraph" alt=""/></div>
+<map name="a00068_ac00d79830b6c5ba0a069d5edbda776ed_icgraph" id="a00068_ac00d79830b6c5ba0a069d5edbda776ed_icgraph">
+<area shape="rect" title="import entities from file" alt="" coords="108,5,237,32"/>
+<area shape="rect" href="a00068.html#a0ddf1224851353fc92bfbff6f499fa97" title="ROS node main &#45; cluedo_oracle." alt="" coords="5,5,60,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0ddf1224851353fc92bfbff6f499fa97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ddf1224851353fc92bfbff6f499fa97">&#9670;&nbsp;</a></span>main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>argv</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ROS node main - cluedo_oracle. </p>
+<p>... more details </p>
+
+<p class="definition">Definition at line <a class="el" href="a00068_source.html#l00364">364</a> of file <a class="el" href="a00068_source.html">cluedo_oracle.cpp</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="a00068_a0ddf1224851353fc92bfbff6f499fa97_cgraph.png" border="0" usemap="#a00068_a0ddf1224851353fc92bfbff6f499fa97_cgraph" alt=""/></div>
+<map name="a00068_a0ddf1224851353fc92bfbff6f499fa97_cgraph" id="a00068_a0ddf1224851353fc92bfbff6f499fa97_cgraph">
+<area shape="rect" title="ROS node main &#45; cluedo_oracle." alt="" coords="5,5,60,32"/>
+<area shape="rect" href="a00068.html#ac00d79830b6c5ba0a069d5edbda776ed" title="import entities from file" alt="" coords="108,5,237,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="aea6dd1ef16c685e59b6ddd0f47118dae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea6dd1ef16c685e59b6ddd0f47118dae">&#9670;&nbsp;</a></span>hints_what</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::string&gt; hints_what</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>vector of hints - what </p>
+
+<p class="definition">Definition at line <a class="el" href="a00068_source.html#l00102">102</a> of file <a class="el" href="a00068_source.html">cluedo_oracle.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ac7fe5cf0b00f3a87115b68d83d2b19aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7fe5cf0b00f3a87115b68d83d2b19aa">&#9670;&nbsp;</a></span>hints_where</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::string&gt; hints_where</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>vector of hints - where </p>
+
+<p class="definition">Definition at line <a class="el" href="a00068_source.html#l00099">99</a> of file <a class="el" href="a00068_source.html">cluedo_oracle.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a1d087daca7549154b3dcaaf0539dc611"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d087daca7549154b3dcaaf0539dc611">&#9670;&nbsp;</a></span>hints_who</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::string&gt; hints_who</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>vector of hints - who </p>
+
+<p class="definition">Definition at line <a class="el" href="a00068_source.html#l00096">96</a> of file <a class="el" href="a00068_source.html">cluedo_oracle.cpp</a>.</p>
+
+</div>
+</div>
+<a id="af2ff33a71681ba4ae8189b1fdc11b6e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2ff33a71681ba4ae8189b1fdc11b6e8">&#9670;&nbsp;</a></span>mysterylist</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;robocluedo_msgs::Hint&gt; mysterylist</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>the set of hypotheses </p>
+
+<p class="definition">Definition at line <a class="el" href="a00068_source.html#l00120">120</a> of file <a class="el" href="a00068_source.html">cluedo_oracle.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a4d4fe3d27f46712347935f59a452d950"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d4fe3d27f46712347935f59a452d950">&#9670;&nbsp;</a></span>solution_what</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">robocluedo_msgs::Hint solution_what</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>SOLUTION - what's the murder weapon. </p>
+
+<p class="definition">Definition at line <a class="el" href="a00068_source.html#l00111">111</a> of file <a class="el" href="a00068_source.html">cluedo_oracle.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a4e49ff0f9d7a5d49a101b238e320e345"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e49ff0f9d7a5d49a101b238e320e345">&#9670;&nbsp;</a></span>solution_where</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">robocluedo_msgs::Hint solution_where</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>SOLUTION - where Dr Black was killed. </p>
+
+<p class="definition">Definition at line <a class="el" href="a00068_source.html#l00108">108</a> of file <a class="el" href="a00068_source.html">cluedo_oracle.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a8e0b66d7b396e3e8883e5b5483391c55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e0b66d7b396e3e8883e5b5483391c55">&#9670;&nbsp;</a></span>solution_who</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">robocluedo_msgs::Hint solution_who</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>SOLUTION - who killed Dr Black. </p>
+
+<p class="definition">Definition at line <a class="el" href="a00068_source.html#l00105">105</a> of file <a class="el" href="a00068_source.html">cluedo_oracle.cpp</a>.</p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_b4533bfc40db8e2efccd35494a74693f.html">robocluedo_msgs</a></li><li class="navelem"><a class="el" href="dir_5259caefaf2c5008e388f40d345f27d4.html">msg</a></li><li class="navelem"><a class="el" href="a00068.html">Hypothesis.msg</a></li>
-    <li class="footer">Generated on Mon Nov 8 2021 16:03:13 for RCL - RoboCLuedo by
+    <li class="navelem"><a class="el" href="dir_ec26e8507ab2869084237022eb595cc7.html">robocluedo</a></li><li class="navelem"><a class="el" href="dir_4ac2bbdaf5848812856158bd323f30d5.html">src</a></li><li class="navelem"><a class="el" href="a00068.html">cluedo_oracle.cpp</a></li>
+    <li class="footer">Generated on Mon Nov 8 2021 18:19:43 for RCL - RoboCLuedo by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

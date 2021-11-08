@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RCL - RoboCLuedo: /root/ws_experimental_robotics_lab_assignment_1/src/assignment_1/robocluedo_msgs/srv/FindConsistentHypotheses.srv Source File</title>
+<title>RCL - RoboCLuedo: /root/ws_experimental_robotics_lab_assignment_1/src/assignment_1/robocluedo_msgs/srv/AddHint.srv Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -85,24 +85,30 @@ $(document).ready(function(){initNavTree('a00080_source.html',''); initResizable
 
 <div class="header">
   <div class="headertitle">
-<div class="title">FindConsistentHypotheses.srv</div>  </div>
+<div class="title">AddHint.srv</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="a00080.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;## file &#39;FindConsistentHypotheses.srv&#39;</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;# empty request</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;---</div>
+<a href="a00080.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;## file &#39;AddHint.srv&#39;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;# it represents a hint of the type -&gt; (Aelem, Belem):property</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;# the numeric ID of the hint</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;int32 hypID</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;# list of consistent hypotheses from the ontology</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;Hypothesis[] hyp</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;# fields of the property</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;string property</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;string Aelem</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;string Belem</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;---</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;bool success</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_b4533bfc40db8e2efccd35494a74693f.html">robocluedo_msgs</a></li><li class="navelem"><a class="el" href="dir_06251b198131f47cb694385a59bc245a.html">srv</a></li><li class="navelem"><a class="el" href="a00080.html">FindConsistentHypotheses.srv</a></li>
-    <li class="footer">Generated on Mon Nov 8 2021 16:03:13 for RCL - RoboCLuedo by
+    <li class="navelem"><a class="el" href="dir_b4533bfc40db8e2efccd35494a74693f.html">robocluedo_msgs</a></li><li class="navelem"><a class="el" href="dir_06251b198131f47cb694385a59bc245a.html">srv</a></li><li class="navelem"><a class="el" href="a00080.html">AddHint.srv</a></li>
+    <li class="footer">Generated on Mon Nov 8 2021 18:19:43 for RCL - RoboCLuedo by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

@@ -1,4 +1,4 @@
-<map id="robocluedo_main.robocluedo_reasoning" name="robocluedo_main.robocluedo_reasoning">
-<area shape="rect" id="node1" title="implementation of the state reasoning." alt="" coords="5,131,216,237"/>
+<map id="robocluedo_main.robocluedo_moving" name="robocluedo_main.robocluedo_moving">
+<area shape="rect" id="node1" title="implementation of the state moving." alt="" coords="5,131,216,237"/>
 <area shape="rect" id="node2" title=" " alt="" coords="83,5,139,83"/>
 </map>

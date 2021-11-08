@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RCL - RoboCLuedo: /root/ws_experimental_robotics_lab_assignment_1/src/assignment_1/robocluedo/src/cluedo_random_room.cpp File Reference</title>
+<title>RCL - RoboCLuedo: /root/ws_experimental_robotics_lab_assignment_1/src/assignment_1/robocluedo/src/cluedo_armor_interface.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -86,35 +86,57 @@ $(document).ready(function(){initNavTree('a00062.html',''); initResizable(); });
 <div class="header">
   <div class="summary">
 <a href="#define-members">Macros</a> &#124;
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">cluedo_random_room.cpp File Reference</div>  </div>
+<div class="title">cluedo_armor_interface.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>A simple service: choose randomly a room to reach.  
+<p>Dedicated RCL-aRMOR client.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;ros/ros.h&quot;</code><br />
-<code>#include &quot;robocluedo_msgs/RandomRoom.h&quot;</code><br />
-<code>#include &lt;vector&gt;</code><br />
-<code>#include &lt;string&gt;</code><br />
-<code>#include &lt;random&gt;</code><br />
+<code>#include &quot;<a class="el" href="a00044_source.html">armor_tools/armor_tools.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00041_source.html">armor_tools/armor_cluedo.h</a>&quot;</code><br />
+<code>#include &quot;std_srvs/Trigger.h&quot;</code><br />
+<code>#include &quot;armor_msgs/ArmorDirective.h&quot;</code><br />
+<code>#include &quot;armor_msgs/ArmorDirectiveList.h&quot;</code><br />
+<code>#include &quot;armor_msgs/ArmorDirectiveReq.h&quot;</code><br />
+<code>#include &quot;armor_msgs/ArmorDirectiveRes.h&quot;</code><br />
+<code>#include &quot;armor_msgs/QueryItem.h&quot;</code><br />
+<code>#include &quot;robocluedo_msgs/AddHint.h&quot;</code><br />
+<code>#include &quot;robocluedo_msgs/Hypothesis.h&quot;</code><br />
+<code>#include &quot;robocluedo_msgs/FindConsistentHypotheses.h&quot;</code><br />
+<code>#include &quot;robocluedo_msgs/DiscardHypothesis.h&quot;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
 </div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for cluedo_random_room.cpp:</div>
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for cluedo_armor_interface.cpp:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="a00063.png" border="0" usemap="#_2root_2ws__experimental__robotics__lab__assignment__1_2src_2assignment__1_2robocluedo_2src_2cluedo__random__room_8cpp" alt=""/></div>
-<map name="_2root_2ws__experimental__robotics__lab__assignment__1_2src_2assignment__1_2robocluedo_2src_2cluedo__random__room_8cpp" id="_2root_2ws__experimental__robotics__lab__assignment__1_2src_2assignment__1_2robocluedo_2src_2cluedo__random__room_8cpp">
-<area shape="rect" title="A simple service: choose randomly a room to reach." alt="" coords="335,5,565,76"/>
-<area shape="rect" title=" " alt="" coords="5,124,84,151"/>
-<area shape="rect" title=" " alt="" coords="108,124,352,151"/>
-<area shape="rect" title=" " alt="" coords="376,124,439,151"/>
-<area shape="rect" title=" " alt="" coords="463,124,522,151"/>
-<area shape="rect" title=" " alt="" coords="546,124,618,151"/>
-<area shape="rect" title=" " alt="" coords="643,124,716,151"/>
+<div class="center"><img src="a00063.png" border="0" usemap="#_2root_2ws__experimental__robotics__lab__assignment__1_2src_2assignment__1_2robocluedo_2src_2cluedo__armor__interface_8cpp" alt=""/></div>
+<map name="_2root_2ws__experimental__robotics__lab__assignment__1_2src_2assignment__1_2robocluedo_2src_2cluedo__armor__interface_8cpp" id="_2root_2ws__experimental__robotics__lab__assignment__1_2src_2assignment__1_2robocluedo_2src_2cluedo__armor__interface_8cpp">
+<area shape="rect" title="Dedicated RCL&#45;aRMOR client." alt="" coords="1127,5,1357,76"/>
+<area shape="rect" title=" " alt="" coords="5,295,84,322"/>
+<area shape="rect" href="a00044.html" title="A minimal C++ client for aRMOR." alt="" coords="819,213,1014,240"/>
+<area shape="rect" title=" " alt="" coords="108,295,296,322"/>
+<area shape="rect" title=" " alt="" coords="321,295,539,322"/>
+<area shape="rect" title=" " alt="" coords="564,288,771,329"/>
+<area shape="rect" title=" " alt="" coords="795,288,1001,329"/>
+<area shape="rect" title=" " alt="" coords="1199,295,1279,322"/>
+<area shape="rect" title=" " alt="" coords="1304,295,1367,322"/>
+<area shape="rect" title=" " alt="" coords="1391,295,1450,322"/>
+<area shape="rect" title=" " alt="" coords="1101,295,1175,322"/>
+<area shape="rect" href="a00041.html" title="additional aRMOR C++ interface" alt="" coords="1139,131,1345,158"/>
+<area shape="rect" title=" " alt="" coords="1471,131,1608,158"/>
+<area shape="rect" title=" " alt="" coords="1632,124,1839,165"/>
+<area shape="rect" title=" " alt="" coords="1863,131,2067,158"/>
+<area shape="rect" title=" " alt="" coords="2091,131,2316,158"/>
+<area shape="rect" title=" " alt="" coords="2339,124,2574,165"/>
+<area shape="rect" title=" " alt="" coords="2598,131,2873,158"/>
+<area shape="rect" title=" " alt="" coords="1026,295,1077,322"/>
 </map>
 </div>
 </div>
@@ -122,65 +144,105 @@ $(document).ready(function(){initNavTree('a00062.html',''); initResizable(); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a5a5c61b838d2950098341254ca9eca1a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00062.html#a5a5c61b838d2950098341254ca9eca1a">PATH_PARAMETER_SERVER_WHERE</a>&#160;&#160;&#160;&quot;cluedo_path_where&quot;</td></tr>
-<tr class="separator:a5a5c61b838d2950098341254ca9eca1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb68a7701a2e29df2646553ae5f0e49b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00062.html#aeb68a7701a2e29df2646553ae5f0e49b">SERVICE_RANDOM_ROOM</a>&#160;&#160;&#160;&quot;/random_room&quot;</td></tr>
-<tr class="separator:aeb68a7701a2e29df2646553ae5f0e49b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a186fe566fd11435e6aa34702dd79cac1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00062.html#a186fe566fd11435e6aa34702dd79cac1">OUTLOG</a>&#160;&#160;&#160;std::cout &lt;&lt; &quot;[cluedo_random_room] &quot;</td></tr>
-<tr class="separator:a186fe566fd11435e6aa34702dd79cac1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e68b107365153366ec52986156f2595"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00062.html#a9e68b107365153366ec52986156f2595">SERVICE_INTERFACE_ADD_HINT</a>&#160;&#160;&#160;&quot;/cluedo_armor/add_hint&quot;</td></tr>
+<tr class="separator:a9e68b107365153366ec52986156f2595"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43b5b7d093b3ed913fa91b74684ff821"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00062.html#a43b5b7d093b3ed913fa91b74684ff821">SERVICE_INTERFACE_FIND_CONSISTENT_HYP</a>&#160;&#160;&#160;&quot;/cluedo_armor/find_consistent_h&quot;</td></tr>
+<tr class="separator:a43b5b7d093b3ed913fa91b74684ff821"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7abfca1c1aab551b07b78ca76440683a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00062.html#a7abfca1c1aab551b07b78ca76440683a">SERVICE_INTERFACE_WRONG_HYPOTHESIS</a>&#160;&#160;&#160;&quot;/cluedo_armor/wrong_hypothesis&quot;</td></tr>
+<tr class="separator:a7abfca1c1aab551b07b78ca76440683a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc185c28a4bd121102b73f42c59b6939"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00062.html#acc185c28a4bd121102b73f42c59b6939">SERVICE_INTERFACE_SAVE_ONTOLOGY</a>&#160;&#160;&#160;&quot;/cluedo_armor/backup&quot;</td></tr>
+<tr class="separator:acc185c28a4bd121102b73f42c59b6939"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1488d09dc82faa87c57e8d9a79bbe1f1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00062.html#a1488d09dc82faa87c57e8d9a79bbe1f1">ONTOLOGY_PARAM</a>&#160;&#160;&#160;&quot;cluedo_path_owlfile&quot;</td></tr>
+<tr class="separator:a1488d09dc82faa87c57e8d9a79bbe1f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a311d6790cb54f184fa8fa02120ebee44"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00062.html#a311d6790cb54f184fa8fa02120ebee44">PARAM_ONTOLOGY_BACKUP_PATH</a>&#160;&#160;&#160;&quot;cluedo_path_owlfile_backup&quot;</td></tr>
+<tr class="separator:a311d6790cb54f184fa8fa02120ebee44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83c0c69e3e513938dbd4e22b0dda7643"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00062.html#a83c0c69e3e513938dbd4e22b0dda7643">OUTLABEL</a>&#160;&#160;&#160;&quot;[cluedo_armor_interface]&quot;</td></tr>
+<tr class="separator:a83c0c69e3e513938dbd4e22b0dda7643"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cebd08e2e9a598e7cd779a51734719e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00062.html#a3cebd08e2e9a598e7cd779a51734719e">OUTLOG</a>(msg)&#160;&#160;&#160;ROS_INFO_STREAM( <a class="el" href="a00068.html#a83c0c69e3e513938dbd4e22b0dda7643">OUTLABEL</a> &lt;&lt; &quot; &quot; &lt;&lt; msg );</td></tr>
+<tr class="separator:a3cebd08e2e9a598e7cd779a51734719e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36b268389a5b36ab752d1e59f1fa63f0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00062.html#a36b268389a5b36ab752d1e59f1fa63f0">LOGSQUARE</a>(str)&#160;&#160;&#160;&quot;[&quot; &lt;&lt; str &lt;&lt; &quot;] &quot;</td></tr>
 <tr class="separator:a36b268389a5b36ab752d1e59f1fa63f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4f289b8ad162b609975620166e3d407"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00062.html#af4f289b8ad162b609975620166e3d407">SS</a>(this_string)&#160;&#160;&#160;std::string( this_string )</td></tr>
+<tr class="separator:af4f289b8ad162b609975620166e3d407"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a571e6f0c662a683b2741f0e4cd4c26"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00062.html#a7a571e6f0c662a683b2741f0e4cd4c26">SSS</a>(this_thing)&#160;&#160;&#160;std::to_string( this_thing )</td></tr>
+<tr class="separator:a7a571e6f0c662a683b2741f0e4cd4c26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a72be2cfb7017d316b3fc9409ee0fd2e1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00062.html#a72be2cfb7017d316b3fc9409ee0fd2e1">ImportNamesOfRooms</a> (const std::string &amp;path)</td></tr>
-<tr class="memdesc:a72be2cfb7017d316b3fc9409ee0fd2e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">import names of the rooms from file  <a href="a00062.html#a72be2cfb7017d316b3fc9409ee0fd2e1">More...</a><br /></td></tr>
-<tr class="separator:a72be2cfb7017d316b3fc9409ee0fd2e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5860d956cf9531e4209e63284e3231c4"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00062.html#a5860d956cf9531e4209e63284e3231c4">Choose</a> ()</td></tr>
-<tr class="memdesc:a5860d956cf9531e4209e63284e3231c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">get randomly the name of one room  <a href="a00062.html#a5860d956cf9531e4209e63284e3231c4">More...</a><br /></td></tr>
-<tr class="separator:a5860d956cf9531e4209e63284e3231c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb2cbc45ef5cb59e465ab42a1f3c4d51"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00062.html#acb2cbc45ef5cb59e465ab42a1f3c4d51">ChooseRoomRandom</a> (robocluedo_msgs::RandomRoom::Request &amp;empty, robocluedo_msgs::RandomRoom::Response &amp;room)</td></tr>
-<tr class="memdesc:acb2cbc45ef5cb59e465ab42a1f3c4d51"><td class="mdescLeft">&#160;</td><td class="mdescRight">implementation of service <a class="el" href="a00062.html#aeb68a7701a2e29df2646553ae5f0e49b">SERVICE_RANDOM_ROOM</a>  <a href="a00062.html#acb2cbc45ef5cb59e465ab42a1f3c4d51">More...</a><br /></td></tr>
-<tr class="separator:acb2cbc45ef5cb59e465ab42a1f3c4d51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30c8d0c07497876eeb7b5845bab11d19"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00062.html#a30c8d0c07497876eeb7b5845bab11d19">PerformDifferenceBetween</a> (std::vector&lt; std::string &gt; list1, std::vector&lt; std::string &gt; list2)</td></tr>
+<tr class="memdesc:a30c8d0c07497876eeb7b5845bab11d19"><td class="mdescLeft">&#160;</td><td class="mdescRight">delete all the occurrences of list2 inside list1  <a href="a00062.html#a30c8d0c07497876eeb7b5845bab11d19">More...</a><br /></td></tr>
+<tr class="separator:a30c8d0c07497876eeb7b5845bab11d19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4867095aa20f38de61e518e16253520b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00062.html#a4867095aa20f38de61e518e16253520b">ServiceAddHint</a> (robocluedo_msgs::AddHint::Request &amp;hint, robocluedo_msgs::AddHint::Response &amp;success)</td></tr>
+<tr class="memdesc:a4867095aa20f38de61e518e16253520b"><td class="mdescLeft">&#160;</td><td class="mdescRight">implementation of service <a class="el" href="a00062.html#a9e68b107365153366ec52986156f2595">SERVICE_INTERFACE_ADD_HINT</a>  <a href="a00062.html#a4867095aa20f38de61e518e16253520b">More...</a><br /></td></tr>
+<tr class="separator:a4867095aa20f38de61e518e16253520b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ac3004a3cbe78bf0b2c234d11354c43"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00062.html#a7ac3004a3cbe78bf0b2c234d11354c43">ServiceFindConsistentHypotheses</a> (robocluedo_msgs::FindConsistentHypotheses::Request &amp;empty, robocluedo_msgs::FindConsistentHypotheses::Response &amp;hyplist)</td></tr>
+<tr class="memdesc:a7ac3004a3cbe78bf0b2c234d11354c43"><td class="mdescLeft">&#160;</td><td class="mdescRight">implementation of service <a class="el" href="a00062.html#a43b5b7d093b3ed913fa91b74684ff821">SERVICE_INTERFACE_FIND_CONSISTENT_HYP</a>  <a href="a00062.html#a7ac3004a3cbe78bf0b2c234d11354c43">More...</a><br /></td></tr>
+<tr class="separator:a7ac3004a3cbe78bf0b2c234d11354c43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85e8c9731bfed7d2e82df47750b9c19e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00062.html#a85e8c9731bfed7d2e82df47750b9c19e">DiscardHypothesis</a> (robocluedo_msgs::DiscardHypothesis::Request &amp;tag, robocluedo_msgs::DiscardHypothesis::Response &amp;success)</td></tr>
+<tr class="memdesc:a85e8c9731bfed7d2e82df47750b9c19e"><td class="mdescLeft">&#160;</td><td class="mdescRight">implementation of service <a class="el" href="a00062.html#a7abfca1c1aab551b07b78ca76440683a">SERVICE_INTERFACE_WRONG_HYPOTHESIS</a>  <a href="a00062.html#a85e8c9731bfed7d2e82df47750b9c19e">More...</a><br /></td></tr>
+<tr class="separator:a85e8c9731bfed7d2e82df47750b9c19e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66c612700258bd528a8d54035044b4ec"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00062.html#a66c612700258bd528a8d54035044b4ec">ServiceBackupOntology</a> (std_srvs::Trigger::Request &amp;emptyrequest, std_srvs::Trigger::Response &amp;success)</td></tr>
+<tr class="memdesc:a66c612700258bd528a8d54035044b4ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">implementation of service <a class="el" href="a00062.html#acc185c28a4bd121102b73f42c59b6939">SERVICE_INTERFACE_SAVE_ONTOLOGY</a>  <a href="a00062.html#a66c612700258bd528a8d54035044b4ec">More...</a><br /></td></tr>
+<tr class="separator:a66c612700258bd528a8d54035044b4ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00062.html#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
-<tr class="memdesc:a0ddf1224851353fc92bfbff6f499fa97"><td class="mdescLeft">&#160;</td><td class="mdescRight">ROS node main - cluedo_random_room.  <a href="a00062.html#a0ddf1224851353fc92bfbff6f499fa97">More...</a><br /></td></tr>
+<tr class="memdesc:a0ddf1224851353fc92bfbff6f499fa97"><td class="mdescLeft">&#160;</td><td class="mdescRight">ROS node main.  <a href="a00062.html#a0ddf1224851353fc92bfbff6f499fa97">More...</a><br /></td></tr>
 <tr class="separator:a0ddf1224851353fc92bfbff6f499fa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:a3e9faf1e599933e7e3653aa772c5bc0f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00062.html#a3e9faf1e599933e7e3653aa772c5bc0f">rooms</a></td></tr>
-<tr class="memdesc:a3e9faf1e599933e7e3653aa772c5bc0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">the set of rooms  <a href="a00062.html#a3e9faf1e599933e7e3653aa772c5bc0f">More...</a><br /></td></tr>
-<tr class="separator:a3e9faf1e599933e7e3653aa772c5bc0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A simple service: choose randomly a room to reach. </p>
+<div class="textblock"><p>Dedicated RCL-aRMOR client. </p>
 <div><b>ROS Node Name</b> <ul>
 <li>
-cluedo_random_room</li>
+cluedo_armor_interface</li>
 </ul>
 </div> <dl class="section author"><dt>Authors</dt><dd>Francesco Ganci (S4143910) </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>v1.0</dd></dl>
 <p><b>Services:</b> <br  />
  </p><ul>
 <li>
-<em> <a class="el" href="a00062.html#aeb68a7701a2e29df2646553ae5f0e49b">SERVICE_RANDOM_ROOM</a> </em> : <a class="el" href="a00086.html">RandomRoom.srv</a> <br  />
+<em>/cluedo_armor/add_hint</em> : <a class="el" href="a00080.html">AddHint.srv</a> <br  />
  ... description <br  />
 <br  />
+  </li>
+<li>
+<em>/cluedo_armor/find_consistent_h</em> : <a class="el" href="a00089.html">FindConsistentHypotheses.srv</a> <br  />
+ ... description <br  />
+<br  />
+  </li>
+<li>
+<em>/cluedo_armor/wrong_hypothesis</em> : <a class="el" href="a00086.html">DiscardHypothesis.srv</a> <br  />
+ ... description <br  />
+<br  />
+  </li>
+<li>
+<em>/cluedo_armor/backup</em> : <a href="http://docs.ros.org/en/api/std_srvs/html/srv/Trigger.html">std_srvs::Trigger</a> <br  />
+ ... description <br  />
+<br  />
+  </li>
+</ul>
+<p><b>Hidden services and topics</b> <br  />
+ </p><ul>
+<li>
+(from <a class="el" href="a00107.html" title="A minimal C++ client for aRMOR.">ArmorTools</a> : client) <em>/armor_interface_srv</em> <br  />
   </li>
 </ul>
 <p><b>Parameters:</b> <br  />
  </p><ul>
 <li>
-[GET] <em> <a class="el" href="a00062.html#a5a5c61b838d2950098341254ca9eca1a">PATH_PARAMETER_SERVER_WHERE</a> </em> : string <br  />
- ... description <br  />
+[GET] <em> <a class="el" href="a00062.html#a1488d09dc82faa87c57e8d9a79bbe1f1">ONTOLOGY_PARAM</a> </em> : string <br  />
+ path of the ontology <br  />
+<br  />
+  </li>
+<li>
+[GET] <em> <a class="el" href="a00062.html#a311d6790cb54f184fa8fa02120ebee44">PARAM_ONTOLOGY_BACKUP_PATH</a> </em> : string <br  />
+ default name for the backup ontology file <br  />
 <br  />
   </li>
 </ul>
 <p><b>Description:</b> <br  />
  </p>
-<p>...description </p>
+<p>descrizione incredibilmente dettagliata e profonda (coming soon) </p>
 
-<p class="definition">Definition in file <a class="el" href="a00062_source.html">cluedo_random_room.cpp</a>.</p>
+<p class="definition">Definition in file <a class="el" href="a00062_source.html">cluedo_armor_interface.cpp</a>.</p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a36b268389a5b36ab752d1e59f1fa63f0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a36b268389a5b36ab752d1e59f1fa63f0">&#9670;&nbsp;</a></span>LOGSQUARE</h2>
@@ -198,110 +260,200 @@ cluedo_random_room</li>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a00062_source.html#l00046">46</a> of file <a class="el" href="a00062_source.html">cluedo_random_room.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a00062_source.html#l00087">87</a> of file <a class="el" href="a00062_source.html">cluedo_armor_interface.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a186fe566fd11435e6aa34702dd79cac1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a186fe566fd11435e6aa34702dd79cac1">&#9670;&nbsp;</a></span>OUTLOG</h2>
+<a id="a1488d09dc82faa87c57e8d9a79bbe1f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1488d09dc82faa87c57e8d9a79bbe1f1">&#9670;&nbsp;</a></span>ONTOLOGY_PARAM</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define OUTLOG&#160;&#160;&#160;std::cout &lt;&lt; &quot;[cluedo_random_room] &quot;</td>
+          <td class="memname">#define ONTOLOGY_PARAM&#160;&#160;&#160;&quot;cluedo_path_owlfile&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a00062_source.html#l00045">45</a> of file <a class="el" href="a00062_source.html">cluedo_random_room.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a00062_source.html#l00083">83</a> of file <a class="el" href="a00062_source.html">cluedo_armor_interface.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a5a5c61b838d2950098341254ca9eca1a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5a5c61b838d2950098341254ca9eca1a">&#9670;&nbsp;</a></span>PATH_PARAMETER_SERVER_WHERE</h2>
+<a id="a83c0c69e3e513938dbd4e22b0dda7643"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83c0c69e3e513938dbd4e22b0dda7643">&#9670;&nbsp;</a></span>OUTLABEL</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define PATH_PARAMETER_SERVER_WHERE&#160;&#160;&#160;&quot;cluedo_path_where&quot;</td>
+          <td class="memname">#define OUTLABEL&#160;&#160;&#160;&quot;[cluedo_armor_interface]&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a00062_source.html#l00043">43</a> of file <a class="el" href="a00062_source.html">cluedo_random_room.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a00062_source.html#l00085">85</a> of file <a class="el" href="a00062_source.html">cluedo_armor_interface.cpp</a>.</p>
 
 </div>
 </div>
-<a id="aeb68a7701a2e29df2646553ae5f0e49b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeb68a7701a2e29df2646553ae5f0e49b">&#9670;&nbsp;</a></span>SERVICE_RANDOM_ROOM</h2>
+<a id="a3cebd08e2e9a598e7cd779a51734719e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3cebd08e2e9a598e7cd779a51734719e">&#9670;&nbsp;</a></span>OUTLOG</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define SERVICE_RANDOM_ROOM&#160;&#160;&#160;&quot;/random_room&quot;</td>
+          <td class="memname">#define OUTLOG</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">msg</td><td>)</td>
+          <td>&#160;&#160;&#160;ROS_INFO_STREAM( <a class="el" href="a00068.html#a83c0c69e3e513938dbd4e22b0dda7643">OUTLABEL</a> &lt;&lt; &quot; &quot; &lt;&lt; msg );</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a00062_source.html#l00044">44</a> of file <a class="el" href="a00062_source.html">cluedo_random_room.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a00062_source.html#l00086">86</a> of file <a class="el" href="a00062_source.html">cluedo_armor_interface.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a311d6790cb54f184fa8fa02120ebee44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a311d6790cb54f184fa8fa02120ebee44">&#9670;&nbsp;</a></span>PARAM_ONTOLOGY_BACKUP_PATH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PARAM_ONTOLOGY_BACKUP_PATH&#160;&#160;&#160;&quot;cluedo_path_owlfile_backup&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="a00062_source.html#l00084">84</a> of file <a class="el" href="a00062_source.html">cluedo_armor_interface.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a9e68b107365153366ec52986156f2595"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e68b107365153366ec52986156f2595">&#9670;&nbsp;</a></span>SERVICE_INTERFACE_ADD_HINT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SERVICE_INTERFACE_ADD_HINT&#160;&#160;&#160;&quot;/cluedo_armor/add_hint&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="a00062_source.html#l00078">78</a> of file <a class="el" href="a00062_source.html">cluedo_armor_interface.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a43b5b7d093b3ed913fa91b74684ff821"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43b5b7d093b3ed913fa91b74684ff821">&#9670;&nbsp;</a></span>SERVICE_INTERFACE_FIND_CONSISTENT_HYP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SERVICE_INTERFACE_FIND_CONSISTENT_HYP&#160;&#160;&#160;&quot;/cluedo_armor/find_consistent_h&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="a00062_source.html#l00079">79</a> of file <a class="el" href="a00062_source.html">cluedo_armor_interface.cpp</a>.</p>
+
+</div>
+</div>
+<a id="acc185c28a4bd121102b73f42c59b6939"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc185c28a4bd121102b73f42c59b6939">&#9670;&nbsp;</a></span>SERVICE_INTERFACE_SAVE_ONTOLOGY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SERVICE_INTERFACE_SAVE_ONTOLOGY&#160;&#160;&#160;&quot;/cluedo_armor/backup&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="a00062_source.html#l00081">81</a> of file <a class="el" href="a00062_source.html">cluedo_armor_interface.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a7abfca1c1aab551b07b78ca76440683a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7abfca1c1aab551b07b78ca76440683a">&#9670;&nbsp;</a></span>SERVICE_INTERFACE_WRONG_HYPOTHESIS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SERVICE_INTERFACE_WRONG_HYPOTHESIS&#160;&#160;&#160;&quot;/cluedo_armor/wrong_hypothesis&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="a00062_source.html#l00080">80</a> of file <a class="el" href="a00062_source.html">cluedo_armor_interface.cpp</a>.</p>
+
+</div>
+</div>
+<a id="af4f289b8ad162b609975620166e3d407"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4f289b8ad162b609975620166e3d407">&#9670;&nbsp;</a></span>SS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SS</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">this_string</td><td>)</td>
+          <td>&#160;&#160;&#160;std::string( this_string )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="a00062_source.html#l00088">88</a> of file <a class="el" href="a00062_source.html">cluedo_armor_interface.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a7a571e6f0c662a683b2741f0e4cd4c26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a571e6f0c662a683b2741f0e4cd4c26">&#9670;&nbsp;</a></span>SSS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SSS</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">this_thing</td><td>)</td>
+          <td>&#160;&#160;&#160;std::to_string( this_thing )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="a00062_source.html#l00089">89</a> of file <a class="el" href="a00062_source.html">cluedo_armor_interface.cpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a5860d956cf9531e4209e63284e3231c4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5860d956cf9531e4209e63284e3231c4">&#9670;&nbsp;</a></span>Choose()</h2>
+<a id="a85e8c9731bfed7d2e82df47750b9c19e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85e8c9731bfed7d2e82df47750b9c19e">&#9670;&nbsp;</a></span>DiscardHypothesis()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::string Choose </td>
+          <td class="memname">bool DiscardHypothesis </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>get randomly the name of one room </p>
-<p>... more details</p>
-<dl class="section return"><dt>Returns</dt><dd>the room </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="a00062_source.html#l00112">112</a> of file <a class="el" href="a00062_source.html">cluedo_random_room.cpp</a>.</p>
-<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="a00062_a5860d956cf9531e4209e63284e3231c4_icgraph.png" border="0" usemap="#a00062_a5860d956cf9531e4209e63284e3231c4_icgraph" alt=""/></div>
-<map name="a00062_a5860d956cf9531e4209e63284e3231c4_icgraph" id="a00062_a5860d956cf9531e4209e63284e3231c4_icgraph">
-<area shape="rect" title="get randomly the name of one room" alt="" coords="216,5,287,32"/>
-<area shape="rect" href="a00062.html#acb2cbc45ef5cb59e465ab42a1f3c4d51" title="implementation of service SERVICE_RANDOM_ROOM" alt="" coords="5,5,168,32"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="acb2cbc45ef5cb59e465ab42a1f3c4d51"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acb2cbc45ef5cb59e465ab42a1f3c4d51">&#9670;&nbsp;</a></span>ChooseRoomRandom()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool ChooseRoomRandom </td>
-          <td>(</td>
-          <td class="paramtype">robocluedo_msgs::RandomRoom::Request &amp;&#160;</td>
-          <td class="paramname"><em>empty</em>, </td>
+          <td class="paramtype">robocluedo_msgs::DiscardHypothesis::Request &amp;&#160;</td>
+          <td class="paramname"><em>tag</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">robocluedo_msgs::RandomRoom::Response &amp;&#160;</td>
-          <td class="paramname"><em>room</em>&#160;</td>
+          <td class="paramtype">robocluedo_msgs::DiscardHypothesis::Response &amp;&#160;</td>
+          <td class="paramname"><em>success</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -311,70 +463,18 @@ cluedo_random_room</li>
       </table>
 </div><div class="memdoc">
 
-<p>implementation of service <a class="el" href="a00062.html#aeb68a7701a2e29df2646553ae5f0e49b">SERVICE_RANDOM_ROOM</a> </p>
+<p>implementation of service <a class="el" href="a00062.html#a7abfca1c1aab551b07b78ca76440683a">SERVICE_INTERFACE_WRONG_HYPOTHESIS</a> </p>
 <p>... more details</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">empty</td><td>the empty request </td></tr>
-    <tr><td class="paramname">room</td><td>the choosen room</td></tr>
+    <tr><td class="paramname">tag</td><td>of the hypothesis to discard </td></tr>
+    <tr><td class="paramname">success</td><td>if the request has been accomplished or not</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00086.html">RandomRoom.srv</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00086.html">DiscardHypothesis.srv</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="a00062_source.html#l00135">135</a> of file <a class="el" href="a00062_source.html">cluedo_random_room.cpp</a>.</p>
-<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="a00062_acb2cbc45ef5cb59e465ab42a1f3c4d51_cgraph.png" border="0" usemap="#a00062_acb2cbc45ef5cb59e465ab42a1f3c4d51_cgraph" alt=""/></div>
-<map name="a00062_acb2cbc45ef5cb59e465ab42a1f3c4d51_cgraph" id="a00062_acb2cbc45ef5cb59e465ab42a1f3c4d51_cgraph">
-<area shape="rect" title="implementation of service SERVICE_RANDOM_ROOM" alt="" coords="5,5,168,32"/>
-<area shape="rect" href="a00062.html#a5860d956cf9531e4209e63284e3231c4" title="get randomly the name of one room" alt="" coords="216,5,287,32"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a72be2cfb7017d316b3fc9409ee0fd2e1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a72be2cfb7017d316b3fc9409ee0fd2e1">&#9670;&nbsp;</a></span>ImportNamesOfRooms()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool ImportNamesOfRooms </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>path</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>import names of the rooms from file </p>
-<p>... more details</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">path</td><td>the path of the file containing the names</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>success or not </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="a00062_source.html#l00072">72</a> of file <a class="el" href="a00062_source.html">cluedo_random_room.cpp</a>.</p>
-<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="a00062_a72be2cfb7017d316b3fc9409ee0fd2e1_icgraph.png" border="0" usemap="#a00062_a72be2cfb7017d316b3fc9409ee0fd2e1_icgraph" alt=""/></div>
-<map name="a00062_a72be2cfb7017d316b3fc9409ee0fd2e1_icgraph" id="a00062_a72be2cfb7017d316b3fc9409ee0fd2e1_icgraph">
-<area shape="rect" title="import names of the rooms from file" alt="" coords="108,5,279,32"/>
-<area shape="rect" href="a00062.html#a0ddf1224851353fc92bfbff6f499fa97" title="ROS node main &#45; cluedo_random_room." alt="" coords="5,5,60,32"/>
-</map>
-</div>
+<p class="definition">Definition at line <a class="el" href="a00062_source.html#l00258">258</a> of file <a class="el" href="a00062_source.html">cluedo_armor_interface.cpp</a>.</p>
 
 </div>
 </div>
@@ -404,40 +504,176 @@ cluedo_random_room</li>
       </table>
 </div><div class="memdoc">
 
-<p>ROS node main - cluedo_random_room. </p>
+<p>ROS node main. </p>
 <p>... more details </p>
 
-<p class="definition">Definition at line <a class="el" href="a00062_source.html#l00150">150</a> of file <a class="el" href="a00062_source.html">cluedo_random_room.cpp</a>.</p>
-<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="a00062_a0ddf1224851353fc92bfbff6f499fa97_cgraph.png" border="0" usemap="#a00062_a0ddf1224851353fc92bfbff6f499fa97_cgraph" alt=""/></div>
-<map name="a00062_a0ddf1224851353fc92bfbff6f499fa97_cgraph" id="a00062_a0ddf1224851353fc92bfbff6f499fa97_cgraph">
-<area shape="rect" title="ROS node main &#45; cluedo_random_room." alt="" coords="5,5,60,32"/>
-<area shape="rect" href="a00062.html#a72be2cfb7017d316b3fc9409ee0fd2e1" title="import names of the rooms from file" alt="" coords="108,5,279,32"/>
-</map>
-</div>
+<p class="definition">Definition at line <a class="el" href="a00062_source.html#l00315">315</a> of file <a class="el" href="a00062_source.html">cluedo_armor_interface.cpp</a>.</p>
 
 </div>
 </div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a id="a3e9faf1e599933e7e3653aa772c5bc0f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3e9faf1e599933e7e3653aa772c5bc0f">&#9670;&nbsp;</a></span>rooms</h2>
+<a id="a30c8d0c07497876eeb7b5845bab11d19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30c8d0c07497876eeb7b5845bab11d19">&#9670;&nbsp;</a></span>PerformDifferenceBetween()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;std::string&gt; rooms</td>
+          <td class="memname">std::vector&lt;std::string&gt; PerformDifferenceBetween </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; std::string &gt;&#160;</td>
+          <td class="paramname"><em>list1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::string &gt;&#160;</td>
+          <td class="paramname"><em>list2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>the set of rooms </p>
+<p>delete all the occurrences of list2 inside list1 </p>
+<p>perform the difference between the first array and the intersection between the two arrays</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">list1</td><td>the array to be reduced </td></tr>
+    <tr><td class="paramname">list2</td><td>the occurrences to delete from list1</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a copy of list1 without the elements of list2. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="a00062_source.html#l00051">51</a> of file <a class="el" href="a00062_source.html">cluedo_random_room.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a00062_source.html#l00118">118</a> of file <a class="el" href="a00062_source.html">cluedo_armor_interface.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a4867095aa20f38de61e518e16253520b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4867095aa20f38de61e518e16253520b">&#9670;&nbsp;</a></span>ServiceAddHint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ServiceAddHint </td>
+          <td>(</td>
+          <td class="paramtype">robocluedo_msgs::AddHint::Request &amp;&#160;</td>
+          <td class="paramname"><em>hint</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">robocluedo_msgs::AddHint::Response &amp;&#160;</td>
+          <td class="paramname"><em>success</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>implementation of service <a class="el" href="a00062.html#a9e68b107365153366ec52986156f2595">SERVICE_INTERFACE_ADD_HINT</a> </p>
+<p>... more details</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hint</td><td>the hint to add to the ontology </td></tr>
+    <tr><td class="paramname">success</td><td>request accomplished or not</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00080.html">AddHint.srv</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="a00062_source.html#l00155">155</a> of file <a class="el" href="a00062_source.html">cluedo_armor_interface.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a66c612700258bd528a8d54035044b4ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66c612700258bd528a8d54035044b4ec">&#9670;&nbsp;</a></span>ServiceBackupOntology()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ServiceBackupOntology </td>
+          <td>(</td>
+          <td class="paramtype">std_srvs::Trigger::Request &amp;&#160;</td>
+          <td class="paramname"><em>emptyrequest</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std_srvs::Trigger::Response &amp;&#160;</td>
+          <td class="paramname"><em>success</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>implementation of service <a class="el" href="a00062.html#acc185c28a4bd121102b73f42c59b6939">SERVICE_INTERFACE_SAVE_ONTOLOGY</a> </p>
+<p>... more details</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">emptyrequest</td><td>empty request </td></tr>
+    <tr><td class="paramname">success</td><td>if the request has been accomplished or not</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a href="http://docs.ros.org/en/api/std_srvs/html/srv/Trigger.html">std_srvs::Trigger</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="a00062_source.html#l00282">282</a> of file <a class="el" href="a00062_source.html">cluedo_armor_interface.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a7ac3004a3cbe78bf0b2c234d11354c43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ac3004a3cbe78bf0b2c234d11354c43">&#9670;&nbsp;</a></span>ServiceFindConsistentHypotheses()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ServiceFindConsistentHypotheses </td>
+          <td>(</td>
+          <td class="paramtype">robocluedo_msgs::FindConsistentHypotheses::Request &amp;&#160;</td>
+          <td class="paramname"><em>empty</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">robocluedo_msgs::FindConsistentHypotheses::Response &amp;&#160;</td>
+          <td class="paramname"><em>hyplist</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>implementation of service <a class="el" href="a00062.html#a43b5b7d093b3ed913fa91b74684ff821">SERVICE_INTERFACE_FIND_CONSISTENT_HYP</a> </p>
+<p>... more details</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">empty</td><td>empty request </td></tr>
+    <tr><td class="paramname">hyplist</td><td>a vector of COMPLETE hypotheses</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="a00089.html">FindConsistentHypotheses.srv</a> </dd>
+<dd>
+<a class="el" href="a00077.html">Hypothesis.msg</a> one element of the output vector from the service </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="a00062_source.html#l00209">209</a> of file <a class="el" href="a00062_source.html">cluedo_armor_interface.cpp</a>.</p>
 
 </div>
 </div>
@@ -446,8 +682,8 @@ cluedo_random_room</li>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_ec26e8507ab2869084237022eb595cc7.html">robocluedo</a></li><li class="navelem"><a class="el" href="dir_4ac2bbdaf5848812856158bd323f30d5.html">src</a></li><li class="navelem"><a class="el" href="a00062.html">cluedo_random_room.cpp</a></li>
-    <li class="footer">Generated on Mon Nov 8 2021 16:03:13 for RCL - RoboCLuedo by
+    <li class="navelem"><a class="el" href="dir_ec26e8507ab2869084237022eb595cc7.html">robocluedo</a></li><li class="navelem"><a class="el" href="dir_4ac2bbdaf5848812856158bd323f30d5.html">src</a></li><li class="navelem"><a class="el" href="a00062.html">cluedo_armor_interface.cpp</a></li>
+    <li class="footer">Generated on Mon Nov 8 2021 18:19:43 for RCL - RoboCLuedo by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

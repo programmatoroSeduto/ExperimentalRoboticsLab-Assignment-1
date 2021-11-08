@@ -1,6 +1,6 @@
 var annotated_dup =
 [
-    [ "robocluedo_main", "a00090.html", "a00090" ],
-    [ "ArmorCluedo", "a00094.html", "a00094" ],
-    [ "ArmorTools", "a00098.html", "a00098" ]
+    [ "robocluedo_main", "a00099.html", "a00099" ],
+    [ "ArmorCluedo", "a00103.html", "a00103" ],
+    [ "ArmorTools", "a00107.html", "a00107" ]
 ];

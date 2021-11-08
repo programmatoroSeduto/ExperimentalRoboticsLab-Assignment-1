@@ -34,7 +34,7 @@
 
 int main( int argc, char* argv[] )
 {
-	ros::init( argc, argv, "robocluedo_armortools_example_1" );
+	ros::init( argc, argv, "example_armor_tools_1" );
 	ros::NodeHandle nh;
 	
 	
