@@ -91,7 +91,7 @@ $(document).ready(function(){initNavTree('a00151.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 
-<p>implementation of the starting state <em>random_target</em>.  
+<p>implementation of the state <em>random_target</em>.  
  <a href="a00151.html#details">More...</a></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for robocluedo_main.robocluedo_random_target:</div>
@@ -100,7 +100,7 @@ $(document).ready(function(){initNavTree('a00151.html',''); initResizable(); });
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="a00150.png" border="0" usemap="#robocluedo__main_8robocluedo__random__target_inherit__map" alt="Inheritance graph"/></div>
 <map name="robocluedo__main_8robocluedo__random__target_inherit__map" id="robocluedo__main_8robocluedo__random__target_inherit__map">
-<area shape="rect" title="implementation of the starting state random_target." alt="" coords="5,131,216,237"/>
+<area shape="rect" title="implementation of the state random_target." alt="" coords="5,131,216,237"/>
 <area shape="rect" title=" " alt="" coords="83,5,139,83"/>
 </map>
 </div>
@@ -111,7 +111,7 @@ $(document).ready(function(){initNavTree('a00151.html',''); initResizable(); });
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="a00149.png" border="0" usemap="#robocluedo__main_8robocluedo__random__target_coll__map" alt="Collaboration graph"/></div>
 <map name="robocluedo__main_8robocluedo__random__target_coll__map" id="robocluedo__main_8robocluedo__random__target_coll__map">
-<area shape="rect" title="implementation of the starting state random_target." alt="" coords="5,131,216,237"/>
+<area shape="rect" title="implementation of the state random_target." alt="" coords="5,131,216,237"/>
 <area shape="rect" title=" " alt="" coords="83,5,139,83"/>
 </map>
 </div>
@@ -124,17 +124,19 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a64d474186ed84ec44ea057511b545953"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>implementation of the starting state <em>random_target</em>. </p>
-<p>... description</p>
+<div class="textblock"><p>implementation of the state <em>random_target</em>. </p>
+<p>During this state, the robot asks for a random target to the node robocluedo_random_room.cpp . The state is reachable only when there are no consistent hypotheses at the end of the phase <a class="el" href="a00167.html" title="implementation of the state reasoning.">robocluedo_reasoning</a> . The position to reach is stored for the next state. <br  />
+</p>
+<p>This is also the <b>starting state</b> of the FSM.</p>
 <div> <b>FSM Evolution:</b> <ul>
 <li>
 <u>move_robot</u> <em>to</em> <a class="el" href="a00155.html" title="implementation of the state moving.">robocluedo_moving</a> <br  />
- .... description <br  />
+ after the requet, the robot has a target to reach. <br  />
 <br  />
   </li>
 </ul>
 </div> 
-<p class="definition">Definition at line <a class="el" href="a00071_source.html#l00154">154</a> of file <a class="el" href="a00071_source.html">robocluedo_main.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a00071_source.html#l00162">162</a> of file <a class="el" href="a00071_source.html">robocluedo_main.py</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>/root/ws_experimental_robotics_lab_assignment_1/src/assignment_1/robocluedo/scripts/<a class="el" href="a00071_source.html">robocluedo_main.py</a></li>
 </ul>
@@ -144,7 +146,7 @@ Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="a00135.html">robocluedo_main</a></li><li class="navelem"><a class="el" href="a00151.html">robocluedo_random_target</a></li>
-    <li class="footer">Generated on Mon Nov 8 2021 21:14:23 for RCL - RoboCLuedo by
+    <li class="footer">Generated on Mon Nov 8 2021 22:01:30 for RCL - RoboCLuedo by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

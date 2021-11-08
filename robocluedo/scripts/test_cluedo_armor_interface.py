@@ -1,12 +1,18 @@
 #! /usr/bin/env python
 
-'''
-rospy.loginfo( "[%s] asking for service [%s] ...", test_name,  )
-rospy.wait_for_service( client_name_random_room )
-client_random_room = rospy.ServiceProxy( client_name_random_room, RandomRoom )
-rospy.loginfo( "[%s] OK!", test_name )
+"""! @file test_cluedo_armor_interface.py
 
-'''
+@brief testing the node cluedo_armor_interface.cpp
+ 
+@authors Francesco Ganci (S4143910)
+@version v1.0
+
+This node implements a simple test for the node cluedo_armor_interface.cpp :
+try a simple reasoning process using the interface. 
+
+@see test_cluedo_armor_interface.launch launch file for the test
+
+"""
 
 import rospy
 from robocluedo_msgs.srv import AddHint, AddHintRequest, AddHintResponse

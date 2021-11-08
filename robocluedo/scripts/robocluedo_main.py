@@ -1,8 +1,7 @@
 #! /usr/bin/env python
 
-"""! 
+"""! @file robocluedo_main.py
 
-@file robocluedo_main.py
 <div><b>ROS Node Name</b> 
      <ul><li>robocluedo_main</li></ul></div>
 @brief The main FSM of RCL
@@ -13,8 +12,8 @@
 <b>Subscribers:</b> <br>
 <ul>
 	<li>
-			<i>/topic</i> : file.msg <br>
-			... description <br><br>
+			<i>/hint</i> : Hint.msg <br>
+			hint from the oracle <br><br>
 	</li>
 </ul>
 
@@ -52,7 +51,13 @@
 
 <b>Description:</b> <br>
 <p>
-...description
+The main part of this architecture is the FSM implemented in this node,
+which uses the ROS framework <i>smach</i>. See the diagrams to understand
+how this node works. <br>
+
+this node has been implemented thinking on the maximum flexibility: the 
+way it works can be easily extended or integrated with other components
+with small, or also absent, changes. 
 </p>
 
 """
@@ -140,9 +145,12 @@ def listen_for_hints( data ):
 	"""!
 	@brief listen for a hint from the oracle, then buffer it
 	
-	... details
+	This callback receives the message, and puts it in a single-variable
+	buffer, ready to be consumed in the state robocluedo_update_ontology .
 	
 	@param data : Hint.msg the hint received from the Oracle
+	
+	@todo the singlevar buffer should become a list buffer
 	"""
 	global hint, hint_received
 	
@@ -153,16 +161,22 @@ def listen_for_hints( data ):
 
 class robocluedo_random_target( smach.State ):
 	"""!
-	@brief implementation of the starting state <i>random_target</i>.
+	@brief implementation of the state <i>random_target</i>.
 	
-	... description
+	During this state, the robot asks for a random target to the node 
+	robocluedo_random_room.cpp . The state is reachable only when there
+	are no consistent hypotheses at the end of the phase
+	robocluedo_reasoning . The position to reach is stored for the next
+	state. <br>
+	
+	This is also the <b>starting state</b> of the FSM. 
 	
 	<div>
 		<b>FSM Evolution:</b> 
 		<ul>
 			<li>
 			<u>move_robot</u> <i>to</i> robocluedo_moving <br>
-			.... description <br><br>
+			after the requet, the robot has a target to reach.  <br><br>
 			</li>
 		</ul>
 	</div>
@@ -193,18 +207,19 @@ class robocluedo_moving( smach.State ):
 	"""!
 	@brief implementation of the state <i>moving</i>.
 	
-	... description
+	The robot uses the robocluedo_movement_controller.cpp in order to move
+	from the actual position to the target position. 
 	
 	<div>
 		<b>FSM Evolution:</b> 
 		<ul>
 			<li>
 			<u>target_reached_no_charge</u> <i>to</i> robocluedo_listening_for_hints <br>
-			.... description <br><br>
+			the robot still has not a COMPLETE hypothesis to send to the Oracle <br><br>
 			</li>
 			<li>
 			<u>target_reached_ready_for_charge</u> <i>to</i> robocluedo_charge <br>
-			.... description <br><br>
+			the robot is in the right place to send a COMPLETE hypothesis to the Oracle <br><br>
 			</li>
 		</ul>
 	</div>
@@ -237,18 +252,19 @@ class robocluedo_listening_for_hints( smach.State ):
 	"""!
 	@brief implementation of the state <i>listening_for_hints</i>.
 	
-	... description
+	Simple checking: if there are messages in the buffer, update the
+	ontology. Otherwise, go further. 
 	
 	<div>
 		<b>FSM Evolution:</b> 
 		<ul>
 			<li>
 			<u>received_a_hint</u> <i>to</i> robocluedo_update_ontology <br>
-			.... description <br><br>
+			the Oracle sent a hint, the buffer is full<br><br>
 			</li>
 			<li>
 			<u>no_hints</u> <i>to</i> robocluedo_reasoning <br>
-			.... description <br><br>
+			the buffer is empty. <br><br>
 			</li>
 		</ul>
 	</div>
@@ -273,14 +289,17 @@ class robocluedo_update_ontology( smach.State ):
 	"""!
 	@brief implementation of the state <i>update_ontology</i>.
 	
-	... description
+	During this state, the system loads the hint from the Oracle into the
+	ontology, using the services from robocluedo_armor_interface.cpp . <br>
+	
+	Before going in the next state, the ontology is exported into a file. 
 	
 	<div>
 		<b>FSM Evolution:</b> 
 		<ul>
 			<li>
 			<u>done</u> <i>to</i> robocluedo_reasoning <br>
-			.... description <br><br>
+			ontology update done <br><br>
 			</li>
 		</ul>
 	</div>
@@ -320,22 +339,25 @@ class robocluedo_reasoning( smach.State ):
 	"""!
 	@brief implementation of the state <i>reasoning</i>.
 	
-	... description
+	Here the system searches for any COMPLETE hypothesis using the services
+	provided by robocluedo_armor_interface.cpp . If the robot is not in the
+	right place to make the charge, it stores the charge, move, and then 
+	retrives it. 
 	
 	<div>
 		<b>FSM Evolution:</b> 
 		<ul>
 			<li>
 			<u>ready_for_charge</u> <i>to</i> robocluedo_charge <br>
-			.... description <br><br>
+			the robot found a COMPLETE hypothesis and is in the place of the hypothesis <br><br>
 			</li>
 			<li>
 			<u>not_in_the_right_place</u> <i>to</i> robocluedo_moving <br>
-			.... description <br><br>
+			the robot found a COMPLETE hypothesis but is not in the right place to send the charge <br><br>
 			</li>
 			<li>
 			<u>no_consistent_hp</u> <i>to</i> robocluedo_random_target <br>
-			.... description <br><br>
+			there are no COMPLETE hypotheses yet <br><br>
 			</li>
 		</ul>
 	</div>
@@ -380,18 +402,18 @@ class robocluedo_charge( smach.State ):
 	"""!
 	@brief implementation of the state <i>charge</i>.
 	
-	... description
+	The system is ready to make a charge. 
 	
 	<div>
 		<b>FSM Evolution:</b> 
 		<ul>
 			<li>
 			<u>case_solved</u> <i>to</i> <b>END STATE</b> <br>
-			.... description <br><br>
+			the oracle replies with a positive result: case solved. <br><br>
 			</li>
 			<li>
 			<u>wrong_hp</u> <i>to</i> robocluedo_listening_for_hints <br>
-			.... description <br><br>
+			the solution is not correct. <br><br>
 			</li>
 		</ul>
 	</div>
@@ -433,9 +455,6 @@ class robocluedo_charge( smach.State ):
 def create_state_machine( ):
 	"""!
 	@brief define the state machine of the robot before starting
-	
-	... details
-	
 	"""
 	global robot_sm
 	

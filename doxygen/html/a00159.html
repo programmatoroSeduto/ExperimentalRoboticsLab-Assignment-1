@@ -125,21 +125,20 @@ Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>implementation of the state <em>listening_for_hints</em>. </p>
-<p>... description</p>
+<p>Simple checking: if there are messages in the buffer, update the ontology. Otherwise, go further.</p>
 <div> <b>FSM Evolution:</b> <ul>
 <li>
 <u>received_a_hint</u> <em>to</em> <a class="el" href="a00163.html" title="implementation of the state update_ontology.">robocluedo_update_ontology</a> <br  />
- .... description <br  />
-<br  />
+ the Oracle sent a hint, the buffer is full&lt;br&gt;<br  />
   </li>
 <li>
 <u>no_hints</u> <em>to</em> <a class="el" href="a00167.html" title="implementation of the state reasoning.">robocluedo_reasoning</a> <br  />
- .... description <br  />
+ the buffer is empty. <br  />
 <br  />
   </li>
 </ul>
 </div> 
-<p class="definition">Definition at line <a class="el" href="a00071_source.html#l00236">236</a> of file <a class="el" href="a00071_source.html">robocluedo_main.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a00071_source.html#l00251">251</a> of file <a class="el" href="a00071_source.html">robocluedo_main.py</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>/root/ws_experimental_robotics_lab_assignment_1/src/assignment_1/robocluedo/scripts/<a class="el" href="a00071_source.html">robocluedo_main.py</a></li>
 </ul>
@@ -149,7 +148,7 @@ Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="a00135.html">robocluedo_main</a></li><li class="navelem"><a class="el" href="a00159.html">robocluedo_listening_for_hints</a></li>
-    <li class="footer">Generated on Mon Nov 8 2021 21:14:23 for RCL - RoboCLuedo by
+    <li class="footer">Generated on Mon Nov 8 2021 22:01:30 for RCL - RoboCLuedo by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

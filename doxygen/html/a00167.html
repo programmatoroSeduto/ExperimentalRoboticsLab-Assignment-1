@@ -125,26 +125,26 @@ Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>implementation of the state <em>reasoning</em>. </p>
-<p>... description</p>
+<p>Here the system searches for any COMPLETE hypothesis using the services provided by robocluedo_armor_interface.cpp . If the robot is not in the right place to make the charge, it stores the charge, move, and then retrives it.</p>
 <div> <b>FSM Evolution:</b> <ul>
 <li>
 <u>ready_for_charge</u> <em>to</em> <a class="el" href="a00171.html" title="implementation of the state charge.">robocluedo_charge</a> <br  />
- .... description <br  />
+ the robot found a COMPLETE hypothesis and is in the place of the hypothesis <br  />
 <br  />
   </li>
 <li>
 <u>not_in_the_right_place</u> <em>to</em> <a class="el" href="a00155.html" title="implementation of the state moving.">robocluedo_moving</a> <br  />
- .... description <br  />
+ the robot found a COMPLETE hypothesis but is not in the right place to send the charge <br  />
 <br  />
   </li>
 <li>
-<u>no_consistent_hp</u> <em>to</em> <a class="el" href="a00151.html" title="implementation of the starting state random_target.">robocluedo_random_target</a> <br  />
- .... description <br  />
+<u>no_consistent_hp</u> <em>to</em> <a class="el" href="a00151.html" title="implementation of the state random_target.">robocluedo_random_target</a> <br  />
+ there are no COMPLETE hypotheses yet <br  />
 <br  />
   </li>
 </ul>
 </div> 
-<p class="definition">Definition at line <a class="el" href="a00071_source.html#l00319">319</a> of file <a class="el" href="a00071_source.html">robocluedo_main.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a00071_source.html#l00338">338</a> of file <a class="el" href="a00071_source.html">robocluedo_main.py</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>/root/ws_experimental_robotics_lab_assignment_1/src/assignment_1/robocluedo/scripts/<a class="el" href="a00071_source.html">robocluedo_main.py</a></li>
 </ul>
@@ -154,7 +154,7 @@ Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="a00135.html">robocluedo_main</a></li><li class="navelem"><a class="el" href="a00167.html">robocluedo_reasoning</a></li>
-    <li class="footer">Generated on Mon Nov 8 2021 21:14:23 for RCL - RoboCLuedo by
+    <li class="footer">Generated on Mon Nov 8 2021 22:01:30 for RCL - RoboCLuedo by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

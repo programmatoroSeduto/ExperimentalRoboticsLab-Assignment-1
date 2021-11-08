@@ -1,11 +1,17 @@
 #! /usr/bin/env python
 
-'''
-rospy.loginfo( "[%s] asking for service [%s] ...", test_name,  )
-rospy.wait_for_service( client_name_random_room )
-client_random_room = rospy.ServiceProxy( client_name_random_room, RandomRoom )
-rospy.loginfo( "[%s] OK!", test_name )
-'''
+"""! @file test_oracle_plus_interface.py
+
+@brief testing the nodes cluedo_oracle.cpp and cluedo_armor_interface.cpp
+ 
+@authors Francesco Ganci (S4143910)
+@version v1.0
+
+Each time an hint arrives, store it into the ontology. 
+
+@see test_cluedo_oracle_plus_interface.launch launch file for the test
+
+"""
 
 import rospy
 from robocluedo_msgs.srv import CheckSolution, CheckSolutionRequest, CheckSolutionResponse

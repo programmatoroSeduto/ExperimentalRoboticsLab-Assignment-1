@@ -1,5 +1,19 @@
 #! /usr/bin/env python
 
+"""! @file test_cluedo_random_room.py
+
+@brief testing the node cluedo_random_room.cpp
+ 
+@authors Francesco Ganci (S4143910)
+@version v1.0
+
+Simple test for the target request in cluedo_random_room.cpp: perform the 
+request 50 times. 
+
+@see test_cluedo_random_room.launch launch file for the test
+
+"""
+
 import rospy
 from robocluedo_msgs.srv import RandomRoom, RandomRoomRequest, RandomRoomResponse
 

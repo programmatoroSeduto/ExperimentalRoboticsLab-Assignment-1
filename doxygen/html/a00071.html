@@ -102,7 +102,7 @@ $(document).ready(function(){initNavTree('a00071.html',''); initResizable(); });
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00151.html">robocluedo_main.robocluedo_random_target</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">implementation of the starting state <em>random_target</em>.  <a href="a00151.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">implementation of the state <em>random_target</em>.  <a href="a00151.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00155.html">robocluedo_main.robocluedo_moving</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">implementation of the state <em>moving</em>.  <a href="a00155.html#details">More...</a><br /></td></tr>
@@ -169,8 +169,8 @@ Variables</h2></td></tr>
 <p><b>Subscribers:</b> <br  />
  </p><ul>
 <li>
-<em>/topic</em> : file.msg <br  />
- ... description <br  />
+<em>/hint</em> : <a class="el" href="a00110.html">Hint.msg</a> <br  />
+ hint from the oracle <br  />
 <br  />
   </li>
 </ul>
@@ -214,7 +214,9 @@ Variables</h2></td></tr>
 </ul>
 <p><b>Description:</b> <br  />
  </p>
-<p>...description </p>
+<p>The main part of this architecture is the FSM implemented in this node, which uses the ROS framework <em>smach</em>. See the diagrams to understand how this node works. <br  />
+</p>
+<p>this node has been implemented thinking on the maximum flexibility: the way it works can be easily extended or integrated with other components with small, or also absent, changes. </p>
 
 <p class="definition">Definition in file <a class="el" href="a00071_source.html">robocluedo_main.py</a>.</p>
 </div></div><!-- contents -->
@@ -223,7 +225,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_ec26e8507ab2869084237022eb595cc7.html">robocluedo</a></li><li class="navelem"><a class="el" href="dir_346ca385d56ecd0cac4d4d19b2f29141.html">scripts</a></li><li class="navelem"><a class="el" href="a00071.html">robocluedo_main.py</a></li>
-    <li class="footer">Generated on Mon Nov 8 2021 21:14:23 for RCL - RoboCLuedo by
+    <li class="footer">Generated on Mon Nov 8 2021 22:01:30 for RCL - RoboCLuedo by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

@@ -1,11 +1,18 @@
 #! /usr/bin/env python
 
-'''
-rospy.loginfo( "[%s] asking for service [%s] ...", test_name,  )
-rospy.wait_for_service( client_name_random_room )
-client_random_room = rospy.ServiceProxy( client_name_random_room, RandomRoom )
-rospy.loginfo( "[%s] OK!", test_name )
-'''
+"""! @file test_cluedo_oracle.py
+
+@brief testing the node cluedo_oracle.cpp
+ 
+@authors Francesco Ganci (S4143910)
+@version v1.0
+
+Simple test for the hint request in cluedo_oracle.cpp: perform the 
+request 25 times. 
+
+@see test_cluedo_oracle.launch launch file for the test
+
+"""
 
 import rospy
 from robocluedo_msgs.srv import CheckSolution, CheckSolutionRequest, CheckSolutionResponse
