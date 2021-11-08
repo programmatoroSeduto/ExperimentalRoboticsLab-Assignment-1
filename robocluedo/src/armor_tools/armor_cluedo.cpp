@@ -52,6 +52,13 @@ bool ArmorCluedo::Init( std::string ontologyPath )
 // add an individual
 bool ArmorCluedo::AddIndiv( std::string indivname, std::string classname, bool makeDisjoint )
 {
+	// return false if the individual is a discarded hypothesis
+	if( classname == "HYPOTHESIS" )
+	{
+		if( this->GetPositionOf( indivname, DiscardHypotheses ) != DiscardHypotheses.end( ) )
+		 return false;
+	}
+	
 	// track the individual
 	if( !this->TrackIndiv( indivname ) ) return false;
 	

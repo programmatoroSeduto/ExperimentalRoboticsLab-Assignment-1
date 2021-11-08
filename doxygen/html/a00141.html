@@ -100,39 +100,39 @@ $(document).ready(function(){initNavTree('a00141.html',''); initResizable(); });
 <div class="line"><span class="preprocessor">#include &quot;armor_msgs/ArmorDirectiveReq.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;armor_msgs/ArmorDirectiveRes.h&quot;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">int</span> <a name="a0"></a><a class="code" href="a00014.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>( <span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[] )</div>
+<div class="line"><span class="keywordtype">int</span> <a name="a0"></a><a class="code" href="a00014_a0ddf1224851353fc92bfbff6f499fa97.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>( <span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[] )</div>
 <div class="line">{</div>
 <div class="line">    ros::init( argc, argv, <span class="stringliteral">&quot;example_armor_tools_2&quot;</span> );</div>
 <div class="line">    ros::NodeHandle nh;</div>
 <div class="line">    </div>
 <div class="line">    <span class="comment">// preparing the client</span></div>
 <div class="line">    <a name="_a1"></a><a class="code" href="a00107.html">ArmorTools</a> armor( );</div>
-<div class="line">    <span class="keywordflow">if</span>( !armor.<a name="a2"></a><a class="code" href="a00107.html#ad98c8e33df5d1ef3e4c69051ac0dd7ab">ConnectAndLoad</a>( <span class="stringliteral">&quot;/root/ontologies/civetta_ontology.owl&quot;</span> ) )</div>
+<div class="line">    <span class="keywordflow">if</span>( !armor.<a name="a2"></a><a class="code" href="a00107_ad98c8e33df5d1ef3e4c69051ac0dd7ab.html#ad98c8e33df5d1ef3e4c69051ac0dd7ab">ConnectAndLoad</a>( <span class="stringliteral">&quot;/root/ontologies/civetta_ontology.owl&quot;</span> ) )</div>
 <div class="line">    {</div>
 <div class="line">        <span class="comment">// something went wrong...</span></div>
 <div class="line">    }</div>
 <div class="line">    </div>
 <div class="line">    <span class="comment">// call aRMOR</span></div>
-<div class="line">    armor.<a name="a3"></a><a class="code" href="a00107.html#a6033ed90283ec6c78a2bc2b0106d0461">SendCommand</a>( <span class="stringliteral">&quot;ADD&quot;</span>, <span class="stringliteral">&quot;IND&quot;</span>, <span class="stringliteral">&quot;CLASS&quot;</span>, <span class="stringliteral">&quot;pizza&quot;</span>, <span class="stringliteral">&quot;WEAPON&quot;</span> );</div>
+<div class="line">    armor.<a name="a3"></a><a class="code" href="a00107_a6033ed90283ec6c78a2bc2b0106d0461.html#a6033ed90283ec6c78a2bc2b0106d0461">SendCommand</a>( <span class="stringliteral">&quot;ADD&quot;</span>, <span class="stringliteral">&quot;IND&quot;</span>, <span class="stringliteral">&quot;CLASS&quot;</span>, <span class="stringliteral">&quot;pizza&quot;</span>, <span class="stringliteral">&quot;WEAPON&quot;</span> );</div>
 <div class="line">    </div>
 <div class="line">    <span class="comment">// REMEMBER TO UPDATE after the callings!</span></div>
-<div class="line">    armor.<a name="a4"></a><a class="code" href="a00107.html#a0ddf26f9a388377a36263344b1cbf39f">UpdateOntology</a>( );</div>
+<div class="line">    armor.<a name="a4"></a><a class="code" href="a00107_a0ddf26f9a388377a36263344b1cbf39f.html#a0ddf26f9a388377a36263344b1cbf39f">UpdateOntology</a>( );</div>
 <div class="line">    </div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
 </div><!-- fragment --><div class="fragment"></div><!-- fragment --><p> - 002 - The quickest way to use <a class="el" href="a00107.html" title="A minimal C++ client for aRMOR.">ArmorTools</a> </p>
 </div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="aa00107_a0ddf26f9a388377a36263344b1cbf39f_html_a0ddf26f9a388377a36263344b1cbf39f"><div class="ttname"><a href="a00107_a0ddf26f9a388377a36263344b1cbf39f.html#a0ddf26f9a388377a36263344b1cbf39f">ArmorTools::UpdateOntology</a></div><div class="ttdeci">bool UpdateOntology()</div><div class="ttdoc">send the command REASON</div><div class="ttdef"><b>Definition:</b> <a href="a00059_source.html#l00246">armor_tools.cpp:246</a></div></div>
 <div class="ttc" id="aa00044_html"><div class="ttname"><a href="a00044.html">armor_tools.h</a></div><div class="ttdoc">A minimal C++ client for aRMOR.</div></div>
-<div class="ttc" id="aa00107_html_ad98c8e33df5d1ef3e4c69051ac0dd7ab"><div class="ttname"><a href="a00107.html#ad98c8e33df5d1ef3e4c69051ac0dd7ab">ArmorTools::ConnectAndLoad</a></div><div class="ttdeci">bool ConnectAndLoad(std::string path, std::string uri=ARMOR_DEFAULT_URI, bool manipulationFlag=true, std::string reasoner=ARMOR_DEFAULT_REASONER, bool buffered_reasoner=true)</div><div class="ttdoc">connect to the server and load the ontology from file.</div><div class="ttdef"><b>Definition:</b> <a href="a00059_source.html#l00213">armor_tools.cpp:213</a></div></div>
-<div class="ttc" id="aa00107_html_a6033ed90283ec6c78a2bc2b0106d0461"><div class="ttname"><a href="a00107.html#a6033ed90283ec6c78a2bc2b0106d0461">ArmorTools::SendCommand</a></div><div class="ttdeci">bool SendCommand(std::string command, std::string first_spec=&quot;&quot;, std::string second_spec=&quot;&quot;, std::string arg1=&quot;&quot;, std::string arg2=&quot;&quot;, std::string arg3=&quot;&quot;, std::string arg4=&quot;&quot;, std::string arg5=&quot;&quot;, bool printRequest=false)</div><div class="ttdoc">fill in a command and send it to aRMOR</div><div class="ttdef"><b>Definition:</b> <a href="a00059_source.html#l00360">armor_tools.cpp:360</a></div></div>
-<div class="ttc" id="aa00014_html_a0ddf1224851353fc92bfbff6f499fa97"><div class="ttname"><a href="a00014.html#a0ddf1224851353fc92bfbff6f499fa97">main</a></div><div class="ttdeci">int main(int argc, char *argv[])</div><div class="ttdef"><b>Definition:</b> <a href="a00014_source.html#l00026">example_armor_cluedo_1.cpp:26</a></div></div>
-<div class="ttc" id="aa00107_html_a0ddf26f9a388377a36263344b1cbf39f"><div class="ttname"><a href="a00107.html#a0ddf26f9a388377a36263344b1cbf39f">ArmorTools::UpdateOntology</a></div><div class="ttdeci">bool UpdateOntology()</div><div class="ttdoc">send the command REASON</div><div class="ttdef"><b>Definition:</b> <a href="a00059_source.html#l00246">armor_tools.cpp:246</a></div></div>
+<div class="ttc" id="aa00107_a6033ed90283ec6c78a2bc2b0106d0461_html_a6033ed90283ec6c78a2bc2b0106d0461"><div class="ttname"><a href="a00107_a6033ed90283ec6c78a2bc2b0106d0461.html#a6033ed90283ec6c78a2bc2b0106d0461">ArmorTools::SendCommand</a></div><div class="ttdeci">bool SendCommand(std::string command, std::string first_spec=&quot;&quot;, std::string second_spec=&quot;&quot;, std::string arg1=&quot;&quot;, std::string arg2=&quot;&quot;, std::string arg3=&quot;&quot;, std::string arg4=&quot;&quot;, std::string arg5=&quot;&quot;, bool printRequest=false)</div><div class="ttdoc">fill in a command and send it to aRMOR</div><div class="ttdef"><b>Definition:</b> <a href="a00059_source.html#l00360">armor_tools.cpp:360</a></div></div>
+<div class="ttc" id="aa00014_a0ddf1224851353fc92bfbff6f499fa97_html_a0ddf1224851353fc92bfbff6f499fa97"><div class="ttname"><a href="a00014_a0ddf1224851353fc92bfbff6f499fa97.html#a0ddf1224851353fc92bfbff6f499fa97">main</a></div><div class="ttdeci">int main(int argc, char *argv[])</div><div class="ttdef"><b>Definition:</b> <a href="a00014_source.html#l00026">example_armor_cluedo_1.cpp:26</a></div></div>
+<div class="ttc" id="aa00107_ad98c8e33df5d1ef3e4c69051ac0dd7ab_html_ad98c8e33df5d1ef3e4c69051ac0dd7ab"><div class="ttname"><a href="a00107_ad98c8e33df5d1ef3e4c69051ac0dd7ab.html#ad98c8e33df5d1ef3e4c69051ac0dd7ab">ArmorTools::ConnectAndLoad</a></div><div class="ttdeci">bool ConnectAndLoad(std::string path, std::string uri=ARMOR_DEFAULT_URI, bool manipulationFlag=true, std::string reasoner=ARMOR_DEFAULT_REASONER, bool buffered_reasoner=true)</div><div class="ttdoc">connect to the server and load the ontology from file.</div><div class="ttdef"><b>Definition:</b> <a href="a00059_source.html#l00213">armor_tools.cpp:213</a></div></div>
 <div class="ttc" id="aa00107_html"><div class="ttname"><a href="a00107.html">ArmorTools</a></div><div class="ttdoc">A minimal C++ client for aRMOR.</div><div class="ttdef"><b>Definition:</b> <a href="a00044_source.html#l00090">armor_tools.h:90</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Nov 8 2021 18:19:43 for RCL - RoboCLuedo by
+    <li class="footer">Generated on Mon Nov 8 2021 19:02:39 for RCL - RoboCLuedo by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

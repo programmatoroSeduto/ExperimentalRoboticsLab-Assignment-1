@@ -1,0 +1,5 @@
+<map id="ArmorTools::Connect" name="ArmorTools::Connect">
+<area shape="rect" id="node1" title="open a connection with the aRMOR service." alt="" coords="449,5,605,32"/>
+<area shape="rect" id="node2" href="$a00107_ad98c8e33df5d1ef3e4c69051ac0dd7ab.html#ad98c8e33df5d1ef3e4c69051ac0dd7ab" title="connect to the server and load the ontology from file." alt="" coords="189,5,401,32"/>
+<area shape="rect" id="node3" href="$a00103_a66ce2d9f5c665ab14761233b32ab1ec6.html#a66ce2d9f5c665ab14761233b32ab1ec6" title="initizalize the interface" alt="" coords="5,5,141,32"/>
+</map>

@@ -112,6 +112,8 @@ public:
 	 * the command "DISJOINT IND CLASS", this function works in a more 
 	 * complex way. Here is how it works:
 	 * <ol>
+	 * <li> before starting, if the individual has class HYPOTHESIS and was
+	 *       discarded, return false immediately </li>
 	 * <li> The individual is <i>tracked</i>, i.e. put into an array which
 	 * 	     contains all the defined individuals</li>
 	 * <li> then, the individual is added </li>
@@ -235,14 +237,12 @@ public:
 	 *  
 	 * \brief find all the complete hypotheses
 	 * 
-	 * The methos finds all the <i>real COMPLETE hypotheses</i>. 
-	 * Here are the hypotheses which are discarded:
-	 * <ul>
-	 * 	<li>hypotheses belonging to INCONSISTENT</li>
-	 * 	<li>discarded hypotheses</li>
-	 * </ul>
+	 * The methos finds all the COMPLETE hypotheses, except for the 
+	 * discarded ones. 
 	 * 
 	 * @returns a vector containing the tags of all the COMPLETE hyp.
+	 * 
+	 * @see ServiceFindConsistentHypotheses an example of usage
 	 * 
 	 ***********************************************/
 	std::vector<std::string> FindCompleteHypotheses( );
@@ -258,6 +258,8 @@ public:
 	 * the output is exactly the individuals belonging to INCONSISTENT
 	 * without deleting the discarded hypotheses. I recommend to not
 	 * use this method, except for some cases. 
+	 * 
+	 * @see ServiceFindConsistentHypotheses an example of usage
 	 * 
 	 ***********************************************/
 	std::vector<std::string> FindInconsistentHypotheses( );

@@ -1,0 +1,4 @@
+<map id="ChooseRoomRandom" name="ChooseRoomRandom">
+<area shape="rect" id="node1" title="implementation of service SERVICE_RANDOM_ROOM" alt="" coords="5,5,168,32"/>
+<area shape="rect" id="node2" href="$a00071_a5860d956cf9531e4209e63284e3231c4.html#a5860d956cf9531e4209e63284e3231c4" title="get randomly the name of one room" alt="" coords="216,5,287,32"/>
+</map>

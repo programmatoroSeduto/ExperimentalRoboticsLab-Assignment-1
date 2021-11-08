@@ -4,7 +4,7 @@
  * \file cluedo_armor_interface.cpp
  * <div><b>ROS Node Name</b> 
  *      <ul><li>cluedo_armor_interface</li></ul></div>
- * \brief Dedicated RCL-aRMOR client
+ * \brief Dedicated RobotCLuedo-aRMOR client
  * 
  * \authors Francesco Ganci (S4143910)
  * \version v1.0
@@ -13,19 +13,19 @@
  * <ul>
  *     <li>
  * 			<i>/cluedo_armor/add_hint</i> : AddHint.srv <br>
- * 			... description <br><br>
+ * 			    register a hint in the ontology <br><br>
  * 		</li>
  * 		<li>
  * 			<i>/cluedo_armor/find_consistent_h</i> : FindConsistentHypotheses.srv <br>
- * 			... description <br><br>
+ * 			     find all the consistent hypotheses <br><br>
  * 		</li>
  * 		<li>
  * 			<i>/cluedo_armor/wrong_hypothesis</i> : DiscardHypothesis.srv <br>
- * 			... description <br><br>
+ * 			     discard an hypothesis, due to a negative response from the oracle <br><br>
  * 		</li>
  * 		<li>
  * 			<i>/cluedo_armor/backup</i> : <a href="http://docs.ros.org/en/api/std_srvs/html/srv/Trigger.html">std_srvs::Trigger</a> <br>
- * 			... description <br><br>
+ * 			    export the ontology to file <br><br>
  * 		</li>
  * </ul>
  * 
@@ -40,17 +40,19 @@
  * <ul>
  * 		<li>
  * 			[GET] <i> \ref ONTOLOGY_PARAM </i> : string <br>
- * 			path of the ontology <br><br>
+ * 			   path of the ontology <br><br>
  * 		</li>
  * 		<li>
  * 			[GET] <i> \ref PARAM_ONTOLOGY_BACKUP_PATH </i> : string <br>
- * 			default name for the backup ontology file <br><br>
+ * 			   name for the backup ontology file exported <br><br>
  * 		</li>
  * </ul>
  * 
  * <b>Description:</b> <br>
  * <p>
- * descrizione incredibilmente dettagliata e profonda (coming soon)
+ * This node implements an inferface which simplifies and abstracts the 
+ * communication with the aRMOR service, with particular attention to the
+ * most common operations performed by RCL during the search of a solution.<br>
  * </p>
  * 
  ***********************************************/
@@ -107,7 +109,8 @@ bool fileExist( std::string path )
  *  
  * \brief delete all the occurrences of list2 inside list1
  * 
- * perform the difference between the first array and the intersection between the two arrays
+ * The function is employed in order to find the 
+ * truly COMPLETE hypotheses, excluding the INCONSISTENT ones. 
  * 
  * @param list1 the array to be reduced
  * @param list2 the occurrences to delete from list1
@@ -144,12 +147,24 @@ std::vector<std::string> PerformDifferenceBetween( std::vector<std::string> list
  *  
  * \brief implementation of service \ref SERVICE_INTERFACE_ADD_HINT
  * 
- * ... more details
+ * The service registers a property with a value referred to a hypothesis
+ * given its numeric ID. Here is the followed procedure:
+ * <ol>
+ * <li>check if the hypothesis ID exists</li>
+ * <li>if it doesn't exist, create it</li>
+ * <li>check if the value exists</li>
+ * <li>if the value doesn't exist, create it</li>
+ * <li>set the property</li>
+ * <li>update the ontology</li>
+ * </ol>
  * 
  * @param hint    the hint to add to the ontology
  * @param success request accomplished or not
  * 
  * @see AddHint.srv
+ * 
+ * @note the DISJOINT on hypotheses is not performed; see ArmorCluedo::AddIndiv
+ *     about the parameter 'makeDisjoint'
  * 
  ***********************************************/
 bool ServiceAddHint( robocluedo_msgs::AddHint::Request& hint, robocluedo_msgs::AddHint::Response& success )
@@ -197,7 +212,8 @@ bool ServiceAddHint( robocluedo_msgs::AddHint::Request& hint, robocluedo_msgs::A
  *  
  * \brief implementation of service \ref SERVICE_INTERFACE_FIND_CONSISTENT_HYP
  * 
- * ... more details
+ * The service returns a vector of hypotheses belonging to the class COMPLETE
+ * and not to the class INCONSISTENT with an operation of difference. 
  * 
  * @param empty empty request
  * @param hyplist a vector of COMPLETE hypotheses
@@ -247,9 +263,10 @@ bool ServiceFindConsistentHypotheses( robocluedo_msgs::FindConsistentHypotheses:
  *  
  * \brief implementation of service \ref SERVICE_INTERFACE_WRONG_HYPOTHESIS
  * 
- * ... more details
+ * Simple call of the methos ArmorCluedo::RemoveHypothesis. It is called
+ * after a negative answer from the oracle related to a charge. 
  * 
- * @param tag of the hypothesis to discard
+ * @param tag     of the hypothesis to discard
  * @param success if the request has been accomplished or not
  * 
  * @see DiscardHypothesis.srv
@@ -271,7 +288,10 @@ bool DiscardHypothesis( robocluedo_msgs::DiscardHypothesis::Request& tag, robocl
  *  
  * \brief implementation of service \ref SERVICE_INTERFACE_SAVE_ONTOLOGY
  * 
- * ... more details
+ * The service exports the actual ontology to file. If the parameter
+ * \ref PARAM_ONTOLOGY_BACKUP_PATH is defined in the parameter server, the 
+ * ontology is exported in that path, otherwise the service returns with 
+ * error.
  * 
  * @param emptyrequest empty request
  * @param success if the request has been accomplished or not
@@ -309,7 +329,8 @@ bool ServiceBackupOntology( std_srvs::Trigger::Request& emptyrequest, std_srvs::
  *  
  * \brief ROS node main
  * 
- * ... more details
+ * Retrieving of the parameters from the parameter server, connection with 
+ * aRMOR through C++ interface, opening of the service, and spin. 
  * 
  ***********************************************/
 int main( int argc, char* argv[] )
