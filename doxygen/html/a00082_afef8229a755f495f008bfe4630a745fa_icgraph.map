@@ -1,0 +1,5 @@
+<map id="ArmorCluedo::GetIndivOfClass" name="ArmorCluedo::GetIndivOfClass">
+<area shape="rect" id="node1" title="find the individuals belonging to a class" alt="" coords="273,46,493,73"/>
+<area shape="rect" id="node2" href="$a00082.html#aaf1832ed634a017c48e26c48f58c5f68" title="find all the complete hypotheses" alt="" coords="13,5,217,47"/>
+<area shape="rect" id="node3" href="$a00082.html#ab278ac3aaffc4c6aceaf3bfb8d5186af" title="find all the inconsistent hypotheses" alt="" coords="5,71,225,112"/>
+</map>

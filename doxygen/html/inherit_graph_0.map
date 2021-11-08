@@ -1,4 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$class_armor_tools.html" title="A base client for aRMOR." alt="" coords="5,5,100,32"/>
-<area shape="rect" id="node2" href="$class_armor_cluedo.html" title="additional services for aRMOR" alt="" coords="148,5,255,32"/>
+<area shape="rect" id="node1" href="$a00098.html" title="A minimal C++ client for aRMOR." alt="" coords="5,5,100,32"/>
+<area shape="rect" id="node2" href="$a00094.html" title="additional services for aRMOR" alt="" coords="148,5,255,32"/>
 </map>

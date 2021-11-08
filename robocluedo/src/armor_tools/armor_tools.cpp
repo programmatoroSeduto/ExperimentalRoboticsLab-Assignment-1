@@ -1,4 +1,15 @@
 
+/********************************************//**
+ *  
+ * @file armor_tools.cpp
+ * @brief implementation of the class ArmorTools
+ * @author Francesco Ganci (S4143910)
+ * @version v1.0
+ *  
+ * @see armor_tools.h
+ * 
+ ***********************************************/
+
 #include "armor_tools/armor_tools.h"
 
 

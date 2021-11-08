@@ -2,7 +2,7 @@
 /********************************************//**
  *  
  * \file armor_tools.h
- * \brief base interface with aRMOR service
+ * \brief A minimal C++ client for aRMOR
  * \authors Francesco Ganci (S4143910)
  * \version v1.0
  * 
@@ -53,10 +53,39 @@
 
 /********************************************//**
  *  
- * \brief A base client for aRMOR. 
+ * \brief A minimal C++ client for aRMOR
  * 
- * ...more details...
+ * The class ArmorTools aims at giving a first abstraction of the service
+ * aRMOR by providing few "shortcuts". A strong point of this interface
+ * lies in the fact that a roscpp node can communicate with aRMOR through
+ * functions instead of direct callings to the service. <br>
  * 
+ * Another important feature is the debug mode: the programmer can turn 
+ * on and off the messages inside the code, in order to understand what
+ * is going on "underneath the hood". <br>
+ * 
+ * The class lets the programmer to not waste time in fill in the ArmorDirective
+ * message each time: <i>client_name</i> and <i>reference_name</i> are set 
+ * only once in the constructor, whereas the remaining fields can be 
+ * set using functions. Also the connection is contained in the class, and
+ * there are checks for understanding if the connection is valid or not. <br>
+ * In the end, the class stores the last request and the last response at
+ * each call, so the programmer can easily retrieve them and print, again 
+ * using function calls.  <br>
+ * 
+ * @todo actually the class has some methods missing, for example methods
+ * 		for modifying client name and reference name.
+ * 
+ * @todo sequential commands to aRMOR is not supported right now: only the
+ * 		single command service is used. 
+ * 
+ * @todo the interface actually can load the ontology only from file. 
+ * 		It could be a good idea to have tools also for loading it from 
+ * 		another source. 
+ * 
+ * @see ArmorCluedo an applciation of this interface
+ * @see example_armor_tools_1.cpp
+ * @see <a href="https://github.com/EmaroLab/armor/blob/master/README.MD"> the official aRMOR documentation</a>
  * 
  ***********************************************/
 class ArmorTools
@@ -64,12 +93,16 @@ class ArmorTools
 public:
 	/********************************************//**
 	 *  
-	 * \brief first class constructor. 
+	 * \brief Class Constructor, 3 arguments
 	 * 
-	 * ... more details
+	 * Complete class constructor. Dummy init of the class in an invalid
+	 * state. 
 	 * 
-	 * @param client client
-	 * @param reference reference
+	 * @param client    (optional) corresponding to the 'client_name' field
+	 * @param reference (optional) corresponding to the 'reference_name' field
+	 * @param dbmode    (optional) enable debug mode?
+	 * 
+	 * @see <a href="https://github.com/EmaroLab/armor#request">aRMOR official documentation</a> -- meaning of the parameters "client" and "reference"
 	 * 
 	 ***********************************************/
 	ArmorTools(
@@ -81,9 +114,10 @@ public:
 	
 	/********************************************//**
 	 *  
-	 * \brief first class constructor. 
+	 * \brief Class Constructor, only one argument
 	 * 
-	 * ... more details
+	 * class constructor with only debug mode. Dummy init of the class 
+	 * in an invalid state. 
 	 * 
 	 * @param dbmode debug mode?
 	 * 
@@ -91,22 +125,25 @@ public:
 	ArmorTools( bool dbmode );
 	
 	
-	/// class destructor
+	/// class destructor (empty)
 	~ArmorTools();
 	
 	
 	/********************************************//**
 	 *  
-	 * \brief quick creation of an aRMOR request
+	 * \brief quick generation of an aRMOR request
 	 * 
-	 * ... more details
+	 * This function writes the aRMOR directive request in one shot. 
 	 * 
-	 * @param command (mandatory) the main command
-	 * @param first_spec (optional) the first specifier
+	 * @param command     (mandatory) the main command
+	 * @param first_spec  (optional) the first specifier
 	 * @param second_spec (optional) the second specifier
-	 * @param arg (optional) (from 1 to 5) the arguments of the request
+	 * @param arg         (optional) (from 1 to 5) the arguments of the request
 	 * 
-	 * @return the aRMOR service request. 
+	 * @return the complete aRMOR directve message with the request part 
+	 * 		ready to use. 
+	 * 
+	 * @see <a href="https://github.com/EmaroLab/armor/blob/master/commands.md">aRMOR table of commands</a>
 	 * 
 	 ***********************************************/
 	armor_msgs::ArmorDirective GetRequest(
@@ -123,13 +160,18 @@ public:
 	
 	/********************************************//**
 	 *  
-	 * \brief send a command to aRMOR. 
+	 * \brief send a command to the aRMOR service.
 	 * 
-	 * ... more details
+	 * This function performs the call to the aRMOR service \ref ARMOR_SERVICE_SINGLE_REQUEST
+	 * given the entire message to send to. 
 	 * 
 	 * @param data reference to the request to send
 	 * 
-	 * @returns if the service was called or not
+	 * @returns <b>false</b> if there's not coenction, or if the request
+	 * 		went wrong. <b>true</b> otherwise. 
+	 * 
+	 * @todo there's no way to compose aRMOR commands in a list. actually
+	 * 		\ref ARMOR_SERVICE_MULTIPLE_REQUESTS is unused. 
 	 * 
 	 ***********************************************/
 	bool CallArmor( armor_msgs::ArmorDirective& data );
@@ -139,15 +181,22 @@ public:
 	 *  
 	 * \brief load the ontology from file. 
 	 * 
-	 * ... more details
+	 * the function call the aRMOR service in order to make it load one
+	 * file with extension .owl as ontology base. The file is only read, 
+	 * so the ontology will not alter it. 
 	 * 
-	 * @param path  
-	 * @param uri 
-	 * @param manipulationFlag 
-	 * @param reasoner
-	 * @param bufferend_reasoner
+	 * @param path               the path of the .owl ontology file
+	 * @param uri                the URI of the ontology (the main identifier)
+	 * @param manipulationFlag   if enabled, the ontology will wait for the
+	 * 		command APPLY before executing the manipulation commands
+	 * @param reasoner           one among "HERMIT", "PELLET" (default), "FACT", "SNOROCKET" 
+	 * @param bufferend_reasoner if enabled, the ontology will wait for the
+	 * 		command REASON before updating its internal state. 
 	 * 
 	 * @returns success or not
+	 * 
+	 * @note If you want to manage multiple aRMOR sessions, please consider to 
+	 * 		construct more than one ArmorTools object. 
 	 * 
 	 ***********************************************/
 	bool LoadOntology( 
@@ -163,11 +212,17 @@ public:
 	 *  
 	 * \brief open a connection with the aRMOR service. 
 	 * 
-	 * ... more details
+	 * This function simply asks the aRMOR service client. The client handle
+	 * is stored inside the class, so you don't have to worry about it. 
 	 * 
-	 * @param timeout 
+	 * @param timeout how much time to wait until to stop the connection 
+	 * 		attempt; see \ref ARMOR_DEFAULT_TIMEOUT . 
 	 * 
-	 * @returns success or not0
+	 * @returns success or not
+	 * 
+	 * @note The function returns <b>false</b> anso when, after opened the 
+	 * 		connection, you try to connect again. This is not allowed: you
+	 * 		cannot reconnect. 
 	 * 
 	 ***********************************************/
 	bool Connect( float timeout = ARMOR_DEFAULT_TIMEOUT );
@@ -177,13 +232,10 @@ public:
 	 *  
 	 * \brief connect to the server and load the ontology from file. 
 	 * 
-	 * ... more details
+	 * Just a shortcut for the couple ArmorTools::Connect then ArmorTools::LoadOntology .
 	 * 
-	 * @param path  
-	 * @param uri 
-	 * @param manipulationFlag 
-	 * @param reasoner
-	 * @param bufferend_reasoner
+	 * @see ArmorTools::Connect      connection to the aRMOR service
+	 * @see ArmorTools::LoadOntology loading ontology from file, and arguments
 	 * 
 	 * @returns success or not
 	 * 
@@ -201,9 +253,12 @@ public:
 	 *  
 	 * \brief save the ontology on file
 	 * 
-	 * ...
+	 * Shortcut for the aRMOR command <code>SAVE INFERENCE</code>. It 
+	 * writes the actual state of the ontology on a file. If the file 
+	 * doesn't exist, it will be created. The ontology is updated before
+	 * the writing on file. 
 	 * 
-	 * @param path where to save the OWL file
+	 * @param path where to save the .owl file
 	 * 
 	 * @returns success or not
 	 * 
@@ -215,9 +270,16 @@ public:
 	 *  
 	 * \brief send the command REASON
 	 * 
-	 * ...
+	 * Depending on the configuration used in ArmorTools::LoadOntology, 
+	 * the aRMOR command <code>REASON</code> is needed in order to update
+	 * the current state of the ontology (aka <i>infer something</i>). <br>
+	 * This function is a shortcut for the command <code>REASON</code>. 
 	 * 
 	 * @returns success or not
+	 * 
+	 * @warning often not using this function is source of errors! Please
+	 * remember to use it, because the other function won't do it 
+	 * automatically. 
 	 * 
 	 ***********************************************/
 	bool UpdateOntology( );
@@ -227,9 +289,7 @@ public:
 	 *  
 	 * \brief print a request to the screen.
 	 * 
-	 * ...
-	 * 
-	 * @param d the aRMOR service
+	 * @param d the entire aRMOR directive message.
 	 * 
 	 ***********************************************/
 	void PrintRequest( armor_msgs::ArmorDirective& d );
@@ -239,9 +299,7 @@ public:
 	 *  
 	 * \brief print the response to the screen.
 	 * 
-	 * ...
-	 * 
-	 * @param d the aRMOR service
+	 * @param d the entire aRMOR directive message.
 	 * 
 	 ***********************************************/
 	void PrintResponse( armor_msgs::ArmorDirective& d );
@@ -251,7 +309,8 @@ public:
 	 *  
 	 * \brief toggle the debug mode
 	 * 
-	 * ...
+	 * This function switches the value ArmorTools::DebugMode each time
+	 * it is called. 
 	 * 
 	 ***********************************************/
 	void SwitchDebugMode( );
@@ -260,8 +319,6 @@ public:
 	/********************************************//**
 	 *  
 	 * \brief err code referred to the last call 
-	 * 
-	 * ...
 	 * 
 	 * @returns the last error code
 	 * 
@@ -272,8 +329,6 @@ public:
 	/********************************************//**
 	 *  
 	 * \brief last err description
-	 * 
-	 * ...
 	 * 
 	 * @returns the last error description
 	 * 
@@ -286,9 +341,12 @@ public:
 	 * \brief check the 'success' flag referred to
 	 * 			the last aRMOR call
 	 * 
-	 * ...
-	 * 
 	 * @returns success or not
+	 * 
+	 * @warning sometimes aRMOR uses the <b>false</b> answer as the correct
+	 * 		answer, violating the semantic of the flag 'success'. A case is
+	 * 		the command <code>QUERY IND</code> which causes aRMOR to reply
+	 * 		with <b>success=false</b>. 
 	 * 
 	 ***********************************************/
 	bool Success( );
@@ -297,8 +355,6 @@ public:
 	/********************************************//**
 	 *  
 	 * \brief check if the ontology was loaded or not
-	 * 
-	 * ...
 	 * 
 	 * @returns loaded or not
 	 * 
@@ -310,8 +366,6 @@ public:
 	 *  
 	 * \brief check the status of the interface
 	 * 
-	 * ...
-	 * 
 	 * @returns valid inferface or not
 	 * 
 	 ***********************************************/
@@ -322,7 +376,7 @@ public:
 	 *  
 	 * \brief fill in a command and send it to aRMOR
 	 * 
-	 * ...
+	 * Shortcut for the couple ArmorTools::GetRequest and Armor::CallArmor. 
 	 * 
 	 * @param command (mandatory) the main command
 	 * @param first_spec (optional) the first specifier
@@ -350,8 +404,6 @@ public:
 	 *  
 	 * \brief get a reference to the last response
 	 * 
-	 * ...
-	 * 
 	 * @returns reference to the last response
 	 * 
 	 ***********************************************/
@@ -361,8 +413,6 @@ public:
 	/********************************************//**
 	 *  
 	 * \brief get a reference to the last request
-	 * 
-	 * ...
 	 * 
 	 * @returns last sent request to aRMOR
 	 * 
@@ -374,8 +424,6 @@ public:
 	 *  
 	 * \brief print the last response
 	 * 
-	 * ...
-	 * 
 	 ***********************************************/
 	void PrintLastRes( );
 	
@@ -383,8 +431,6 @@ public:
 	/********************************************//**
 	 *  
 	 * \brief print the last request
-	 * 
-	 * ...
 	 * 
 	 ***********************************************/
 	void PrintLastReq( );

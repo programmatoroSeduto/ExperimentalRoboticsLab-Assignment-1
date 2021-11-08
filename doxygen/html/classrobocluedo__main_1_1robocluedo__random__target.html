@@ -24,6 +24,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="cluedologo.jpg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">RCL - RoboCLuedo
    &#160;<span id="projectnumber">v1.0</span>
@@ -152,7 +153,10 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="robocluedo__main_8py_source.html#l00171">171</a> of file <a class="el" href="robocluedo__main_8py_source.html">robocluedo_main.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keyword">def </span>__init__( self ):</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        smach.State.__init__( self, outcomes=[<span class="stringliteral">&#39;move_robot&#39;</span>] )</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    </div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -183,7 +187,25 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="robocluedo__main_8py_source.html#l00174">174</a> of file <a class="el" href="robocluedo__main_8py_source.html">robocluedo_main.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keyword">def </span>execute( self, d ):</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <span class="keyword">global</span> client_random_target</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <span class="keyword">global</span> actual_position, target</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        </div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        <span class="comment"># ask for a random room</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        tg = client_random_target( )</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        </div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        <span class="comment"># set the string to consume, then go to &#39;robocluedo_moving&#39;</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        target = tg.room</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        if( actual_position == <span class="stringliteral">&quot;&quot;</span> ):</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            actual_position = tg.room</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        </div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        rospy.loginfo( <span class="stringliteral">&quot;[state:%s] actual position: %s | random target: %s&quot;</span>, <span class="stringliteral">&quot;random_target&quot;</span>, actual_position, target )</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        </div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&#39;move_robot&#39;</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; </div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
@@ -195,7 +217,7 @@ Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacerobocluedo__main.html">robocluedo_main</a></li><li class="navelem"><a class="el" href="classrobocluedo__main_1_1robocluedo__random__target.html">robocluedo_random_target</a></li>
-    <li class="footer">Generated on Mon Nov 8 2021 12:14:49 for RCL - RoboCLuedo by
+    <li class="footer">Generated on Mon Nov 8 2021 13:31:02 for RCL - RoboCLuedo by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

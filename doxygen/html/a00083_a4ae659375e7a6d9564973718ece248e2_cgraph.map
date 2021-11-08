@@ -1,0 +1,9 @@
+<map id="ArmorCluedo::RemoveHypothesis" name="ArmorCluedo::RemoveHypothesis">
+<area shape="rect" id="node1" title="discard one hypothesis" alt="" coords="5,31,248,57"/>
+<area shape="rect" id="node2" href="$a00083.html#a2086082362b61607798d6f968c263f9e" title="check if an individual exists" alt="" coords="296,31,483,57"/>
+<area shape="rect" id="node3" href="$a00087.html#a34d27d93c2faec3d3de3ba24d08f436b" title="get a reference to the last response" alt="" coords="543,5,721,32"/>
+<area shape="rect" id="node4" href="$a00087.html#a6033ed90283ec6c78a2bc2b0106d0461" title="fill in a command and send it to aRMOR" alt="" coords="531,56,733,83"/>
+<area shape="rect" id="node5" href="$a00087.html#aac98d4f9b2ce2cbefba61684d1f505bf" title="send a command to aRMOR." alt="" coords="791,5,959,32"/>
+<area shape="rect" id="node6" href="$a00087.html#a76e1517409d261c03ce712a4a5e4a093" title="quick creation of an aRMOR request" alt="" coords="785,56,964,83"/>
+<area shape="rect" id="node7" href="$a00087.html#a451163e1278ec49f4d214b33111d166d" title="print a request to the screen." alt="" coords="781,107,968,133"/>
+</map>

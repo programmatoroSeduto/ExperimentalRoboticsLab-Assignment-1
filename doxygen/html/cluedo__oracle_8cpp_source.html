@@ -24,6 +24,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="cluedologo.jpg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">RCL - RoboCLuedo
    &#160;<span id="projectnumber">v1.0</span>
@@ -88,7 +89,7 @@ $(document).ready(function(){initNavTree('cluedo__oracle_8cpp_source.html',''); 
 </div><!--header-->
 <div class="contents">
 <a href="cluedo__oracle_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">/********************************************/</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#include &quot;ros/ros.h&quot;</span></div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#include &quot;std_msgs/Empty.h&quot;</span></div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#include &quot;robocluedo_msgs/Hint.h&quot;</span></div>
@@ -149,7 +150,7 @@ $(document).ready(function(){initNavTree('cluedo__oracle_8cpp_source.html',''); 
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="comment">/********************************************/</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
 <div class="line"><a name="l00147"></a><span class="lineno"><a class="line" href="cluedo__oracle_8cpp.html#ac00d79830b6c5ba0a069d5edbda776ed">  147</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="cluedo__oracle_8cpp.html#ac00d79830b6c5ba0a069d5edbda776ed">importDataFrom</a>( std::string path, std::vector&lt;std::string&gt;&amp; list )</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;{</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="comment">// open the file</span></div>
@@ -181,7 +182,7 @@ $(document).ready(function(){initNavTree('cluedo__oracle_8cpp_source.html',''); 
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="comment">/********************************************/</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
 <div class="line"><a name="l00189"></a><span class="lineno"><a class="line" href="cluedo__oracle_8cpp.html#a14d01efaaa84e9eef51312faef616666">  189</a></span>&#160;std::string <a class="code" href="cluedo__oracle_8cpp.html#a14d01efaaa84e9eef51312faef616666">chooseHintFrom</a>( std::vector&lt;std::string&gt;&amp; list )</div>
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;{</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="keywordtype">int</span> ridx = randomIndex( list.size()-1 );</div>
@@ -192,7 +193,7 @@ $(document).ready(function(){initNavTree('cluedo__oracle_8cpp_source.html',''); 
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160; </div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="comment">/********************************************/</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
 <div class="line"><a name="l00211"></a><span class="lineno"><a class="line" href="cluedo__oracle_8cpp.html#a70dc3d68b54dc9bf449d9cf284affb00">  211</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="cluedo__oracle_8cpp.html#a70dc3d68b54dc9bf449d9cf284affb00">hintCallback</a>( <span class="keyword">const</span> std_msgs::EmptyConstPtr&amp; emptySignal )</div>
 <div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;{</div>
 <div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <span class="comment">// should the oracle to provide the solution?</span></div>
@@ -218,7 +219,7 @@ $(document).ready(function(){initNavTree('cluedo__oracle_8cpp_source.html',''); 
 <div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160; </div>
 <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160; </div>
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="comment">/********************************************/</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160; </div>
 <div class="line"><a name="l00248"></a><span class="lineno"><a class="line" href="cluedo__oracle_8cpp.html#a7bd3f21c49dce5c6a1d6083df40fcfcc">  248</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="cluedo__oracle_8cpp.html#a7bd3f21c49dce5c6a1d6083df40fcfcc">checkSolutionCallback</a>( robocluedo_msgs::CheckSolution::Request&amp; hyp, robocluedo_msgs::CheckSolution::Response&amp; misterySolved )</div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;{</div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    ROS_INFO_STREAM( <a class="code" href="cluedo__oracle_8cpp.html#a83c0c69e3e513938dbd4e22b0dda7643">OUTLABEL</a> &lt;&lt; <span class="stringliteral">&quot;evaluating the solution WHERE&quot;</span> &lt;&lt; <a class="code" href="cluedo__oracle_8cpp.html#a36b268389a5b36ab752d1e59f1fa63f0">LOGSQUARE</a>( hyp.Where ) &lt;&lt; <span class="stringliteral">&quot; WHO &quot;</span> &lt;&lt; <a class="code" href="cluedo__oracle_8cpp.html#a36b268389a5b36ab752d1e59f1fa63f0">LOGSQUARE</a>( hyp.Who ) &lt;&lt; <span class="stringliteral">&quot; WHAT &quot;</span> &lt;&lt; <a class="code" href="cluedo__oracle_8cpp.html#a36b268389a5b36ab752d1e59f1fa63f0">LOGSQUARE</a>( hyp.What ) );</div>
@@ -238,7 +239,7 @@ $(document).ready(function(){initNavTree('cluedo__oracle_8cpp_source.html',''); 
 <div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160; </div>
 <div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160; </div>
 <div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160; </div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="comment">/********************************************/</span></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160; </div>
 <div class="line"><a name="l00279"></a><span class="lineno"><a class="line" href="cluedo__oracle_8cpp.html#a554ad8b46595d7a5901b180494b25e97">  279</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="cluedo__oracle_8cpp.html#a554ad8b46595d7a5901b180494b25e97">generateMystery</a>( std::vector&lt;std::string&gt; list_who, std::vector&lt;std::string&gt; list_where, std::vector&lt;std::string&gt; list_what, <span class="keywordtype">int</span> tot_hints )</div>
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;{</div>
 <div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    ROS_INFO_STREAM( <a class="code" href="cluedo__oracle_8cpp.html#a83c0c69e3e513938dbd4e22b0dda7643">OUTLABEL</a> &lt;&lt; <span class="stringliteral">&quot;case generation started &quot;</span> );</div>
@@ -317,7 +318,7 @@ $(document).ready(function(){initNavTree('cluedo__oracle_8cpp_source.html',''); 
 <div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160; </div>
 <div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160; </div>
 <div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160; </div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;<span class="comment">/********************************************/</span></div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160; </div>
 <div class="line"><a name="l00364"></a><span class="lineno"><a class="line" href="cluedo__oracle_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">  364</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="cluedo__oracle_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>( <span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[] )</div>
 <div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;{</div>
 <div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    ros::init( argc, argv, <span class="stringliteral">&quot;cluedo_oracle&quot;</span> );</div>
@@ -437,7 +438,7 @@ $(document).ready(function(){initNavTree('cluedo__oracle_8cpp_source.html',''); 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_ec26e8507ab2869084237022eb595cc7.html">robocluedo</a></li><li class="navelem"><a class="el" href="dir_4ac2bbdaf5848812856158bd323f30d5.html">src</a></li><li class="navelem"><a class="el" href="cluedo__oracle_8cpp.html">cluedo_oracle.cpp</a></li>
-    <li class="footer">Generated on Mon Nov 8 2021 12:14:49 for RCL - RoboCLuedo by
+    <li class="footer">Generated on Mon Nov 8 2021 13:31:02 for RCL - RoboCLuedo by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

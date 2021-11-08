@@ -1,4 +1,15 @@
 
+/********************************************//**
+ *  
+ * @file armor_cluedo.cpp
+ * @brief implementation of the class ArmorCluedo
+ * @author Francesco Ganci (S4143910)
+ * @version v1.0
+ *  
+ * @see armor_cluedo.h
+ * 
+ ***********************************************/
+
 #include "armor_tools/armor_cluedo.h"
 
 

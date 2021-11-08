@@ -24,6 +24,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="cluedologo.jpg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">RCL - RoboCLuedo
    &#160;<span id="projectnumber">v1.0</span>
@@ -293,7 +294,21 @@ cluedo_movement_controller</li>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="_go_to_8srv.html">GoTo.srv</a> </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="cluedo__movement__controller_8cpp_source.html#l00070">70</a> of file <a class="el" href="cluedo__movement__controller_8cpp_source.html">cluedo_movement_controller.cpp</a>.</p>
-<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+<div class="fragment"><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;{</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="comment">// &quot;go to&quot; the given position</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    (ros::Duration(1)).sleep();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    ROS_INFO( <span class="stringliteral">&quot;%s position reached -&gt; %s&quot;</span>, <a class="code" href="cluedo__movement__controller_8cpp.html#a83c0c69e3e513938dbd4e22b0dda7643">OUTLABEL</a>, where.where.c_str() );</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="comment">// signal the event to the oracle</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    ROS_INFO( <span class="stringliteral">&quot;%s issuing signal to the Oracle...&quot;</span>, <a class="code" href="cluedo__movement__controller_8cpp.html#a83c0c69e3e513938dbd4e22b0dda7643">OUTLABEL</a> );</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    pub_hint_signal-&gt;publish( std_msgs::Empty( ) );</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="comment">// return success</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    success.success  = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
+</div><!-- fragment --><div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
@@ -337,7 +352,28 @@ cluedo_movement_controller</li>
 <p>... more details </p>
 
 <p class="definition">Definition at line <a class="el" href="cluedo__movement__controller_8cpp_source.html#l00095">95</a> of file <a class="el" href="cluedo__movement__controller_8cpp_source.html">cluedo_movement_controller.cpp</a>.</p>
-<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+<div class="fragment"><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;{</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    ros::init( argc, argv, <span class="stringliteral">&quot;cluedo_movement_controller&quot;</span> );</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    ros::NodeHandle nh;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="comment">// expose the service go_to</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <a class="code" href="cluedo__movement__controller_8cpp.html#a186fe566fd11435e6aa34702dd79cac1">OUTLOG</a> &lt;&lt; <span class="stringliteral">&quot;Advertising service &quot;</span> &lt;&lt; <a class="code" href="cluedo__movement__controller_8cpp.html#a36b268389a5b36ab752d1e59f1fa63f0">LOGSQUARE</a>( <a class="code" href="cluedo__movement__controller_8cpp.html#aca262f1edc2004aa44437558ec39c795">SERVICE_GO_TO</a> ) &lt;&lt; <span class="stringliteral">&quot;...&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    ros::ServiceServer srv_goto = nh.advertiseService( <a class="code" href="cluedo__movement__controller_8cpp.html#aca262f1edc2004aa44437558ec39c795">SERVICE_GO_TO</a>, <a class="code" href="cluedo__movement__controller_8cpp.html#a759068a3250dc8139d7321f35e7e774a">GoToCallback</a> );</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <a class="code" href="cluedo__movement__controller_8cpp.html#a186fe566fd11435e6aa34702dd79cac1">OUTLOG</a> &lt;&lt; <span class="stringliteral">&quot;Advertising service &quot;</span> &lt;&lt; <a class="code" href="cluedo__movement__controller_8cpp.html#a36b268389a5b36ab752d1e59f1fa63f0">LOGSQUARE</a>( <a class="code" href="cluedo__movement__controller_8cpp.html#aca262f1edc2004aa44437558ec39c795">SERVICE_GO_TO</a> ) &lt;&lt; <span class="stringliteral">&quot;... OK&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="comment">// publisher to the Orace</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <a class="code" href="cluedo__movement__controller_8cpp.html#a186fe566fd11435e6aa34702dd79cac1">OUTLOG</a> &lt;&lt; <span class="stringliteral">&quot;Creating publisher &quot;</span> &lt;&lt; <a class="code" href="cluedo__movement__controller_8cpp.html#a36b268389a5b36ab752d1e59f1fa63f0">LOGSQUARE</a>( <a class="code" href="cluedo__movement__controller_8cpp.html#a261ba80f7b63e7cf794d38d588ff1112">PUBLISHER_HINT_SIGNAL</a> ) &lt;&lt; <span class="stringliteral">&quot;...&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    ros::Publisher pub = nh.advertise&lt;std_msgs::Empty&gt;( <a class="code" href="cluedo__movement__controller_8cpp.html#a261ba80f7b63e7cf794d38d588ff1112">PUBLISHER_HINT_SIGNAL</a>, 1000 );</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <a class="code" href="cluedo__movement__controller_8cpp.html#a186fe566fd11435e6aa34702dd79cac1">OUTLOG</a> &lt;&lt; <span class="stringliteral">&quot;Creating publisher &quot;</span> &lt;&lt; <a class="code" href="cluedo__movement__controller_8cpp.html#a36b268389a5b36ab752d1e59f1fa63f0">LOGSQUARE</a>( <a class="code" href="cluedo__movement__controller_8cpp.html#a261ba80f7b63e7cf794d38d588ff1112">PUBLISHER_HINT_SIGNAL</a> ) &lt;&lt; <span class="stringliteral">&quot;... OK&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    pub_hint_signal = &amp;pub;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="comment">// spin</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <a class="code" href="cluedo__movement__controller_8cpp.html#a186fe566fd11435e6aa34702dd79cac1">OUTLOG</a> &lt;&lt; <span class="stringliteral">&quot;ready!&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    ros::spin( );</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;}</div>
+</div><!-- fragment --><div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
@@ -353,11 +389,17 @@ cluedo_movement_controller</li>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="acluedo__movement__controller_8cpp_html_a759068a3250dc8139d7321f35e7e774a"><div class="ttname"><a href="cluedo__movement__controller_8cpp.html#a759068a3250dc8139d7321f35e7e774a">GoToCallback</a></div><div class="ttdeci">bool GoToCallback(robocluedo_msgs::GoTo::Request &amp;where, robocluedo_msgs::GoTo::Response &amp;success)</div><div class="ttdoc">implementation of service SERVICE_INTERFACE_FIND_CONSISTENT_HYP</div><div class="ttdef"><b>Definition:</b> <a href="cluedo__movement__controller_8cpp_source.html#l00070">cluedo_movement_controller.cpp:70</a></div></div>
+<div class="ttc" id="acluedo__movement__controller_8cpp_html_a186fe566fd11435e6aa34702dd79cac1"><div class="ttname"><a href="cluedo__movement__controller_8cpp.html#a186fe566fd11435e6aa34702dd79cac1">OUTLOG</a></div><div class="ttdeci">#define OUTLOG</div><div class="ttdef"><b>Definition:</b> <a href="cluedo__movement__controller_8cpp_source.html#l00047">cluedo_movement_controller.cpp:47</a></div></div>
+<div class="ttc" id="acluedo__movement__controller_8cpp_html_a36b268389a5b36ab752d1e59f1fa63f0"><div class="ttname"><a href="cluedo__movement__controller_8cpp.html#a36b268389a5b36ab752d1e59f1fa63f0">LOGSQUARE</a></div><div class="ttdeci">#define LOGSQUARE(str)</div><div class="ttdef"><b>Definition:</b> <a href="cluedo__movement__controller_8cpp_source.html#l00048">cluedo_movement_controller.cpp:48</a></div></div>
+<div class="ttc" id="acluedo__movement__controller_8cpp_html_a261ba80f7b63e7cf794d38d588ff1112"><div class="ttname"><a href="cluedo__movement__controller_8cpp.html#a261ba80f7b63e7cf794d38d588ff1112">PUBLISHER_HINT_SIGNAL</a></div><div class="ttdeci">#define PUBLISHER_HINT_SIGNAL</div><div class="ttdef"><b>Definition:</b> <a href="cluedo__movement__controller_8cpp_source.html#l00044">cluedo_movement_controller.cpp:44</a></div></div>
+<div class="ttc" id="acluedo__movement__controller_8cpp_html_a83c0c69e3e513938dbd4e22b0dda7643"><div class="ttname"><a href="cluedo__movement__controller_8cpp.html#a83c0c69e3e513938dbd4e22b0dda7643">OUTLABEL</a></div><div class="ttdeci">#define OUTLABEL</div><div class="ttdef"><b>Definition:</b> <a href="cluedo__movement__controller_8cpp_source.html#l00046">cluedo_movement_controller.cpp:46</a></div></div>
+<div class="ttc" id="acluedo__movement__controller_8cpp_html_aca262f1edc2004aa44437558ec39c795"><div class="ttname"><a href="cluedo__movement__controller_8cpp.html#aca262f1edc2004aa44437558ec39c795">SERVICE_GO_TO</a></div><div class="ttdeci">#define SERVICE_GO_TO</div><div class="ttdef"><b>Definition:</b> <a href="cluedo__movement__controller_8cpp_source.html#l00043">cluedo_movement_controller.cpp:43</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_ec26e8507ab2869084237022eb595cc7.html">robocluedo</a></li><li class="navelem"><a class="el" href="dir_4ac2bbdaf5848812856158bd323f30d5.html">src</a></li><li class="navelem"><a class="el" href="cluedo__movement__controller_8cpp.html">cluedo_movement_controller.cpp</a></li>
-    <li class="footer">Generated on Mon Nov 8 2021 12:14:49 for RCL - RoboCLuedo by
+    <li class="footer">Generated on Mon Nov 8 2021 13:31:02 for RCL - RoboCLuedo by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

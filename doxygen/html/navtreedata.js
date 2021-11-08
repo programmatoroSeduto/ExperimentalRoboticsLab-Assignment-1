@@ -23,7 +23,8 @@ for the JavaScript code in this file
 var NAVTREE =
 [
   [ "RCL - RoboCLuedo", "index.html", [
-    [ "Todo List", "todo.html", null ],
+    [ "RoboCLuedo", "index.html#autotoc_md0", null ],
+    [ "Todo List", "a00089.html", null ],
     [ "Packages", "namespaces.html", [
       [ "Packages", "namespaces.html", "namespaces_dup" ],
       [ "Package Functions", "namespacemembers.html", [
@@ -50,13 +51,15 @@ var NAVTREE =
         [ "Variables", "globals_vars.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
-    ] ]
+    ] ],
+    [ "Examples", "examples.html", "examples" ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"_add_hint_8srv.html"
+"a00014.html",
+"namespacemembers_vars.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
