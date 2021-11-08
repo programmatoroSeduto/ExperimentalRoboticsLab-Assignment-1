@@ -27,10 +27,14 @@
  * 
  * <b>Description:</b> <br>
  * <p>
- * ...description
+ * It represents the 'act' part inside the behavioural architecture. Actually
+ * it doesn't do anything: it is a wait which can signal the Oracle (as a laser
+ * sensor when the robot enters in a room). In future, it should become a
+ * path planning facility. 
  * </p>
  * 
- * @todo this is a <i>STUB implementation</i>. It should be replaced this with a real movement controller. 
+ * @todo this is a <i>STUB implementation</i>. It should be replaced 
+ *     with a real movement controller. 
  * 
  ***********************************************/
 
@@ -58,13 +62,14 @@ ros::Publisher* pub_hint_signal;
  *  
  * \brief implementation of service \ref SERVICE_INTERFACE_FIND_CONSISTENT_HYP
  * 
- * ... more details <br>
- * stub mplementation of the movement service
+ * Stub mplementation of the movement service. It waits one second in order
+ * to "simulate" the duration of the motion, and issues a signal to the Oracle.
  * 
  * @param where the room to reach
  * @param success success flag
  * 
  * @see GoTo.srv
+ * @see cluedo_oracle.cpp
  * 
  ***********************************************/
 bool GoToCallback( robocluedo_msgs::GoTo::Request& where, robocluedo_msgs::GoTo::Response& success )
@@ -87,9 +92,9 @@ bool GoToCallback( robocluedo_msgs::GoTo::Request& where, robocluedo_msgs::GoTo:
 
 /********************************************//**
  *  
- * \brief ROS node main
+ * \brief ROS node main - cluedo_movement_controller
  * 
- * ... more details
+ * spawning of the service, publisher to the oracle, and spin. 
  * 
  ***********************************************/
 int main( int argc, char* argv[] )

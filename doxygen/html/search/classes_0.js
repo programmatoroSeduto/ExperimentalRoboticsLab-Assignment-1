@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['armorcluedo_148',['ArmorCluedo',['../a00103.html',1,'']]],
-  ['armortools_149',['ArmorTools',['../a00107.html',1,'']]]
+  ['armorcluedo_202',['ArmorCluedo',['../a00143.html',1,'']]],
+  ['armortools_203',['ArmorTools',['../a00147.html',1,'']]]
 ];

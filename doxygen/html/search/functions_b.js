@@ -1,8 +1,4 @@
 var searchData=
 [
-  ['performdifferencebetween_225',['PerformDifferenceBetween',['../a00062_a30c8d0c07497876eeb7b5845bab11d19.html#a30c8d0c07497876eeb7b5845bab11d19',1,'cluedo_armor_interface.cpp']]],
-  ['printlastreq_226',['PrintLastReq',['../a00107_ac7f632ed614b226cbc2b2fa352989643.html#ac7f632ed614b226cbc2b2fa352989643',1,'ArmorTools']]],
-  ['printlastres_227',['PrintLastRes',['../a00107_ae1764835bfe65fabcb07757b0bb43f83.html#ae1764835bfe65fabcb07757b0bb43f83',1,'ArmorTools']]],
-  ['printrequest_228',['PrintRequest',['../a00107_a451163e1278ec49f4d214b33111d166d.html#a451163e1278ec49f4d214b33111d166d',1,'ArmorTools']]],
-  ['printresponse_229',['PrintResponse',['../a00107_a2ca77741de4c8883b5be0d661f6b1320.html#a2ca77741de4c8883b5be0d661f6b1320',1,'ArmorTools']]]
+  ['on_5fshut_5fmsg_305',['on_shut_msg',['../a00136_a11beb134cd594225e8cdc2302cefec53.html#a11beb134cd594225e8cdc2302cefec53',1,'test_cluedo_armor_interface.on_shut_msg()'],['../a00137_a2d0fabec3ea7b27cc1cd601336972590.html#a2d0fabec3ea7b27cc1cd601336972590',1,'test_cluedo_oracle.on_shut_msg()'],['../a00138_a23808ddd3552f7bdd15a39262d9735f7.html#a23808ddd3552f7bdd15a39262d9735f7',1,'test_cluedo_random_room.on_shut_msg()'],['../a00139_a639f2a8ab699c2dcccc5a6a3989d9d34.html#a639f2a8ab699c2dcccc5a6a3989d9d34',1,'test_oracle_plus_interface.on_shut_msg()']]]
 ];

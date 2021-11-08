@@ -1,6 +1,27 @@
 var searchData=
 [
-  ['target_142',['target',['../a00099_a6fecac596298d352367536ee19e6f4b0.html#a6fecac596298d352367536ee19e6f4b0',1,'robocluedo_main']]],
-  ['testinterface_143',['TestInterface',['../a00107_a356ca7809be690be0a70a1ae33a850a8.html#a356ca7809be690be0a70a1ae33a850a8',1,'ArmorTools']]],
-  ['todo_20list_144',['Todo List',['../a00098.html',1,'']]]
+  ['saveontology_155',['SaveOntology',['../a00147_ad26e4e69e7edcbde9789ca5301c6b4a5.html#ad26e4e69e7edcbde9789ca5301c6b4a5',1,'ArmorTools']]],
+  ['sendcommand_156',['SendCommand',['../a00147_a6033ed90283ec6c78a2bc2b0106d0461.html#a6033ed90283ec6c78a2bc2b0106d0461',1,'ArmorTools']]],
+  ['service_5farmor_5fmultiple_5frequests_157',['SERVICE_ARMOR_MULTIPLE_REQUESTS',['../a00104_a3eb94cb231e1b302f9d12d1ede64cb97.html#a3eb94cb231e1b302f9d12d1ede64cb97',1,'SERVICE_ARMOR_MULTIPLE_REQUESTS():&#160;test_armor.cpp'],['../a00107_a3eb94cb231e1b302f9d12d1ede64cb97.html#a3eb94cb231e1b302f9d12d1ede64cb97',1,'SERVICE_ARMOR_MULTIPLE_REQUESTS():&#160;test_armor_tools.cpp']]],
+  ['service_5farmor_5fsingle_5frequest_158',['SERVICE_ARMOR_SINGLE_REQUEST',['../a00104_acb73a2cbb815c8cdf8ba0ccaf4fa6ae6.html#acb73a2cbb815c8cdf8ba0ccaf4fa6ae6',1,'SERVICE_ARMOR_SINGLE_REQUEST():&#160;test_armor.cpp'],['../a00107_acb73a2cbb815c8cdf8ba0ccaf4fa6ae6.html#acb73a2cbb815c8cdf8ba0ccaf4fa6ae6',1,'SERVICE_ARMOR_SINGLE_REQUEST():&#160;test_armor_tools.cpp']]],
+  ['service_5fcheck_5fsolution_159',['SERVICE_CHECK_SOLUTION',['../a00098_a6941eeac3ae4aa79d0e8af29ea3ca9a7.html#a6941eeac3ae4aa79d0e8af29ea3ca9a7',1,'cluedo_oracle.cpp']]],
+  ['service_5fgo_5fto_160',['SERVICE_GO_TO',['../a00095_aca262f1edc2004aa44437558ec39c795.html#aca262f1edc2004aa44437558ec39c795',1,'cluedo_movement_controller.cpp']]],
+  ['service_5finterface_5fadd_5fhint_161',['SERVICE_INTERFACE_ADD_HINT',['../a00092_a9e68b107365153366ec52986156f2595.html#a9e68b107365153366ec52986156f2595',1,'cluedo_armor_interface.cpp']]],
+  ['service_5finterface_5ffind_5fconsistent_5fhyp_162',['SERVICE_INTERFACE_FIND_CONSISTENT_HYP',['../a00092_a43b5b7d093b3ed913fa91b74684ff821.html#a43b5b7d093b3ed913fa91b74684ff821',1,'cluedo_armor_interface.cpp']]],
+  ['service_5finterface_5fsave_5fontology_163',['SERVICE_INTERFACE_SAVE_ONTOLOGY',['../a00092_acc185c28a4bd121102b73f42c59b6939.html#acc185c28a4bd121102b73f42c59b6939',1,'cluedo_armor_interface.cpp']]],
+  ['service_5finterface_5fwrong_5fhypothesis_164',['SERVICE_INTERFACE_WRONG_HYPOTHESIS',['../a00092_a7abfca1c1aab551b07b78ca76440683a.html#a7abfca1c1aab551b07b78ca76440683a',1,'cluedo_armor_interface.cpp']]],
+  ['service_5frandom_5froom_165',['SERVICE_RANDOM_ROOM',['../a00101_aeb68a7701a2e29df2646553ae5f0e49b.html#aeb68a7701a2e29df2646553ae5f0e49b',1,'cluedo_random_room.cpp']]],
+  ['serviceaddhint_166',['ServiceAddHint',['../a00092_a4867095aa20f38de61e518e16253520b.html#a4867095aa20f38de61e518e16253520b',1,'cluedo_armor_interface.cpp']]],
+  ['servicebackupontology_167',['ServiceBackupOntology',['../a00092_a66c612700258bd528a8d54035044b4ec.html#a66c612700258bd528a8d54035044b4ec',1,'cluedo_armor_interface.cpp']]],
+  ['servicefindconsistenthypotheses_168',['ServiceFindConsistentHypotheses',['../a00092_a7ac3004a3cbe78bf0b2c234d11354c43.html#a7ac3004a3cbe78bf0b2c234d11354c43',1,'cluedo_armor_interface.cpp']]],
+  ['setobjectproperty_169',['SetObjectProperty',['../a00143_ad179234fd676874a09c267abb416d2da.html#ad179234fd676874a09c267abb416d2da',1,'ArmorCluedo']]],
+  ['solution_5fwhat_170',['solution_what',['../a00098_a4d4fe3d27f46712347935f59a452d950.html#a4d4fe3d27f46712347935f59a452d950',1,'cluedo_oracle.cpp']]],
+  ['solution_5fwhere_171',['solution_where',['../a00098_a4e49ff0f9d7a5d49a101b238e320e345.html#a4e49ff0f9d7a5d49a101b238e320e345',1,'cluedo_oracle.cpp']]],
+  ['solution_5fwho_172',['solution_who',['../a00098_a8e0b66d7b396e3e8883e5b5483391c55.html#a8e0b66d7b396e3e8883e5b5483391c55',1,'cluedo_oracle.cpp']]],
+  ['ss_173',['SS',['../a00044_af4f289b8ad162b609975620166e3d407.html#af4f289b8ad162b609975620166e3d407',1,'SS():&#160;armor_tools.h'],['../a00092_af4f289b8ad162b609975620166e3d407.html#af4f289b8ad162b609975620166e3d407',1,'SS():&#160;cluedo_armor_interface.cpp'],['../a00104_af4f289b8ad162b609975620166e3d407.html#af4f289b8ad162b609975620166e3d407',1,'SS():&#160;test_armor.cpp']]],
+  ['sss_174',['SSS',['../a00044_a7a571e6f0c662a683b2741f0e4cd4c26.html#a7a571e6f0c662a683b2741f0e4cd4c26',1,'SSS():&#160;armor_tools.h'],['../a00092_a7a571e6f0c662a683b2741f0e4cd4c26.html#a7a571e6f0c662a683b2741f0e4cd4c26',1,'SSS():&#160;cluedo_armor_interface.cpp'],['../a00104_a7a571e6f0c662a683b2741f0e4cd4c26.html#a7a571e6f0c662a683b2741f0e4cd4c26',1,'SSS():&#160;test_armor.cpp']]],
+  ['subscriber_5fhint_5fsignal_175',['SUBSCRIBER_HINT_SIGNAL',['../a00098_a31677c21edf3940dea4e5b4349447926.html#a31677c21edf3940dea4e5b4349447926',1,'cluedo_oracle.cpp']]],
+  ['subscriber_5fname_5fhint_176',['subscriber_name_hint',['../a00137_a858a439d4c013d702b80d0d7e0b6e064.html#a858a439d4c013d702b80d0d7e0b6e064',1,'test_cluedo_oracle.subscriber_name_hint()'],['../a00139_a2b6ca00aa614f1e2720142681c4b0964.html#a2b6ca00aa614f1e2720142681c4b0964',1,'test_oracle_plus_interface.subscriber_name_hint()']]],
+  ['success_177',['Success',['../a00147_a21dae8ed16985d723cc5fefc2e70bcba.html#a21dae8ed16985d723cc5fefc2e70bcba',1,'ArmorTools']]],
+  ['switchdebugmode_178',['SwitchDebugMode',['../a00147_a5bd0b3e9898d3bcf3dc82705d52495cb.html#a5bd0b3e9898d3bcf3dc82705d52495cb',1,'ArmorTools']]]
 ];
