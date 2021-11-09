@@ -3,13 +3,11 @@
 **Francesco Ganci - 4143910** - Robotics Engineering - A.A. 2021/2022
 
 > Documentation:
-> - [Doxygen Documentation Here](doxygen.documentation.here)
+> - [Doxygen Documentation Here](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-1/files.html)
 > UML diagrams of the project:
-> - [UML diagrams](foking.uml.diagrams)
+> - [UML diagrams](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-1/a00350.html)
 
 ![CLuedo](/robocluedo/docs/img/cluedologo.jpg)
-
-[toc]
 
 # RCL - Introduction
 
@@ -56,7 +54,7 @@ robocluedo
 
 ## Package robocluedo_msgs
 
-This package contains the messages and the services for the project. Please refer to the [documentation](please.read.the.documentation). 
+This package contains the messages and the services for the project. Please refer to the [documentation](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-1/dir_b4533bfc40db8e2efccd35494a74693f.html). 
 
 ```
 robocluedo_msgs
@@ -88,7 +86,7 @@ In order to run the project you need to install the followings:
 
 - [aRMOR msgs](https://github.com/EmaroLab/armor_msgs) : required in order to build the project. 
 
-No Py client is required: the client was re-implemented in C++, see [ArmorTools](inserire.link.qui) in the documentation. 
+No Py client is required: the client was re-implemented in C++, see [ArmorTools](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-1/a00201.html#details) in the documentation. 
 
 ## Build the project
 
@@ -171,7 +169,7 @@ All the configuration elements are located in the folder `robocluedo/config`. He
 - the launch file `parameter.launch` which contains all the parameters to be defined before running the architecture
 - a folder `cluedo_items` containing all the entities for the game
 - a folder `cluedo_ontology` containing the base ontology (the file *cluedo_ontology.owl*) ...
-- .. and another folder `cluedo_ontology/last_ontology` where the node *robocluedo_main*, through the interface *robocluedo_armor_interface*, exports the ontology from the last execution of the robot. For debug purposes, you can inspect them, but first I suggest you to take a look at the documentation [about ArmorCluedo](armmor.cluedo-link).
+- .. and another folder `cluedo_ontology/last_ontology` where the node *robocluedo_main*, through the interface *robocluedo_armor_interface*, exports the ontology from the last execution of the robot. For debug purposes, you can inspect them, but first I suggest you to take a look at the documentation [about ArmorCluedo](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-1/a00197.html) and in particular the section "DISCARD HYPOTHESIS" from the [example 3](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-1/a00231.html) of ArmorCluedo. 
 
 Here is the structure of the folder `config`:
 
@@ -221,7 +219,7 @@ Each hint has an ID; this lets to simplify the code of the node *cluedo_armor_in
 During the development of the application, they are been implemented several nodes which have the only purpose to test parts of the applications. Here is the complete list of the launch files and the type of test performed:
 
 - `test_armor.launch` : the C++ node `test_armor.cpp` performs a simple reasoning task on the ontology interacting directly with the aRMOR service. It offers many handy functions which simplify the communication with aRMOR: it is meant to be modified and recompiled several times. If you want to alter it, of course you can: please follow the examples. 
-- `test_armor_tools.launch` : the previous test is too much 'direct' and doesn't use ArmorTools neither ArmorCluedo. The node `test_armor_tools.cpp` offers a more rigorous testing using the C++ client (see [the documentation](aror.tools.and.armor.cluedo)). Unfortunately it is still in Italian (most of the part). 
+- `test_armor_tools.launch` : the previous test is too much 'direct' and doesn't use ArmorTools neither ArmorCluedo. The node `test_armor_tools.cpp` offers a more rigorous testing using the C++ client (see [the documentation](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-1/dir_fd8dfb9d206235f5e2cbee914cef037a.html)). Unfortunately it is still in Italian (most of the part). 
 - `test_cluedo_armor_interface.launch` : this simple test performs a rapid sequence of operations on `cluedo_armor_interface`, a simple pattern of reasoning. 
 - `test_cluedo_oracle.launch` : simple test for the hint request in `cluedo_oracle.cpp`; perform the request of a hint 25 times. 
 - `test_cluedo_random_room.launch` : same pattern as the previous, perform the request of a room for 50 times. 
@@ -229,7 +227,7 @@ During the development of the application, they are been implemented several nod
 
 # RCL - How RoboCLuedo Works
 
-Here is a short presentation of the work done in this project. Please refer to the [Doxygen documentation](doxygen.foking.documentation) for further details, and in particular for a more detailed description of the interfaces between the nodes. 
+Here is a short presentation of the work done in this project.
 
 ## The components of the project
 
@@ -241,7 +239,7 @@ Let's introduce the architecture node by node. If you want to know more about th
 
 ### NODE -- cluedo_random_room
 
-> implementation [here](cluedo.random.room.cpp)
+> implementation [here](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-1/a00152.html)
 
 This is a simple node which chooses randomly a place from the PLACEs file. it is used when the robot is searching for clues. It exposes only one service. 
 
@@ -249,7 +247,7 @@ This is a simple node which chooses randomly a place from the PLACEs file. it is
 
 ### NODE -- cluedo_movement_controller
 
-> implementation [here](cluedo.movement.controller.cpp)
+> implementation [here](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-1/a00146.html)
 
 This is a "stub" node, i.e. it represents a logical role but it does nothing. It represents the *act* part of the behavioural architecture; it can be replaced with a real movement controller easily. 
 
@@ -259,7 +257,7 @@ Note that that the this node has also a channel connected with the Cluedo Oracle
 
 ### NODE -- cluedo_oracle
 
-> implementation [here](cluedo.oracle.cpp)
+> implementation [here](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-1/a00149.html)
 
 This node implements a sort of referee for the game. It knows the solution of the case, and can check, through service, the solutions proposed by the node robocluedo_main. Sometimes it can also give hints, i.e. propositions which the robot collects and associates in order to formulate a possible solution to be checked. *The solution could be incorrect*, so every time the robot has a solution, it must check it using a service of the oracle. 
 
@@ -269,41 +267,41 @@ The solution is generated in this way. First of all, the oracle chooses the ID o
 
 ### NODE -- cluedo_armor_interface
 
-> implementation [here](cluedo.armor.interface.cpp)
+> implementation [here](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-1/a00143.html)
 
 The node implements a simplified and specific interface which lets other nodes to work with aRMOR without using direct calls to the aRMOR service. 
 
 ![CLuedo](/robocluedo/docs/diagrams/UML_components_cluedo_armor_interface.png)
 
 The interface has four services (all the names of the services are under **/cluedo_armor**):
-- **add_hint** : add a proerty to the ontology, adding the implied values if at least one of them doesn't exist. See the [implementation of ServiceAddHint()](service.add.hint) 
-- **find\_consistent\_h** : retrieve all the consistet hypotheses from aRMOR. See the [implementation of ServiceFindConsistentHypotheses()](service.find_consistent_h) 
-- **wrong_hypothesis** : discards a hypothesis after a negative result from the oracle about one conclusion. See the [implementation of DiscardHypothesis()](service.discard.hypothesis)
-- **backup** : the service exports the actual ontology into the .owl backup file. See configurations, and the [implementation of ServiceBackupOntology()](service.backup.ontology)
+- **add_hint** : add a proerty to the ontology, adding the implied values if at least one of them doesn't exist. See the [implementation of ServiceAddHint()](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-1/a00143_a4867095aa20f38de61e518e16253520b.html#a4867095aa20f38de61e518e16253520b) 
+- **find\_consistent\_h** : retrieve all the consistet hypotheses from aRMOR. See the [implementation of ServiceFindConsistentHypotheses()](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-1/a00143_a7ac3004a3cbe78bf0b2c234d11354c43.html#a7ac3004a3cbe78bf0b2c234d11354c43) 
+- **wrong_hypothesis** : discards a hypothesis after a negative result from the oracle about one conclusion. See the [implementation of DiscardHypothesis()](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-1/a00143_a85e8c9731bfed7d2e82df47750b9c19e.html#a85e8c9731bfed7d2e82df47750b9c19e)
+- **backup** : the service exports the actual ontology into the .owl backup file. See configurations, and the [implementation of ServiceBackupOntology()](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-1/a00143_a66c612700258bd528a8d54035044b4ec.html#a66c612700258bd528a8d54035044b4ec)
 
 ### C++ CLASS -- ArmorTools
 
-> implementation [here](armor.tools.cpp)
+> implementation [here](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-1/a00201.html)
 
-This class implements the most common mid-level methods for dealing with aRMOR without direct calls to the service. See the implementation for further details, and in particular [the examples](the.examples) for more details. 
+This class implements the most common mid-level methods for dealing with aRMOR without direct calls to the service. See the implementation for further details, and in particular [the examples](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-1/examples.html) for more details. 
 
 Other useful documents: 
 
-- [example1](example.one)
-- [example2](example.second)
+- [Example 1](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-1/a00233.html) : ArmorTools - 001 - Essential usage of ArmorTools
+- [Example 2](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-1/a00235.html) : ArmorTools - 002 - The quickest way to use ArmorTools
 
 ### C++ CLASS -- ArmorCluedo
 
-> implementation [here](armor.cluedo.cpp)
+> implementation [here](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-1/a00197.html)
 
 The class extends the class ArmorToold, adding more handy specific mid-level methods for working with CLuedo individuals, properties and hypotheses. It adds also some workarounds needed in order tomake reliable the operations on aRMOR and overcoming some issues in commands DISJOINT and REMOVE. Please refer to the documentation if you want more details about all these aspects. 
 
 Here are some useful documents:
 
-- [example1](example.one)
-- [example2](example.second)
-- [example3](example.three)
-- [test_armor_tools](test.armor.tools)
+- [Example 1](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-1/a00227.html) : ArmorCluedo - 001 - Working on Individuals
+- [Example 2](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-1/a00229.html) : ArmorCluedo - 002 - Working with properties
+- [Example 3](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-1/a00231.html) : ArmorCluedo - 003 - Reasoning Workflow
+- [test_armor_tools](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-1/a00158.html)
 
 ## The Finite State Machine -- robocluedo_main
 
@@ -313,7 +311,7 @@ Here is the FSM diagram:
 
 ![CLuedo](/robocluedo/docs/diagrams/UML_FSM_sketch.png)
 
-Note that the robot could receive a message each time it enters in the room, *only one message* because the buffer is actually a single variable instead of a list of hints (see the [todo list](to.do.list.on.doxygen) in the documentation). The behavour of the robot can be summarized as follows:
+Note that the robot could receive a message each time it enters in the room, *only one message* because the buffer is actually a single variable instead of a list of hints (see the [todo list](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-1/a00188.html) in the documentation). The behavour of the robot can be summarized as follows:
 
 - when no complete hypotheses are available, the robot moves choosing randomly a room where to go
 - each time the robot enters in a room, it "could find or not" one clue. If it "finds" something, it adds the hint to the ontology
@@ -326,9 +324,12 @@ Clearly it is a oversimplified game dynamic: *the real CLuedo doesn't work in th
 
 ## A practical example
 
-In order to show you how the project work I think it is more useful to present you the log from the project, using this test configuration:
+In order to show you how the project works I think it is more useful to present you a possible log from the project, using this test configuration:
 
-- the item lists are reduced to only two elements. PLACE: bathroom, study. PERSON: plum,  mustard. WEAPON: revolver, dagger. 
+- the item lists are reduced to only two elements per list. 
+  - PLACE: bathroom, study. 
+  - PERSON: plum,  mustard. 
+  - WEAPON: revolver, dagger. 
 - the maximum number of IDs is 4
 
 You can find both the log and the end ontology from the folder `/logs/test_20211109`. It was launched using the main launch file. Note that this file suppresses some logs, for example the ones from the cluedo_armor_interface. Only the logs belonging to the oracle and the robocluedo_main node are visible, since they are the most relevant nodes in the architecture. 
@@ -471,7 +472,7 @@ In this implementation *the oracle sends in a precise instant the hint*, but thi
 
 ## Possible improvements
 
-You can find some of the possible improvements directly in the documentation of the code; see the section [todo](to.do.on.the.docs). 
+You can find some of the possible improvements directly in the documentation of the code; see the section [todo](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-1/a00188.html). 
 
 About the architecture:
 
@@ -486,7 +487,7 @@ About how the game is managed:
 About the Knowledge Base:
 
 - in the real CLuedo, the knowledge is not centralized, but ditributed among the players: each player can exclude a priori some proerties, and hence all the hypotheses which contain them, and can discover, asking to the other players, new *real* clues. In the context of the project instead, it is difficult to apply some interesting reasoning technique such as the one of the real CLuedo. If the oracle indicates the part of the hypothesis not correct, the robot should understand which hypothesis is wrong in advance. 
-- the actual .owl file can't distinguish between *inconsistent* hypotheses and *discarded* hypotheses, so the distinction must be implemented inside the architecture; in this case, in *cluedo_armor_interface*. Use DATAPROP in order to mark the hypotheses as discarded, or REMOVE them (see the [workaroud](the.most.important.page.about.it))
+- the actual .owl file can't distinguish between *inconsistent* hypotheses and *discarded* hypotheses, so the distinction must be implemented inside the architecture; in this case, in *cluedo_armor_interface*. Use DATAPROP in order to mark the hypotheses as discarded, or REMOVE them (see [ArmorCluedo::AddIndiv()](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-1/a00197_ad29930fec7803aed87b7244e73b98bff.html#ad29930fec7803aed87b7244e73b98bff), [ArmorCluedo::RemoveHypothesis()](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-1/a00197_a4ae659375e7a6d9564973718ece248e2.html#a4ae659375e7a6d9564973718ece248e2) and the implementation of [ArmorCluedo::ExistsIndiv()](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-1/a00137_source.html#l00112))
 
 # Author and Contacts
 
