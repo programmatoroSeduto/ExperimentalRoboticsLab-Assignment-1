@@ -52,7 +52,7 @@ robocluedo
     └───armor_tools          <> implementation of the classes ArmorTools and ArmorCluedo
 ```
 
-## Package robobluedo_msgs
+## Package robocluedo_msgs
 
 This package contains the messages and the services for the project. Please refer to the [documentation](please.read.the.documentation). 
 
@@ -82,7 +82,7 @@ In order to run the project you need to install the followings:
 
 - [aRMOR](https://github.com/EmaroLab/armor#armor) : a ROS tool, working on ROSJava, able to manipulate .owl fles; please follow the instruction available on the readme of aRMOR in order to install it. 
 
-- [AMOR](https://github.com/EmaroLab/multi_ontology_reference) : required by aRMOR, see the instruction of aRMOR
+- [AMOR](https://github.com/EmaroLab/multi_ontology_reference) : required by aRMOR, see the instructions of aRMOR
 
 - [aRMOR msgs](https://github.com/EmaroLab/armor_msgs) : required in order to build the project. 
 
@@ -92,11 +92,11 @@ No Py client is required: the client was re-implemented in C++, see [ArmorTools]
 
 With the above mentioned depts installed, building the project is straightforward:
 
-0. I always recommend to create a clean workspace before download the project. Remember to source the new workspace!
+0. I always recommend to create a clean workspace before downloading the project. *Remember to source the new workspace!*
 1. Clone this repository inside the folder `src`
 2. then, `catkin_make` on the entire workspace
 
-Sometimes `catkin_make` gets stuck and doesn't compile the entire workspace. In order to force catkin to compile everythin, there's a script `compile.sh` attached to this repository.
+Sometimes, for some strange reason, `catkin_make` gets stuck and doesn't compile the entire workspace. In order to force catkin to compile everythin, there's a script `compile.sh` attached to this repository. It simply calls *catkin* for each package of the project. 
 
 ## Runnung the project
 
@@ -124,34 +124,34 @@ First of all, you need to set some stuff on the parameter server. You can easily
 roslaunch robocluedo parameters.launch
 ```
 
-Done this, there are a couple of nodes to start. I suggest you to run aRMOR first of all. Don't load anything: the arch. will load everything after starting. You could notice some warnigs: ignore them. 
+Done this, there are a couple of nodes to start. I suggest you to run aRMOR before the other nodes. Don't load anything: the arch. will load everything after starting. You could notice some warnigs: ignore them. 
 
 ```bash
-rosrun armor execute it.emarolab.armor.ARMORMainService
+rosrun armor execute it.emarolab.armor.ARMORMainService &
 ```
 
 Then, launch the auxiliary nodes. The node `cluedo_armor_interface` will set up the aRMOR service loading the ontology file you can find in `robocluedo/config/cluedo_owl_ontology`. This node manages and simplifies the usage of the ontology, and provides services specific for this project.
 
 ```bash
-rosrun robocluedo cluedo_armor_interface
+rosrun robocluedo cluedo_armor_interface &
 ```
 
 Now, run the node `cluedo_random_room`, a simple server which chooses one room among the ones in the list you can find at `robocluedo/config/cluedo_items`:
 
 ```bash
-rosrun robocluedo cluedo_random_room
+rosrun robocluedo cluedo_random_room &
 ```
 
-Run now the movement controller. This is a stub implementation, to replace with the real movement controller. Actually, it is a blocking service which can also cause the Oracle to send a hint to the robot. 
+Run now the movement controller. This is a stub implementation: it should be replaced with a real movement controller, with no need to alter the interface of the architecture. Actually, it is a blocking service which can also cause the Oracle to send a hint to the robot. 
 
 ```bash
-rosrun robocluedo cluedo_movement_controller
+rosrun robocluedo cluedo_movement_controller &
 ```
 
-The cluedo oracle is the referee of the gambe. Its interface should be external to this project: the actual oracle can be easily replaced. The oracle reads three files of items (see the folder `robocluedo/config/cluedo_items`), and prepares the case, choosing the solution in advance. You can retrieve the solution from the output on the console. 
+The cluedo oracle is the referee of the game. Its interface should be external to this project: the actual oracle can be easily replaced. The oracle reads three files of items (see the folder `robocluedo/config/cluedo_items`), and prepares the case, choosing the solution in advance. You can retrieve the solution from the output on the console. 
 
 ```bash
-rosrun robocluedo cluedo_oracle
+rosrun robocluedo cluedo_oracle &
 ```
 
 The last node you should run is the `robocluedo_main`, which implements the FSM, so the center of the architecture. The node makes the whole architecture running: the robot starts to work. 
@@ -162,7 +162,7 @@ rosrun robocluedo robocluedo_main.py
 
 ## Configuring the project - settings
 
-All the configuration elements are located in the folder `robocluedo/config`. Here you an find:
+All the configuration elements are located in the folder `robocluedo/config`. Here you can find:
 
 - the launch file `parameter.launch` which contains all the parameters to be defined before running the architecture
 - a folder `cluedo_items` containing all the entities for the game
@@ -197,7 +197,7 @@ The program need three test files:
 - `cluedo_path_what` : the the path of the file text containing all the WEAPONs
 - `cluedo_path_who` : the path of the file text containing all the PERSONs
 
-Each file has a very simple structure: each line corresponds to an item of a given class. No parsing is needed: the program just imports them reading line per line. 
+Each file has a very simple structure: each line corresponds to an item of a given class. No parsing is needed: the program just imports them, reading line per line. 
 
 Regarding the ontology:
 
@@ -212,7 +212,7 @@ Another value is:
 
 Each hint has an ID; this lets to simplify the code of the node *cluedo_armor_interface*, otherwise the robot should assign a ID and expand the hint in a combinatorial way, making the research of complete hypotheses more difficult to execute.
 
-## Testing the project
+## Testing the components
 
 During the development of the application, they are been implemented several nodes which have the only purpose to test parts of the applications. Here is the complete list of the launch files and the type of test performed:
 
@@ -269,7 +269,7 @@ The solution is generated in this way. First of all, the oracle chooses the ID o
 
 The node implements a simplified and specific interface which lets other nodes to work with aRMOR without using direct calls to the aRMOR service. 
 
-![CLuedo](/robocluedo/docs/diagrams/UML_components_armor_interface.png)
+![CLuedo](/robocluedo/docs/diagrams/UML_components_cluedo_armor_interface.png)
 
 The interface has four services (all the names of the services are under **/cluedo_armor**):
 - **add_hint** : add a proerty to the ontology, adding the implied values if at least one of them doesn't exist. See the [implementation of ServiceAddHint()](service.add.hint) 
@@ -309,21 +309,47 @@ Here is the FSM diagram:
 
 ![CLuedo](/robocluedo/docs/diagrams/UML_FSM_sketch.png)
 
-# RCL - Other notes on the project
+Note that the robot could receive a message each time it enters in the room, *only one message* because the buffer is actually a single variable instead of a list of hints (see the [todo list](to.do.list.on.doxygen) in the documentation). The behavour of the robot can be summarized as follows:
 
-... how it works
+- when no complete hypotheses are available, the robot moves choosing randomly a room where to go
+- each time the robot enters in a room, it "could find or not" one clue. If it "finds" something, it adds the hint to the ontology
+- each time, the robot checks for any complete hypothesis; if it finds at least one complete hypothesis, it goes into the room and makes the charge
+- the case is solved when the oracle confirms the conclusion of the robot, whereas, in case of negative answer, the robot keeps look for clues among the rooms
+
+Clearly it is a oversimplified game dynamic: *the real CLuedo doesn't work in this way...*
+
+# RCL - Other notes on the project
 
 ## Working Hypotheses
 
-... hyps
+The robot works in a well-known space, at least from the logical point of view. Maybe the space would be unknown, but the robot knows in advance at least the names of the rooms. 
+
+The oracle sends at most one hint each time the robot enters in a room. For multiple hints, it is necessary to extend the buffering from a single-var buffer type to a list type. The changes to do are few, and the logic can work fine also relaxing this working condition. 
+
+The oracle sends *in a precise instant* the hint, but this is not a constraint: the oracle can send the hint when it wants, because there's only one state which needs to check the state of the buffer. If the oracle would be replaced with another one which doesn't use the */hint_signal* but publishes the message in every instant, the architecture should work well. 
+
+The ID of the hypothesis is provided by the oracle. Modifying this working hypothesis requires to change a bit the node *robocluedo_main*, but also reimplement the algorithm for adding the hypotheses in the ontology, so non-trivial changes to *cluedo_armor_interface*. It should be implemented an algorithm which, given some properties, can generate all the hypotheses which contains those properties. Providing the ID instead simplifies the workflow, because the interface already knows how to organize the hypotheses, so the problem is reduced to find the right ID among the ones provided by the oracle. 
 
 ## Possible improvements
 
-... improvements, link to the todo list
+You can find some of the possible improvements directly in the documentation of the code; see the section [todo](to.do.on.the.docs). 
+
+About the architecture:
+
+- The actual *movement_controller* is just a "socket" for a real movement controller. The specifications require only that the service is *blocking*. 
+
+About how the game is managed:
+
+- there's no need to a topic */hint_signal*: it has been introduced in the project only for demonstrating a more linear working situation. 
+- the same oracle could manage more than one robot; it should be interesting to start the same architecture twice, and arrange a sort of challenge. It should be done using the same architecture of this project with minimal changes, or possibly with no changes. Other game dinamycs could also be implemented. 
+
+About the Knowledge Base:
+
+- in the real CLuedo, the knowledge is not centralized, but ditributed among the players: each player can exclude a priori some proerties, and hence all the hypotheses which contain them, and can discover, asking to the other players, new *real* clues. In the context of the project instead, it is difficult to apply some interesting reasoning technique such as the one of the real CLuedo. If the oracle indicates the part of the hypothesis not correct, the robot should understand which hypothesis is wrong in advance. 
+- the actual .owl file can't distinguish between *inconsistent* hypotheses and *discarded* hypotheses, so the distinction must be implemented inside the architecture; in this case, in *cluedo_armor_interface*. Use DATAPROP in order to mark the hypotheses as discarded, or REMOVE them (see the [workaroud](the.most.important.page.about.it))
 
 # Author and Contacts
 
-Francesco Ganci, S4143910
+*Francesco Ganci*, S4143910
 
-- **GitHub** : [here](https://github.com/programmatoroSeduto)
 - **Email** : _s4143910@studenti.unige.it_

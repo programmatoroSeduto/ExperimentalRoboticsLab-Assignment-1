@@ -50,6 +50,8 @@
  * <li>discard hypotheses</li>
  * </ul>
  * 
+ * @todo maybe the issues with aRMOR are due to a lack in its documentation. The implemented workarounds could reduce the performances of the program. 
+ * 
  ***********************************************/
 class ArmorCluedo : public ArmorTools
 {
