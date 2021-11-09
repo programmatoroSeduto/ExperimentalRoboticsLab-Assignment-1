@@ -307,6 +307,8 @@ class robocluedo_update_ontology( smach.State ):
 			</li>
 		</ul>
 	</div>
+    
+    @todo exporting the ontology at each update could be too much expensive in terms of performances. There should be a setting (using parameter server) which lets the user to select when to make a backup of the ontology on file. 
 	"""
 	
 	def __init__( self ):

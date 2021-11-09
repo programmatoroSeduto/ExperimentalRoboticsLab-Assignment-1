@@ -64,6 +64,9 @@
  * 		</li>
  * </ul>
  * 
+ * @todo expose the value \ref MAX_SIZE_HINT o the parameter server as done with \ref MAX_NUM_HINTS.
+ * 
+ * 
  ***********************************************/
  
 #include "ros/ros.h"
@@ -350,10 +353,12 @@ void generateMystery( std::vector<std::string> list_who, std::vector<std::string
 		}
 		else
 		{
+			/// @todo let the user to modify this value instead of putting a constant. 
 			for( int j=0; j<MAX_SIZE_HINT; ++j )
 			{
 				robocluedo_msgs::Hint h;
 				h.HintID = i;
+				/// @todo there should be parameters for altering the probabilities in generating the hints belonging to an ID
 				switch( randomIndex( 5 ) )
 				{
 				case 0:
