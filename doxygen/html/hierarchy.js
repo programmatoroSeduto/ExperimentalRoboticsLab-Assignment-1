@@ -4,7 +4,7 @@ var hierarchy =
       [ "ArmorCluedo", "a00191.html", null ],
       [ "ArmorCluedo", "a00191.html", null ]
     ] ],
-    [ "smach.State", null, [
+    [ "State", null, [
       [ "robocluedo_main.robocluedo_charge", "a00219.html", null ],
       [ "robocluedo_main.robocluedo_listening_for_hints", "a00207.html", null ],
       [ "robocluedo_main.robocluedo_moving", "a00203.html", null ],

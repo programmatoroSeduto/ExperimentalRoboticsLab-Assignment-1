@@ -1,0 +1,6 @@
+<map id="ArmorTools::SendCommand" name="ArmorTools::SendCommand">
+<area shape="rect" id="node1" title="fill in a command and send it to aRMOR" alt="" coords="5,56,208,83"/>
+<area shape="rect" id="node2" href="$a00195_aac98d4f9b2ce2cbefba61684d1f505bf.html#aac98d4f9b2ce2cbefba61684d1f505bf" title="send a command to the aRMOR service." alt="" coords="265,5,433,32"/>
+<area shape="rect" id="node3" href="$a00195_a76e1517409d261c03ce712a4a5e4a093.html#a76e1517409d261c03ce712a4a5e4a093" title="quick generation of an aRMOR request" alt="" coords="260,56,439,83"/>
+<area shape="rect" id="node4" href="$a00195_a451163e1278ec49f4d214b33111d166d.html#a451163e1278ec49f4d214b33111d166d" title="print a request to the screen." alt="" coords="256,107,443,133"/>
+</map>

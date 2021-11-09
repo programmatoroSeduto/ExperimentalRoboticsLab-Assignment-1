@@ -1,0 +1,5 @@
+<map id="ArmorTools::LoadOntology" name="ArmorTools::LoadOntology">
+<area shape="rect" id="node1" title="load the ontology from file." alt="" coords="5,31,199,57"/>
+<area shape="rect" id="node2" href="$a00195_aac98d4f9b2ce2cbefba61684d1f505bf.html#aac98d4f9b2ce2cbefba61684d1f505bf" title="send a command to the aRMOR service." alt="" coords="252,5,420,32"/>
+<area shape="rect" id="node3" href="$a00195_a76e1517409d261c03ce712a4a5e4a093.html#a76e1517409d261c03ce712a4a5e4a093" title="quick generation of an aRMOR request" alt="" coords="247,56,425,83"/>
+</map>
