@@ -92,13 +92,13 @@ No Py client is required: the client was re-implemented in C++, see [ArmorTools]
 
 With the above mentioned depts installed, building the project is straightforward:
 
-0. I always recommend to create a clean workspace before downloading the project. *Remember to source the new workspace!*
+0. I always recommend to create a clean workspace before downloading the project.
 1. Clone this repository inside the folder `src`
 2. then, `catkin_make` on the entire workspace
 
 Sometimes, for some strange reason, `catkin_make` gets stuck and doesn't compile the entire workspace. In order to force catkin to compile everythin, there's a script `compile.sh` attached to this repository. It simply calls *catkin* for each package of the project. 
 
-## Runnung the project
+## Running the project
 
 There are at least two ways to run the architecture.
 
@@ -159,6 +159,8 @@ The last node you should run is the `robocluedo_main`, which implements the FSM,
 ```bash
 rosrun robocluedo robocluedo_main.py
 ```
+
+That's all folks!
 
 ## Configuring the project - settings
 
@@ -303,7 +305,7 @@ Here are some useful documents:
 
 ## The Finite State Machine -- robocluedo_main
 
-The python ROS node **robocluedo_main** implements the behaviour of the robot. The ROS framework SMACH is employed here in order to implement the Finite State Machine. 
+The python ROS node **robocluedo_main** implements the behaviour of the robot. The ROS framework [SMACH](http://wiki.ros.org/smach) is employed here in order to implement the Finite State Machine. 
 
 Here is the FSM diagram:
 
@@ -322,13 +324,13 @@ Clearly it is a oversimplified game dynamic: *the real CLuedo doesn't work in th
 
 ## Working Hypotheses
 
-The robot works in a well-known space, at least from the logical point of view. Maybe the space would be unknown, but the robot knows in advance at least the names of the rooms. 
+*The robot works in a well-known space, at least from the logical point of view*. Maybe the space would be unknown, but the robot knows in advance at least the names of the rooms. 
 
-The oracle sends at most one hint each time the robot enters in a room. For multiple hints, it is necessary to extend the buffering from a single-var buffer type to a list type. The changes to do are few, and the logic can work fine also relaxing this working condition. 
+*The oracle sends at most one hint each time the robot enters in a room.* For multiple hints, it is necessary to extend the buffering from a single-var buffer type to a list type. The changes to do are few, and the logic can work fine also relaxing this working condition. 
 
-The oracle sends *in a precise instant* the hint, but this is not a constraint: the oracle can send the hint when it wants, because there's only one state which needs to check the state of the buffer. If the oracle would be replaced with another one which doesn't use the */hint_signal* but publishes the message in every instant, the architecture should work well. 
+In this implementation *the oracle sends in a precise instant the hint*, but this is not a constraint: the oracle can send the hint when it wants, because there's only one state which needs to check the state of the buffer. If the oracle would be replaced with another one which doesn't use the */hint_signal* but publishes the message in every instant, the architecture should work well. 
 
-The ID of the hypothesis is provided by the oracle. Modifying this working hypothesis requires to change a bit the node *robocluedo_main*, but also reimplement the algorithm for adding the hypotheses in the ontology, so non-trivial changes to *cluedo_armor_interface*. It should be implemented an algorithm which, given some properties, can generate all the hypotheses which contains those properties. Providing the ID instead simplifies the workflow, because the interface already knows how to organize the hypotheses, so the problem is reduced to find the right ID among the ones provided by the oracle. 
+*The ID of the hypothesis is provided by the oracle.* Modifying this working hypothesis requires to change a bit the node *robocluedo_main*, but also reimplement the algorithm for adding the hypotheses in the ontology, so non-trivial changes to *cluedo_armor_interface*. It should be implemented an algorithm which, given some properties, can generate all the hypotheses which contains those properties. Providing the ID instead simplifies the workflow, because the interface already knows how to organize the hypotheses, so the problem is reduced to find the right ID among the ones provided by the oracle. 
 
 ## Possible improvements
 
@@ -350,6 +352,6 @@ About the Knowledge Base:
 
 # Author and Contacts
 
-*Francesco Ganci*, S4143910
+Designed and developed by *Francesco Ganci*, S4143910
 
 - **Email** : _s4143910@studenti.unige.it_
