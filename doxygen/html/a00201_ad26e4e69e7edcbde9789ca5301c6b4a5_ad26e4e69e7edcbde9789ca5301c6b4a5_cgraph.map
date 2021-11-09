@@ -1,0 +1,5 @@
+<map id="ArmorTools::SaveOntology" name="ArmorTools::SaveOntology">
+<area shape="rect" id="node1" title="save the ontology on file" alt="" coords="5,31,200,57"/>
+<area shape="rect" id="node2" href="$a00201_aac98d4f9b2ce2cbefba61684d1f505bf.html#aac98d4f9b2ce2cbefba61684d1f505bf" title="send a command to the aRMOR service." alt="" coords="253,5,421,32"/>
+<area shape="rect" id="node3" href="$a00201_a76e1517409d261c03ce712a4a5e4a093.html#a76e1517409d261c03ce712a4a5e4a093" title="quick generation of an aRMOR request" alt="" coords="248,56,427,83"/>
+</map>

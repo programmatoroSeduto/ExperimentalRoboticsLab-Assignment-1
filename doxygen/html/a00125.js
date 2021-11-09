@@ -1,15 +1,15 @@
 var a00125 =
 [
-    [ "callback_hint", "a00125.html#a4a490bc2580d0b45a201ac3915dc8076", null ],
-    [ "main", "a00125.html#abc41c2c8a858055480b0abbb23429678", null ],
-    [ "on_shut_msg", "a00125.html#a2d0fabec3ea7b27cc1cd601336972590", null ],
-    [ "perform_tests", "a00125.html#ab92599e09d4a4fc9476fa59fca5bb300", null ],
-    [ "client_check_solution", "a00125.html#af058ae16a6c8362a59ca69bb2832d399", null ],
-    [ "client_name_check_solution", "a00125.html#af84b506654c540704c3e28803649a9d6", null ],
-    [ "hint_idx", "a00125.html#a402567b61ad6293194dca42eb21e7e96", null ],
-    [ "publisher_hint_sig", "a00125.html#ad432ec9663f161c4e56500ef85a647ca", null ],
-    [ "publisher_name_hint_sig", "a00125.html#adadaabe064a32960ccd05868977a7a45", null ],
-    [ "received", "a00125.html#a54c169c28f96da01f32240f70e3b981a", null ],
-    [ "subscriber_name_hint", "a00125.html#a858a439d4c013d702b80d0d7e0b6e064", null ],
-    [ "test_name", "a00125.html#a0490002999dcdd8dbac6f671db6487e0", null ]
+    [ "main", "a00125.html#a45d9d9dc7052c7fabbaa6f2806e82df1", null ],
+    [ "on_shut_msg", "a00125.html#a11beb134cd594225e8cdc2302cefec53", null ],
+    [ "perform_tests", "a00125.html#a7950b58982c19d0ff1541833092c4f0b", null ],
+    [ "client_add_hint", "a00125.html#a7cd401a8047112bb2662011553319b98", null ],
+    [ "client_backup", "a00125.html#a94074d397140b7066defaa2f0ab5a396", null ],
+    [ "client_find_consistent_h", "a00125.html#ad8a0abc3a6bc734b8897c6318f0ed3f6", null ],
+    [ "client_name_add_hint", "a00125.html#a42e4183f61e28dbe5937cd3cb5c9e343", null ],
+    [ "client_name_backup", "a00125.html#a41c09bf80ac81b67bead27508cf6eef3", null ],
+    [ "client_name_find_consistent_h", "a00125.html#a5c120410e8b9fc01ad83ee5c5468a0bc", null ],
+    [ "client_name_wrong_h", "a00125.html#a0758ffbef48612fda559eeccb559f7d1", null ],
+    [ "client_wrong_h", "a00125.html#a84a54743f3c55451d8e606046eec7800", null ],
+    [ "test_name", "a00125.html#a8a3845a0e0e2d3388fb65820cead0282", null ]
 ];

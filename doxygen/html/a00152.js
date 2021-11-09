@@ -1,24 +1,14 @@
 var a00152 =
 [
-    [ "ARMOR_CLIENT_NAME", "a00152_a8d32a85a0e3b8cb7dcbbeadc7a8b284a.html#a8d32a85a0e3b8cb7dcbbeadc7a8b284a", null ],
-    [ "ARMOR_CMD_LOAD", "a00152_a8a8c942aeb830679546ea2e20592f70a.html#a8a8c942aeb830679546ea2e20592f70a", null ],
-    [ "ARMOR_REFERENCE_NAME", "a00152_a6d75905dbd9fc2052398257505c694cf.html#a6d75905dbd9fc2052398257505c694cf", null ],
-    [ "ARMOR_TIMEOUT", "a00152_ab5b373ba9f647d494868eb4091121d40.html#ab5b373ba9f647d494868eb4091121d40", null ],
     [ "LOGSQUARE", "a00152_a36b268389a5b36ab752d1e59f1fa63f0.html#a36b268389a5b36ab752d1e59f1fa63f0", null ],
-    [ "ONTOLOGY_PARAM", "a00152_a1488d09dc82faa87c57e8d9a79bbe1f1.html#a1488d09dc82faa87c57e8d9a79bbe1f1", null ],
-    [ "OUTERR", "a00152_a7acd05993f001ce64575f2742dd023ae.html#a7acd05993f001ce64575f2742dd023ae", null ],
-    [ "OUTLABEL", "a00152_a83c0c69e3e513938dbd4e22b0dda7643.html#a83c0c69e3e513938dbd4e22b0dda7643", null ],
     [ "OUTLOG", "a00152_a186fe566fd11435e6aa34702dd79cac1.html#a186fe566fd11435e6aa34702dd79cac1", null ],
-    [ "SERVICE_ARMOR_MULTIPLE_REQUESTS", "a00152_a3eb94cb231e1b302f9d12d1ede64cb97.html#a3eb94cb231e1b302f9d12d1ede64cb97", null ],
-    [ "SERVICE_ARMOR_SINGLE_REQUEST", "a00152_acb73a2cbb815c8cdf8ba0ccaf4fa6ae6.html#acb73a2cbb815c8cdf8ba0ccaf4fa6ae6", null ],
-    [ "SS", "a00152_af4f289b8ad162b609975620166e3d407.html#af4f289b8ad162b609975620166e3d407", null ],
-    [ "SSS", "a00152_a7a571e6f0c662a683b2741f0e4cd4c26.html#a7a571e6f0c662a683b2741f0e4cd4c26", null ],
-    [ "armorCallService", "a00152_a43568c05742adcc36486995190475e93.html#a43568c05742adcc36486995190475e93", null ],
-    [ "armorGetArgs", "a00152_a70961d77b4dba027046302569e947a8d.html#a70961d77b4dba027046302569e947a8d", null ],
-    [ "armorGetRequest", "a00152_a789f053ee9576f78228a8ebfb86fa107.html#a789f053ee9576f78228a8ebfb86fa107", null ],
-    [ "armorPrintRequest", "a00152_a093155b99db1f38d96329a10bb7738d3.html#a093155b99db1f38d96329a10bb7738d3", null ],
-    [ "armorPrintResponse", "a00152_ad9da254399d28a823eac1445696c6274.html#ad9da254399d28a823eac1445696c6274", null ],
-    [ "armorTestSession", "a00152_abff933932da2d36d8bd8dc968ced4019.html#abff933932da2d36d8bd8dc968ced4019", null ],
-    [ "fileExist", "a00152_a425e0b3a1e6c60b7ed0330df24c67e66.html#a425e0b3a1e6c60b7ed0330df24c67e66", null ],
-    [ "main", "a00152_a0ddf1224851353fc92bfbff6f499fa97.html#a0ddf1224851353fc92bfbff6f499fa97", null ]
+    [ "PATH_PARAMETER_SERVER_WHERE", "a00152_a5a5c61b838d2950098341254ca9eca1a.html#a5a5c61b838d2950098341254ca9eca1a", null ],
+    [ "SERVICE_RANDOM_ROOM", "a00152_aeb68a7701a2e29df2646553ae5f0e49b.html#aeb68a7701a2e29df2646553ae5f0e49b", null ],
+    [ "Choose", "a00152_a5860d956cf9531e4209e63284e3231c4.html#a5860d956cf9531e4209e63284e3231c4", null ],
+    [ "ChooseRoomRandom", "a00152_acb2cbc45ef5cb59e465ab42a1f3c4d51.html#acb2cbc45ef5cb59e465ab42a1f3c4d51", null ],
+    [ "ImportNamesOfRooms", "a00152_a72be2cfb7017d316b3fc9409ee0fd2e1.html#a72be2cfb7017d316b3fc9409ee0fd2e1", null ],
+    [ "main", "a00152_a0ddf1224851353fc92bfbff6f499fa97.html#a0ddf1224851353fc92bfbff6f499fa97", null ],
+    [ "randgen", "a00152.html#a81aca1dae12d142b85f465f00586b727", null ],
+    [ "rng", "a00152.html#adbe79e918414b2480135e3a7871b44ac", null ],
+    [ "rooms", "a00152_a3e9faf1e599933e7e3653aa772c5bc0f.html#a3e9faf1e599933e7e3653aa772c5bc0f", null ]
 ];

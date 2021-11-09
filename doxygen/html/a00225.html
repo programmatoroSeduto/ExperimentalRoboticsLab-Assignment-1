@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RCL - RoboCLuedo: ArmorCluedo - 003 - Reasoning Workflow</title>
+<title>RCL - RoboCLuedo: robocluedo_main.robocluedo_charge Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -84,115 +84,62 @@ $(document).ready(function(){initNavTree('a00225.html',''); initResizable(); });
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a>  </div>
   <div class="headertitle">
-<div class="title">ArmorCluedo - 003 - Reasoning Workflow</div>  </div>
+<div class="title">robocluedo_main.robocluedo_charge Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<p>In this example I'm going to show how the combination of the two classes <a class="el" href="a00195.html" title="A minimal C++ client for aRMOR.">ArmorTools</a> and <a class="el" href="a00191.html" title="additional utilities for aRMOR">ArmorCluedo</a> structure the reasoning process, which is at the base of how RCL works.</p>
-<dl class="section warning"><dt>Warning</dt><dd>this code was written only for your understanding. Probably it won't compile.</dd></dl>
-<div class="fragment"><div class="line"> </div>
-<div class="line"> </div>
-<div class="line"><span class="preprocessor">#include &quot;ros/ros.h&quot;</span></div>
-<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="a00092.html">armor_tools/armor_tools.h</a>&quot;</span></div>
-<div class="line"><span class="preprocessor">#include &quot;armor_tools_armor_cluedo.h&quot;</span></div>
-<div class="line"><span class="preprocessor">#include &quot;armor_msgs/ArmorDirective.h&quot;</span></div>
-<div class="line"><span class="preprocessor">#include &quot;armor_msgs/ArmorDirectiveReq.h&quot;</span></div>
-<div class="line"><span class="preprocessor">#include &quot;armor_msgs/ArmorDirectiveRes.h&quot;</span></div>
-<div class="line"> </div>
-<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"> </div>
-<div class="line"><span class="keywordtype">int</span> <a name="a0"></a><a class="code" href="a00002_a0ddf1224851353fc92bfbff6f499fa97.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>( <span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[] )</div>
-<div class="line">{</div>
-<div class="line">    ros::init( argc, argv, <span class="stringliteral">&quot;example_armor_cluedo_3&quot;</span> );</div>
-<div class="line">    ros::NodeHandle nh;</div>
-<div class="line">    </div>
-<div class="line">    </div>
-<div class="line">    </div>
-<div class="line">    </div>
-<div class="line">    <span class="comment">// === before starting (see the previous examples)</span></div>
-<div class="line">    </div>
-<div class="line">    <a name="_a1"></a><a class="code" href="a00191.html">ArmorCluedo</a> armor;</div>
-<div class="line">    armor.<a name="a2"></a><a class="code" href="a00191_a66ce2d9f5c665ab14761233b32ab1ec6.html#a66ce2d9f5c665ab14761233b32ab1ec6">Init</a>( <span class="stringliteral">&quot;/root/ontologies/my_super_ontology.owl&quot;</span> );</div>
-<div class="line">    armor.<a name="a3"></a><a class="code" href="a00191_ad29930fec7803aed87b7244e73b98bff.html#ad29930fec7803aed87b7244e73b98bff">AddIndiv</a>( <span class="stringliteral">&quot;John&quot;</span>, <span class="stringliteral">&quot;PERSON&quot;</span> );</div>
-<div class="line">    armor.<a class="code" href="a00191_ad29930fec7803aed87b7244e73b98bff.html#ad29930fec7803aed87b7244e73b98bff">AddIndiv</a>( <span class="stringliteral">&quot;Pippo&quot;</span>, <span class="stringliteral">&quot;PERSON&quot;</span> );</div>
-<div class="line">    armor.<a class="code" href="a00191_ad29930fec7803aed87b7244e73b98bff.html#ad29930fec7803aed87b7244e73b98bff">AddIndiv</a>( <span class="stringliteral">&quot;Broccoli&quot;</span>, <span class="stringliteral">&quot;WEAPON&quot;</span> );</div>
-<div class="line">    armor.<a class="code" href="a00191_ad29930fec7803aed87b7244e73b98bff.html#ad29930fec7803aed87b7244e73b98bff">AddIndiv</a>( <span class="stringliteral">&quot;AK-47&quot;</span>, <span class="stringliteral">&quot;WEAPON&quot;</span> );</div>
-<div class="line">    armor.<a class="code" href="a00191_ad29930fec7803aed87b7244e73b98bff.html#ad29930fec7803aed87b7244e73b98bff">AddIndiv</a>( <span class="stringliteral">&quot;Stadium&quot;</span>, <span class="stringliteral">&quot;PLACE&quot;</span> );</div>
-<div class="line">    armor.<a class="code" href="a00191_ad29930fec7803aed87b7244e73b98bff.html#ad29930fec7803aed87b7244e73b98bff">AddIndiv</a>( <span class="stringliteral">&quot;Bathroom&quot;</span>, <span class="stringliteral">&quot;PLACE&quot;</span> );</div>
-<div class="line">    armor.<a class="code" href="a00191_ad29930fec7803aed87b7244e73b98bff.html#ad29930fec7803aed87b7244e73b98bff">AddIndiv</a>( <span class="stringliteral">&quot;SmartHypothesis&quot;</span>, <span class="stringliteral">&quot;HYPOTHESIS&quot;</span> );</div>
-<div class="line">    armor.<a name="a4"></a><a class="code" href="a00195_a0ddf26f9a388377a36263344b1cbf39f.html#a0ddf26f9a388377a36263344b1cbf39f">UpdateOntology</a>( );</div>
-<div class="line">    armor.<a name="a5"></a><a class="code" href="a00191_ad179234fd676874a09c267abb416d2da.html#ad179234fd676874a09c267abb416d2da">SetObjectProperty</a>( <span class="stringliteral">&quot;where&quot;</span>, <span class="stringliteral">&quot;Smarthypothesis&quot;</span>, <span class="stringliteral">&quot;Stadium&quot;</span> );</div>
-<div class="line">    armor.<a class="code" href="a00191_ad179234fd676874a09c267abb416d2da.html#ad179234fd676874a09c267abb416d2da">SetObjectProperty</a>( <span class="stringliteral">&quot;who&quot;</span>, <span class="stringliteral">&quot;Smarthypothesis&quot;</span>, <span class="stringliteral">&quot;John&quot;</span> );</div>
-<div class="line">    armor.<a class="code" href="a00191_ad179234fd676874a09c267abb416d2da.html#ad179234fd676874a09c267abb416d2da">SetObjectProperty</a>( <span class="stringliteral">&quot;what&quot;</span>, <span class="stringliteral">&quot;Smarthypothesis&quot;</span>, <span class="stringliteral">&quot;Broccoli&quot;</span> );</div>
-<div class="line">    armor.<a class="code" href="a00195_a0ddf26f9a388377a36263344b1cbf39f.html#a0ddf26f9a388377a36263344b1cbf39f">UpdateOntology</a>( );</div>
-<div class="line">    </div>
-<div class="line">    </div>
-<div class="line">    </div>
-<div class="line">    </div>
-<div class="line">    <span class="comment">// === QUERYING HYPOTHESES</span></div>
-<div class="line">    </div>
-<div class="line">    <span class="comment">// find the tags of the complete hypotheses</span></div>
-<div class="line">    <span class="comment">//    in this example, the tag &#39;SmartHypothesis&#39; is complete</span></div>
-<div class="line">    std::vector&lt;std::string&gt; complete_hypotheses = FindCompleteHypotheses( );</div>
-<div class="line">    </div>
-<div class="line">    </div>
-<div class="line">    </div>
-<div class="line">    </div>
-<div class="line">    <span class="comment">// === INCONSISTENT HYPOTHESES</span></div>
-<div class="line">    </div>
-<div class="line">    <span class="comment">// you can also find the inconsistent hypotheses</span></div>
-<div class="line">    <span class="comment">//    ATTENTION! In this implementation there&#39;s a difference between</span></div>
-<div class="line">    <span class="comment">//       &quot;discarded&quot; hypotheses and &quot;inconsistent&quot; hypotheses, due to</span></div>
-<div class="line">    <span class="comment">//       some issues inside aRMOR.</span></div>
-<div class="line">    <span class="comment">//    in any case, using FindCompleteHypotheses() is recommended. </span></div>
-<div class="line">    std::vector&lt;std::string&gt; inconsistent_hypotheses = FindCompleteHypotheses( );</div>
-<div class="line">    </div>
-<div class="line">    <span class="comment">// let&#39;s make &#39;SmartHypothesis&#39; inconsistent</span></div>
-<div class="line">    armor.<a class="code" href="a00191_ad179234fd676874a09c267abb416d2da.html#ad179234fd676874a09c267abb416d2da">SetObjectProperty</a>( <span class="stringliteral">&quot;where&quot;</span>, <span class="stringliteral">&quot;SmatHypothesis&quot;</span>, <span class="stringliteral">&quot;Bathroom&quot;</span> );</div>
-<div class="line">    armor.<a class="code" href="a00195_a0ddf26f9a388377a36263344b1cbf39f.html#a0ddf26f9a388377a36263344b1cbf39f">UpdateOntology</a>( );</div>
-<div class="line">    <span class="comment">// now the hypothesis doesn&#39;t appear when calling FindCompleteHypotheses( )</span></div>
-<div class="line">    </div>
-<div class="line">    </div>
-<div class="line">    </div>
-<div class="line">    </div>
-<div class="line">    <span class="comment">// === DISCARD HYPOTHESES</span></div>
-<div class="line">    </div>
-<div class="line">    <span class="comment">// the implementation of ArmorCluedo contains a workaroud, due to an </span></div>
-<div class="line">    <span class="comment">//    issue in the implementation of aRMOR in &quot;REMOVE&quot; commands. </span></div>
-<div class="line">    <span class="comment">// let&#39;s suppose that there&#39;s another hypothesis, completed, but</span></div>
-<div class="line">    <span class="comment">//    discarded due to a negative answer by the oracle</span></div>
-<div class="line">    </div>
-<div class="line">    armor.<a class="code" href="a00191_ad29930fec7803aed87b7244e73b98bff.html#ad29930fec7803aed87b7244e73b98bff">AddIndiv</a>( <span class="stringliteral">&quot;AnotherSmartHypothesis&quot;</span>, <span class="stringliteral">&quot;HYPOTHESIS&quot;</span> );</div>
-<div class="line">    armor.<a class="code" href="a00191_ad179234fd676874a09c267abb416d2da.html#ad179234fd676874a09c267abb416d2da">SetObjectProperty</a>( <span class="stringliteral">&quot;where&quot;</span>, <span class="stringliteral">&quot;AnotherSmarthypothesis&quot;</span>, <span class="stringliteral">&quot;Stadium&quot;</span> );</div>
-<div class="line">    armor.<a class="code" href="a00191_ad179234fd676874a09c267abb416d2da.html#ad179234fd676874a09c267abb416d2da">SetObjectProperty</a>( <span class="stringliteral">&quot;who&quot;</span>, <span class="stringliteral">&quot;AnotherSmarthypothesis&quot;</span>, <span class="stringliteral">&quot;John&quot;</span> );</div>
-<div class="line">    armor.<a class="code" href="a00191_ad179234fd676874a09c267abb416d2da.html#ad179234fd676874a09c267abb416d2da">SetObjectProperty</a>( <span class="stringliteral">&quot;what&quot;</span>, <span class="stringliteral">&quot;AnotherSmarthypothesis&quot;</span>, <span class="stringliteral">&quot;Broccoli&quot;</span> );</div>
-<div class="line">    armor.<a class="code" href="a00195_a0ddf26f9a388377a36263344b1cbf39f.html#a0ddf26f9a388377a36263344b1cbf39f">UpdateOntology</a>( );</div>
-<div class="line">    </div>
-<div class="line">    <span class="comment">// let&#39;s discard it with the function</span></div>
-<div class="line">    armor.<a name="a6"></a><a class="code" href="a00191_a4ae659375e7a6d9564973718ece248e2.html#a4ae659375e7a6d9564973718ece248e2">RemoveHypothesis</a>( <span class="stringliteral">&quot;AnotherSmarthypothesis&quot;</span> );</div>
-<div class="line">    <span class="comment">// THE HYPOTHESIS IS STILL PRESENT IN THE ONTOLOGY! </span></div>
-<div class="line">    <span class="comment">//    but now it is tracked as deleted, so the FindCompleteHypotheses()</span></div>
-<div class="line">    <span class="comment">//    won&#39;t return it later. </span></div>
-<div class="line">    <span class="comment">// you cannot de-discard hypotheses. </span></div>
-<div class="line">    </div>
-<div class="line">    <span class="keywordflow">return</span> 0;</div>
-<div class="line">}</div>
-</div><!-- fragment --><div class="fragment"></div><!-- fragment --><p> - 003 - Reasoning Workflow </p>
+
+<p>implementation of the state <em>charge</em>.  
+ <a href="a00225.html#details">More...</a></p>
+
+<p>Inherits State.</p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for robocluedo_main.robocluedo_charge:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="a00223.png" border="0" usemap="#robocluedo__main_8robocluedo__charge_coll__map" alt="Collaboration graph"/></div>
+<map name="robocluedo__main_8robocluedo__charge_coll__map" id="robocluedo__main_8robocluedo__charge_coll__map">
+<area shape="rect" title="implementation of the state charge." alt="" coords="5,5,216,112"/>
+</map>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a90c11d3f5803f6fee496bea10f13c908"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00225_a90c11d3f5803f6fee496bea10f13c908.html#a90c11d3f5803f6fee496bea10f13c908">__init__</a> (self)</td></tr>
+<tr class="separator:a90c11d3f5803f6fee496bea10f13c908"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a716ae89c3d93b160c46a1d55349091c2"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00225_a716ae89c3d93b160c46a1d55349091c2.html#a716ae89c3d93b160c46a1d55349091c2">execute</a> (self, d)</td></tr>
+<tr class="separator:a716ae89c3d93b160c46a1d55349091c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>implementation of the state <em>charge</em>. </p>
+<p>The system is ready to make a charge.</p>
+<div> <b>FSM Evolution:</b> <ul>
+<li>
+<u>case_solved</u> <em>to</em> <b>END STATE</b> <br  />
+ the oracle replies with a positive result: case solved. <br  />
+<br  />
+  </li>
+<li>
+<u>wrong_hp</u> <em>to</em> <a class="el" href="a00213.html" title="implementation of the state listening_for_hints.">robocluedo_listening_for_hints</a> <br  />
+ the solution is not correct. <br  />
+<br  />
+  </li>
+</ul>
+</div> 
+<p class="definition">Definition at line <a class="el" href="a00122_source.html#l00407">407</a> of file <a class="el" href="a00122_source.html">robocluedo_main.py</a>.</p>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
+<li>/root/ws_experimental_robotics_lab_assignment_1/src/ExperimentalRoboticsLab-Assignment-1/robocluedo/scripts/<a class="el" href="a00122_source.html">robocluedo_main.py</a></li>
+</ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aa00191_a66ce2d9f5c665ab14761233b32ab1ec6_html_a66ce2d9f5c665ab14761233b32ab1ec6"><div class="ttname"><a href="a00191_a66ce2d9f5c665ab14761233b32ab1ec6.html#a66ce2d9f5c665ab14761233b32ab1ec6">ArmorCluedo::Init</a></div><div class="ttdeci">bool Init(std::string ontologyPath)</div><div class="ttdoc">initizalize the interface</div><div class="ttdef"><b>Definition:</b> <a href="a00134_source.html#l00034">armor_cluedo.cpp:34</a></div></div>
-<div class="ttc" id="aa00191_ad29930fec7803aed87b7244e73b98bff_html_ad29930fec7803aed87b7244e73b98bff"><div class="ttname"><a href="a00191_ad29930fec7803aed87b7244e73b98bff.html#ad29930fec7803aed87b7244e73b98bff">ArmorCluedo::AddIndiv</a></div><div class="ttdeci">bool AddIndiv(std::string indivname, std::string classname, bool makeDisjoint=true)</div><div class="ttdoc">add an individual to the ontology</div><div class="ttdef"><b>Definition:</b> <a href="a00134_source.html#l00053">armor_cluedo.cpp:53</a></div></div>
-<div class="ttc" id="aa00002_a0ddf1224851353fc92bfbff6f499fa97_html_a0ddf1224851353fc92bfbff6f499fa97"><div class="ttname"><a href="a00002_a0ddf1224851353fc92bfbff6f499fa97.html#a0ddf1224851353fc92bfbff6f499fa97">main</a></div><div class="ttdeci">int main(int argc, char *argv[])</div><div class="ttdef"><b>Definition:</b> <a href="a00002_source.html#l00026">example_armor_cluedo_1.cpp:26</a></div></div>
-<div class="ttc" id="aa00191_a4ae659375e7a6d9564973718ece248e2_html_a4ae659375e7a6d9564973718ece248e2"><div class="ttname"><a href="a00191_a4ae659375e7a6d9564973718ece248e2.html#a4ae659375e7a6d9564973718ece248e2">ArmorCluedo::RemoveHypothesis</a></div><div class="ttdeci">bool RemoveHypothesis(std::string hypTag)</div><div class="ttdoc">discard one hypothesis</div><div class="ttdef"><b>Definition:</b> <a href="a00134_source.html#l00192">armor_cluedo.cpp:192</a></div></div>
-<div class="ttc" id="aa00191_html"><div class="ttname"><a href="a00191.html">ArmorCluedo</a></div><div class="ttdoc">additional utilities for aRMOR</div><div class="ttdef"><b>Definition:</b> <a href="a00089_source.html#l00054">armor_cluedo.h:54</a></div></div>
-<div class="ttc" id="aa00191_ad179234fd676874a09c267abb416d2da_html_ad179234fd676874a09c267abb416d2da"><div class="ttname"><a href="a00191_ad179234fd676874a09c267abb416d2da.html#ad179234fd676874a09c267abb416d2da">ArmorCluedo::SetObjectProperty</a></div><div class="ttdeci">bool SetObjectProperty(std::string prop, std::string Aelem, std::string Belem)</div><div class="ttdoc">set a property true</div><div class="ttdef"><b>Definition:</b> <a href="a00134_source.html#l00131">armor_cluedo.cpp:131</a></div></div>
-<div class="ttc" id="aa00195_a0ddf26f9a388377a36263344b1cbf39f_html_a0ddf26f9a388377a36263344b1cbf39f"><div class="ttname"><a href="a00195_a0ddf26f9a388377a36263344b1cbf39f.html#a0ddf26f9a388377a36263344b1cbf39f">ArmorTools::UpdateOntology</a></div><div class="ttdeci">bool UpdateOntology()</div><div class="ttdoc">send the command REASON</div><div class="ttdef"><b>Definition:</b> <a href="a00137_source.html#l00246">armor_tools.cpp:246</a></div></div>
-<div class="ttc" id="aa00092_html"><div class="ttname"><a href="a00092.html">armor_tools.h</a></div><div class="ttdoc">A minimal C++ client for aRMOR.</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Nov 9 2021 12:51:12 for RCL - RoboCLuedo by
+    <li class="navelem"><a class="el" href="a00189.html">robocluedo_main</a></li><li class="navelem"><a class="el" href="a00225.html">robocluedo_charge</a></li>
+    <li class="footer">Generated on Tue Nov 9 2021 20:28:12 for RCL - RoboCLuedo by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
