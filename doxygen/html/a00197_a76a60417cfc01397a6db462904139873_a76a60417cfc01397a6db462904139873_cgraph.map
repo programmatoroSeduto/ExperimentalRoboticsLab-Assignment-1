@@ -1,4 +1,0 @@
-<map id="ArmorCluedo::FilterVector" name="ArmorCluedo::FilterVector">
-<area shape="rect" id="node1" title="filter all the strings inside the array" alt="" coords="5,5,195,32"/>
-<area shape="rect" id="node2" href="$a00197_a6f824ec2cf4759952145f7f1d11e516c.html#a6f824ec2cf4759952145f7f1d11e516c" title="rewrite a string like &#39;&lt;uri#value&gt;&#39; into &#39;value&#39;" alt="" coords="243,5,427,32"/>
-</map>
