@@ -98,14 +98,14 @@ $(document).ready(function(){initNavTree('a00149_source.html',''); initResizable
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#include &lt;random&gt;</span></div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#define PATH_PARAMETER_SERVER_WHERE &quot;cluedo_path_where&quot;</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#define SERVICE_RANDOM_ROOM &quot;/random_room&quot;</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#define OUTLOG std::cout &lt;&lt; &quot;[cluedo_random_room] &quot;</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#define LOGSQUARE( str ) &quot;[&quot;</span> &lt;&lt; str &lt;&lt; &quot;] &quot;</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="a00149_a5a5c61b838d2950098341254ca9eca1a.html#a5a5c61b838d2950098341254ca9eca1a">   48</a></span>&#160;<span class="preprocessor">#define PATH_PARAMETER_SERVER_WHERE &quot;cluedo_path_where&quot;</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="a00149_aeb68a7701a2e29df2646553ae5f0e49b.html#aeb68a7701a2e29df2646553ae5f0e49b">   49</a></span>&#160;<span class="preprocessor">#define SERVICE_RANDOM_ROOM &quot;/random_room&quot;</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="a00149_a186fe566fd11435e6aa34702dd79cac1.html#a186fe566fd11435e6aa34702dd79cac1">   50</a></span>&#160;<span class="preprocessor">#define OUTLOG std::cout &lt;&lt; &quot;[cluedo_random_room] &quot;</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="a00149_a36b268389a5b36ab752d1e59f1fa63f0.html#a36b268389a5b36ab752d1e59f1fa63f0">   51</a></span>&#160;<span class="preprocessor">#define LOGSQUARE( str ) &quot;[&quot;</span> &lt;&lt; str &lt;&lt; &quot;] &quot;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="a00149.html#a3e9faf1e599933e7e3653aa772c5bc0f">   56</a></span>&#160;std::vector&lt;std::string&gt; <a class="code" href="a00149.html#a3e9faf1e599933e7e3653aa772c5bc0f">rooms</a>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="a00149_a3e9faf1e599933e7e3653aa772c5bc0f.html#a3e9faf1e599933e7e3653aa772c5bc0f">   56</a></span>&#160;std::vector&lt;std::string&gt; <a class="code" href="a00149_a3e9faf1e599933e7e3653aa772c5bc0f.html#a3e9faf1e599933e7e3653aa772c5bc0f">rooms</a>;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;std::uniform_int_distribution&lt;std::mt19937::result_type&gt; randgen;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
@@ -117,27 +117,27 @@ $(document).ready(function(){initNavTree('a00149_source.html',''); initResizable
 <div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="a00149_a72be2cfb7017d316b3fc9409ee0fd2e1.html#a72be2cfb7017d316b3fc9409ee0fd2e1">   75</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="a00149_a72be2cfb7017d316b3fc9409ee0fd2e1.html#a72be2cfb7017d316b3fc9409ee0fd2e1">ImportNamesOfRooms</a>( <span class="keyword">const</span> std::string&amp; path )</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;{</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="comment">// open the file</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    OUTLOG &lt;&lt; <span class="stringliteral">&quot;reading from fiile &quot;</span> &lt;&lt; LOGSQUARE( path ) &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <a class="code" href="a00149_a186fe566fd11435e6aa34702dd79cac1.html#a186fe566fd11435e6aa34702dd79cac1">OUTLOG</a> &lt;&lt; <span class="stringliteral">&quot;reading from fiile &quot;</span> &lt;&lt; <a class="code" href="a00149_a36b268389a5b36ab752d1e59f1fa63f0.html#a36b268389a5b36ab752d1e59f1fa63f0">LOGSQUARE</a>( path ) &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    std::ifstream filestream( path );</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">if</span>( !filestream.is_open( ) )</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        OUTLOG &lt;&lt; <span class="stringliteral">&quot;ERROR: no existing file!&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <a class="code" href="a00149_a186fe566fd11435e6aa34702dd79cac1.html#a186fe566fd11435e6aa34702dd79cac1">OUTLOG</a> &lt;&lt; <span class="stringliteral">&quot;ERROR: no existing file!&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    </div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="comment">// read the file</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <a class="code" href="a00149.html#a3e9faf1e599933e7e3653aa772c5bc0f">rooms</a> = std::vector&lt;std::string&gt;( );</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <a class="code" href="a00149_a3e9faf1e599933e7e3653aa772c5bc0f.html#a3e9faf1e599933e7e3653aa772c5bc0f">rooms</a> = std::vector&lt;std::string&gt;( );</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    std::string temp = <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">int</span> line = 1;</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordflow">while</span>( getline( filestream, temp ) )</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    {</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        OUTLOG &lt;&lt; <span class="stringliteral">&quot;line&quot;</span> &lt;&lt; LOGSQUARE( line ) &lt;&lt; <span class="stringliteral">&quot;READ &quot;</span> &lt;&lt; LOGSQUARE( temp ) &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <a class="code" href="a00149_a186fe566fd11435e6aa34702dd79cac1.html#a186fe566fd11435e6aa34702dd79cac1">OUTLOG</a> &lt;&lt; <span class="stringliteral">&quot;line&quot;</span> &lt;&lt; <a class="code" href="a00149_a36b268389a5b36ab752d1e59f1fa63f0.html#a36b268389a5b36ab752d1e59f1fa63f0">LOGSQUARE</a>( line ) &lt;&lt; <span class="stringliteral">&quot;READ &quot;</span> &lt;&lt; <a class="code" href="a00149_a36b268389a5b36ab752d1e59f1fa63f0.html#a36b268389a5b36ab752d1e59f1fa63f0">LOGSQUARE</a>( temp ) &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        ++line;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <a class="code" href="a00149.html#a3e9faf1e599933e7e3653aa772c5bc0f">rooms</a>.push_back( temp );</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <a class="code" href="a00149_a3e9faf1e599933e7e3653aa772c5bc0f.html#a3e9faf1e599933e7e3653aa772c5bc0f">rooms</a>.push_back( temp );</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    }</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    </div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="comment">// close the file</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    OUTLOG &lt;&lt; <span class="stringliteral">&quot;closing file ...&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <a class="code" href="a00149_a186fe566fd11435e6aa34702dd79cac1.html#a186fe566fd11435e6aa34702dd79cac1">OUTLOG</a> &lt;&lt; <span class="stringliteral">&quot;closing file ...&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    filestream.close( );</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    </div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
@@ -151,7 +151,7 @@ $(document).ready(function(){initNavTree('a00149_source.html',''); initResizable
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordtype">int</span> generated_random_number = randgen( rng );</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    ROS_INFO( <span class="stringliteral">&quot;generated: %d&quot;</span>, generated_random_number );</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="a00149.html#a3e9faf1e599933e7e3653aa772c5bc0f">rooms</a>[ generated_random_number ];</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="a00149_a3e9faf1e599933e7e3653aa772c5bc0f.html#a3e9faf1e599933e7e3653aa772c5bc0f">rooms</a>[ generated_random_number ];</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;}</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
@@ -172,19 +172,19 @@ $(document).ready(function(){initNavTree('a00149_source.html',''); initResizable
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    ros::NodeHandle nh;</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    </div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="comment">// init the list of rooms</span></div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="keywordflow">if</span>( !ros::param::has( PATH_PARAMETER_SERVER_WHERE ) )</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="keywordflow">if</span>( !ros::param::has( <a class="code" href="a00149_a5a5c61b838d2950098341254ca9eca1a.html#a5a5c61b838d2950098341254ca9eca1a">PATH_PARAMETER_SERVER_WHERE</a> ) )</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    {</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        <span class="comment">// ERRORE il param non esiste nel server</span></div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    }</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    std::string path;</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    ros::param::get( PATH_PARAMETER_SERVER_WHERE, path );</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    ros::param::get( <a class="code" href="a00149_a5a5c61b838d2950098341254ca9eca1a.html#a5a5c61b838d2950098341254ca9eca1a">PATH_PARAMETER_SERVER_WHERE</a>, path );</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="keywordflow">if</span>( !<a class="code" href="a00149_a72be2cfb7017d316b3fc9409ee0fd2e1.html#a72be2cfb7017d316b3fc9409ee0fd2e1">ImportNamesOfRooms</a>( path ) )</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    {</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        <span class="comment">// ERRORE il path non esiste</span></div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    }</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordtype">int</span> nRooms = <a class="code" href="a00149.html#a3e9faf1e599933e7e3653aa772c5bc0f">rooms</a>.size( );</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordtype">int</span> nRooms = <a class="code" href="a00149_a3e9faf1e599933e7e3653aa772c5bc0f.html#a3e9faf1e599933e7e3653aa772c5bc0f">rooms</a>.size( );</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    </div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="comment">// setup the random number generator</span></div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    std::random_device dev;</div>
@@ -193,28 +193,32 @@ $(document).ready(function(){initNavTree('a00149_source.html',''); initResizable
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    randgen = std::uniform_int_distribution&lt;std::mt19937::result_type&gt;( 0, nRooms-1 );</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    </div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <span class="comment">// expose the service</span></div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    OUTLOG &lt;&lt; <span class="stringliteral">&quot;Advertising service &quot;</span> &lt;&lt; LOGSQUARE( SERVICE_RANDOM_ROOM ) &lt;&lt; <span class="stringliteral">&quot;...&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    ros::ServiceServer srv = nh.advertiseService( SERVICE_RANDOM_ROOM, <a class="code" href="a00149_acb2cbc45ef5cb59e465ab42a1f3c4d51.html#acb2cbc45ef5cb59e465ab42a1f3c4d51">ChooseRoomRandom</a> );</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    OUTLOG &lt;&lt; <span class="stringliteral">&quot;Advertising service &quot;</span> &lt;&lt; LOGSQUARE( SERVICE_RANDOM_ROOM ) &lt;&lt; <span class="stringliteral">&quot;... OK&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <a class="code" href="a00149_a186fe566fd11435e6aa34702dd79cac1.html#a186fe566fd11435e6aa34702dd79cac1">OUTLOG</a> &lt;&lt; <span class="stringliteral">&quot;Advertising service &quot;</span> &lt;&lt; <a class="code" href="a00149_a36b268389a5b36ab752d1e59f1fa63f0.html#a36b268389a5b36ab752d1e59f1fa63f0">LOGSQUARE</a>( <a class="code" href="a00149_aeb68a7701a2e29df2646553ae5f0e49b.html#aeb68a7701a2e29df2646553ae5f0e49b">SERVICE_RANDOM_ROOM</a> ) &lt;&lt; <span class="stringliteral">&quot;...&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    ros::ServiceServer srv = nh.advertiseService( <a class="code" href="a00149_aeb68a7701a2e29df2646553ae5f0e49b.html#aeb68a7701a2e29df2646553ae5f0e49b">SERVICE_RANDOM_ROOM</a>, <a class="code" href="a00149_acb2cbc45ef5cb59e465ab42a1f3c4d51.html#acb2cbc45ef5cb59e465ab42a1f3c4d51">ChooseRoomRandom</a> );</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <a class="code" href="a00149_a186fe566fd11435e6aa34702dd79cac1.html#a186fe566fd11435e6aa34702dd79cac1">OUTLOG</a> &lt;&lt; <span class="stringliteral">&quot;Advertising service &quot;</span> &lt;&lt; <a class="code" href="a00149_a36b268389a5b36ab752d1e59f1fa63f0.html#a36b268389a5b36ab752d1e59f1fa63f0">LOGSQUARE</a>( <a class="code" href="a00149_aeb68a7701a2e29df2646553ae5f0e49b.html#aeb68a7701a2e29df2646553ae5f0e49b">SERVICE_RANDOM_ROOM</a> ) &lt;&lt; <span class="stringliteral">&quot;... OK&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    </div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <span class="comment">// spin and wait</span></div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    OUTLOG &lt;&lt; <span class="stringliteral">&quot;ready!&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <a class="code" href="a00149_a186fe566fd11435e6aa34702dd79cac1.html#a186fe566fd11435e6aa34702dd79cac1">OUTLOG</a> &lt;&lt; <span class="stringliteral">&quot;ready!&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    ros::spin();</div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    </div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;}</div>
 <div class="ttc" id="aa00149_a0ddf1224851353fc92bfbff6f499fa97_html_a0ddf1224851353fc92bfbff6f499fa97"><div class="ttname"><a href="a00149_a0ddf1224851353fc92bfbff6f499fa97.html#a0ddf1224851353fc92bfbff6f499fa97">main</a></div><div class="ttdeci">int main(int argc, char *argv[])</div><div class="ttdoc">ROS node main - cluedo_random_room.</div><div class="ttdef"><b>Definition:</b> <a href="a00149_source.html#l00153">cluedo_random_room.cpp:153</a></div></div>
+<div class="ttc" id="aa00149_a186fe566fd11435e6aa34702dd79cac1_html_a186fe566fd11435e6aa34702dd79cac1"><div class="ttname"><a href="a00149_a186fe566fd11435e6aa34702dd79cac1.html#a186fe566fd11435e6aa34702dd79cac1">OUTLOG</a></div><div class="ttdeci">#define OUTLOG</div><div class="ttdef"><b>Definition:</b> <a href="a00149_source.html#l00050">cluedo_random_room.cpp:50</a></div></div>
+<div class="ttc" id="aa00149_a36b268389a5b36ab752d1e59f1fa63f0_html_a36b268389a5b36ab752d1e59f1fa63f0"><div class="ttname"><a href="a00149_a36b268389a5b36ab752d1e59f1fa63f0.html#a36b268389a5b36ab752d1e59f1fa63f0">LOGSQUARE</a></div><div class="ttdeci">#define LOGSQUARE(str)</div><div class="ttdef"><b>Definition:</b> <a href="a00149_source.html#l00051">cluedo_random_room.cpp:51</a></div></div>
+<div class="ttc" id="aa00149_a3e9faf1e599933e7e3653aa772c5bc0f_html_a3e9faf1e599933e7e3653aa772c5bc0f"><div class="ttname"><a href="a00149_a3e9faf1e599933e7e3653aa772c5bc0f.html#a3e9faf1e599933e7e3653aa772c5bc0f">rooms</a></div><div class="ttdeci">std::vector&lt; std::string &gt; rooms</div><div class="ttdoc">the set of rooms</div><div class="ttdef"><b>Definition:</b> <a href="a00149_source.html#l00056">cluedo_random_room.cpp:56</a></div></div>
 <div class="ttc" id="aa00149_a5860d956cf9531e4209e63284e3231c4_html_a5860d956cf9531e4209e63284e3231c4"><div class="ttname"><a href="a00149_a5860d956cf9531e4209e63284e3231c4.html#a5860d956cf9531e4209e63284e3231c4">Choose</a></div><div class="ttdeci">std::string Choose()</div><div class="ttdoc">get randomly the name of one room from the list rooms .</div><div class="ttdef"><b>Definition:</b> <a href="a00149_source.html#l00113">cluedo_random_room.cpp:113</a></div></div>
+<div class="ttc" id="aa00149_a5a5c61b838d2950098341254ca9eca1a_html_a5a5c61b838d2950098341254ca9eca1a"><div class="ttname"><a href="a00149_a5a5c61b838d2950098341254ca9eca1a.html#a5a5c61b838d2950098341254ca9eca1a">PATH_PARAMETER_SERVER_WHERE</a></div><div class="ttdeci">#define PATH_PARAMETER_SERVER_WHERE</div><div class="ttdef"><b>Definition:</b> <a href="a00149_source.html#l00048">cluedo_random_room.cpp:48</a></div></div>
 <div class="ttc" id="aa00149_a72be2cfb7017d316b3fc9409ee0fd2e1_html_a72be2cfb7017d316b3fc9409ee0fd2e1"><div class="ttname"><a href="a00149_a72be2cfb7017d316b3fc9409ee0fd2e1.html#a72be2cfb7017d316b3fc9409ee0fd2e1">ImportNamesOfRooms</a></div><div class="ttdeci">bool ImportNamesOfRooms(const std::string &amp;path)</div><div class="ttdoc">import names of the rooms from file</div><div class="ttdef"><b>Definition:</b> <a href="a00149_source.html#l00075">cluedo_random_room.cpp:75</a></div></div>
 <div class="ttc" id="aa00149_acb2cbc45ef5cb59e465ab42a1f3c4d51_html_acb2cbc45ef5cb59e465ab42a1f3c4d51"><div class="ttname"><a href="a00149_acb2cbc45ef5cb59e465ab42a1f3c4d51.html#acb2cbc45ef5cb59e465ab42a1f3c4d51">ChooseRoomRandom</a></div><div class="ttdeci">bool ChooseRoomRandom(robocluedo_msgs::RandomRoom::Request &amp;empty, robocluedo_msgs::RandomRoom::Response &amp;room)</div><div class="ttdoc">implementation of service SERVICE_RANDOM_ROOM</div><div class="ttdef"><b>Definition:</b> <a href="a00149_source.html#l00138">cluedo_random_room.cpp:138</a></div></div>
-<div class="ttc" id="aa00149_html_a3e9faf1e599933e7e3653aa772c5bc0f"><div class="ttname"><a href="a00149.html#a3e9faf1e599933e7e3653aa772c5bc0f">rooms</a></div><div class="ttdeci">std::vector&lt; std::string &gt; rooms</div><div class="ttdoc">the set of rooms</div><div class="ttdef"><b>Definition:</b> <a href="a00149_source.html#l00056">cluedo_random_room.cpp:56</a></div></div>
+<div class="ttc" id="aa00149_aeb68a7701a2e29df2646553ae5f0e49b_html_aeb68a7701a2e29df2646553ae5f0e49b"><div class="ttname"><a href="a00149_aeb68a7701a2e29df2646553ae5f0e49b.html#aeb68a7701a2e29df2646553ae5f0e49b">SERVICE_RANDOM_ROOM</a></div><div class="ttdeci">#define SERVICE_RANDOM_ROOM</div><div class="ttdef"><b>Definition:</b> <a href="a00149_source.html#l00049">cluedo_random_room.cpp:49</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_ec26e8507ab2869084237022eb595cc7.html">robocluedo</a></li><li class="navelem"><a class="el" href="dir_4ac2bbdaf5848812856158bd323f30d5.html">src</a></li><li class="navelem"><a class="el" href="a00149.html">cluedo_random_room.cpp</a></li>
-    <li class="footer">Generated on Tue Nov 9 2021 12:48:21 for RCL - RoboCLuedo by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Tue Nov 9 2021 13:35:01 for RCL - RoboCLuedo by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

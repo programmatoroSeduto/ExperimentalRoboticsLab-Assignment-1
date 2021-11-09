@@ -102,7 +102,7 @@ $(document).ready(function(){initNavTree('a00223.html',''); initResizable(); });
 <div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">int</span> main( <span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[] )</div>
+<div class="line"><span class="keywordtype">int</span> <a name="a0"></a><a class="code" href="a00002_a0ddf1224851353fc92bfbff6f499fa97.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>( <span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[] )</div>
 <div class="line">{</div>
 <div class="line">    ros::init( argc, argv, <span class="stringliteral">&quot;example_armor_cluedo_2&quot;</span> );</div>
 <div class="line">    ros::NodeHandle nh;</div>
@@ -112,22 +112,22 @@ $(document).ready(function(){initNavTree('a00223.html',''); initResizable(); });
 <div class="line">    </div>
 <div class="line">    <span class="comment">// === before starting...</span></div>
 <div class="line">    </div>
-<div class="line">    <a name="_a0"></a><a class="code" href="a00191.html">ArmorCluedo</a> armor;</div>
-<div class="line">    armor.<a name="a1"></a><a class="code" href="a00191_a66ce2d9f5c665ab14761233b32ab1ec6.html#a66ce2d9f5c665ab14761233b32ab1ec6">Init</a>( <span class="stringliteral">&quot;/root/ontologies/my_super_ontology.owl&quot;</span> );</div>
-<div class="line">    armor.<a name="a2"></a><a class="code" href="a00191_ad29930fec7803aed87b7244e73b98bff.html#ad29930fec7803aed87b7244e73b98bff">AddIndiv</a>( <span class="stringliteral">&quot;John&quot;</span>, <span class="stringliteral">&quot;PERSON&quot;</span> );</div>
+<div class="line">    <a name="_a1"></a><a class="code" href="a00191.html">ArmorCluedo</a> armor;</div>
+<div class="line">    armor.<a name="a2"></a><a class="code" href="a00191_a66ce2d9f5c665ab14761233b32ab1ec6.html#a66ce2d9f5c665ab14761233b32ab1ec6">Init</a>( <span class="stringliteral">&quot;/root/ontologies/my_super_ontology.owl&quot;</span> );</div>
+<div class="line">    armor.<a name="a3"></a><a class="code" href="a00191_ad29930fec7803aed87b7244e73b98bff.html#ad29930fec7803aed87b7244e73b98bff">AddIndiv</a>( <span class="stringliteral">&quot;John&quot;</span>, <span class="stringliteral">&quot;PERSON&quot;</span> );</div>
 <div class="line">    armor.<a class="code" href="a00191_ad29930fec7803aed87b7244e73b98bff.html#ad29930fec7803aed87b7244e73b98bff">AddIndiv</a>( <span class="stringliteral">&quot;Broccoli&quot;</span>, <span class="stringliteral">&quot;WEAPON&quot;</span> );</div>
 <div class="line">    armor.<a class="code" href="a00191_ad29930fec7803aed87b7244e73b98bff.html#ad29930fec7803aed87b7244e73b98bff">AddIndiv</a>( <span class="stringliteral">&quot;Stadium&quot;</span>, <span class="stringliteral">&quot;PLACE&quot;</span> );</div>
 <div class="line">    armor.<a class="code" href="a00191_ad29930fec7803aed87b7244e73b98bff.html#ad29930fec7803aed87b7244e73b98bff">AddIndiv</a>( <span class="stringliteral">&quot;SmartHypothesis&quot;</span>, <span class="stringliteral">&quot;HYPOTHESIS&quot;</span> );</div>
 <div class="line">    </div>
 <div class="line">    <span class="comment">// REMEMBER TO UPDATE!</span></div>
-<div class="line">    armor.<a name="a3"></a><a class="code" href="a00195_a0ddf26f9a388377a36263344b1cbf39f.html#a0ddf26f9a388377a36263344b1cbf39f">UpdateOntology</a>( );</div>
+<div class="line">    armor.<a name="a4"></a><a class="code" href="a00195_a0ddf26f9a388377a36263344b1cbf39f.html#a0ddf26f9a388377a36263344b1cbf39f">UpdateOntology</a>( );</div>
 <div class="line">    </div>
 <div class="line">    </div>
 <div class="line">    </div>
 <div class="line">    </div>
 <div class="line">    <span class="comment">// === ADD SOME PROPERTIES</span></div>
 <div class="line">    </div>
-<div class="line">    armor.<a name="a4"></a><a class="code" href="a00191_ad179234fd676874a09c267abb416d2da.html#ad179234fd676874a09c267abb416d2da">SetObjectProperty</a>( <span class="stringliteral">&quot;where&quot;</span>, <span class="stringliteral">&quot;Smarthypothesis&quot;</span>, <span class="stringliteral">&quot;Stadium&quot;</span> );</div>
+<div class="line">    armor.<a name="a5"></a><a class="code" href="a00191_ad179234fd676874a09c267abb416d2da.html#ad179234fd676874a09c267abb416d2da">SetObjectProperty</a>( <span class="stringliteral">&quot;where&quot;</span>, <span class="stringliteral">&quot;Smarthypothesis&quot;</span>, <span class="stringliteral">&quot;Stadium&quot;</span> );</div>
 <div class="line">    armor.<a class="code" href="a00191_ad179234fd676874a09c267abb416d2da.html#ad179234fd676874a09c267abb416d2da">SetObjectProperty</a>( <span class="stringliteral">&quot;who&quot;</span>, <span class="stringliteral">&quot;Smarthypothesis&quot;</span>, <span class="stringliteral">&quot;John&quot;</span> );</div>
 <div class="line">    armor.<a class="code" href="a00191_ad179234fd676874a09c267abb416d2da.html#ad179234fd676874a09c267abb416d2da">SetObjectProperty</a>( <span class="stringliteral">&quot;what&quot;</span>, <span class="stringliteral">&quot;Smarthypothesis&quot;</span>, <span class="stringliteral">&quot;Broccoli&quot;</span> );</div>
 <div class="line">    </div>
@@ -147,6 +147,7 @@ $(document).ready(function(){initNavTree('a00223.html',''); initResizable(); });
 <div class="line">    </div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
+<div class="ttc" id="aa00002_a0ddf1224851353fc92bfbff6f499fa97_html_a0ddf1224851353fc92bfbff6f499fa97"><div class="ttname"><a href="a00002_a0ddf1224851353fc92bfbff6f499fa97.html#a0ddf1224851353fc92bfbff6f499fa97">main</a></div><div class="ttdeci">int main(int argc, char *argv[])</div><div class="ttdef"><b>Definition:</b> <a href="a00002_source.html#l00026">example_armor_cluedo_1.cpp:26</a></div></div>
 <div class="ttc" id="aa00092_html"><div class="ttname"><a href="a00092.html">armor_tools.h</a></div><div class="ttdoc">A minimal C++ client for aRMOR.</div></div>
 <div class="ttc" id="aa00191_a66ce2d9f5c665ab14761233b32ab1ec6_html_a66ce2d9f5c665ab14761233b32ab1ec6"><div class="ttname"><a href="a00191_a66ce2d9f5c665ab14761233b32ab1ec6.html#a66ce2d9f5c665ab14761233b32ab1ec6">ArmorCluedo::Init</a></div><div class="ttdeci">bool Init(std::string ontologyPath)</div><div class="ttdoc">initizalize the interface</div><div class="ttdef"><b>Definition:</b> <a href="a00134_source.html#l00034">armor_cluedo.cpp:34</a></div></div>
 <div class="ttc" id="aa00191_ad179234fd676874a09c267abb416d2da_html_ad179234fd676874a09c267abb416d2da"><div class="ttname"><a href="a00191_ad179234fd676874a09c267abb416d2da.html#ad179234fd676874a09c267abb416d2da">ArmorCluedo::SetObjectProperty</a></div><div class="ttdeci">bool SetObjectProperty(std::string prop, std::string Aelem, std::string Belem)</div><div class="ttdoc">set a property true</div><div class="ttdef"><b>Definition:</b> <a href="a00134_source.html#l00131">armor_cluedo.cpp:131</a></div></div>
@@ -159,7 +160,7 @@ $(document).ready(function(){initNavTree('a00223.html',''); initResizable(); });
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Nov 9 2021 12:48:21 for RCL - RoboCLuedo by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Tue Nov 9 2021 13:35:00 for RCL - RoboCLuedo by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

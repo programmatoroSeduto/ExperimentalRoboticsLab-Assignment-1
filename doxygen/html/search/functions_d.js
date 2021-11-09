@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['testinterface_168',['TestInterface',['../a00195_a356ca7809be690be0a70a1ae33a850a8.html#a356ca7809be690be0a70a1ae33a850a8',1,'ArmorTools']]]
+  ['removehypothesis_322',['RemoveHypothesis',['../a00191_a4ae659375e7a6d9564973718ece248e2.html#a4ae659375e7a6d9564973718ece248e2',1,'ArmorCluedo']]]
 ];

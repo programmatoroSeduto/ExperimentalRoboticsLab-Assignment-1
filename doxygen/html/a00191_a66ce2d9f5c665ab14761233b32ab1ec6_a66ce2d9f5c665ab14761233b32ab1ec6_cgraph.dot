@@ -11,8 +11,12 @@ digraph "ArmorCluedo::Init"
   Node3 [label="ArmorTools::Connect",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00195_aa83ea5e064db6dc46c9056ddeeaabbc4.html#aa83ea5e064db6dc46c9056ddeeaabbc4",tooltip="open a connection with the aRMOR service."];
   Node2 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node4 [label="ArmorTools::LoadOntology",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00195_ab03c54208a11edf3e3690ba07f0cef5b.html#ab03c54208a11edf3e3690ba07f0cef5b",tooltip="load the ontology from file."];
-  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node5 [label="ArmorTools::GetLastErrorCode",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00195_a75474b9c35cbdcfedd382939c1699247.html#a75474b9c35cbdcfedd382939c1699247",tooltip="err code referred to the last call"];
-  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node6 [label="ArmorTools::TestInterface",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00195_a356ca7809be690be0a70a1ae33a850a8.html#a356ca7809be690be0a70a1ae33a850a8",tooltip="check the status of the interface"];
+  Node4 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="ArmorTools::CallArmor",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00195_aac98d4f9b2ce2cbefba61684d1f505bf.html#aac98d4f9b2ce2cbefba61684d1f505bf",tooltip="send a command to the aRMOR service."];
+  Node4 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="ArmorTools::GetRequest",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00195_a76e1517409d261c03ce712a4a5e4a093.html#a76e1517409d261c03ce712a4a5e4a093",tooltip="quick generation of an aRMOR request"];
+  Node1 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="ArmorTools::GetLastErrorCode",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00195_a75474b9c35cbdcfedd382939c1699247.html#a75474b9c35cbdcfedd382939c1699247",tooltip="err code referred to the last call"];
+  Node1 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="ArmorTools::TestInterface",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00195_a356ca7809be690be0a70a1ae33a850a8.html#a356ca7809be690be0a70a1ae33a850a8",tooltip="check the status of the interface"];
 }

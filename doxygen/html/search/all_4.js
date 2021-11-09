@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['filtervalue_25',['FilterValue',['../a00191_a6f824ec2cf4759952145f7f1d11e516c.html#a6f824ec2cf4759952145f7f1d11e516c',1,'ArmorCluedo']]],
-  ['filtervector_26',['FilterVector',['../a00191_a76a60417cfc01397a6db462904139873.html#a76a60417cfc01397a6db462904139873',1,'ArmorCluedo']]],
-  ['findcompletehypotheses_27',['FindCompleteHypotheses',['../a00191_aaf1832ed634a017c48e26c48f58c5f68.html#aaf1832ed634a017c48e26c48f58c5f68',1,'ArmorCluedo']]],
-  ['findinconsistenthypotheses_28',['FindInconsistentHypotheses',['../a00191_ab278ac3aaffc4c6aceaf3bfb8d5186af.html#ab278ac3aaffc4c6aceaf3bfb8d5186af',1,'ArmorCluedo']]]
+  ['debugmode_69',['DebugMode',['../a00195_a8d4c23582a9a677ac69c07b08d5da436.html#a8d4c23582a9a677ac69c07b08d5da436',1,'ArmorTools']]],
+  ['discardhypothesis_70',['DiscardHypothesis',['../a00140_a85e8c9731bfed7d2e82df47750b9c19e.html#a85e8c9731bfed7d2e82df47750b9c19e',1,'cluedo_armor_interface.cpp']]],
+  ['discardhypothesis_2esrv_71',['DiscardHypothesis.srv',['../a00170.html',1,'']]]
 ];

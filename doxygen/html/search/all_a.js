@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['performdifferencebetween_56',['PerformDifferenceBetween',['../a00140_a30c8d0c07497876eeb7b5845bab11d19.html#a30c8d0c07497876eeb7b5845bab11d19',1,'cluedo_armor_interface.cpp']]],
-  ['printlastreq_57',['PrintLastReq',['../a00195.html#ac7f632ed614b226cbc2b2fa352989643',1,'ArmorTools']]],
-  ['printlastres_58',['PrintLastRes',['../a00195.html#ae1764835bfe65fabcb07757b0bb43f83',1,'ArmorTools']]],
-  ['printrequest_59',['PrintRequest',['../a00195_a451163e1278ec49f4d214b33111d166d.html#a451163e1278ec49f4d214b33111d166d',1,'ArmorTools']]],
-  ['printresponse_60',['PrintResponse',['../a00195_a2ca77741de4c8883b5be0d661f6b1320.html#a2ca77741de4c8883b5be0d661f6b1320',1,'ArmorTools']]]
+  ['listen_5ffor_5fhints_109',['listen_for_hints',['../a00183_aa905139a8aac8345547c50301e168c07.html#aa905139a8aac8345547c50301e168c07',1,'robocluedo_main']]],
+  ['loadedontology_110',['LoadedOntology',['../a00195_ad7d22e2f0942c96ea2d5f02636610581.html#ad7d22e2f0942c96ea2d5f02636610581',1,'ArmorTools']]],
+  ['loadontology_111',['LoadOntology',['../a00195_ab03c54208a11edf3e3690ba07f0cef5b.html#ab03c54208a11edf3e3690ba07f0cef5b',1,'ArmorTools']]],
+  ['logsquare_112',['LOGSQUARE',['../a00092_a36b268389a5b36ab752d1e59f1fa63f0.html#a36b268389a5b36ab752d1e59f1fa63f0',1,'LOGSQUARE():&#160;armor_tools.h'],['../a00140_a36b268389a5b36ab752d1e59f1fa63f0.html#a36b268389a5b36ab752d1e59f1fa63f0',1,'LOGSQUARE():&#160;cluedo_armor_interface.cpp'],['../a00143_a36b268389a5b36ab752d1e59f1fa63f0.html#a36b268389a5b36ab752d1e59f1fa63f0',1,'LOGSQUARE():&#160;cluedo_movement_controller.cpp'],['../a00146_a36b268389a5b36ab752d1e59f1fa63f0.html#a36b268389a5b36ab752d1e59f1fa63f0',1,'LOGSQUARE():&#160;cluedo_oracle.cpp'],['../a00149_a36b268389a5b36ab752d1e59f1fa63f0.html#a36b268389a5b36ab752d1e59f1fa63f0',1,'LOGSQUARE():&#160;cluedo_random_room.cpp'],['../a00152_a36b268389a5b36ab752d1e59f1fa63f0.html#a36b268389a5b36ab752d1e59f1fa63f0',1,'LOGSQUARE():&#160;test_armor.cpp']]]
 ];

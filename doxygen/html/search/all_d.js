@@ -1,12 +1,8 @@
 var searchData=
 [
-  ['target_83',['target',['../a00119.html#a6fecac596298d352367536ee19e6f4b0',1,'robocluedo_main']]],
-  ['test_5farmor_2ecpp_84',['test_armor.cpp',['../a00152.html',1,'']]],
-  ['test_5farmor_5ftools_2ecpp_85',['test_armor_tools.cpp',['../a00155.html',1,'']]],
-  ['test_5fcluedo_5farmor_5finterface_2epy_86',['test_cluedo_armor_interface.py',['../a00122.html',1,'']]],
-  ['test_5fcluedo_5foracle_2epy_87',['test_cluedo_oracle.py',['../a00125.html',1,'']]],
-  ['test_5fcluedo_5frandom_5froom_2epy_88',['test_cluedo_random_room.py',['../a00128.html',1,'']]],
-  ['test_5foracle_5fplus_5finterface_2epy_89',['test_oracle_plus_interface.py',['../a00131.html',1,'']]],
-  ['testinterface_90',['TestInterface',['../a00195_a356ca7809be690be0a70a1ae33a850a8.html#a356ca7809be690be0a70a1ae33a850a8',1,'ArmorTools']]],
-  ['todo_20list_91',['Todo List',['../a00182.html',1,'']]]
+  ['on_5fshut_5fmsg_120',['on_shut_msg',['../a00184_a11beb134cd594225e8cdc2302cefec53.html#a11beb134cd594225e8cdc2302cefec53',1,'test_cluedo_armor_interface.on_shut_msg()'],['../a00185_a2d0fabec3ea7b27cc1cd601336972590.html#a2d0fabec3ea7b27cc1cd601336972590',1,'test_cluedo_oracle.on_shut_msg()'],['../a00186_a23808ddd3552f7bdd15a39262d9735f7.html#a23808ddd3552f7bdd15a39262d9735f7',1,'test_cluedo_random_room.on_shut_msg()'],['../a00187_a639f2a8ab699c2dcccc5a6a3989d9d34.html#a639f2a8ab699c2dcccc5a6a3989d9d34',1,'test_oracle_plus_interface.on_shut_msg()']]],
+  ['ontology_5fparam_121',['ONTOLOGY_PARAM',['../a00140_a1488d09dc82faa87c57e8d9a79bbe1f1.html#a1488d09dc82faa87c57e8d9a79bbe1f1',1,'ONTOLOGY_PARAM():&#160;cluedo_armor_interface.cpp'],['../a00152_a1488d09dc82faa87c57e8d9a79bbe1f1.html#a1488d09dc82faa87c57e8d9a79bbe1f1',1,'ONTOLOGY_PARAM():&#160;test_armor.cpp'],['../a00155_a1488d09dc82faa87c57e8d9a79bbe1f1.html#a1488d09dc82faa87c57e8d9a79bbe1f1',1,'ONTOLOGY_PARAM():&#160;test_armor_tools.cpp']]],
+  ['outerr_122',['OUTERR',['../a00146_ad89aad5003005d39f868d6cc7b7bff73.html#ad89aad5003005d39f868d6cc7b7bff73',1,'OUTERR():&#160;cluedo_oracle.cpp'],['../a00152_a7acd05993f001ce64575f2742dd023ae.html#a7acd05993f001ce64575f2742dd023ae',1,'OUTERR():&#160;test_armor.cpp']]],
+  ['outlabel_123',['OUTLABEL',['../a00140_a83c0c69e3e513938dbd4e22b0dda7643.html#a83c0c69e3e513938dbd4e22b0dda7643',1,'OUTLABEL():&#160;cluedo_armor_interface.cpp'],['../a00143_a83c0c69e3e513938dbd4e22b0dda7643.html#a83c0c69e3e513938dbd4e22b0dda7643',1,'OUTLABEL():&#160;cluedo_movement_controller.cpp'],['../a00146_a83c0c69e3e513938dbd4e22b0dda7643.html#a83c0c69e3e513938dbd4e22b0dda7643',1,'OUTLABEL():&#160;cluedo_oracle.cpp'],['../a00152_a83c0c69e3e513938dbd4e22b0dda7643.html#a83c0c69e3e513938dbd4e22b0dda7643',1,'OUTLABEL():&#160;test_armor.cpp'],['../a00155_a83c0c69e3e513938dbd4e22b0dda7643.html#a83c0c69e3e513938dbd4e22b0dda7643',1,'OUTLABEL():&#160;test_armor_tools.cpp']]],
+  ['outlog_124',['OUTLOG',['../a00140_a3cebd08e2e9a598e7cd779a51734719e.html#a3cebd08e2e9a598e7cd779a51734719e',1,'OUTLOG():&#160;cluedo_armor_interface.cpp'],['../a00143_a186fe566fd11435e6aa34702dd79cac1.html#a186fe566fd11435e6aa34702dd79cac1',1,'OUTLOG():&#160;cluedo_movement_controller.cpp'],['../a00146_a3cebd08e2e9a598e7cd779a51734719e.html#a3cebd08e2e9a598e7cd779a51734719e',1,'OUTLOG():&#160;cluedo_oracle.cpp'],['../a00149_a186fe566fd11435e6aa34702dd79cac1.html#a186fe566fd11435e6aa34702dd79cac1',1,'OUTLOG():&#160;cluedo_random_room.cpp'],['../a00152_a186fe566fd11435e6aa34702dd79cac1.html#a186fe566fd11435e6aa34702dd79cac1',1,'OUTLOG():&#160;test_armor.cpp']]]
 ];

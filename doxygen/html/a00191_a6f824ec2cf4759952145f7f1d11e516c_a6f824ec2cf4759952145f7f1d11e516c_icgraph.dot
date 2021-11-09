@@ -7,4 +7,14 @@ digraph "ArmorCluedo::FilterValue"
   Node1 [label="ArmorCluedo::FilterValue",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="rewrite a string like '<uri#value>' into 'value'"];
   Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node2 [label="ArmorCluedo::FilterVector",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00191_a76a60417cfc01397a6db462904139873.html#a76a60417cfc01397a6db462904139873",tooltip="filter all the strings inside the array"];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="ArmorCluedo::GetClassOfIndiv",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00191_a49216d015f97a9d510406a90e8c1fe30.html#a49216d015f97a9d510406a90e8c1fe30",tooltip="get the class of a given individual"];
+  Node2 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="ArmorCluedo::GetIndivOfClass",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00191_afef8229a755f495f008bfe4630a745fa.html#afef8229a755f495f008bfe4630a745fa",tooltip="find the individuals belonging to a class"];
+  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="ArmorCluedo::FindComplete\lHypotheses",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00191_aaf1832ed634a017c48e26c48f58c5f68.html#aaf1832ed634a017c48e26c48f58c5f68",tooltip="find all the complete hypotheses"];
+  Node4 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="ArmorCluedo::FindInconsistent\lHypotheses",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00191_ab278ac3aaffc4c6aceaf3bfb8d5186af.html#ab278ac3aaffc4c6aceaf3bfb8d5186af",tooltip="find all the inconsistent hypotheses"];
+  Node2 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="ArmorCluedo::GetValuedOf\lIndiv",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00191_a580aef3f0bf9dd1affd06c588e731ff5.html#a580aef3f0bf9dd1affd06c588e731ff5",tooltip="get the values of a property related to a gven individual"];
 }

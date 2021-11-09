@@ -28,6 +28,14 @@ var NAVTREE =
     [ "RoboCLuedo", "index.html#autotoc_md0", null ],
     [ "UML Diagrams", "a00345.html", "a00345" ],
     [ "Todo List", "a00182.html", null ],
+    [ "Packages", "namespaces.html", [
+      [ "Packages", "namespaces.html", "namespaces_dup" ],
+      [ "Package Functions", "namespacemembers.html", [
+        [ "All", "namespacemembers.html", null ],
+        [ "Functions", "namespacemembers_func.html", null ],
+        [ "Variables", "namespacemembers_vars.html", null ]
+      ] ]
+    ] ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
       [ "Data Structure Index", "classes.html", null ],
@@ -53,7 +61,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"a00002_source.html"
+"a00002.html",
+"a00155_a3eb94cb231e1b302f9d12d1ede64cb97.html#a3eb94cb231e1b302f9d12d1ede64cb97"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

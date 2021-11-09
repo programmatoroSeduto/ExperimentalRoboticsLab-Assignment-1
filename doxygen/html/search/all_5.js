@@ -1,13 +1,10 @@
 var searchData=
 [
-  ['generatemystery_29',['generateMystery',['../a00146_a554ad8b46595d7a5901b180494b25e97.html#a554ad8b46595d7a5901b180494b25e97',1,'cluedo_oracle.cpp']]],
-  ['getclassofindiv_30',['GetClassOfIndiv',['../a00191_a49216d015f97a9d510406a90e8c1fe30.html#a49216d015f97a9d510406a90e8c1fe30',1,'ArmorCluedo']]],
-  ['getindivofclass_31',['GetIndivOfClass',['../a00191_afef8229a755f495f008bfe4630a745fa.html#afef8229a755f495f008bfe4630a745fa',1,'ArmorCluedo']]],
-  ['getlasterrorcode_32',['GetLastErrorCode',['../a00195_a75474b9c35cbdcfedd382939c1699247.html#a75474b9c35cbdcfedd382939c1699247',1,'ArmorTools']]],
-  ['getlasterrordescription_33',['GetLastErrorDescription',['../a00195_a43702476c5d0763fc6b1f090b4531c27.html#a43702476c5d0763fc6b1f090b4531c27',1,'ArmorTools']]],
-  ['getlastreq_34',['GetLastReq',['../a00195_a20fa164f2e3e13a48a417c419fd6cde3.html#a20fa164f2e3e13a48a417c419fd6cde3',1,'ArmorTools']]],
-  ['getlastres_35',['GetLastRes',['../a00195_a34d27d93c2faec3d3de3ba24d08f436b.html#a34d27d93c2faec3d3de3ba24d08f436b',1,'ArmorTools']]],
-  ['getrequest_36',['GetRequest',['../a00195_a76e1517409d261c03ce712a4a5e4a093.html#a76e1517409d261c03ce712a4a5e4a093',1,'ArmorTools']]],
-  ['getvaluedofindiv_37',['GetValuedOfIndiv',['../a00191_a580aef3f0bf9dd1affd06c588e731ff5.html#a580aef3f0bf9dd1affd06c588e731ff5',1,'ArmorCluedo']]],
-  ['gotocallback_38',['GoToCallback',['../a00143_a759068a3250dc8139d7321f35e7e774a.html#a759068a3250dc8139d7321f35e7e774a',1,'cluedo_movement_controller.cpp']]]
+  ['example_5farmor_5fcluedo_5f1_2ecpp_72',['example_armor_cluedo_1.cpp',['../a00002.html',1,'']]],
+  ['example_5farmor_5fcluedo_5f2_2ecpp_73',['example_armor_cluedo_2.cpp',['../a00005.html',1,'']]],
+  ['example_5farmor_5fcluedo_5f3_2ecpp_74',['example_armor_cluedo_3.cpp',['../a00008.html',1,'']]],
+  ['example_5farmor_5ftools_5f1_2ecpp_75',['example_armor_tools_1.cpp',['../a00011.html',1,'']]],
+  ['example_5farmor_5ftools_5f2_2ecpp_76',['example_armor_tools_2.cpp',['../a00014.html',1,'']]],
+  ['execute_77',['execute',['../a00199_a64d474186ed84ec44ea057511b545953.html#a64d474186ed84ec44ea057511b545953',1,'robocluedo_main.robocluedo_random_target.execute()'],['../a00203_abc55fda1ed8ef239fdc3cf12f06286fb.html#abc55fda1ed8ef239fdc3cf12f06286fb',1,'robocluedo_main.robocluedo_moving.execute()'],['../a00207_a9f2b30a450542889ea2761967c7af757.html#a9f2b30a450542889ea2761967c7af757',1,'robocluedo_main.robocluedo_listening_for_hints.execute()'],['../a00211_a1d94ca2e144800c4d65e43ede5823cb3.html#a1d94ca2e144800c4d65e43ede5823cb3',1,'robocluedo_main.robocluedo_update_ontology.execute()'],['../a00215_a3315c35788f80bbe520779070bf19512.html#a3315c35788f80bbe520779070bf19512',1,'robocluedo_main.robocluedo_reasoning.execute()'],['../a00219_a716ae89c3d93b160c46a1d55349091c2.html#a716ae89c3d93b160c46a1d55349091c2',1,'robocluedo_main.robocluedo_charge.execute()']]],
+  ['existsindiv_78',['ExistsIndiv',['../a00191_a2086082362b61607798d6f968c263f9e.html#a2086082362b61607798d6f968c263f9e',1,'ArmorCluedo']]]
 ];
