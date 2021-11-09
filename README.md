@@ -1,4 +1,4 @@
-# README - ERL - Assignment 1 - RoboCLuedo
+# README - Experimental Robotics Lab - Assignment 1 - RoboCLuedo
 
 **Francesco Ganci - 4143910** - Robotics Engineering - A.A. 2021/2022
 
