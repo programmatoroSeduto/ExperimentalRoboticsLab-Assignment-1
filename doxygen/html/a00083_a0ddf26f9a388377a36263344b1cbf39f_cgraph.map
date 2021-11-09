@@ -1,5 +1,0 @@
-<map id="ArmorTools::UpdateOntology" name="ArmorTools::UpdateOntology">
-<area shape="rect" id="node1" title="send the command REASON" alt="" coords="5,31,215,57"/>
-<area shape="rect" id="node2" href="$a00083.html#aac98d4f9b2ce2cbefba61684d1f505bf" title="send a command to aRMOR." alt="" coords="268,5,436,32"/>
-<area shape="rect" id="node3" href="$a00083.html#a76e1517409d261c03ce712a4a5e4a093" title="quick generation of an aRMOR request" alt="" coords="263,56,441,83"/>
-</map>

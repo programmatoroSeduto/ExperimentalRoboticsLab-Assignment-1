@@ -1,14 +1,15 @@
 var a00107 =
 [
-    [ "ARMOR_CLIENT_NAME", "a00107_a8d32a85a0e3b8cb7dcbbeadc7a8b284a.html#a8d32a85a0e3b8cb7dcbbeadc7a8b284a", null ],
-    [ "ARMOR_REFERENCE_NAME", "a00107_a6d75905dbd9fc2052398257505c694cf.html#a6d75905dbd9fc2052398257505c694cf", null ],
-    [ "ONTOLOGY_PARAM", "a00107_a1488d09dc82faa87c57e8d9a79bbe1f1.html#a1488d09dc82faa87c57e8d9a79bbe1f1", null ],
-    [ "OUTLABEL", "a00107_a83c0c69e3e513938dbd4e22b0dda7643.html#a83c0c69e3e513938dbd4e22b0dda7643", null ],
-    [ "SERVICE_ARMOR_MULTIPLE_REQUESTS", "a00107_a3eb94cb231e1b302f9d12d1ede64cb97.html#a3eb94cb231e1b302f9d12d1ede64cb97", null ],
-    [ "SERVICE_ARMOR_SINGLE_REQUEST", "a00107_acb73a2cbb815c8cdf8ba0ccaf4fa6ae6.html#acb73a2cbb815c8cdf8ba0ccaf4fa6ae6", null ],
-    [ "armorTestSession", "a00107_a86644574dffd07a880d40f455d113782.html#a86644574dffd07a880d40f455d113782", null ],
-    [ "armorTestSession2", "a00107_a78703009283c736ea377ca3a343cbd58.html#a78703009283c736ea377ca3a343cbd58", null ],
-    [ "fileExist", "a00107_a425e0b3a1e6c60b7ed0330df24c67e66.html#a425e0b3a1e6c60b7ed0330df24c67e66", null ],
-    [ "main", "a00107_a0ddf1224851353fc92bfbff6f499fa97.html#a0ddf1224851353fc92bfbff6f499fa97", null ],
-    [ "printList", "a00107_a349df24894d6a8c020f02bf53b723769.html#a349df24894d6a8c020f02bf53b723769", null ]
+    [ "callback_hint", "a00107.html#a4a490bc2580d0b45a201ac3915dc8076", null ],
+    [ "main", "a00107.html#abc41c2c8a858055480b0abbb23429678", null ],
+    [ "on_shut_msg", "a00107.html#a2d0fabec3ea7b27cc1cd601336972590", null ],
+    [ "perform_tests", "a00107.html#ab92599e09d4a4fc9476fa59fca5bb300", null ],
+    [ "client_check_solution", "a00107.html#af058ae16a6c8362a59ca69bb2832d399", null ],
+    [ "client_name_check_solution", "a00107.html#af84b506654c540704c3e28803649a9d6", null ],
+    [ "hint_idx", "a00107.html#a402567b61ad6293194dca42eb21e7e96", null ],
+    [ "publisher_hint_sig", "a00107.html#ad432ec9663f161c4e56500ef85a647ca", null ],
+    [ "publisher_name_hint_sig", "a00107.html#adadaabe064a32960ccd05868977a7a45", null ],
+    [ "received", "a00107.html#a54c169c28f96da01f32240f70e3b981a", null ],
+    [ "subscriber_name_hint", "a00107.html#a858a439d4c013d702b80d0d7e0b6e064", null ],
+    [ "test_name", "a00107.html#a0490002999dcdd8dbac6f671db6487e0", null ]
 ];

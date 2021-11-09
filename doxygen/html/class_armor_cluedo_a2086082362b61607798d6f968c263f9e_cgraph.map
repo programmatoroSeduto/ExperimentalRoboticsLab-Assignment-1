@@ -1,8 +1,0 @@
-<map id="ArmorCluedo::ExistsIndiv" name="ArmorCluedo::ExistsIndiv">
-<area shape="rect" id="node1" title="check if an individual exists" alt="" coords="5,31,192,57"/>
-<area shape="rect" id="node2" href="$class_armor_tools.html#a34d27d93c2faec3d3de3ba24d08f436b" title="get a reference to the last response" alt="" coords="253,5,430,32"/>
-<area shape="rect" id="node3" href="$class_armor_tools.html#a6033ed90283ec6c78a2bc2b0106d0461" title="fill in a command and send it to aRMOR" alt="" coords="240,56,443,83"/>
-<area shape="rect" id="node4" href="$class_armor_tools.html#aac98d4f9b2ce2cbefba61684d1f505bf" title="send a command to aRMOR." alt="" coords="500,5,668,32"/>
-<area shape="rect" id="node5" href="$class_armor_tools.html#a76e1517409d261c03ce712a4a5e4a093" title="quick creation of an aRMOR request" alt="" coords="495,56,673,83"/>
-<area shape="rect" id="node6" href="$class_armor_tools.html#a451163e1278ec49f4d214b33111d166d" title="print a request to the screen." alt="" coords="491,107,677,133"/>
-</map>

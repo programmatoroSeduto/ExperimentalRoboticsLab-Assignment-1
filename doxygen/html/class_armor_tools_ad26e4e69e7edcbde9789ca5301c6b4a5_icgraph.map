@@ -1,5 +1,0 @@
-<map id="ArmorTools::SaveOntology" name="ArmorTools::SaveOntology">
-<area shape="rect" id="node1" title="save the ontology on file" alt="" coords="333,5,528,32"/>
-<area shape="rect" id="node2" href="$cluedo__armor__interface_8cpp.html#a66c612700258bd528a8d54035044b4ec" title="implementation of service SERVICE_INTERFACE_SAVE_ONTOLOGY" alt="" coords="108,5,285,32"/>
-<area shape="rect" id="node3" href="$cluedo__armor__interface_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="ROS node main." alt="" coords="5,5,60,32"/>
-</map>

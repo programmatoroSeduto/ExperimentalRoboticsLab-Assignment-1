@@ -4,6 +4,9 @@
  * @file test_armor_tools.cpp
  * @brief Testing the interface ArmorCluedo
  * 
+ * @authors Francesco Ganci (S4143910)
+ * @version v1.0
+ * 
  * This node performs a deep test on the interface ArmorCluedo. 
  *  
  * @see test_armor_tools.launch

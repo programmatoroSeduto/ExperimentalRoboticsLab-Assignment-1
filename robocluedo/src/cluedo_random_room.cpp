@@ -9,6 +9,16 @@
  * \authors Francesco Ganci (S4143910)
  * \version v1.0
  * 
+ * <b>Description:</b> <br>
+ * <p>
+ * The node implements a service which returns a room, randomly choosen
+ * among the available ones, to reach. 
+ * </p>
+ * 
+ * <b>UML component</b><br>
+ * (See \ref robocluedo_arch the overal architecture, for further informations)<br>
+ * <img src="UML_components_cluedo_random_room.png" /><br>
+ * 
  * <b>Services:</b> <br>
  * <ul>
  *     <li>
@@ -24,12 +34,6 @@
  * 			   the path of the file containing the PLACEs <br><br>
  * 		</li>
  * </ul>
- * 
- * <b>Description:</b> <br>
- * <p>
- * The node implements a service which returns a room, randomly choosen
- * among the available ones, to reach. 
- * </p>
  * 
  ***********************************************/
 

@@ -1,5 +1,0 @@
-<map id="ArmorCluedo::FindInconsistentHypotheses" name="ArmorCluedo::FindInconsistentHypotheses">
-<area shape="rect" id="node1" title="find all the inconsistent hypotheses" alt="" coords="399,5,619,47"/>
-<area shape="rect" id="node2" href="$cluedo__armor__interface_8cpp.html#a7ac3004a3cbe78bf0b2c234d11354c43" title="implementation of service SERVICE_INTERFACE_FIND_CONSISTENT_HYP" alt="" coords="108,13,351,39"/>
-<area shape="rect" id="node3" href="$cluedo__armor__interface_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="ROS node main." alt="" coords="5,13,60,39"/>
-</map>

@@ -1,8 +1,13 @@
 var searchData=
 [
-  ['fileexist_281',['fileExist',['../a00104_a425e0b3a1e6c60b7ed0330df24c67e66.html#a425e0b3a1e6c60b7ed0330df24c67e66',1,'fileExist(std::string path):&#160;test_armor.cpp'],['../a00107_a425e0b3a1e6c60b7ed0330df24c67e66.html#a425e0b3a1e6c60b7ed0330df24c67e66',1,'fileExist(std::string path):&#160;test_armor_tools.cpp']]],
-  ['filtervalue_282',['FilterValue',['../a00143_a6f824ec2cf4759952145f7f1d11e516c.html#a6f824ec2cf4759952145f7f1d11e516c',1,'ArmorCluedo']]],
-  ['filtervector_283',['FilterVector',['../a00143_a76a60417cfc01397a6db462904139873.html#a76a60417cfc01397a6db462904139873',1,'ArmorCluedo']]],
-  ['findcompletehypotheses_284',['FindCompleteHypotheses',['../a00143_aaf1832ed634a017c48e26c48f58c5f68.html#aaf1832ed634a017c48e26c48f58c5f68',1,'ArmorCluedo']]],
-  ['findinconsistenthypotheses_285',['FindInconsistentHypotheses',['../a00143_ab278ac3aaffc4c6aceaf3bfb8d5186af.html#ab278ac3aaffc4c6aceaf3bfb8d5186af',1,'ArmorCluedo']]]
+  ['generatemystery_136',['generateMystery',['../a00146_a554ad8b46595d7a5901b180494b25e97.html#a554ad8b46595d7a5901b180494b25e97',1,'cluedo_oracle.cpp']]],
+  ['getclassofindiv_137',['GetClassOfIndiv',['../a00191_a49216d015f97a9d510406a90e8c1fe30.html#a49216d015f97a9d510406a90e8c1fe30',1,'ArmorCluedo']]],
+  ['getindivofclass_138',['GetIndivOfClass',['../a00191_afef8229a755f495f008bfe4630a745fa.html#afef8229a755f495f008bfe4630a745fa',1,'ArmorCluedo']]],
+  ['getlasterrorcode_139',['GetLastErrorCode',['../a00195_a75474b9c35cbdcfedd382939c1699247.html#a75474b9c35cbdcfedd382939c1699247',1,'ArmorTools']]],
+  ['getlasterrordescription_140',['GetLastErrorDescription',['../a00195_a43702476c5d0763fc6b1f090b4531c27.html#a43702476c5d0763fc6b1f090b4531c27',1,'ArmorTools']]],
+  ['getlastreq_141',['GetLastReq',['../a00195_a20fa164f2e3e13a48a417c419fd6cde3.html#a20fa164f2e3e13a48a417c419fd6cde3',1,'ArmorTools']]],
+  ['getlastres_142',['GetLastRes',['../a00195_a34d27d93c2faec3d3de3ba24d08f436b.html#a34d27d93c2faec3d3de3ba24d08f436b',1,'ArmorTools']]],
+  ['getrequest_143',['GetRequest',['../a00195_a76e1517409d261c03ce712a4a5e4a093.html#a76e1517409d261c03ce712a4a5e4a093',1,'ArmorTools']]],
+  ['getvaluedofindiv_144',['GetValuedOfIndiv',['../a00191_a580aef3f0bf9dd1affd06c588e731ff5.html#a580aef3f0bf9dd1affd06c588e731ff5',1,'ArmorCluedo']]],
+  ['gotocallback_145',['GoToCallback',['../a00143_a759068a3250dc8139d7321f35e7e774a.html#a759068a3250dc8139d7321f35e7e774a',1,'cluedo_movement_controller.cpp']]]
 ];

@@ -1,0 +1,10 @@
+digraph "generateMystery"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="generateMystery",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="generate the solution of the case and the hints"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="chooseHintFrom",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00137_a14d01efaaa84e9eef51312faef616666.html#a14d01efaaa84e9eef51312faef616666",tooltip="choose randomly a hint from a list"];
+}

@@ -1,9 +1,0 @@
-<map id="/root/ws_experimental_robotics_lab_assignment_1/src/assignment_1/robocluedo/include/armor_tools/armor_tools.h" name="/root/ws_experimental_robotics_lab_assignment_1/src/assignment_1/robocluedo/include/armor_tools/armor_tools.h">
-<area shape="rect" id="node1" title="A minimal C++ client for aRMOR." alt="" coords="520,5,769,76"/>
-<area shape="rect" id="node2" href="$a00014.html" title=" " alt="" coords="5,124,236,209"/>
-<area shape="rect" id="node3" href="$a00017.html" title=" " alt="" coords="260,124,491,209"/>
-<area shape="rect" id="node4" href="$a00032.html" title="additional aRMOR C++ interface" alt="" coords="515,131,775,202"/>
-<area shape="rect" id="node6" href="$a00053.html" title="Dedicated RCL&#45;aRMOR client." alt="" coords="696,257,927,328"/>
-<area shape="rect" id="node7" href="$a00050.html" title="implementation of the class ArmorTools" alt="" coords="848,131,1084,202"/>
-<area shape="rect" id="node5" href="$a00047.html" title="implementation of the class ArmorCluedo" alt="" coords="425,257,672,328"/>
-</map>

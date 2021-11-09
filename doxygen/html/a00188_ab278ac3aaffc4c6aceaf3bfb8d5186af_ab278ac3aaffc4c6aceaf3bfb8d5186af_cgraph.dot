@@ -1,0 +1,24 @@
+digraph "ArmorCluedo::FindInconsistentHypotheses"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="ArmorCluedo::FindInconsistent\lHypotheses",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="find all the inconsistent hypotheses"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="ArmorCluedo::GetIndivOfClass",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00188_afef8229a755f495f008bfe4630a745fa.html#afef8229a755f495f008bfe4630a745fa",tooltip="find the individuals belonging to a class"];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="ArmorCluedo::FilterVector",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00188_a76a60417cfc01397a6db462904139873.html#a76a60417cfc01397a6db462904139873",tooltip="filter all the strings inside the array"];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="ArmorCluedo::FilterValue",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00188_a6f824ec2cf4759952145f7f1d11e516c.html#a6f824ec2cf4759952145f7f1d11e516c",tooltip="rewrite a string like '<uri#value>' into 'value'"];
+  Node2 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="ArmorTools::GetLastRes",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00192_a34d27d93c2faec3d3de3ba24d08f436b.html#a34d27d93c2faec3d3de3ba24d08f436b",tooltip="get a reference to the last response"];
+  Node2 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="ArmorTools::SendCommand",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00192_a6033ed90283ec6c78a2bc2b0106d0461.html#a6033ed90283ec6c78a2bc2b0106d0461",tooltip="fill in a command and send it to aRMOR"];
+  Node6 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="ArmorTools::CallArmor",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00192_aac98d4f9b2ce2cbefba61684d1f505bf.html#aac98d4f9b2ce2cbefba61684d1f505bf",tooltip="send a command to the aRMOR service."];
+  Node6 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="ArmorTools::GetRequest",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00192_a76e1517409d261c03ce712a4a5e4a093.html#a76e1517409d261c03ce712a4a5e4a093",tooltip="quick generation of an aRMOR request"];
+  Node6 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="ArmorTools::PrintRequest",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00192_a451163e1278ec49f4d214b33111d166d.html#a451163e1278ec49f4d214b33111d166d",tooltip="print a request to the screen."];
+}

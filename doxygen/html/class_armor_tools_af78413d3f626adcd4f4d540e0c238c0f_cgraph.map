@@ -1,7 +1,0 @@
-<map id="ArmorTools::ConnectAndLoad" name="ArmorTools::ConnectAndLoad">
-<area shape="rect" id="node1" title="connect to the server and load the ontology from file." alt="" coords="5,31,217,57"/>
-<area shape="rect" id="node2" href="$class_armor_tools.html#af77fbd1d4c9c16deef5cf7836610c978" title="open a connection with the aRMOR service." alt="" coords="284,5,440,32"/>
-<area shape="rect" id="node3" href="$class_armor_tools.html#a7b9444e3885adb2ef36f3002ca8507f9" title="load the ontology from file." alt="" coords="265,56,459,83"/>
-<area shape="rect" id="node4" href="$class_armor_tools.html#aac98d4f9b2ce2cbefba61684d1f505bf" title="send a command to aRMOR." alt="" coords="512,31,680,57"/>
-<area shape="rect" id="node5" href="$class_armor_tools.html#a76e1517409d261c03ce712a4a5e4a093" title="quick creation of an aRMOR request" alt="" coords="507,81,685,108"/>
-</map>

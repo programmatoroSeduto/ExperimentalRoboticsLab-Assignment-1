@@ -1,0 +1,18 @@
+digraph "armorTestSession"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="armorTestSession",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="armorCallService",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00146_a43568c05742adcc36486995190475e93.html#a43568c05742adcc36486995190475e93",tooltip=" "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="armorGetArgs",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00146_a70961d77b4dba027046302569e947a8d.html#a70961d77b4dba027046302569e947a8d",tooltip=" "];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="armorGetRequest",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00146_a789f053ee9576f78228a8ebfb86fa107.html#a789f053ee9576f78228a8ebfb86fa107",tooltip=" "];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="armorPrintRequest",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00146_a093155b99db1f38d96329a10bb7738d3.html#a093155b99db1f38d96329a10bb7738d3",tooltip=" "];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="armorPrintResponse",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00146_ad9da254399d28a823eac1445696c6274.html#ad9da254399d28a823eac1445696c6274",tooltip=" "];
+}

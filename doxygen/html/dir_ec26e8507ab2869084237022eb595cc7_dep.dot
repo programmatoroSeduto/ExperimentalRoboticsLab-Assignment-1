@@ -1,0 +1,17 @@
+digraph "C:/Users/Canfresco/Desktop/UNI/EXPERIMENTAL ROBOTICS LABORATORY/Assignment 1/ExperimentalRoboticsLab-Assignment-1/robocluedo" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_ec26e8507ab2869084237022eb595cc7 {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_ec26e8507ab2869084237022eb595cc7.html"];
+    dir_ec26e8507ab2869084237022eb595cc7 [shape=plaintext label="robocluedo"];
+  dir_40f87a425195e3c0c0f8ad4dec964181 [shape=box label="config" fillcolor="white" style="filled" URL="dir_40f87a425195e3c0c0f8ad4dec964181.html"];
+  dir_de323672ed973e86de5e52a85df0cc0b [shape=box label="docs" fillcolor="white" style="filled" color="red" URL="dir_de323672ed973e86de5e52a85df0cc0b.html"];
+  dir_ec261d9df9f363fa2ac4f7b3d53e2eff [shape=box label="include" fillcolor="white" style="filled" color="red" URL="dir_ec261d9df9f363fa2ac4f7b3d53e2eff.html"];
+  dir_cabb2154d4ed6a703a149925c5ad3673 [shape=box label="launch" fillcolor="white" style="filled" color="red" URL="dir_cabb2154d4ed6a703a149925c5ad3673.html"];
+  dir_346ca385d56ecd0cac4d4d19b2f29141 [shape=box label="scripts" fillcolor="white" style="filled" URL="dir_346ca385d56ecd0cac4d4d19b2f29141.html"];
+  dir_4ac2bbdaf5848812856158bd323f30d5 [shape=box label="src" fillcolor="white" style="filled" color="red" URL="dir_4ac2bbdaf5848812856158bd323f30d5.html"];
+  }
+  dir_de323672ed973e86de5e52a85df0cc0b->dir_ec261d9df9f363fa2ac4f7b3d53e2eff [headlabel="5", labeldistance=1.5 headhref="dir_000003_000005.html"];
+  dir_4ac2bbdaf5848812856158bd323f30d5->dir_ec261d9df9f363fa2ac4f7b3d53e2eff [headlabel="7", labeldistance=1.5 headhref="dir_000010_000005.html"];
+}

@@ -4,6 +4,9 @@
  * @file test_armor.cpp
  * @brief A preliminary test on aRMOR service. 
  * 
+ * @authors Francesco Ganci (S4143910)
+ * @version v1.0
+ * 
  * Sometimes it is convenient to directly test the interface without
  * using classes such as ArmorTools or ArmorCluedo. This file contains a
  * small test session on aRMOR with some minimal functions. 

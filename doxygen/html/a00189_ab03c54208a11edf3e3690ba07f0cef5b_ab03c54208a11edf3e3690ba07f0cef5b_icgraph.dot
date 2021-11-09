@@ -1,0 +1,12 @@
+digraph "ArmorTools::LoadOntology"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="ArmorTools::LoadOntology",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="load the ontology from file."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="ArmorTools::ConnectAndLoad",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00189_ad98c8e33df5d1ef3e4c69051ac0dd7ab.html#ad98c8e33df5d1ef3e4c69051ac0dd7ab",tooltip="connect to the server and load the ontology from file."];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="ArmorCluedo::Init",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00185_a66ce2d9f5c665ab14761233b32ab1ec6.html#a66ce2d9f5c665ab14761233b32ab1ec6",tooltip="initizalize the interface"];
+}

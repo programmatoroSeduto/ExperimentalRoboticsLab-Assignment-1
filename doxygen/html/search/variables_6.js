@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['publisher_5fhint_5fsig_351',['publisher_hint_sig',['../a00137_ad432ec9663f161c4e56500ef85a647ca.html#ad432ec9663f161c4e56500ef85a647ca',1,'test_cluedo_oracle.publisher_hint_sig()'],['../a00139_adab89fdb10357cd5e2e53eff4cce9ed5.html#adab89fdb10357cd5e2e53eff4cce9ed5',1,'test_oracle_plus_interface.publisher_hint_sig()']]],
-  ['publisher_5fname_5fhint_5fsig_352',['publisher_name_hint_sig',['../a00137_adadaabe064a32960ccd05868977a7a45.html#adadaabe064a32960ccd05868977a7a45',1,'test_cluedo_oracle.publisher_name_hint_sig()'],['../a00139_ab05387d37d94550b6fc0ffffa9b976e4.html#ab05387d37d94550b6fc0ffffa9b976e4',1,'test_oracle_plus_interface.publisher_name_hint_sig()']]]
+  ['solution_5fwhat_184',['solution_what',['../a00146.html#a4d4fe3d27f46712347935f59a452d950',1,'cluedo_oracle.cpp']]],
+  ['solution_5fwhere_185',['solution_where',['../a00146.html#a4e49ff0f9d7a5d49a101b238e320e345',1,'cluedo_oracle.cpp']]],
+  ['solution_5fwho_186',['solution_who',['../a00146.html#a8e0b66d7b396e3e8883e5b5483391c55',1,'cluedo_oracle.cpp']]]
 ];

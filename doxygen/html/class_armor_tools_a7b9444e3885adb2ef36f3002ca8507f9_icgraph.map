@@ -1,6 +1,0 @@
-<map id="ArmorTools::LoadOntology" name="ArmorTools::LoadOntology">
-<area shape="rect" id="node1" title="load the ontology from file." alt="" coords="552,5,745,32"/>
-<area shape="rect" id="node2" href="$class_armor_tools.html#af78413d3f626adcd4f4d540e0c238c0f" title="connect to the server and load the ontology from file." alt="" coords="292,5,504,32"/>
-<area shape="rect" id="node3" href="$class_armor_cluedo.html#a66ce2d9f5c665ab14761233b32ab1ec6" title="initizalize the interface" alt="" coords="108,5,244,32"/>
-<area shape="rect" id="node4" href="$cluedo__armor__interface_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,60,32"/>
-</map>

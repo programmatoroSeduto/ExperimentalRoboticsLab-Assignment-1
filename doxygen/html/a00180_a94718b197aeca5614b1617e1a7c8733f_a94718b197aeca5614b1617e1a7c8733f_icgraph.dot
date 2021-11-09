@@ -1,0 +1,12 @@
+digraph "test_cluedo_random_room.perform_tests"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="test_cluedo_random\l_room.perform_tests",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="test_cluedo_random\l_room.main",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00180_a9c78728b9de247dbbc6c57f200bcbd71.html#a9c78728b9de247dbbc6c57f200bcbd71",tooltip=" "];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="test_cluedo_random\l_room.on_shut_msg",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00180_a23808ddd3552f7bdd15a39262d9735f7.html#a23808ddd3552f7bdd15a39262d9735f7",tooltip=" "];
+}

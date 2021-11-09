@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['importdatafrom_106',['importDataFrom',['../a00098_ac00d79830b6c5ba0a069d5edbda776ed.html#ac00d79830b6c5ba0a069d5edbda776ed',1,'cluedo_oracle.cpp']]],
-  ['importnamesofrooms_107',['ImportNamesOfRooms',['../a00101_a72be2cfb7017d316b3fc9409ee0fd2e1.html#a72be2cfb7017d316b3fc9409ee0fd2e1',1,'cluedo_random_room.cpp']]],
-  ['init_108',['Init',['../a00143_a66ce2d9f5c665ab14761233b32ab1ec6.html#a66ce2d9f5c665ab14761233b32ab1ec6',1,'ArmorCluedo']]]
+  ['main_52',['main',['../a00140_a0ddf1224851353fc92bfbff6f499fa97.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;cluedo_armor_interface.cpp'],['../a00143_a0ddf1224851353fc92bfbff6f499fa97.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;cluedo_movement_controller.cpp'],['../a00146_a0ddf1224851353fc92bfbff6f499fa97.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;cluedo_oracle.cpp'],['../a00149_a0ddf1224851353fc92bfbff6f499fa97.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;cluedo_random_room.cpp']]],
+  ['max_5fnum_5fhints_53',['MAX_NUM_HINTS',['../a00146.html#a511539cb5c20bb13ae564a6748f4737a',1,'cluedo_oracle.cpp']]],
+  ['max_5fsize_5fhint_54',['MAX_SIZE_HINT',['../a00146.html#a4e8fea62d184b59ded0e110e55adc12d',1,'cluedo_oracle.cpp']]],
+  ['mysterylist_55',['mysterylist',['../a00146.html#af2ff33a71681ba4ae8189b1fdc11b6e8',1,'cluedo_oracle.cpp']]]
 ];

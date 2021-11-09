@@ -9,6 +9,21 @@
 @authors Francesco Ganci (S4143910)
 @version v1.0
 
+<b>Description:</b> <br>
+<p>
+The main part of this architecture is the FSM implemented in this node,
+which uses the ROS framework <i>smach</i>. See the diagrams to understand
+how this node works. <br>
+
+this node has been implemented thinking on the maximum flexibility: the 
+way it works can be easily extended or integrated with other components
+with small, or also absent, changes. 
+</p>
+
+<b>UML component</b><br>
+(See \ref robocluedo_arch the overal architecture, for further informations)<br>
+<img src="UML_components_robocluedo_main.png" /><br>
+
 <b>Subscribers:</b> <br>
 <ul>
 	<li>
@@ -48,17 +63,6 @@
 			see the service \ref ServiceBackupOntology <br><br>
 	</li>
 </ul>
-
-<b>Description:</b> <br>
-<p>
-The main part of this architecture is the FSM implemented in this node,
-which uses the ROS framework <i>smach</i>. See the diagrams to understand
-how this node works. <br>
-
-this node has been implemented thinking on the maximum flexibility: the 
-way it works can be easily extended or integrated with other components
-with small, or also absent, changes. 
-</p>
 
 """
 

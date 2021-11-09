@@ -1,0 +1,12 @@
+digraph "ArmorTools::LoadOntology"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="ArmorTools::LoadOntology",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="load the ontology from file."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="ArmorTools::CallArmor",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00189_aac98d4f9b2ce2cbefba61684d1f505bf.html#aac98d4f9b2ce2cbefba61684d1f505bf",tooltip="send a command to the aRMOR service."];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="ArmorTools::GetRequest",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00189_a76e1517409d261c03ce712a4a5e4a093.html#a76e1517409d261c03ce712a4a5e4a093",tooltip="quick generation of an aRMOR request"];
+}

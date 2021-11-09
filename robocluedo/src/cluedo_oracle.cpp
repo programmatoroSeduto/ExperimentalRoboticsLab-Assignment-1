@@ -9,6 +9,17 @@
  * \authors Francesco Ganci (S4143910)
  * \version v1.0
  * 
+ * <b>Description:</b> <br>
+ * <p>
+ * This node implements a referee for the game: it prepares the hints and
+ * the mystery, then sends the hints to the robot and checks the 
+ * hypotheses from the robot. <br>
+ * </p>
+ * 
+ * <b>UML component</b><br>
+ * (See \ref robocluedo_arch the overal architecture, for further informations)<br>
+ * <img src="UML_components_cluedo_oracle.png" /><br>
+ * 
  * <b>Publishers:</b> <br>
  * <ul>
  *     <li>
@@ -52,13 +63,6 @@
  * 			   the maximum number of hypothesis IDs <br><br>
  * 		</li>
  * </ul>
- * 
- * <b>Description:</b> <br>
- * <p>
- * This node implements a referee for the game: it prepares the hints and
- * the mystery, then sends the hints to the robot and checks the 
- * hypotheses from the robot. <br>
- * </p>
  * 
  ***********************************************/
  

@@ -1,0 +1,10 @@
+digraph "ArmorCluedo"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{ArmorCluedo\n||+ ArmorCluedo()\l+ ~ArmorCluedo()\l+ Init()\l+ AddIndiv()\l+ GetClassOfIndiv()\l+ GetIndivOfClass()\l+ ExistsIndiv()\l+ SetObjectProperty()\l+ GetValuedOfIndiv()\l+ FindCompleteHypotheses()\l+ FindInconsistentHypotheses()\l+ RemoveHypothesis()\l+ FilterValue()\l+ FilterVector()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="additional utilities for aRMOR"];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node2 [label="{ArmorTools\n|# DebugMode\l|+ ArmorTools()\l+ ArmorTools()\l+ ~ArmorTools()\l+ GetRequest()\l+ CallArmor()\l+ LoadOntology()\l+ Connect()\l+ ConnectAndLoad()\l+ SaveOntology()\l+ UpdateOntology()\land 13 more...\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00195.html",tooltip="A minimal C++ client for aRMOR."];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+}

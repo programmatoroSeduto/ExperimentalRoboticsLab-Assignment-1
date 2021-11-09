@@ -1,0 +1,10 @@
+digraph "ChooseRoomRandom"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="ChooseRoomRandom",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="implementation of service SERVICE_RANDOM_ROOM"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="Choose",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00149_a5860d956cf9531e4209e63284e3231c4.html#a5860d956cf9531e4209e63284e3231c4",tooltip="get randomly the name of one room from the list rooms ."];
+}

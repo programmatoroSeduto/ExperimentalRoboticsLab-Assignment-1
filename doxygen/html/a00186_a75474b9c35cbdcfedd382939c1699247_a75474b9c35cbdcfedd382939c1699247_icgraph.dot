@@ -1,0 +1,10 @@
+digraph "ArmorTools::GetLastErrorCode"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="ArmorTools::GetLastErrorCode",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="err code referred to the last call"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="ArmorCluedo::Init",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00182_a66ce2d9f5c665ab14761233b32ab1ec6.html#a66ce2d9f5c665ab14761233b32ab1ec6",tooltip="initizalize the interface"];
+}

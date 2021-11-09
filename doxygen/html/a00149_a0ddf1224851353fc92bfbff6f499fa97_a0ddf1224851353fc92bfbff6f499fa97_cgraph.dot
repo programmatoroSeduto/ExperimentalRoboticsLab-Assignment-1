@@ -1,0 +1,10 @@
+digraph "main"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="main",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="ROS node main - cluedo_random_room."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="ImportNamesOfRooms",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00149_a72be2cfb7017d316b3fc9409ee0fd2e1.html#a72be2cfb7017d316b3fc9409ee0fd2e1",tooltip="import names of the rooms from file"];
+}

@@ -9,11 +9,23 @@
  * \authors Francesco Ganci (S4143910)
  * \version v1.0
  * 
+ * <b>Description:</b> <br>
+ * <p>
+ * It represents the 'act' part inside the behavioural architecture. Actually
+ * it doesn't do anything: it is a 'wait' which can signal the Oracle (as a laser
+ * sensor when the robot enters in a room). In future, it should become a
+ * path planning facility. 
+ * </p>
+ * 
+ * <b>UML component</b><br>
+ * (See \ref robocluedo_arch the overal architecture, for further informations)<br>
+ * <img src="UML_components_cluedo_movement_controller.png" /><br>
+ * 
  * <b>Publishers:</b> <br>
  * <ul>
  *     <li>
  * 			<i> \ref PUBLISHER_HINT_SIGNAL</i> : <a href="http://docs.ros.org/en/api/std_msgs/html/msg/Empty.html">std_msgs::Empty</a> <br>
- * 			... description <br><br>
+ * 			signal for the Oracle: hint "trigger" <br><br>
  * 		</li>
  * </ul>
  * 
@@ -21,17 +33,9 @@
  * <ul>
  *     <li>
  * 			<i> \ref SERVICE_GO_TO</i> : GoTo.srv <br>
- * 			... description <br><br>
+ * 			give the controller the command to go somewhere <br><br>
  * 		</li>
  * </ul>
- * 
- * <b>Description:</b> <br>
- * <p>
- * It represents the 'act' part inside the behavioural architecture. Actually
- * it doesn't do anything: it is a wait which can signal the Oracle (as a laser
- * sensor when the robot enters in a room). In future, it should become a
- * path planning facility. 
- * </p>
  * 
  * @todo this is a <i>STUB implementation</i>. It should be replaced 
  *     with a real movement controller. 

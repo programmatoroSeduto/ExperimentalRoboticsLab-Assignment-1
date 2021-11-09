@@ -1,13 +1,24 @@
 
 /********************************************//**
  *  
- * \file cluedo_armor_interface.cpp
+ * @file cluedo_armor_interface.cpp
  * <div><b>ROS Node Name</b> 
  *      <ul><li>cluedo_armor_interface</li></ul></div>
- * \brief Dedicated RobotCLuedo-aRMOR client
+ * @brief Dedicated RobotCLuedo-aRMOR client
  * 
- * \authors Francesco Ganci (S4143910)
- * \version v1.0
+ * @authors Francesco Ganci (S4143910)
+ * @version v1.0
+ * 
+ * <b>Description:</b> <br>
+ * <p>
+ * This node implements an inferface which simplifies and abstracts the 
+ * communication with the aRMOR service, with particular attention to the
+ * most common operations performed by RCL during the search of a solution.<br>
+ * </p>
+ * 
+ * <b>UML components</b><br>
+ * (See \ref robocluedo_arch the overal architecture, for further informations)<br>
+ * <img src="UML_components_cluedo_armor_interface.png" /><br>
  * 
  * <b>Services:</b> <br>
  * <ul>
@@ -47,13 +58,6 @@
  * 			   name for the backup ontology file exported <br><br>
  * 		</li>
  * </ul>
- * 
- * <b>Description:</b> <br>
- * <p>
- * This node implements an inferface which simplifies and abstracts the 
- * communication with the aRMOR service, with particular attention to the
- * most common operations performed by RCL during the search of a solution.<br>
- * </p>
  * 
  ***********************************************/
 

@@ -1,0 +1,20 @@
+digraph "ArmorCluedo::RemoveHypothesis"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="ArmorCluedo::RemoveHypothesis",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="discard one hypothesis"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="ArmorCluedo::ExistsIndiv",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00173_a2086082362b61607798d6f968c263f9e.html#a2086082362b61607798d6f968c263f9e",tooltip="check if an individual exists"];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="ArmorTools::GetLastRes",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00177_a34d27d93c2faec3d3de3ba24d08f436b.html#a34d27d93c2faec3d3de3ba24d08f436b",tooltip="get a reference to the last response"];
+  Node2 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="ArmorTools::SendCommand",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00177_a6033ed90283ec6c78a2bc2b0106d0461.html#a6033ed90283ec6c78a2bc2b0106d0461",tooltip="fill in a command and send it to aRMOR"];
+  Node4 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="ArmorTools::CallArmor",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00177_aac98d4f9b2ce2cbefba61684d1f505bf.html#aac98d4f9b2ce2cbefba61684d1f505bf",tooltip="send a command to the aRMOR service."];
+  Node4 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="ArmorTools::GetRequest",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00177_a76e1517409d261c03ce712a4a5e4a093.html#a76e1517409d261c03ce712a4a5e4a093",tooltip="quick generation of an aRMOR request"];
+  Node4 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="ArmorTools::PrintRequest",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00177_a451163e1278ec49f4d214b33111d166d.html#a451163e1278ec49f4d214b33111d166d",tooltip="print a request to the screen."];
+}
