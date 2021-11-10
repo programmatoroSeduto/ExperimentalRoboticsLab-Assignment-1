@@ -1,7 +1,0 @@
-## file 'RandomRoom.srv'
-
-# empty request
----
-
-# reply: the next room
-string room
