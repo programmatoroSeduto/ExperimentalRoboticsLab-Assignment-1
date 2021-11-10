@@ -1,6 +1,0 @@
-candlestick
-dagger
-leadPipe
-revolver
-rope
-spanner

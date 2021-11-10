@@ -1,8 +1,0 @@
-<launch>
-
-	<include file="$(find robocluedo)/config/parameters.launch"></include>
-	
-	<node pkg="robocluedo" name="cluedo_oracle" type="cluedo_oracle" output="screen" required="true"></node>
-	<node pkg="robocluedo" name="test_cluedo_oracle" type="test_cluedo_oracle.py" output="screen" required="true"></node>
-	
-</launch>
