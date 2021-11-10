@@ -6,6 +6,8 @@
 > - [Doxygen Documentation Here](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-1/files.html)
 > UML diagrams of the project:
 > - [UML diagrams](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-1/a00350.html)
+> For a practical point of iew on this project, 
+> - See the [practical example](#a-practical-example)
 
 ![CLuedo](/robocluedo/docs/img/cluedologo.jpg)
 
@@ -488,6 +490,11 @@ About the Knowledge Base:
 
 - in the real CLuedo, the knowledge is not centralized, but ditributed among the players: each player can exclude a priori some proerties, and hence all the hypotheses which contain them, and can discover, asking to the other players, new *real* clues. In the context of the project instead, it is difficult to apply some interesting reasoning technique such as the one of the real CLuedo. If the oracle indicates the part of the hypothesis not correct, the robot should understand which hypothesis is wrong in advance. 
 - the actual .owl file can't distinguish between *inconsistent* hypotheses and *discarded* hypotheses, so the distinction must be implemented inside the architecture; in this case, in *cluedo_armor_interface*. Use DATAPROP in order to mark the hypotheses as discarded, or REMOVE them (see [ArmorCluedo::AddIndiv()](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-1/a00197_ad29930fec7803aed87b7244e73b98bff.html#ad29930fec7803aed87b7244e73b98bff), [ArmorCluedo::RemoveHypothesis()](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-1/a00197_a4ae659375e7a6d9564973718ece248e2.html#a4ae659375e7a6d9564973718ece248e2) and the implementation of [ArmorCluedo::ExistsIndiv()](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-1/a00137_source.html#l00112))
+
+About the quality of the code:
+
+- improve the actual naming convention, introducing a sort os standard more concept-oriented. Unfortunately, this is a tedious, time-consuming operation, despite the tryings to gather the use of messages in small parts of the code. 
+- extend the functionalities of the classes ArmorTools and ArmorCluedo by adding the missing getters and setters
 
 # Author and Contacts
 
