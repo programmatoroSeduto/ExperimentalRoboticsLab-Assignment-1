@@ -8,3 +8,7 @@
 # UML - Finite State Machine Diagram
 
 - \subpage robocluedo_FSM
+
+# UML - Sequence Diagrams
+
+- \subpage robocluedo_sequence
