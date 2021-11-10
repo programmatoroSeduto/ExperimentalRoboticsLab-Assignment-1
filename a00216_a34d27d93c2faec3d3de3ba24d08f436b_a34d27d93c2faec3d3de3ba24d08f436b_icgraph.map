@@ -1,0 +1,10 @@
+<map id="ArmorTools::GetLastRes" name="ArmorTools::GetLastRes">
+<area shape="rect" id="node1" title="get a reference to the last response" alt="" coords="564,81,741,108"/>
+<area shape="rect" id="node2" href="$a00212_a2086082362b61607798d6f968c263f9e.html#a2086082362b61607798d6f968c263f9e" title="check if an individual exists" alt="" coords="313,5,499,32"/>
+<area shape="rect" id="node4" href="$a00212_a49216d015f97a9d510406a90e8c1fe30.html#a49216d015f97a9d510406a90e8c1fe30" title="get the class of a given individual" alt="" coords="296,56,516,83"/>
+<area shape="rect" id="node5" href="$a00212_afef8229a755f495f008bfe4630a745fa.html#afef8229a755f495f008bfe4630a745fa" title="find the individuals belonging to a class" alt="" coords="296,107,516,133"/>
+<area shape="rect" id="node8" href="$a00212_a580aef3f0bf9dd1affd06c588e731ff5.html#a580aef3f0bf9dd1affd06c588e731ff5" title="get the values of a property related to a gven individual" alt="" coords="307,158,505,199"/>
+<area shape="rect" id="node3" href="$a00212_a4ae659375e7a6d9564973718ece248e2.html#a4ae659375e7a6d9564973718ece248e2" title="discard one hypothesis" alt="" coords="5,5,248,32"/>
+<area shape="rect" id="node6" href="$a00212_aaf1832ed634a017c48e26c48f58c5f68.html#aaf1832ed634a017c48e26c48f58c5f68" title="find all the complete hypotheses" alt="" coords="25,78,229,119"/>
+<area shape="rect" id="node7" href="$a00212_ab278ac3aaffc4c6aceaf3bfb8d5186af.html#ab278ac3aaffc4c6aceaf3bfb8d5186af" title="find all the inconsistent hypotheses" alt="" coords="17,143,237,185"/>
+</map>
