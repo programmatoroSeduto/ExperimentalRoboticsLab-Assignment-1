@@ -3,10 +3,12 @@
 **Francesco Ganci - 4143910** - Robotics Engineering - A.A. 2021/2022
 
 > Documentation:
+> 
 > - [Doxygen Documentation Here](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-1/files.html)
-> UML diagrams of the project:
 > - [UML diagrams](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-1/a00350.html)
-> For a practical point of iew on this project, 
+> 
+> For a practical point of view on this project, 
+> 
 > - See the [practical example](#a-practical-example)
 
 ![CLuedo](/robocluedo/docs/img/cluedologo.jpg)
@@ -334,7 +336,7 @@ In order to show you how the project works I think it is more useful to present 
   - WEAPON: revolver, dagger. 
 - the maximum number of IDs is 4
 
-You can find both the log and the end ontology from the folder `/logs/test_20211109`. It was launched using the main launch file. Note that this file suppresses some logs, for example the ones from the cluedo_armor_interface. Only the logs belonging to the oracle and the robocluedo_main node are visible, since they are the most relevant nodes in the architecture. 
+You can find both the log and the end ontology from the folder [`/logs/test_20211109`](https://github.com/programmatoroSeduto/ExperimentalRoboticsLab-Assignment-1/tree/main/robocluedo/logs/test_20211109). In this example, the program was launched using the main launch file, that suppresses some logs, for example the ones from the cluedo_armor_interface. Only the logs belonging to the oracle and the robocluedo_main node are visible, since I think they're the most relevant nodes in the architecture. 
 
 Before starting, all the secundary components start running, and the config files are loaded. 
 
@@ -396,7 +398,7 @@ log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more in
 [INFO] [1636487504.726978]: [robocluedo_main] OK!
 ```
 
-When all the nodes are ready, the robot can start moving. 
+When all the nodes are ready, the robot can start moving.
 
 ```
 		...
@@ -404,6 +406,10 @@ When all the nodes are ready, the robot can start moving.
 [INFO] [1636487504.731578]: State machine starting in initial state 'robocluedo_random_target' with userdata: 
 	[]
 ```
+
+Here is a representation of what happened up to now:
+
+![UML sequence loading](/robocluedo/docs/diagrams/UML_sequence_example_loading.png)
 
 At the beginning, the robot has no informations: the ontology is empty, so it chooses randomly a room asking to the node cluedo_random_room in search of clues. Each time it enteres in one room, it receives *at most* one hint, or also nothing in some cases. The robot keeps behave in this way until at least one hypothesis becomes complete. In the following piece of log, the typical job of the robot while is looking for clues:
 
@@ -422,6 +428,10 @@ At the beginning, the robot has no informations: the ontology is empty, so it ch
 [INFO] [1636487511.413624]: State machine transitioning 'robocluedo_update_ontology':'done'-->'robocluedo_reasoning'
 [INFO] [1636487511.432874]: State machine transitioning 'robocluedo_reasoning':'no_consistent_hp'-->'robocluedo_random_target'
 ```
+
+A representation of what is happening in the common cycle above mentioned. The worst case scenario is assumed. 
+
+![UML sequence working cycle](/robocluedo/docs/diagrams/UML_sequence_example_working_cycle.png)
 
 In the example, there are no wrong charges unfortunately, but it is reasonable to suppose that, on a more complex setup (many elements in the list, many IDs, ...) the robot could fail sometimes. Here is the final piece of the log, which shows how the robot behaves when it is ready to present a charge. 
 
@@ -460,6 +470,10 @@ The actual position is not the one mentioned in the hypothesis, so the robot fir
 [INFO] [1636487537.526102]: State machine terminating 'robocluedo_charge':'case_solved':'mystery_solved'
 ```
 
+The last part of the log can be resumed with this diagram:
+
+![UML sequence working cycle](/robocluedo/docs/diagrams/UML_sequence_example_final.png)
+
 This was a very simple example, aimed at make you understand how this project works. Inside the directory *logs* you can find some more interesting examples with the default setup.
 
 ## Working Hypotheses
@@ -480,6 +494,7 @@ About the architecture:
 
 - The actual *movement_controller* is just a "socket" for a real movement controller. The specifications require only that the service is *blocking*. 
 - the sensing part is completely missing: actually the robot knows always its position without a localization system, and doesn't need to scan any QR code (or image processing, or sensing something) in order to understand the environment. This architecture is heaily focused on the AI part. 
+- implementing the cluedo_armor_interface as an action could increase the performances. Actually, the services inside that node are the most time-consuming due to the huge number of needed aRMOR requests. See the time diagram. 
 
 About how the game is managed:
 
@@ -493,7 +508,7 @@ About the Knowledge Base:
 
 About the quality of the code:
 
-- improve the actual naming convention, introducing a sort os standard more concept-oriented. Unfortunately, this is a tedious, time-consuming operation, despite the tryings to gather the use of messages in small parts of the code. 
+- improve the actual naming convention, introducing a sort os standard more concept-oriented. Unfortunately, this is a tedious, time-consuming operation, despite the the effort to gather the use of messages in small parts of the code. 
 - extend the functionalities of the classes ArmorTools and ArmorCluedo by adding the missing getters and setters
 
 # Author and Contacts
